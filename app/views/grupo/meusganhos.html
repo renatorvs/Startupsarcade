@@ -1,0 +1,262 @@
+ <!DOCTYPE html>
+ <html lang="pt-br">
+
+ <head>
+   <meta charset="UTF-8">
+   <meta name="description" content="Free Web tutorials">
+   <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+   <meta name="author" content="John Doe">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <title> onclickup | meus ganhos</title>
+
+   <link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap-reboot.css">
+   <link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap.min.css">
+   <link rel="stylesheet" href="../../assets/css/layout/perfil.css">
+   <link rel="stylesheet" href="../../assets/css/layout/layout.css">
+   <link rel="stylesheet" href="../../assets/css/layout/pedidos.css">
+   <link rel="stylesheet" href="../../assets/css/layout/footer.css">
+   <link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+   <link href="../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
+
+ </head>
+
+ <body id="page-top">
+
+  <header>
+    {% if empresa_session  %}
+    {{ include('layout/nav-header-empresa.html') }}
+    {% else %}
+    {{ include('layout/nav-header-candidato.html') }}
+    {% endif %}
+
+
+  </header>
+  <main >
+    {% if empresa_session  %}
+    {{ include('layout/nav-dashboard-empresa.html') }}
+    {% else %}
+    {{ include('layout/nav-dashboard-candidato.html') }}
+    {% endif %}
+
+
+    <section class="main-experi">
+      <section class="container">
+        <section class="row">
+         <section class="col-md-12 order-md-4 mb-4">
+           <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-muted">Seu ganhos </span>
+          </h4>
+          <ul class="list-group mb-3">
+            <li class="list-group-item d-flex justify-content-between bg-light">
+              <section >
+                <h6 class="my-0" > Serviços no mês de <strong>{{atualMes}}/{{atualAno}}</strong></h6>
+              </section>
+            </li>
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+              <section>
+                <h6 class="text-success" class="my-0" >Serviços prestados</h6>
+                <strong class="text-muted">Serviços Concluidos: </strong><br>
+                <strong class="text-muted">Serviços Cancelados</strong><br>
+                <strong class="text-muted">Serviços Pendentes</strong><br>
+              </section>
+            </li>
+
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Total A receber (R$)</span>
+              <strong>$20</strong>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <strong> <span> Pagamento é feito a  cada 30 dias </span></strong>
+
+            </li>
+
+            <li class="list-group-item d-flex justify-content-between">
+              <strong class="text-danger"> Atenção é cobrado 15 reais fixo por serviço prestado confira a tabela a baixo:</strong>
+
+            </li>
+            <br>
+
+
+
+          </ul>
+
+          {% if getconta %}
+          <ul class="list-group mb-3">
+            <li class="list-group-item d-flex justify-content-between bg-light">
+              <section >
+
+                {% for conta in  getconta %}
+
+                <h6 class="text-success" class="my-0">Sua conta cadastrada para recebimento dos valores</h6>
+                <strong>Banco :</strong> {{conta.bank_nome}} <br>  
+                <strong>Nome titular</strong> {{conta.cont_titular}}<br>
+                <strong>Agencia:</strong>  {{conta.cont_agencia}} <br>  
+                <strong>Conta: </strong> {{conta.cont_conta}} <br>
+                <strong>digito</strong> {{conta.cont_digito}}<br>
+                <a class="btn btn-danger" href="/empresameusganhos/destroy/{{conta.cont_id}}"> excluir conta</a>
+              </section>
+            </li>
+          </ul>
+
+          {% endfor %}
+          {% else %}
+
+
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Meus ganhos</button>
+          <hr>
+          <h3 class="text-primary"> Meus ganhos</h3>
+          <h6 class="text-danger">  OBS: Apenas serviços concluidos</h6>
+   <ul> 
+        <li>cod pedido:</li>
+        <li>Total</li>
+        <li>Mes:</li>
+        <li>Ano:</li>
+   </ul>
+     
+  
+
+    
+    </tbody>
+  </table>
+          <form action="/meusganhos/store" method="post">
+
+           <ul class="list-group mb-3">
+            <li class="list-group-item d-flex justify-content-between bg-light">
+              <section >
+
+                <h4 class="text-primary" class="my-0">Adicione uma conta  para recebimento dos valores 
+                </h4>
+
+                <section class="form-row">
+
+
+                 <section class="form-group col-md-6">
+                  <label for="inputState">Banco</label>
+                  <select id="inputState" class="form-control" name="cont_bank_id">
+                    <option selected>seu banco </option>
+                    {% for bank in  banks %}
+                    <option value="{{bank.bank_id}}">{{bank.bank_nome}}</option>
+                    {% endfor %}
+                  </select>
+                </section>
+                <section class="form-group col-md-6">
+                  <label for="titular">Nome titular</label>
+                  <input class="form-control" id="titular" type="text" name="cont_titular">
+                </section>
+                <strong></strong> <br>
+                <section class="form-group col-md-3">
+                  <label for="cont_agencia">Agencia</label>
+                  <input type="text" class="form-control" name="cont_agencia" id="cont_agencia">
+                </section> 
+                <section class="form-group col-md-2">
+                  <label for="inputZip">Conta</label>
+                  <input type="text" class="form-control" id="inputZip" name="cont_conta">
+                </section>
+                <section class="form-group col-md-2">
+                  <label for="cont_digito">digito</label>
+                  <input type="text" class="form-control" name="cont_digito" id="cont_digito">
+                </section>
+              </section>
+              <button class="btn btn-primary" type="submit">Adicionar conta</button>
+            </section>
+          </li>
+        </ul>
+      </form>
+
+      {%  endif %}
+      <hr>
+
+
+    </section>
+  </section>
+</section>
+</section>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <form>
+        <section class ="card-body">
+          <section class="row">
+
+            <section class="form-group col-md-4"> 
+              <label for="inputState">mês</label>
+              <select id="inputState" class="form-control" name="mes">
+               {% for mes in  getmes %}
+               {% if atualMes == mes  %}       
+
+               <option selected="sssss" value="{{mes}}">{{mes}}</option>
+               {% endif %} 
+
+               {% endfor %}
+
+             </select>
+           </section>
+           <section class="form-group col-md-4">
+            <label for="ano">ano</label>
+            <select id="ano" class="form-control" name="ano">
+              {% for ano in  getano %}
+              {% if atualAno == ano  %}       
+
+              <option value="{{ano}}">{{ano}}</option>
+              {% endif %} 
+              {% endfor %}
+
+            </select>
+          </section>
+          {% if pref == 1  %}       
+
+          <section class="form-group col-md-4">
+            <label for="usuario">usuarios</label> 
+            <select id="usuario" class="form-control" name="usuario">
+                            <option selected value="{{user_id}}">Meus ganhos</option>
+                            <option  value=all> Todos</option>
+
+              {% for usuario in  getMeusUsuarios %}
+
+              {% if usuario.user_id  %}       
+
+              <option selected value="{{usuario.user_id}}">{{usuario.user_nome}}</option>
+
+              {% endif %} 
+
+              {% endfor %}
+              <option selected value="Não há usuarios criados">Não há usuarios criados </option>
+
+            </select>
+          </section>
+          {% endif %} 
+
+        </section>
+        <button class="btn btn-primary"> buscar</button>
+      </section> 
+    </form>
+
+
+  </div>
+</div>
+</div>
+
+</main>
+{{ include('layout/nav-dashboard-end.html') }}
+{{ include('layout/footer.html') }}
+<!-- Bootstrap core JavaScript-->
+<script src="../assets/vendor/jquery/jquery.min.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="../assets/js/sb-admin-2.min.js"></script>
+
+</body>
+
+</html>

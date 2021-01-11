@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		teste ajax
+	</title>
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+		<!-- bootstrap - link cdn -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<script type="text/javascript">
+
+			$(document).ready( function(){
+
+				//associar o evento de click ao botão
+				
+
+				function atualizaTweet(){
+					//carregar os tweets 
+
+					$.ajax({
+							url: '/testeAjax/show',
+						success: function(data) {
+							$('#requestajax').html(data);
+						} 
+					});
+				}
+
+				atualizaTweet();
+
+			});
+
+		</script>
+</head>
+
+
+
+
+<body>
+	    		<div id="requestajax"></div>
+
+
+
+
+</body>
+</html>

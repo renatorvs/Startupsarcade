@@ -1,0 +1,116 @@
+    <!DOCTYPE html>
+    <html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="ver artigo">
+    <meta name="keywords" content="ver artigo">
+    <meta name="author" content="onclickup">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> onclickup | {{title}}</title>
+    <link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap-reboot.css">
+    <link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/layout/blog.css">
+    <link rel="stylesheet" href="../../assets/css/layout/layout.css">
+    <link rel="stylesheet" href="../../assets/css/layout/pedidos.css">
+    <link rel="stylesheet" href="../../assets/css/layout/footer.css">
+    <!-- Custom fonts for this template-->
+    <link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <link href="../../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
+  </head>
+
+  <body id="page-top">
+    <header>
+     {% if empresa_session  %}
+     {{ include('layout/nav-header-empresa.html') }}
+     {% elseif candidato_session %}
+     {{ include('layout/nav-header-candidato.html') }}
+     {% elseif admin_session %}
+     {{ include('layout/nav-header-admin.html') }}
+     {% else  %}
+
+     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Onclickup</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <section class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <section class="input-group">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+              <option selected>estado...</option>
+              <option value="1">
+                <One></One>
+              </option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+            <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+              <option value="1">Empregos</option>
+              <option value="2">Estagios</option>
+              <option value="3">Concursos</option>
+              <option value="4">Serviços</option>
+              <option value="5">Dicas</option>
+            </select>
+            <section class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button">Busca</button>
+            </section>
+          </section>
+        </form> 
+        <ul class="nav justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link " href="/entrar/show"><button type="button" class="btn btn-primary btn-sm"> Entrar</button>          </a> 
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="/cadastrocandidato/show"><button type="button" class="btn btn-success btn-sm">Increva-se</button>
+            </a>
+          </li>
+        </ul>
+      </section>
+    </nav>
+    {% endif %}
+  </header>
+  <main>
+    {% if empresa_session  %}
+    {{ include('layout/nav-dashboard-empresa.html') }}
+    {% elseif candidato_session %}
+    {{ include('layout/nav-dashboard-candidato.html') }}
+    {% elseif admin_session %}
+    {{ include('layout/nav-dashboard-admin.html') }}  
+    {% endif %}
+    <section  class="container">
+      <a href="/blog/create"class="btn btn-primary btn-sm">ir para o  blog</a>
+      <br><br>
+      <section class="row">
+        <article class="col-md-8 blog-main">
+          <h3   class="pb-3 mb-4 font-italic border-bottom">
+           Categoria: {{blogcat_nome}}
+         </h3>
+         <section class="blog-post">
+          <h2 class="blog-post-title">Artigo: {{post_titulo}}</h2>
+          <h3>{{post_subtitulo}}</h3>
+          <p class="blog-post-meta">Data post: {{blog_date}} </p>
+          <hr>
+          <p>{{blog_text}} <br></p>
+        </section>
+        <figure>
+          
+        <img src="../../public/assets/user_images/{{blog_img}}">
+        </figure>
+        <br> <hr>
+      </article> 
+    </section>
+  </section>
+  </main>
+  {{ include('layout/nav-dashboard-end.html') }}
+  {{ include('layout/footer.html') }}
+  <script src="../../assets/vendor/jquery/jquery.min.js"></script>
+  <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../../assets/js/sb-admin-2.min.js"></script>
+  </body>
+  </html>

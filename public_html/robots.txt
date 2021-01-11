@@ -1,0 +1,4 @@
+User-agent:*
+Allow: Exemplo: /blog/
+Disallow:Exemplo/home?
+Nofollow: 

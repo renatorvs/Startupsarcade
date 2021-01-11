@@ -1,0 +1,109 @@
+        <!DOCTYPE html>
+        <html lang="pt-br">
+
+        <head>
+        	<meta charset="UTF-8">
+        	<meta name="description" content="Free Web tutorials">
+        	<meta name="keywords" content="HTML,CSS,XML,JavaScript">
+        	<meta name="author" content="John Doe">
+        	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+            <title> onclickup | {{title}}</title>
+        	<!-- Compiled and minified materialize CSS -->
+        	<link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap-reboot.css">
+        	<link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap.min.css">
+        	<link rel="stylesheet" href="../../assets/css/layout/perfil.css">
+        	<link rel="stylesheet" href="../../assets/css/layout/layout.css">
+        	<link rel="stylesheet" href="../../assets/css/layout/pedidos.css">
+        	<link rel="stylesheet" href="../../assets/css/layout/footer.css">
+        	<!-- Custom fonts for this template-->
+        	<link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+        	<!-- Custom styles for this template-->
+        	<link href="../../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
+        </head>
+
+       <header>
+        {% if empresa_session  %}
+            {{ include('layout/nav-header-empresa.html') }}
+        {% else %}
+            {{ include('layout/nav-header-candidato.html') }}
+        {% endif %}
+       
+
+    </header>
+        <main >
+        {% if empresa_session  %}
+            {{ include('layout/nav-dashboard-empresa.html') }}
+        {% else %}
+          {{ include('layout/nav-dashboard-candidato.html') }}
+        {% endif %}
+        		<h2 align="center" class="font-weight-bold"> Pedidos Feitos</h2>
+
+                     <a href="/pedidos/pedidodetalhes/{{pedidos.pedi_id}}" class="btn btn-primary btn-sm">pedidos concluid</a>
+
+                            {% if haPedidos  %}
+
+                                 {% for pedidos in getMeuspedidos %}
+        		<section class="card">
+        			<section class="card-body border-left-primary">
+        				<section class="container"> 
+        					
+        					<section class="row align-items-start">
+                                        <img src="../../assets/img/credit_card-24px.svg">
+
+
+        						<br> <br> <br>
+        						<section class="col-12 col-md-5">
+        							<h6 class="font-weight-bold">Pedido status: </strong> <span class="text-success">{{pedidos.statuspedi_nome}}</span></h6>
+        							<h6><strong class="font-weight-bold">Serviço:</strong> <span class="text-primary">{{pedidos.post_titulo}} </span></h6> 
+                                    <strong class="font-weight-bold"> Codigo pedido :</strong> 00{{pedidos.pedi_id}}</br>
+                                    <strong class="font-weight-bold"> Codigo servico :</strong> 00{{pedidos.serv_id}}</br>
+        							<strong class="font-weight-bold">Valor:</strong> {{pedidos.pedi_valortotal}}<br>
+        							<strong>Data</strong> {{pedidos.pedi_registro | date("d/m/y")}}<br>
+        							<strong>Prazo </strong>{{pedidos.serv_prazo}} Dias<br>
+        							<hr>
+        						</section>
+
+        					<section class="card-body">
+        						<a href="" class="btn btn-info btn-sm">Chat</a>
+                                <a href="/pedidos/pedidodetalhes/{{pedidos.pedi_id}}" class="btn btn-primary btn-sm">mais detalhes</a>
+        					</section>
+        					</section>
+                        </section> 
+                    </section> 
+                </section>
+        			   {% endfor %}
+                             {% else %}
+
+      <section class="card">
+                    <section class="card-body border-left-primary">
+                        <section class="container"> 
+
+                                        <h5 class ="alert alert-danger"> Não há Pedidos feitos </h5>
+
+                            <a  class="btn btn-primary btn-sm"  href="/exploreservicos/create"> Explore novos servicos</a>
+                        </section> 
+                    </section> 
+                </section>
+                             {% endif %}
+                                                
+
+        	</main>
+        	{{ include('layout/nav-dashboard-end.html') }}
+        	{{ include('layout/footer.html') }}
+        	<!-- Bootstrap core JavaScript-->
+        	<script src="../../assets/vendor/jquery/jquery.min.js"></script>
+        	<script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        	<!-- Core plugin JavaScript-->
+        	<script src="../../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+        	<!-- Custom scripts for all pages-->
+        	<script src="../../assets/js/sb-admin-2.min.js"></script>
+
+        </body>
+
+        </html>

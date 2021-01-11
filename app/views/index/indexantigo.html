@@ -1,0 +1,336 @@
+	
+
+<html lang="pt">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="Free Web tutorials">
+	<meta name="keywords" content="HTML,CSS,XML,JavaScript">
+	<meta name="author" content="John Doe">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+	<!-- Compiled and minified materialize CSS -->
+	<link rel="stylesheet" href="../assets/css/bootstrap/bootstrap-reboot.css">
+	<link rel="stylesheet" href="../assets/css/bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" href="../assets/css/index/index.css">
+	<link rel="stylesheet" href="../assets/css/layout/card-btn-post.css">
+	<link rel="stylesheet" href="../assets/css/layout/footer-index.css">
+	<link rel="stylesheet" href="../../assets/css/layout/footer.css">
+
+
+
+	<title>Onclickup </title>
+
+
+</head>
+<header>
+
+
+
+
+	<nav class="bg-gray-900 navbar navbar-expand-lg navbar-light bg-light" class="bg-gray-900">
+		<a class="navbar-brand" href="/">	<img src="../assets/Logotipo/logo.svg"  alt="onclickup logo" class="width=device-width" width="180vm"></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		////criar classe css para img logo
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+
+	    
+	    
+			</ul>
+
+			<form class="form-inline my-2 my-lg-0">
+				<div class="input-group">
+					<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+					<select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+						<option selected>estado...</option>
+						<option value="1">
+							<One></One>
+						</option>
+						<option value="2">Two</option>
+						<option value="3">Three</option>
+					</select>
+					<select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+						<option value="1">Empregos</option>
+						<option value="2">Estagios</option>
+						<option value="3">Concursos</option>
+						<option value="4">Serviços</option>
+						<option value="5">Dicas</option>
+					</select>
+					<div class="input-group-append">
+						<button class="btn btn-outline-secondary" type="button">Busca</button>
+					</div>
+				</div>
+			</form>	
+
+
+
+			<ul class="nav justify-content-end">
+
+				<li class="nav-item">
+					<a class="nav-link " href="/entrar/show"><button type="button" class="btn btn-Primary btn-sm"> Entrar</button>
+					</a> 
+				</li>
+					 <li class="nav-item">
+				<a class="nav-link " href="/cadastrocandidato/show"><button type="button" class="btn btn-success btn-sm">Increva-se</button>
+				</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+
+
+
+</header>
+
+
+<body>
+
+	<main>
+		<article>
+		 #688cff
+			
+		<ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+			<li class="nav-item">
+				<a class="nav-link active" id="empresas-tab" data-toggle="tab" href="#empresas" role="tab" aria-controls="empresas" aria-selected="true">Empresas</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" id="candidatos-tab" data-toggle="tab" href="#candidatos" role="tab" aria-controls="candidatos" aria-selected="false">Candidatos</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" id="funciona-tab" data-toggle="tab" href="#funciona" role="tab" aria-controls="funciona" aria-selected="false">Nosso Blog</a>
+			</li>
+		</ul>
+
+		<div class="tab-content" id="myTabContent" style="background-color: #688cff">
+			<div class="tab-pane fade show active" id="empresas" role="tabpanel" aria-labelledby="empresas-tab">
+				<div class="container">
+<br>
+					<h3 align="left" class="text-white" >Empresas</h3>
+					<p class="text-white">
+						
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore magni adipisci fugiat debitis a dolor exercitationem ipsum quasi. Repudiandae modi, nemo quo inventore tempore tempora quia numquam, aut dolorem error. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla libero obcaecati iusto dignissimos impedit fuga architecto expedita adipisci laborum animi voluptatibus rerum quod, quisquam, accusantium repellendus debitis perferendis ipsam veniam! <br>
+
+					</p>
+					<a href="\cadastroempresa\show" class="btn btn-success  btn-block btn-sm">inscreva-se</a>
+					<br>	
+				</div>
+
+			</div>
+
+
+			<div class="tab-pane fade" id="candidatos" role="tabpanel" aria-labelledby="candidatos-tab">
+				<div class="container"> <br>
+
+					<h3  align="left" class="text-white">Candidatos </h3>
+					<p  align="left" class="text-white">
+						
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore magni adipisci fugiat debitis a dolor exercitationem ipsum quasi. Repudiandae modi, nemo quo inventore tempore tempora quia numquam, aut dolorem error. <br>
+					</p>
+			<a href="\cadastroempresa\show" class="btn btn-success  btn-block">inscreva-se</a>
+					<br>	
+				</div>
+			</div>
+			<div class="tab-pane fade" id="funciona" role="tabpanel" aria-labelledby="funciona-tab">
+				<div class="container">
+					<br>
+
+					<h3  align="left" class="text-white">Conheça nosso blog</h3>
+					<h5  align="left" class="text-white"> Artigos para sua empresa, candidatos,  prestadores de serviço e concursando. </h5>
+					<div class="card-deck">
+   
+   {% for blog in getBlogindex %}
+	<div class="col-md-6">
+          <div class="card flex-md-row mb-4 box-shadow h-md-250">
+            <div class="card-body d-flex flex-column align-items-start">
+                     <strong class="d-inline-block mb-2 text-dark">{{blog.blogcat_nome}}</strong>
+
+             <h3 class="mb-0">
+                <a class="text-dark" href="#">{{blog.post_titulo}}</a>
+              </h3>
+              <div class="mb-1 text-muted">{{blog.post_subtitulo}}</div>
+              <p class="card-text mb-auto">{{blog_date}}.</p>
+              <a href="/blog/show/{{blog.blog_id}} " class="btn btn-outline-secondary btn-sm">Continue lendo</a>
+            
+
+               <div class="card-body">
+                 
+           
+             <a href="/blog/create" class="btn btn-primary btn-sm"> mais artigos </a>
+               </div>
+         
+            </div>     
+        </div>
+	</div>
+ {% endfor %}
+
+
+
+			</div>
+		</div>
+		<hr>
+		</article>
+<br>
+
+		<ul class="nav nav-pills   justify-content-center" id="pills-tab" role="tablist">
+			<li class="nav-item">
+				<a class="nav-link small active " id="pills-empregos-tab" data-toggle="pill" href="#pills-empregos" role="tab" aria-controls="pills-empregos" aria-selected="true">Emprego</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link small" id="pills-concursos-tab" data-toggle="pill" href="#pills-concursos" role="tab" aria-controls="pills-concursos" aria-selected="false">Concursos</a>
+			</li>
+			<li class="nav-item small">
+				<a class="nav-link" id="pills-servicos-tab" data-toggle="pill" href="#pills-servicos" role="tab" aria-controls="pills-servicos" aria-selected="false">Serviços</a>
+			</li>
+			<li class="nav-item small">
+				<a class="nav-link" id="pills-dicas-tab" data-toggle="pill" href="#pills-dicas" role="tab" aria-controls="pills-dicas" aria-selected="false">Dicas</a>
+			</li>
+		</ul>
+		<div class="container">
+
+			<div class="tab-content" id="pills-tabContent">
+				<div class="tab-pane fade show active" id="pills-empregos" role="tabpanel" aria-labelledby="pills-empregos-tab">
+					<br>
+					<ul class="list-unstyled">
+						<div class="card">
+							<div class="container">
+style="    background-color: #43A047"
+								<li class="media my-4" >
+									<img src="..." class="mr-3" alt="..." >
+									<div class="media-body">
+										<h4 class="mt-0 mb-1">titulo</h4>
+										<h5 class="mt-0 mb-1">Subtitulo-titulo</h5>
+										descricao <br>
+										Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nddddddisi vulputate fringilla. Donec lacinia congue felis in faucibus. <br>
+
+
+										<div align="center" class="group-button">
+											<a href="\maispost\show" class="btn btn-info btn-sm ">mais vagas</a>
+											<a href="\verpost\show" class="btn btn-success btn-sm">ver vaga</a>
+										</div>
+									</div>
+
+								</li>
+							</div>
+						</div>
+					</ul>
+				</div>
+				<div class="tab-pane fade" id="pills-concursos" role="tabpanel" aria-labelledby="pills-concursos-tab">
+					<br>
+					<ul class="list-unstyled">
+						<div class="card">
+							<div class="container">
+
+								<li class="media my-4" >
+									<img src="..." class="mr-3" alt="..." style="height=80px; background-color:black">
+									<div class="media-body">
+										<h4 class="mt-0 mb-1">titulo</h4>
+										<h5 class="mt-0 mb-1">Subtitulo-titulo</h5>
+										descricao <br>
+										Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+
+
+										<div align="center" class="group-button">
+											<a href="\maispost\show" class="btn btn-info btn-sm">mais concursos</a>
+											<a href="\verpost\show" class="btn btn-succes btn-sm">ver concurso</a>
+										</div>
+									</div>
+
+
+								</li>
+							</div>
+						</div>
+					</ul>
+				</div>
+
+
+
+				<div class="tab-pane fade" id="pills-servicos" role="tabpanel" aria-labelledby="pills-servicos-tab">
+					<br>
+					<ul class="list-unstyled">
+						<div class="card">
+							<div class="container">
+
+								<li class="media my-4" >
+									<img src="..." class="mr-3" alt="..." style="height=80px; background-color:black">
+									<div class="media-body">
+										<h4 class="mt-0 mb-1">titulo</h4>
+										<h5 class="mt-0 mb-1">Subtitulo-titulo</h5>
+										descricao <br>
+										Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+
+										<div align="center" class="group-button">
+											<a href="\maispost\show" class="btn btn-info btn-sm ">mais serviços</a>
+											<a href="\verpost\show" class="btn btn-success btn-sm ">ver serviço</a>
+										</div>
+
+
+									</div>
+								</li>
+							</div>
+						</div>
+
+
+
+
+					</ul>
+
+
+
+				</div>
+
+
+				<div class="tab-pane fade" id="pills-dicas" role="tabpanel" aria-labelledby="pills-dicas-tab">
+					<br>
+					<ul class="list-unstyled">
+						<div class="card">
+							<div class="container">
+
+								<li class="media my-4" >
+									<img src="..." class="mr-3" alt="..." style="background-color:black">
+									<div class="media-body">
+										<h4 class="mt-0 mb-1"> titulo</h4>
+										<h5 class="mt-0 mb-1">Subtitulo-titulo</h5>
+										descricao <br>
+										Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+
+										<div align="center" class="group-button">
+											<div align="center" class="group-button">
+												<a href="\maispost\show" class="btn btn-info btn-sm">mais dicas</a>
+												<a href="\verpost\show" class="btn btn-success btn-sm">ver dica</a>
+											</div>
+										</div>
+									</div>
+							</div>
+							</li>
+						</div>
+				</div>
+
+
+
+
+
+				</ul>
+
+
+
+
+			</div>
+		</div>
+
+	</main>
+
+	{{ include('layout/footer-index.html') }}
+
+
+	<script type="text/javascript" src="../assets/js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

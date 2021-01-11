@@ -1,0 +1,107 @@
+  <html lang="pt">
+
+  <head>
+      <meta charset="UTF-8">
+      <meta name="description" content="ver serviços">
+      <meta name="keywords" content="serviços, ver serviços, prestadores de serviços">
+      <meta name="Onclickup" content="ver serviços">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title> Onclickup | Servico</title>
+      <link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap-reboot.css">
+      <link rel="stylesheet" href="../../assets/css/layout/adddica.css">
+      <link rel="stylesheet" href="../../assets/css/layout/layout.css">
+      <link rel="stylesheet" href="../../assets/css/layout/footer.css">
+      <link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+      <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+      <link href="../../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
+  </head>
+  <body id="page-top">
+  <header>
+      {% if empresa_session  %}
+          {{ include('layout/nav-header-empresa.html') }}
+      {% else %}
+          {{ include('layout/nav-header-candidato.html') }}
+      {% endif %}
+  </header>
+      <main>
+      {% if empresa_session  %}
+          {{ include('layout/nav-dashboard-empresa.html') }}
+      {% else %}
+        {{ include('layout/nav-dashboard-candidato.html') }}
+      {% endif %}
+      <section class="main-experi"> 
+      <a  class= "btn btn-primary btn-sm"href="/meusservicos/create"> meus servicos</a><br><br>
+          <section class="row">
+              <section class="col-xl-12 col-md-12 mb-4">
+                  <article class="card border-left-success shadow h-100 py-2">
+                      <section class="card-body">
+                               <section class="card"> 
+                                  <section class="card-body">
+                                 <ul class="list-unstyled">
+                                  <li class="media my-4">
+                                      <img src="../../assets/img/outline-work_outline-24px.svg" class="mr-3" >
+                                      <section class="media-body"> 
+                                          <strong class="text-primary"> codigo servico : </strong> 00{{serv_id}} <br>
+                                          <h4 class="mt-0 mb-1 text-primary">{{post_titulo}}</h4>
+                                          <h5 class="mt-0 mb-1 text-primary"> {{post_subtitulo}}</h5>
+                                           <br>
+                                         <strong>Descrição/Atividades</strong> {{post_description}}<br>
+                                          <strong>Categoria</strong> {{cat_nome}} <br>
+                                          <strong>Pre Requisitos</strong> {{serv_preRequisitos}} <br>
+                                          <strong>Beneficios</strong> {{serv_beneficios}} <br>
+                                          <strong>Preço do serviço R$ R$</strong> {{serv_valor}} <br>
+                                          Imagem do servico prestado:
+                                          <hr>
+                                           <strong>Imagem A: </strong> 
+                                             {% if servico.serv_arquivo1 %}
+                                       <img src="../../assets/user_imges/{{servico.serv_arquivo1}}" >
+                                         {% else %} <span class="text-danger"> Esse serviço Não contem imagem A.</span> <br> {% endif %}
+                                      <strong>Imagem B:</strong>
+                                       {% if servico.serv_arquivo1 %}
+                                             <img src="../../assets/img/{{servico.serv_arquivo2}}">
+                                      {% else %} <span class="text-danger"> Esse serviço Não contem imagem B.</span><br> {% endif %}              
+                                      <strong>Imagem C: </strong>
+                                            {% if servico.serv_arquivo1 %}
+                                            <img src="../../assets/img/{{servico.serv_arquivo3}}">
+                                      {% else %} <span class="text-danger"> Esse serviço Não contem imagem C.</span><br> {% endif %}
+                                          <hr>
+                                          {% if empresa_session %} 
+                                            <strong>Prestador: </strong><a href="/empresaperfil/show">{{user_nome}}</a> 
+                                            {% else %} 
+                                            <strong>Prestador: </strong><a href="/candidatoperfil/show">{{user_nome}}</a> 
+                                            {% endif %}
+                                            <hr>
+                                         <strong>Logradouro</strong>  {{ender_logradouro}} <br>
+                                         <strong>Bairro</strong>  {{ender_bairro}} <br>
+                                          <strong>cidade</strong> {{ender_cidade}} <br>
+                                         <strong>Estado</strong>  {{est_nome}}<br>
+                                      </section>
+                                  </li>
+                                 </ul>
+
+                                    <section align="center">
+                                             <a href="\verservico\destroy\{{post_id}}" class="btn btn-danger btn-sm">excluir</a>
+                                                <a  class="btn btn-success btn-sm" href="">sherepoint</a>
+                                              <a href="\editservico\edit\{{serv_id}}" class="btn btn-primary btn-sm">editar</a>
+                                  </section>
+                               </section>
+                            </section>
+                        </section>
+                  </article>
+              </section>
+          </section>
+      </section>
+  </main>
+
+      {{ include('layout/nav-dashboard-end.html') }}
+      {{ include('layout/footer.html') }}
+      <script src="../../assets/vendor/chart.js/Chart.min.js"></script>
+      <script src="../../assets/js/demo/chart-area-demo.js"></script>
+      <script src="../../assets/js/demo/chart-pie-demo.js"></script>
+      <script src="../../assets/vendor/jquery/jquery.min.js"></script>
+      <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <script src="../../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+      <script src="../../assets/js/sb-admin-2.min.js"></script>
+  </body>
+  </html>

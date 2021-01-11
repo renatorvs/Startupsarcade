@@ -1,0 +1,108 @@
+  <!DOCTYPE html>
+    <html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Adiciona duvidas">
+    <meta name="keywords" content="Adiciona duvidas">
+    <meta name="author" content="Adiciona duvidas">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Onclickup | Adiciona duvidas</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap/bootstrap-reboot.css">
+    <link rel="stylesheet" href="../assets/css/layout/adddica.css">
+    <link rel="stylesheet" href="../assets/css/layout/layout.css">
+    <link rel="stylesheet" href="../assets/css/layout/footer.css">
+    <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
+</head>
+<body id="page-top">
+<header>
+    {{ include('layout/nav-header-admin.html') }}
+</header>
+    <main >
+    {{ include('layout/nav-dashboard-admin.html') }}
+        <section class="main-experi">
+                  <h4 class="text-dark" align="center"> Adiciona duvidas frequentes</h4>
+          <section class="card border-success">
+                <section class="card-body">
+                  <form action="/adminaddduvidas/addduvida">
+                  <section class="form-group">
+                    <label for="Pergunta">Pergunta </label>
+                    <input type="text" name="duv_pergunta" class="form-control" id="Pergunta" placeholder="pergunta ">
+                  </section>
+                  <section class="form-group">
+                    <label for="Resposta">Resposta </label>
+                    <input type="text" name="duv_resposta" class="form-control" id="Resposta" placeholder="Resposta">
+                  </section>
+                  <section class="form-group">
+                    <label for="exampleFormControlSelect1">Categoria pergunta </label>
+                    <select class="form-control" name="getduvcat_id" id="exampleFormControlSelect1">
+                     {% for duvidascategoria in  getduvidascategoria %}           
+                      <option value="{{duvidascategoria.duvcat_nome}}">{{duvidascategoria.duvcat_nome}}
+                      </option> 
+                            {% endfor %}
+                    </select>
+                  </section> 
+
+                  <section class="form-group">
+                    <label for="exampleFormControlSelect1">Tipo pergunta</label>
+                    <select class="form-control" name="tiuser_id" id="exampleFormControlSelect1">
+                      <option value="1">Candidato</option> 
+                      <option value="2">Empresa</option> 
+                    </select>
+                  </section>
+                <button class="btn btn-primary btn-sm"> criar pergunta</button>
+                </form>
+             </section>
+            </section> 
+             <section class="card border-success mb-4 mt-4" >
+                <section class="card-body">
+                  <h5 class="text-dark"> Adicionar Categorias</h5>
+                  <form action="/adminaddduvidas/addduvidacategoria" method="">
+                  <section class="form-group">
+                    <label for="Categoria">Categoria nome </label>
+                    <input type="text" name="duvcat_nome" class="form-control" id="Categoria" placeholder="categoria nome">
+                  </section>
+                  <section class="form-group">
+                    <label for="Categoriapergunta">Categoriapergunta</label>
+                    <select class="form-control" name="duvcat_tipo_id" id="Categoriapergunta">
+                      <option value="1">Candidato</option> 
+                      <option value="2">Empresa</option> 
+                      <option value="3">Ambos</option> 
+                    </select>
+                  </section>
+                <button class="btn btn-primary btn-sm"> criar categoria</button>
+                </form>
+             </section>
+            </section>
+        </section>
+    </main>
+
+    {{ include('layout/nav-dashboard-end.html') }}
+    {{ include('layout/footer.html') }}
+
+
+
+
+
+
+    <!-- Page level plugins -->
+    <script src="../assets/vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="../assets/js/demo/chart-area-demo.js"></script>
+    <script src="../assets/js/demo/chart-pie-demo.js"></script>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="../assets/vendor/jquery/jquery.min.js"></script>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="../assets/js/sb-admin-2.min.js"></script>
+
+</body>
+
+</html>

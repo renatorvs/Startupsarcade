@@ -1,0 +1,172 @@
+                <!DOCTYPE html>
+
+        <html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="solicitações">
+	<meta name="keywords" content="solicitações">
+	<meta name="author" content="Onclickup">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Onclickup | Solicitaçoes </title>
+	<link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap-reboot.css">
+	<link rel="stylesheet" href="../../assets/css/layout/solicitacoes.css">
+	<link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" href="../../assets/css/layout/layout.css">
+	<link rel="stylesheet" href="../../assets/css/layout/layout.css">
+	<link rel="stylesheet" href="../../assets/css/layout/footer.css">
+	<link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+	<link href="../../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
+</head>
+<body id="page-top">
+<header>
+	{% if empresa_session  %}
+		{{ include('layout/nav-header-empresa.html') }}
+	{% else %}
+		{{ include('layout/nav-header-candidato.html') }}
+	{% endif %}
+</header>
+	<main >
+	{% if empresa_session  %}
+		{{ include('layout/nav-dashboard-empresa.html') }}
+	{% else %}
+	  {{ include('layout/nav-dashboard-candidato.html') }}
+	{% endif %}
+<section class="container">
+<section class="content">
+	<section class="row">
+		<section class="col-md-3">
+			<article class="grid support">
+				<section class="grid-body">
+					<h2>Filtro</h2>
+					<hr>
+					<ul>
+						<li class="active"><a href="#">Everyone's Issues<span class="pull-right">142</span></a></li>
+						<li><a href="#">Created by you<span class="pull-right">52</span></a></li>
+						<li><a href="#">Mentioning you<span class="pull-right">18</span></a></li>
+					</ul>
+					<hr>
+					<p><strong>Labels</strong></p>
+					<ul class="support-label">
+						<li><a href="#"><span class="bg-blue">&nbsp;</span>&nbsp;&nbsp;&nbsp;application<span class="pull-right">2</span></a></li>
+						<li><a href="#"><span class="bg-red">&nbsp;</span>&nbsp;&nbsp;&nbsp;css<span class="pull-right">7</span></a></li>
+						<li><a href="#"><span class="bg-black">&nbsp;</span>&nbsp;&nbsp;&nbsp;html<span class="pull-right">41</span></a></li>
+						<li><a href="#"><span class="bg-light-blue">&nbsp;</span>&nbsp;&nbsp;&nbsp;javascript<span class="pull-right">22</span></a></li>
+						<li><a href="#"><span class="bg-green">&nbsp;</span>&nbsp;&nbsp;&nbsp;management<span class="pull-right">87</span></a></li>
+						<li><a href="#"><span class="bg-purple">&nbsp;</span>&nbsp;&nbsp;&nbsp;mobile<span class="pull-right">92</span></a></li>
+						<li><a href="#"><span class="bg-teal">&nbsp;</span>&nbsp;&nbsp;&nbsp;php<span class="pull-right">140</span></a></li>
+					</ul>
+				</section>
+			</article>
+		</section>
+		<section class="col-md-9">
+			<article class="grid support-content">
+				 <section class="grid-body">
+					 <h2>Solicitaçoes</h2>
+					 	<h6 class = "text-danger"> Prazo de conclusão é de  até 5 dias uteis</h6>
+					 <hr> 
+					 <section class="btn-group">
+						<button type="button" class="btn btn-default active"> {{getCountAberto}} Em aberto</button>
+						<button type="button" class="btn btn-default">  {{getCountConcluido}} Concluidos</button>
+					</section>
+					<button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#newIssue"> nova solicitação </button>
+					<section class="modal fade" id="newIssue" tabindex="-1" role="dialog" aria-labelledby="newIssue" aria-hidden="true">
+						<section class="modal-wrapper">
+							<section class="modal-dialog">
+								<section class="modal-content">
+									<section class="modal-header bg-blue">
+										<h4 class="modal-title"><i class="fa fa-pencil"></i> nova solicitação</h4>
+										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+									</section>
+									<form action="/solicitacoes/store" method="post">
+										<section class="modal-body">
+											<section class="form-group">
+								<label for="cat_id">Categorias</label>
+											<select class="form-control" name="solicategoria_id" id="cat_id">
+													{% for categorias in categoria %}
+												<option  value="{{ categorias.solicat_id}}">{{ categorias.soli_cat_nm|e }}</option>
+			    								{% endfor %}
+											</select>
+											</section>
+											<input type="hidden" name="solistatus_id" value="1">
+											<input type="hidden" name="soli_date">
+											<section class="form-group">
+												<textarea name="soli_descricao" class="form-control" placeholder="Questões relacionadas a pedido, favor informar número do pedido ou serviço, " ></textarea>
+											</section>
+										</section>
+										<section class="modal-footer">
+											<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> descartar</button>
+											<button type="submit" class="btn btn-primary pull-right"><i class="fa fa-pencil"></i> adicionar</button>
+										</section>
+									</form>
+								</section>
+							</section>
+						</section>
+					</section>
+					<section class="padding"></section>
+					  {% if haSolicitacoes %}
+					<section class="row">
+						<section class="col-md-12">
+								{% for solicitacoes in  getSolicitacoes %}
+							<ul class="list-group fa-padding">
+								<li class="list-group-item" data-toggle="modal" data-target="#issue">
+										<i class="fa fa-file-o pull-left"></i>
+										<section class="card-body">
+											 <strong> Status: </strong> {{solicitacoes.status_soli}} <br>
+										<strong>Solicitação: </strong> {{solicitacoes.soli_cat_nm}}  <br>
+											<strong>Descrição: </strong>{{solicitacoes.soli_descricao}} <br>
+											 <strong> Abertura : </strong> {{solicitacoes.soli_date |date("d/m/Y")}}
+											<p class="info">criado por {{solicitacoes.emp_nomeresponsavel}}<a href="#"></a>  
+											 </p>
+										</section>
+								</li>
+							</ul>
+							  {% endfor %}
+					  {% else %}
+					<h5 align="center" class="text-primary">Não  solicitaçoes abertas</h5>
+		  {% endif %}		
+						</section>
+					</section>
+				</section>
+			</article>
+		</section>
+
+	</section>
+</section>
+</section>
+
+
+
+
+
+
+	 </main>
+
+    {{ include('layout/nav-dashboard-end.html') }}
+    {{ include('layout/footer.html') }}
+
+
+
+
+
+
+    <!-- Page level plugins -->
+    <script src="../../assets/vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="../../assets/js/demo/chart-area-demo.js"></script>
+    <script src="../../assets/js/demo/chart-pie-demo.js"></script>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="../../assets/vendor/jquery/jquery.min.js"></script>
+    <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="../../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="../../assets/js/sb-admin-2.min.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Empresa vagas">
+  <meta name="keywords" content="Empresa vagas">
+  <meta name="author" content="onclickup">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap-reboot.css">
+  <link rel="stylesheet" href="../../assets/css/layout/layout.css">
+  <link rel="stylesheet" href="../../assets/css/layout/footer.css">
+  <link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <title>Onclickup | Empresa vagas</title>
+  <link href="../../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
+</head>
+<body id="page-top">
+  <header>
+    {{ include('layout/nav-header-empresa.html') }}
+  </header>
+  <main>
+    {{ include('layout/nav-dashboard-empresa.html') }}
+    <section class="main-experi" >
+     <hr class="m-1">  
+     <section class="row">
+      <section class="col-xl-12 col-md-12 mb-4">
+        {{session}}
+ 
+            <section class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <section class="modal-dialog modal-lg">
+        <section class="modal-content">
+          <section class="card-body">   
+            <form class="needs-validation" action="/grupos/grupostore" enctype="multipart/form-data" method ="post">
+              <section class="form-row">
+                
+                <section class="col-md-6 mb-3">
+                  <label for="validationCustom01">Nome do projeto (starstup)</label>
+                  <input type="text" name="gr_nome" class="form-control" id="validationCustom01" placeholder="Nome do projeto (starstup)" required>
+                  <section class="invalid-feedback">
+                    cnpj invalido !
+                  </section>  
+                </section>
+                <section class="col-md-6 mb-3">
+                  
+                  <label for="validationCustom01">Descriçao do plano de negocio </label>
+                  <input type="text" name="gr_descricao" class="form-control" id="validationCustom01" placeholder="Descriçao do plano de negocio" required>
+                  <section class="invalid-feedback">
+                    contato invalido !
+                  </section>  
+                </section>
+                <section class="col-md-6 mb-3">
+                  <label for="validationCustom04">Cidade </label>
+                  <input type="text" name="gr_cidade" class="form-control" id="validationCustom04" placeholder="Cidade"  required>
+                  <section class="invalid-feedback">
+                    Por favor, informe um estado válido.
+                  </section>
+                </section>
+                
+                <section class="col-md-6 mb-3">
+                   <section class="form-group">
+                <label for="validationCustom05">Estado</label>
+                <select name="gr_estado" class="form-control" id="validationCustom05" required>
+                 {% for estado in listEstados %}
+                  <option value="{{estado.est_nome}}">{{estado.est_nome}}</option>
+              {% endfor %}
+                </select>
+              </section>
+                </section>
+
+
+                 <section class="col-md-6 mb-3">
+                  <label for="Grupo">Grupo foto</label>
+                  <input type="file" class="form-control" name="gr_foto" id="gr_foto" placeholder="Foto grupo">
+                </section>
+              
+           
+                <section class="col-md-6 mb-3">
+                   <section class="form-group">
+                <label for="exampleFormControlSelect1">Grupo Privado ?</label>
+                <select name="gu_private" class="form-control" id="exampleFormControlSelect1">
+                  <option value="1">sim</option>
+                  <option value="0">não</option>
+                </select>
+              </section>
+            
+                </section>
+
+              </section>
+              
+              
+              <button class="btn btn-primary" type="submit">Criar grupo</button>
+            </form>
+          </section>
+        </section>
+      </section>
+    </section>
+
+        <article class="card border-left-success shadow h-100 py-2">
+          <section class="card-body">
+
+            <h4 class ="text-dark" align="center">  Explore grupos de starstup  </h4>
+             <button  type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Criar grupo</button>             
+<hr>
+            {% for grupo in grupoAll %}
+            <section class="card"> 
+              <section class="card-body">
+             
+                <ul class="list-unstyled" class="mr-1">
+                  <li class="media my-4">
+                    <figure>
+                      <img src="../../assets/img/outline-ballot-24px.svg" class="mr-1" >
+                    </figure>
+                    <section class="media-body"> 
+                      <h4 class="mt-0 mb-1"> <a href="\empresavervaga\show\{{minhavaga.vag_id}}" class=" text-primary "> {{minhavaga.post_titulo}}</a></h4>
+                      <h5 class="mt-0 mb-1 text-primary">{{grupo.cg_nome}}</h5>
+                      <!--   <i>  <img width="25" src="../../assets/img/categoria-24px.svg" class="mt-1" > </i>
+                        <strong class="text-success"> {{minhavaga.cat_nome}} </strong>
+                        <i>  <img width="25" src="../../assets/img/localizacao24px.svg" class="mr-0 mt-1" > </i> 
+                        <i>  <img width="25" src="../../assets/img/prestador-24px.svg" class="mr-0 mt-1" > </i> -->
+                        Grupos(20) | Membros(10) 
+                      </a> 
+                    </section>
+                  </li>
+                </ul>
+                <section align="center" class="group-button">
+                  <a href="\empresavervaga\show\{{minhavaga.vag_id}}"  class="btn btn-primary btn-sm">ver grupo</a>
+             
+                </section>
+              </section>
+            </section>
+            <br>
+            {% endfor %}
+          </section>
+        </article>
+      </section>
+    </section> 
+   
+    </section>
+  </main>
+  {{ include('layout/nav-dashboard-end.html') }}
+  {{ include('layout/footer.html') }}
+  <script src="../../assets/vendor/chart.js/Chart.min.js"></script>
+  <script src="../../assets/js/demo/chart-area-demo.js"></script>
+  <script src="../../assets/js/demo/chart-pie-demo.js"></script>
+  <script src="../../assets/vendor/jquery/jquery.min.js"></script>
+  <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../../assets/js/sb-admin-2.min.js"></script>
+</body>
+</html>

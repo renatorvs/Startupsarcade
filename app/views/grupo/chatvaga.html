@@ -1,0 +1,139 @@
+    <!DOCTYPE html>
+    <html lang="pt-br">
+    <head>
+     <meta charset="UTF-8">
+     <meta name="description" content="Free Web tutorials">
+     <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+     <meta name="author" content="John Doe">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title> onclickup | chat vaga</title>
+     <link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap-reboot.css">
+     <link rel="stylesheet" href="../../assets/css/layout/chat2.css">
+     <link rel="stylesheet" href="../../assets/css/layout/layout.css">
+     <link rel="stylesheet" href="../../assets/css/layout/footer.css">
+     <!-- Custom fonts for this template-->
+     <link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+     <link href="../../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
+   </head>
+
+   <body id="page-top">
+     <header>
+       {% if empresa_session  %}
+       {{ include('layout/nav-header-empresa.html') }}
+       {% else  %}
+       {{ include('layout/nav-header-candidato.html') }}
+       {% endif  %}
+     </header>
+     <main>
+      {% if empresa_session  %}
+      {{ include('layout/nav-dashboard-empresa.html') }}
+      {% else  %}
+      {{ include('layout/nav-dashboard-candidato.html') }}
+      {% endif %}
+      <section class="container">
+        <form action="/chatvaga/chatvagastore" method="post">
+          <section class="row form-group">
+            <section class="col-md-12  col-md-12 ">
+              <section class="mesgs container">
+                <section class="card">
+                  <section class="incoming_msg">
+                    <section class="incoming_msg_img">
+                      {% for conversasDados in getVagaConversasDados %}
+                      {% if  empresa_session  %}
+                      <figure>  
+                      <img src="../../../assets/img/padraoperfil.svg" style="padding:5px;margin:15px;" width="60" height="60" alt="sunil"> 
+                      </figure>
+                      {% else %}
+                      <figure>
+                      <img src="../../../assets/img/padraoperfil.svg" style="padding:5px;margin:10px;" width="60" height="60" alt="sunil">            
+                      </figure>
+                      {% endif %}
+
+
+                    </section>
+                    <section class="received_msg">
+                      <section class="received_withd_msg">
+                        {% if  empresa_session  %}<br> <br>  
+                        {{conversasDados.vmdl_cand_nome}}  
+                        {% else %}<br> <br>  
+                        {{conversasDados.vmdl_empresa_nome}}  
+                        {% endif %}
+                        <span class="time_date">  </span>
+                      </section> 
+                    </section>
+                  </section>
+                  {% endfor %}
+                </section>
+              </section>
+              <br>  
+              <span class="text-white">.</span>
+              <br>
+              <section class="msg_history">
+               {% for mensagem in getVagaMensagem %}
+               {% if  mensagem.vml_user_remetente_id == session_id  %}
+               <input type="hidden" name="vml_vaga_id"  value="{{mensagem.vml_vaga_id}}">
+               <input type="hidden" name="vmdl_id" value="{{mensagem.vmdl_idd}}">
+               <input type="hidden" name="vml_user_destinatario_id"  value="{{mensagem.vml_user_destinatario_id}}">
+               <input type="hidden" name="vml_user_remetente_id"  value="{{session_id}}">
+               {% endif %}
+               {% if  mensagem.vml_user_destinatario_id == session_id  %}
+               <input type="hidden" name="vml_user_remetente_id" value="{{session_id}}">
+               <input type="hidden" name="vml_user_destinatario_id"  value="{{mensagem.vml_user_remetente_id}}">
+               <input type="hidden" name="vml_vaga_id"  value="{{mensagem.vml_vaga_id}}">
+               <input type="hidden" name="vmdl_id" value="{{mensagem.vmdl_idd}}">
+               {% endif %}
+               {% if  mensagem.vml_user_remetente_id == session_id  %}
+               <section class="outgoing_msg">
+                <section class="sent_msg">
+                  <p>{{mensagem.msn_nome}}</p>
+                  <span class="time_date">{{mensagem.pm_date | date("y/m/yy")}}   </span>  </section> 
+                </section>
+                {% endif %}
+                {% if  mensagem.vml_user_destinatario_id == session_id  %}
+                <section class="incoming_msg">
+                  <section class="received_msg">
+                    <section class="received_withd_msg">
+                      <p>{{mensagem.msn_nome}}</p>
+                      <span class="time_date">{{mensagem.vml_date | date("y/m/yy")}}   </span>  </section> 
+                    </section>
+                  </section>
+                  {% endif %}
+                  {% endfor %}
+                </section>
+                <section class="type_msg">
+                  <section class="input_msg_write">
+                    <input type="text" class="write_msg" name="msn_nome" placeholder="Escreva aqui." />
+                    <button class="msg_send_btn bg-white" type="sub"><i class="fa" aria-hidden="true"> 
+                      <img src="../../assets/img/send-24px.svg"></i></button>
+                    </section>
+                  </section>
+                </section>
+              </section>
+            </form>
+          </section>
+        </main>
+        {{ include('layout/nav-dashboard-end.html') }}
+        {{ include('layout/footer.html') }}
+        <!-- Bootstrap core JavaScript-->
+        <script src="../../assets/vendor/chart.js/Chart.min.js"></script>
+
+        <!-- Page level custom scripts -->
+        <script src="../../assets/js/demo/chart-area-demo.js"></script>
+        <script src="../../assets/js/demo/chart-pie-demo.js"></script>
+
+        <!-- Bootstrap core JavaScript-->
+        <script src="../../assets/vendor/jquery/jquery.min.js"></script>
+        <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Core plugin JavaScript-->
+        <script src="../../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+        <!-- Custom scripts for all pages-->
+        <script src="../../assets/js/sb-admin-2.min.js"></script>
+
+      </body>
+      </html>

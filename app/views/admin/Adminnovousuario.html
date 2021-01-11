@@ -1,0 +1,139 @@
+<html lang="pt">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="Free Web tutorials">
+	<meta name="keywords" content="HTML,CSS,XML,JavaScript">
+	<meta name="author" content="John Doe">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+	<!-- Compiled and minified materialize CSS -->
+	<link rel="stylesheet" href="../assets/css/bootstrap/bootstrap-reboot.css">
+	<link rel="stylesheet" href="../assets/css/bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" href="../assets/css/layout/adddica.css">
+	<link rel="stylesheet" href="../assets/css/layout/layout.css">
+	<link rel="stylesheet" href="../assets/css/layout/footer.css">
+	<!-- Custom fonts for this template-->
+	<link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+	<!-- Custom styles for this template-->
+	<link href="../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
+
+</head>
+<body id="page-top">
+<header>
+	{{ include('layout/nav-header-admin.html') }}
+</header>
+
+	{{ include('layout/nav-dashboard-admin.html') }}
+
+	<main class="main-experi">
+
+
+
+
+		<!-- Page Heading -->
+		
+
+		<!-- Content Row -->
+		<div class="row">
+
+			<!-- Earnings (Monthly) Card Example -->
+			<div class="col-xl-12 col-md-6 mb-4">
+				<div class="card border-left-success shadow h-100 py-2">
+					<div class="card-body">
+
+						                                    <img src="../../assets/img/dica24px.svg" class="mr-3" > 
+						<strong>Criar novo administrador </strong><br> <hr>
+
+
+						<form action="/adminnovousuario/store" method="post">
+							<div class="form-group">
+								<label for="exampleFormControlInput1">Nome:</label>
+								<input type="text" name="adm_nome" class="form-control" id="exampleFormControlInput1" >
+							</div>
+							
+							<div class="form-group">
+								<label for="exampleFormControlInput1">Email:</label>
+								<input type="text" name="adm_email" class="form-control" id="exampleFormControlInput1" >
+							</div>
+							<div class="form-group">
+								<label for="exampleFormControlInput1">Senha:</label>
+								<input type="password" name="adm_senha" class="form-control" id="exampleFormControlInput1" >
+							</div>
+							<div class="form-group">
+								<label for="exampleFormControlSelect1">Categoria</label>
+								<select class="form-control" name="car_id" id="cat_id">
+										{% for cargo in getcargos %}
+									<option  value="{{ cargo.car_id}}">{{ cargo.car_nome|e }}</option>
+    								{% endfor %}
+								</select>
+							</div>
+							
+					
+							<button class="btn btn-primary btn-lg btn-block btn-sm">cadastrar</button>
+						</form>
+
+
+
+					</div>
+				</div>
+			</div>
+
+
+
+
+		</div>
+
+
+
+
+
+
+
+
+		<!-- Content Row -->
+
+		<!-- TABLE EM COLUNAS -->
+
+
+
+
+
+
+
+
+
+
+	</main>
+
+	{{ include('layout/nav-dashboard-end.html') }}
+	{{ include('layout/footer.html') }}
+
+
+
+
+
+
+	<!-- Page level plugins -->
+	<script src="../assets/vendor/chart.js/Chart.min.js"></script>
+
+	<!-- Page level custom scripts -->
+	<script src="../assets/js/demo/chart-area-demo.js"></script>
+	<script src="../assets/js/demo/chart-pie-demo.js"></script>
+
+	<!-- Bootstrap core JavaScript-->
+	<script src="../assets/vendor/jquery/jquery.min.js"></script>
+	<script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Core plugin JavaScript-->
+	<script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+	<!-- Custom scripts for all pages-->
+	<script src="../assets/js/sb-admin-2.min.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,120 @@
+
+Olá, Renato vieira Santos,
+
+Você acaba de adquirir um Plano P e seu domínio principal é:
+onclickup.com.br
+
+Seu plano já está ativo e neste e-mail estão todas as informações para acessar sua hospedagem e fazer as configurações necessárias para criar e publicar seu site.
+
+Por favor, guarde este e-mail para futuras referências.
+
+Os DNS do seu plano de hospedagem são:
+
+Nameserver 1:
+ns982.hostgator.com.br (162.241.203.33)
+Nameserver 2:
+ns983.hostgator.com.br (162.241.203.34)
+Para configurar seu DNS, siga os guias abaixo:
+
+Como alterar o DNS do seu domínio contratado com a HostGator
+Como alterar o DNS no Registro BR
+Como alterar o DNS em outros provedores
+ 
+ 
+ 	
+Informações técnicas e acessos:
+A seguir você encontra a informação técnica da sua hospedagem de sites e os acessos para aproveitar ao máximo o seu plano:
+
+ 
+ 	
+Painel de controle cPanel
+
+Use o Painel cPanel para facilitar a gestão de seus recursos como gerenciar seus domínios, criar contas de e-mail, transferência de arquivos, etc.
+
+Usuário:
+onclic96@onclickup.com.br
+Senha:
+S9osuiH608
+URL do Painel de Controle (cPanel):
+http://162.241.203.32/cpanel
+Quando as alterações de DNS se propagarem, você pode acessar seu cPanel usando a seguinte URL:
+http://www.onclickup.com.br/cpanel
+aro(a) usuário(a),
+
+As informações de DNS do domínio onclickup.com.br foram alteradas.
+
+Servidores DNS
+Servidor 1: ns982.hostgator.com.br
+Servidor 2: ns983.hostgator.com.br
+
+  Em virtude da migração entre os servidores DNS do Registro.br e os
+  servidores acima informados, levará 2 horas para que a
+  alteração dos servidores DNS seja efetivada.
+
+
+
+Estas modificações foram feitas por:
+
+REVSA30 - nato.re.vieira@gmail.com
+ Renato Vieira Santos
+ Rua Kitaro Ywasa, 162,
+ 09390-670 - Mauá - SP
+ (11) 986504035 []
+
+Data: 11/08/2020 20:23:30
+IP: 45.164.191.102
+
+Lembramos que alterações relacionadas a DNS entram em funcionamento
+após a próxima publicação DNS. Verifique nosso faq [1].
+
+ 
+Informações Técnicas
+
+Para configurações mais avançadas do Outlook, acesso ao banco de dados e clientes FTP, entre outros, utilize as informações abaixo:
+
+Nome do Servidor:
+br982
+IP do Servidor:
+162.241.203.32
+Nameserver 1:
+ns982.hostgator.com.br (162.241.203.33)
+Nameserver 2:
+ns983.hostgator.com.br (162.241.203.34)
+ 
+ 	
+ 
+ 
+ 	
+Subindo seu site via FTP
+
+Já tem os arquivos do seu site em um ambiente local e precisa subi-los na hospedagem? Use o Gerenciador de arquivos do cPanel ou um cliente de FTP.
+
+Hostname FTP:
+162.241.203.32
+Endereço temporário do seu site:
+http://br982.teste.website/~onclic96/
+Depois da propagação, pode utilizar:
+Hostname FTP:
+onclickup.com.br
+URL do site:
+http://www.onclickup.com.br
+Para saber como se conectar por FTP com o Filezilla, veja este vídeo.
+
+ 
+Contas de e-mail
+
+Criar uma conta de e-mail é rápido e fácil, basta clicar na opção de “Contas de E-mail” disponível no seu cPanel. Conheça o passo a passo.
+
+Para acessar um serviço de e-mail como Outlook, Thunderbird, Gmail, Mac Mail, entre outros, use os seguintes dados:
+
+POP3:
+mail.onclickup.com.br
+SMTP:
+mail.onclickup.com.br
+Usuário:
+Conta de e-mail criada
+Senha:
+Senha configurada para esta conta de e-mail
+ 
+ 	
+ 

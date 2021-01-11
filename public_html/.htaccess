@@ -1,0 +1,11 @@
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^onclickup.com.br$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^www.onclickup.com.br$
+RewriteCond %{REQUEST_URI} onclickup.com/
+
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]

@@ -1,0 +1,21 @@
+.card {
+	padding: 10px;
+	margin-top: 20px;
+}
+
+
+.group-button {
+margin-top: 15px;
+}
+
+.btn-info {
+    color: white;
+	font-weight: 500;
+}
+.btn-success {
+	font-weight: 500;
+}
+
+.btn-primary {
+	font-weight: 500;
+}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="Free Web tutorials">
+	<meta name="keywords" content="HTML,CSS,XML,JavaScript">
+	<meta name="author" content="John Doe">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+	<!-- Compiled and minified materialize CSS -->
+	<link rel="stylesheet" href="../assets/css/bootstrap/bootstrap-reboot.css">
+	<link rel="stylesheet" href="../assets/css/bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" href="../assets/css/index/entrar.css">
+	<link rel="stylesheet" href="../assets/css/layout/footer-index.css">
+	<link rel="stylesheet" href="../assets/css/layout/nav-dashboard.min.css">
+
+<link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+	<title>Onclickup </title>
+
+
+</head>
+
+<body>
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<a class="navbar-brand" href="#">Onclickup</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+
+
+
+				</ul>
+
+				<form class="form-inline my-2 my-lg-0" action="/busca/store" method="post">
+					<div class="input-group">
+						<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+						<select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+							<option selected>estado...</option>
+							<option value="1">
+								<One></One>
+							</option>
+							<option value="2">Two</option>
+							<option value="3">Three</option>
+						</select>
+						<select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+							<option value="1">Empregos</option>
+							<option value="2">Estagios</option>
+							<option value="3">Concursos</option>
+							<option value="4">Serviços</option>
+							<option value="5">Dicas</option>
+						</select>
+						<div class="input-group-append">
+							<button class="btn btn-outline-secondary" type="button">Busca</button>
+						</div>
+					</div>
+				</form>
+
+
+
+				<ul class="nav justify-content-end">
+
+					<li class="nav-item">
+						<a class="nav-link " href="/cadastroempresa/show"><button type="button"  class="btn btn-primary">para empresas</button> 
+						</a> 
+						</li> 
+						<li class="nav-item">
+					<a class="nav-link " href="/cadastrocandidato/show"><button type="button" class="btn btn-success">Increva-se</button>
+					</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+	<main>
+		<div class="container">
+	<div class="row">
+
+		<div class=" offset-3 col-sm-6 ">
+			<div class="card" >
+				<h4>Efetue o login</h4>
+			<strong>	Não tem cadastro ?  Administrador onclickup </strong>
+				<hr>
+
+				{{  messagem('login') | raw }}
+	
+				<form action="/adminlogin/store" method="post" >
+					onclickup_admin@gmail.com
+					<div class="form-group">
+						<label for="exampleInputEmail1">Endereço de email ou nome de usuario</label>
+						<input type="email" name="adm_email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Seu email ou user name">
+			
+					</div>
+					<div class="form-group">
+						<label for="exampleInputPassword1">Senha</label>
+						<input type="password" name="adm_senha" class="form-control" id="exampleInputPassword1" placeholder="Senha">
+					</div>
+					<button type="submit" class="btn btn-primary">Entrar</button><br>
+				
+				</form>
+			</div>
+		</div>
+		
+
+				</div>
+			</div>
+		</div>
+	</main>
+
+	{{ include('layout/footer-index.html') }}
+
+	<script type="text/javascript" src="../assets/js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+
+
+
+</body>
+
+</html>

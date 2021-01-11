@@ -1,0 +1,17 @@
+{
+    "autoload":{
+        "psr-4":{
+            "app\\":"app",
+            "core\\":"core"
+        },
+        "files":[
+            "app/functions/Helpers.php"
+        ]
+    },
+    "require": {
+        "twig/twig": "^2.0",
+        "twig/extensions": "^1.5",
+        "mercadopago/dx-php": "^2.1",
+        "pagarme/pagarme-php": "^4.1"
+    }
+}

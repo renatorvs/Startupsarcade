@@ -1,0 +1,119 @@
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+    	<meta charset="UTF-8">
+    	<meta name="description" content="Free Web tutorials">
+    	<meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    	<meta name="author" content="John Doe">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> {{title}}</title>
+
+
+    	<!-- Compiled and minified materialize CSS -->
+    	<link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap-reboot.css">
+    	<link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap.min.css">
+    	<link rel="stylesheet" href="../../assets/css/layout/perfil.css">
+    	<link rel="stylesheet" href="../../assets/css/layout/layout.css">
+    	<link rel="stylesheet" href="../../assets/css/layout/pedidos.css">
+    	<link rel="stylesheet" href="../../assets/css/layout/footer.css">
+    	<!-- Custom fonts for this template-->
+    	<link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    	<!-- Custom styles for this template-->
+    	<link href="../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
+
+    </head>
+
+   <body id="page-top" class="bg-light">
+
+<header>
+    {% if empresa_session  %}
+        {{ include('layout/nav-header-empresa.html') }}
+    {% else %}
+        {{ include('layout/nav-header-candidato.html') }}
+    {% endif %}
+   
+
+</header>
+    <main>
+    {% if empresa_session  %}
+        {{ include('layout/nav-dashboard-empresa.html') }}
+    {% else %}
+      {{ include('layout/nav-dashboard-candidato.html') }}
+    {% endif %}
+
+    
+    		<h2 align="center" class="font-weight-bold">Serviços que foram negado </h2>
+
+    				 
+                          <h5 align="center" >Dados do serviço que foram negados por teceiros </h5>
+                   
+                           {% if haPrestadorPedidos %}
+                                        {% for prestadorPedido in prestadorPedidos %}
+    		<section class="card">
+    			<section class="card-body border-left-primary">
+
+                                  
+                         <section class="container">
+ 
+                        <section class="row">
+                            <section class=" col-md-9">
+                                <strong class="font-weight-bold"> ID pedido : </strong> {{ prestadorPedido.pedi_id }}</br>
+                                <strong class="font-weight-bold">Valor: </strong>{{ prestadorPedido.pedi_valortotal }} <br>
+                                <strong class="font-weight-bold">Pedido Data:</strong>{{prestadorPedido.pedi_registro}} <br>
+                                <strong class="font-weight-bold">Description :</strong> {{prestadorPedido.pedi_description}}<br>
+                                  
+                            </section>
+                            <section class="col-2 col-md-3" >
+                                <a href="/pedidos/servicodetalhes/{{prestadorPedido.pedi_id}}" class="btn btn-primary btn-sm">detalhes</a><br>
+                      
+
+                            </section>
+                        </section>
+        
+                        <br>
+                      
+                        
+                         <h5 class="text-danger">Deseja aceitar esse pedido ?</h5>
+    					<section class="card-body" align="center">
+                            <a href="/servicosnegados/aceitar/{{prestadorPedido.pedi_id}}" class="btn btn-success btn-sm">  aceitar pedido</a>
+                             
+                        </section>
+
+                       
+    				</section>
+    			</section>
+            </section>
+                    {% endfor %}
+ {% else %}
+
+                              
+            <section class="card">
+                <section class="card-body border-left-primary">
+                     <section class="container">     
+                        <h5 class="text-danger">Aindan Não há pedidos negados por outros </h5>
+                    </section>
+                </section>
+            </section>
+                                 {% endif %}
+                      
+
+<br>
+    	</main>
+    	{{ include('layout/nav-dashboard-end.html') }}
+    	{{ include('layout/footer.html') }}
+    	<!-- Bootstrap core JavaScript-->
+    	<script src="../assets/vendor/jquery/jquery.min.js"></script>
+    	<script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    	<!-- Core plugin JavaScript-->
+    	<script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    	<!-- Custom scripts for all pages-->
+    	<script src="../assets/js/sb-admin-2.min.js"></script>
+
+    </body>
+
+    </html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+  <html lang="pt-br">
+<head>
+    <title>Onclickup | {{post_titulo}}</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="vagas">
+    <meta name="keywords" content="ver vaga">
+    <meta name="author" content=" {{post_titulo}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap-reboot.css">
+    <link rel="stylesheet" href="../../assets/css/layout/adddica.css">
+    <link rel="stylesheet" href="../../assets/css/layout/layout.css">
+    <link rel="stylesheet" href="../../assets/css/layout/footer.css">
+    <link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="../../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
+</head>
+<header>
+    {{ include('layout/nav-header-empresa.html') }}
+</header>
+<body id="page-top">
+    {{ include('layout/nav-dashboard-empresa.html') }}
+    <main class="main-experi">
+        <a  class= "btn btn-primary btn-sm"href="/empresavagas/create"> minhas vagas</a><br><br>
+        <section class="row">
+            <!-- Earnings (Monthly) Card Example -->
+            <section class="col-xl-12 col-md-12 mb-4">
+                <section class="card border-left-success shadow h-100 py-2">
+
+                    <section class="card-body">
+
+                       <article class="card"> 
+                        <section class="card-body">
+
+                          <ul class="list-unstyled">
+                            <figure>
+                            <img src="../../assets/img/negocios.svg" class="mr-3" >
+                            </figure>
+                            <li class="media my-4">
+                                <section class="media-body"> 
+                                    <strong>Codigo vaga</strong> {{vag_id}} <br>
+                                    <h4 class="mt-0 mb-1">{{post_titulo}}</h4>
+                                    <h5 class="mt-0 mb-1"> {{post_subtitulo}}</h5>
+                                    <br>
+                                    <strong>Descrição/Atividades</strong> {{post_description}}<br>
+                                    <strong>Categoria</strong> {{cat_nome}} <br>
+                                    <strong>Pre Requisitos</strong> {{vag_preRequisitos}} <br>
+                                    <strong>Beneficios</strong> {{vag_beneficios}} <br>
+                                    <strong>Salario R$</strong> {{vag_salario}} <br>
+                                    <strong>Status do processo seletivo </strong>{{statusvag_nome}} <br>
+                                    <strong>Contrato</strong> {{tipovaga_nome}} <br>
+                                    <hr>
+                                    <strong>Escolaridade</strong> {{esco_nome}} <br>
+                                    <hr>    
+                                    <strong>Empresa: </strong><a href="/usuario/perfil/{{user_id}}">{{user_nome}}</a> <br>                                                                              
+                                    <hr>   
+                                    <a  class= "btn btn-primary btn-sm"href="/empresacompetencias/show/{{vag_id}}">vincular competencias </a> <br><br>
+                                    <strong class="text-dark mb-1">competencia  relacionadas:</strong> <br>   
+                                    {% if haMinhascompetencias %}      
+                                    {% for competenciasCategorias in getCompetencias %}
+                                    <section class="btn-group mb-1" role="group" aria-label="Basic example">
+                                        <input type="hidden" name="vag_id" value="{{vag_id}}">  
+
+                                        <a  class=" text-dark"> 
+                                            <strong class="text-success">{{competenciasCategorias.compcat_nome}} <strong>-</strong>
+                                        {{competenciasCategorias.comp_nome}}</strong></a>
+
+                                        <br>                                
+
+                                    </section>
+                                    <strong>|</strong>
+                                    {% endfor %}
+                                    {% else %}       
+                                    <h6 align="center" class="text text-danger"> Não ha competencias </h6>
+
+                                    {%  endif %}      
+                                    <hr>
+                                    <a  class= "btn btn-primary btn-sm"href="/empresavincularprovavaga/create">vincular prova e quiz</a> <br><br>
+                                    <strong class="text-dark">Provas relacionadas:</strong> <br>   
+
+                                    {% if haGetProvaEmvagas %}           
+                                    {% for ProvaEmvagas in  getProvaEmvagas %}    
+                                    <section class="btn-group" role="group" aria-label="Basic example">
+
+                                       <a class="btn btn-dark btn-sm" 
+                                       href="/empresaprovas/create"> {{ProvaEmvagas.pro_nome|e}}
+                                   </a> 
+
+
+                                   <a  class="btn btn-danger btn-sm" 
+                                   href="/empresaprovas/destroyProvaEmvaga/{{ProvaEmvagas.vagprolink_id}}"> 
+                                   <span class="font-weight-bold">x</span>   
+                               </a>  
+                           </section>
+                           <strong>|</strong>
+
+                           {% endfor %}
+                           {% else %}           
+                           <h6 align="center" class="text text-danger"> Não ha provas relacionadas</h6>
+
+                           {% endif %} <hr>
+
+                           <strong class="text-dark">Quiz relacionados:</strong>  <br> 
+
+                           {% if haGetQuizEmvagas %}           
+                           {% for QuizEmvagas in  getQuizEmvagas %} 
+                           <section class="btn-group" role="group" aria-label="Basic example">
+
+                               <a class="btn btn-dark btn-sm" 
+                               href="/empresaprovas/create"> {{QuizEmvagas.pro_nome|e}}
+                           </a> 
+
+                           <a  class="btn btn-danger btn-sm" 
+                           href="/empresaprovas/destroyProvaEmvaga/{{QuizEmvagas.vagprolink_id}}"> 
+                           <span class="font-weight-bold">x</span>   
+                       </a> 
+                   </section>
+                   <strong>|</strong>{{post_id}}
+
+
+                   {% endfor %}
+                   {% else %}           
+                   <h6 align="center" class="text text-danger"> Não ha quiz relacionadas</h6>
+                   {% endif %}           
+
+                   <hr>
+                   <strong>Logradouro</strong>  {{ender_logradouro}} <br>
+                   <strong>Bairro</strong>  {{ender_bairro}} <br>
+                   <strong>cidade</strong> {{ender_cidade}} <br>
+                   <strong>Estado</strong>  {{est_nome}}<br>
+               </section>
+           </li>
+           <section class="btn-group" role="group" aria-label="Basic example">
+            <a href="\empresavervaga\destroy\{{post_id}}" class="btn btn-danger btn-sm">excluir</a>
+            <a href="\empresaeditvaga\edit\{{vag_id}}" class="btn btn-success btn-sm">editar</a>
+        </section>
+    </ul>
+</section>
+</article>
+</section>
+</section>
+</section>
+</section>
+
+<!-- <nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#"> << </a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">>></a></li>
+</ul> -->
+<!-- </nav>
+ -->
+</main>
+{{ include('layout/nav-dashboard-end.html') }}
+{{ include('layout/footer.html') }}
+<script src="../../assets/vendor/chart.js/Chart.min.js"></script>
+<script src="../../assets/js/demo/chart-area-demo.js"></script>
+<script src="../../assets/js/demo/chart-pie-demo.js"></script>
+<script src="../../assets/vendor/jquery/jquery.min.js"></script>
+<script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="../../assets/js/sb-admin-2.min.js"></script>
+</body>
+</html>

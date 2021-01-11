@@ -1,0 +1,97 @@
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Free Web tutorials">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <meta name="author" content="John Doe">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!-- Compiled and minified materialize CSS -->
+    <link rel="stylesheet" href="../assets/css/bootstrap/bootstrap-reboot.css">
+    <link rel="stylesheet" href="../assets/css/layout/adddica.css">
+    <link rel="stylesheet" href="../assets/css/layout/layout.css">
+    <link rel="stylesheet" href="../assets/css/layout/footer.css">
+    <!-- Custom fonts for this template-->
+    <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+<header>
+    {{ include('layout/nav-header-admin.html') }}
+</header>
+    <main >
+    {{ include('layout/nav-dashboard-admin.html') }}
+
+ <div class="container">
+<a href="/admincompetencias/create" class=" btn btn-primary btn-sm">competencias</a>
+<br>
+             <div class="table-responsive">
+              <table class="table">
+                <h2>Tabela de Competencias </h2>
+                <h5>Competencias categoria </h5>
+                 <thead class="thead-dark">
+                    <tr>
+                      <th>  </th>
+                      <th> id</th>
+                      <th> nome </th>
+                      <th>categoria nome </th>
+                  </thead>
+                    <tbody>
+                      <tr>
+        {% for competenciaCategoria in  getcompetenciasCategorias %}        
+                        <th scope="row">1</th>
+    
+                       <td>{{competenciaCategoria.comp_id}}</td>
+                        <td>{{competenciaCategoria.comp_nome}}</td>
+                        <td>{{competenciaCategoria.compcat_nome}}</td>
+
+                          <td><a href="/adminconpetencias/destroy/{{competenciaCategoria.comp_id}}" class=" btn btn-danger btn-sm"> excluir</a></td>
+                     
+                      </tr>
+                        {% endfor %} 
+                  </tbody>
+              </table>
+          </div>
+      </div>
+   <!--   {% for competenciaCategoria in  getCompetenciaCategoria %}           
+                    <option value="{{competenciaCategoria.compcat_id}}">{{competenciaCategoria.compcat_nome}}</option> 
+                   
+                          {% endfor %} -->
+              
+    </main>
+
+    {{ include('layout/nav-dashboard-end.html') }}
+    {{ include('layout/footer.html') }}
+
+
+
+
+
+
+    <!-- Page level plugins -->
+    <script src="../assets/vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="../assets/js/demo/chart-area-demo.js"></script>
+    <script src="../assets/js/demo/chart-pie-demo.js"></script>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="../assets/vendor/jquery/jquery.min.js"></script>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="../assets/js/sb-admin-2.min.js"></script>
+
+</body>
+
+</html>

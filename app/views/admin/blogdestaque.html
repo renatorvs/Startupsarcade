@@ -1,0 +1,159 @@
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+      <meta charset="UTF-8">
+      <meta name="description" content="Free Web tutorials">
+      <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+      <meta name="author" content="John Doe">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+      <!-- Compiled and minified materialize CSS -->
+      <link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap-reboot.css">
+      <link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap.min.css">
+      <link rel="stylesheet" href="../../assets/css/layout/blog.css">
+      <link rel="stylesheet" href="../../assets/css/layout/layout.css">
+      <link rel="stylesheet" href="../../assets/css/layout/pedidos.css">
+      <link rel="stylesheet" href="../../assets/css/layout/footer.css">
+      <!-- Custom fonts for this template-->
+      <link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+      <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+      <!-- Custom styles for this template-->
+      <link href="../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
+  <title>{{title}}</title>
+
+    </head>
+
+    <body id="page-top">
+      <header>
+       {% if empresa_session  %}
+        {{ include('layout/nav-headerempresa.html') }}
+    {% elseif candidato_session %}
+        {{ include('layout/nav-headercandidato.html') }}
+    {% elseif admin_session %}
+       {{ include('layout/nav-header-admin.html') }}
+    {% else  %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Onclickup</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+
+      
+      
+      </ul>
+
+      <form class="form-inline my-2 my-lg-0">
+        <div class="input-group">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+            <option selected>estado...</option>
+            <option value="1">
+              <One></One>
+            </option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+          <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+            <option value="1">Empregos</option>
+            <option value="2">Estagios</option>
+            <option value="3">Concursos</option>
+            <option value="4">Serviços</option>
+            <option value="5">Dicas</option>
+          </select>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button">Busca</button>
+          </div>
+        </div>
+      </form> 
+
+
+
+      <ul class="nav justify-content-end">
+
+        <li class="nav-item">
+  <a class="nav-link " href="/entrar/show"><button type="button" class="btn btn-primary btn-sm"> Entrar</button>          </a> 
+        </li>
+           <li class="nav-item">
+        <a class="nav-link " href="/cadastrocandidato/show"><button type="button" class="btn btn-success btn-sm">Increva-se</button>
+        </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+    {% endif %}
+
+</header>
+    <main >
+    {% if empresa_session  %}
+        {{ include('layout/nav-dashboardempresa.html') }}
+    {% elseif candidato_session %}
+      {{ include('layout/nav-dashboardcandidado.html') }}
+    {% elseif admin_session %}
+       {{ include('layout/nav-dashboard-admin.html') }}  
+    {% endif %}
+
+ 
+ <div class="container">
+
+     
+      <div class="nav-scroller py-1 mb-2">
+        <nav class="nav d-flex justify-content-between">  
+ {% for blogcategoria in  getcategorias %}           
+          <a class="p-2 text-muted" href="/blog/blogcategoria/{{blogcategoria.blogcat_id}}"> {{blogcategoria.blogcat_nome|e}}</a>
+
+{% endfor %}
+        </nav>
+
+<hr>
+     
+              <a href="/blog/create"class="btn btn-primary btn-sm">ir para o  blog</a>
+      </div>
+
+   <h4 align="left"> <strong>Categoria artigo:</strong> <span class=text-primary>{{categoria}}</span></h4><br>
+   <hr>
+
+    {% for postBlogDestaques in  getBlogDestaque %}  
+      <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
+         
+        <div class="col-md-6 px-0">
+           <strong class="d-inline-block mb-2 text-white">{{postBlogDestaques.blogcat_nome}}</strong>
+          <h1 class="display-4 font-italic">{{postBlogDestaques.post_titulo}}</h1>
+          <p class="lead my-3">{{postBlogDestaques.post_subtitulo}}</p>
+          <p class="lead my-3">{{postBlogDestaques.post_description}}</p>
+          <p class="lead mb-0">   <a href="/blog/show/{{postBlogDestaques.blog_id}}" class="text-white 
+            font-weight-bold">Continue lendo...</a></p>
+           
+        </div>
+      </div>
+{% endfor %}
+
+
+     
+    </div>
+  
+      </main>
+
+      {{ include('layout/nav-dashboard-end.html') }}
+      {{ include('layout/footer.html') }}
+      <!-- Bootstrap core JavaScript-->
+      <script src="../assets/vendor/jquery/jquery.min.js"></script>
+      <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+      <!-- Core plugin JavaScript-->
+      <script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+      <!-- Custom scripts for all pages-->
+      <script src="../assets/js/sb-admin-2.min.js"></script>
+
+    </body>
+
+    </html>
+

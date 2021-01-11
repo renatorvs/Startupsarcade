@@ -1,0 +1,16 @@
+footer {
+	margin-top: -16px;
+	    background-color: #37474f;
+	color: white;
+ position:relative;
+clear: both; 
+    width:100%;
+}
+
+#footercopy {
+	padding: 10px;
+	color:white;
+    background-color: #313131;
+ 
+}
+

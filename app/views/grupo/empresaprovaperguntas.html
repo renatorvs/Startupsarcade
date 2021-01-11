@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+ <meta name="description" content="Provas pergunta">
+    <meta name="keywords" content="Provas pergunta">
+    <meta name="author" content="onclickup">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap-reboot.css">
+  <link rel="stylesheet" href="../../assets/css/layout/adddica.css">
+  <link rel="stylesheet" href="../../assets/css/layout/layout.css">
+  <link rel="stylesheet" href="../../assets/css/layout/footer.css">
+  <link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link href="../../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
+</head>
+<header>
+  {{ include('layout/nav-header-empresa.html') }}
+</header>
+<body id="page-top">
+  {{ include('layout/nav-dashboard-empresa.html') }}
+  <main class="main-experi">
+    <section class="row">
+      <section class="col-xl-12 col-md-12 mb-4">
+        <section class="card border-left-success shadow h-100 py-2">     
+          <section class="card-body">
+            <a href="/empresaprovas/create" class="btn btn-primary btn-sm">Provas</a>
+            <a href="/empresaaddperguntaprova/create/{{pro_id}}" class="btn btn-danger btn-sm">Criar Perguntas</a>
+            <hr>
+            {% if haProvaPerguntas > 0 %}
+            {% for provapergunta in getMinhasprovasPerguntas %}
+            {{  messagem('maxQuestionario') | raw }}
+            <article class="card"> 
+              <section class="card-body">   
+                <ul class="list-unstyled"> 
+                  <li class="media my-3">
+                    <figure>
+                      <img src="../../assets/img/book24px.svg" class="mr-3" class="cicle">
+                    </figure>   
+                    {% set counter = ( counter | default(0) ) + 1 %}
+                    <h4>    <strong class="mr-3">  {{ counter }}) Pergunta:  {{provapergunta.quest_pergunta}}</strong></h4>
+                    <br><br> <br>
+                  </li>
+                  {% if provapergunta.quest_a %}
+                  <h6> a) {{provapergunta.quest_a}}</h6><br>
+                  {% endif %}       
+                  {% if provapergunta.quest_b %}
+                  <h6>  b) {{provapergunta.quest_b}}</h6> <br>
+                  {% endif %}
+                  {% if provapergunta.quest_c %}
+                  <h6>  c) {{provapergunta.quest_c}}</h6> <br>
+                  {% endif %}
+                  {% if provapergunta.quest_d %}
+                  <h6>  d) {{provapergunta.quest_d}}</h6> <br>
+                  {% endif %}
+                  {% if provapergunta.quest_e  %}
+                  <h6>  e) {{provapergunta.quest_e}}</h6> <br>
+                  {% endif %} 
+                  <h6>  Resposta) {{provapergunta.quest_official}} </h6><br>
+                </ul>
+                <section align="center">
+                  <a href="\empresaprovaperguntas\destroy\{{provapergunta.quest_id}}" class="btn btn-danger btn-sm">excluir</a>
+                  <a href="\empresaprovaeditperguntas\edit\{{provapergunta.quest_id}}" class="btn btn-info btn-sm">editar</a>
+                </section>
+              </section>
+            </article>
+            <br>
+            {% endfor %}
+            {% else %}
+            <h6 class ="alert alert-danger">Não há  Perguntas   </h6>
+            {% endif %}
+          </section>
+        </section>
+      </section>
+      </section>
+   <!--  <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="#"> << </a></li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">>></a></li>
+      </ul>
+    </nav>
+ -->
+  </main>
+  {{ include('layout/nav-dashboard-end.html') }}
+  {{ include('layout/footer.html') }}
+  <script src="../../assets/vendor/chart.js/Chart.min.js"></script>
+  <script src="../../assets/js/demo/chart-area-demo.js"></script>
+  <script src="../../assets/js/demo/chart-pie-demo.js"></script>
+  <script src="../../assets/vendor/jquery/jquery.min.js"></script>
+  <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../../assets/js/sb-admin-2.min.js"></script>
+</body>
+</html>
