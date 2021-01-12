@@ -18,7 +18,15 @@ class Grupo {
 	private $gu_user_id;
 	private $gu_grupo_id;
 	private $gr_foto;
+	private $grcat_id;
 
+	public function getGrcat_id() {
+		return $this->grcat_id;
+	}
+
+	public function setGrcat_id($grcat_id) {
+		$this->grcat_id = $grcat_id;
+	}
 	public function getGu_private() {
 		return $this->gu_private;
 	}
@@ -125,13 +133,14 @@ class Grupo {
 
 		$banco = new Banco();
 
-		$banco->query("INSERT INTO grupo (gr_nome, gr_descricao, gr_cidade, gr_estado, gr_pais, gr_foto) VALUES(:gr_nome, :gr_descricao, :gr_cidade, :gr_estado, :gr_pais, :gr_foto) ", array(
+		$banco->query("INSERT INTO grupo (gr_nome, gr_descricao, gr_cidade, gr_estado, gr_pais, gr_foto, grcat_id) VALUES(:gr_nome, :gr_descricao, :gr_cidade, :gr_estado, :gr_pais, :gr_foto, :grcat_id) ", array(
 			":gr_nome" => $this->getGr_nome(),
 			":gr_descricao" => $this->getGr_descricao(),
 			":gr_cidade" => $this->getGr_cidade(),
 			":gr_estado" => $this->getGr_estado(),
 			":gr_pais" => $this->getGr_pais(),
 			":gr_foto" => $this->getGr_foto(),
+			":grcat_id" => $this->getGrcat_id(),
 		));
 
 	}
@@ -157,4 +166,12 @@ class Grupo {
 			));
 
 	}
+
+	public static function meusGrupos() {
+		$banco = new Banco();
+
+		return $banco->select("SELECT * FROM grupo GROUP BY gr_id DESC LIMIT 1");
+
+	}
+
 }

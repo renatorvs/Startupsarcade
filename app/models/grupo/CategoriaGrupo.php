@@ -60,7 +60,7 @@ class CategoriaGrupo {
 		$banco = new Banco();
 
 		return $banco->query("DELETE FROM categoria_grupo WHERE cg_id = :cg_id", array(
-			":cg_id" => $this->getCg_id(),
+			":cg_id" => $this->getCat_id(),
 		));
 
 	}

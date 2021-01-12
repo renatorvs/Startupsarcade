@@ -9,8 +9,8 @@ use app\session\Session;
 use app\validate\Imagem;
 use app\validate\Validate;
 
-class GruposController extends ContainerController {
-	public function categorias() {
+class MeusGruposController extends ContainerController {
+	public function grupos() {
 		if (Session::get('USUARIO_ID')) {
 			Session::get('US_FOTO');
 			Session::get('US_NOME');
@@ -18,7 +18,7 @@ class GruposController extends ContainerController {
 			redirecionar("/");
 		}
 
-		$grupoAll = CategoriaGrupo::CategoriaGrupoAll();
+		$meusGrupos = Grupo::meusGrupos();
 
 		$this->view([
 			'title' => 'SA | Categoria startup',
@@ -28,7 +28,7 @@ class GruposController extends ContainerController {
 			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
 			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
 
-		], 'grupo.grupocategorias');
+		], 'grupo.meusGrupos');
 	}
 
 	public function grupo() {
@@ -73,7 +73,6 @@ class GruposController extends ContainerController {
 			'gr_cidade' => 'string',
 			'gr_estado' => 'string',
 			'gu_private' => 'integer',
-			'grcat_id' => 'integer',
 		]);
 
 		$grupo->setGr_nome($v->gr_nome);
@@ -83,7 +82,6 @@ class GruposController extends ContainerController {
 		$grupo->setGr_pais("Brasil");
 		$gr_foto = Imagem::uploadImage($_FILES['gr_foto']);
 		$grupo->setGr_foto($gr_foto);
-		$grupo->setGrcat_id($v->grcat_id);
 
 		$grupo->addGrupo();
 		$getLastGrupo = $grupo->getLastGrupo();
