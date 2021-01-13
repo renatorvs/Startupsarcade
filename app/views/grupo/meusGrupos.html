@@ -27,16 +27,27 @@
  Compartilhe ideias
  Tudo começa com uma ideia ! 
 
-            <section class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+
+
+        <article class="card border-left-success shadow h-100 py-2">
+          <section class="card-body">
+
+            <h4 class ="text-dark" align="center">  Explore grupos de starstup  </h4>
+             <button  type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Criar grupo</button>             
+<hr>
+            {% for meusGrupo in meusGrupos %}
+             <section class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
       <section class="modal-dialog modal-lg">
         <section class="modal-content">
           <section class="card-body">   
             <form class="needs-validation" action="/grupos/grupostore" enctype="multipart/form-data" method ="post">
+
+            	
               <section class="form-row">
-                
+                </h4>
                 <section class="col-md-6 mb-3">
                   <label for="validationCustom01">Nome do projeto (starstup)</label>
-                  <input type="text" name="gr_nome" class="form-control" id="validationCustom01" placeholder="Nome do projeto (starstup)" required>
+                  <input type="text" name="gr_nome" class="form-control" id="validationCustom01" placeholder="Nome do projeto (starstup)" value="{{meusGrupo.gr_nome}}" required>
                   <section class="invalid-feedback">
                     cnpj invalido !
                   </section>  
@@ -44,14 +55,14 @@
                 <section class="col-md-6 mb-3">
                   
                   <label for="validationCustom01">Descriçao do plano de negocio </label>
-                  <input type="text" name="gr_descricao" class="form-control" id="validationCustom01" placeholder="Descriçao do plano de negocio" required>
+                  <input type="text" name="gr_descricao" value="{{meusGrupo.gr_descricao}}" class="form-control" id="validationCustom01" placeholder="Descriçao do plano de negocio" required>
                   <section class="invalid-feedback">
                     contato invalido !
                   </section>  
                 </section>
                 <section class="col-md-6 mb-3">
                   <label for="validationCustom04">Cidade </label>
-                  <input type="text" name="gr_cidade" class="form-control" id="validationCustom04" placeholder="Cidade"  required>
+                  <input type="text" name="gr_cidade"  value="{{meusGrupo.gr_cidade}}" class="form-control" id="validationCustom04" placeholder="Cidade"  required>
                   <section class="invalid-feedback">
                     Por favor, informe um estado válido.
                   </section>
@@ -60,7 +71,9 @@
                 <section class="col-md-6 mb-3">
                    <section class="form-group">
                 <label for="validationCustom05">Estado</label>
-                <select name="gr_estado" class="form-control" id="validationCustom05" required>
+                <select name="gr_estado"  class="form-control" id="validationCustom05" required>
+                 <option value="{{meusGrupo.gr_estado}}">{{meusGrupo.gr_estado}}</option>
+
                  {% for estado in listEstados %}
                   <option value="{{estado.est_nome}}">{{estado.est_nome}}</option>
               {% endfor %}
@@ -68,10 +81,12 @@
               </section>
                 </section>
 
-
                  <section class="col-md-6 mb-3">
-                  <label for="Grupo">Grupo foto</label>
-                  <input type="file" class="form-control" name="gr_foto" id="gr_foto" placeholder="Foto grupo">
+                  <label for="Grupo">Grupo foto</label><br>
+                  <img src="../../assets/user_images/{{meusGrupo.gr_foto}}" width="50" height="50">
+                  <br>
+                  <br>
+                  <input type="file" class="form-control"  value="{{meusGrupo.gr_foto}}" name="gr_foto" id="gr_foto" placeholder="Foto grupo">
                 </section>
               
            
@@ -79,8 +94,14 @@
                    <section class="form-group">
                 <label for="exampleFormControlSelect1">Grupo Privado ?</label>
                 <select name="gu_private" class="form-control" id="exampleFormControlSelect1">
-                  <option value="1">sim</option>
-                  <option value="0">não</option>
+                	  {% if meusGrupo.gu_private == 1 %}
+		                  <option  selected value="1">sim</option>
+		                  <option value="0">não</option>
+              {% else %}
+              <option value="1">sim</option>
+		                  <option selected value="0">não</option>
+              {% endif %}
+
                 </select>
               </section>
             
@@ -91,8 +112,14 @@
                    <section class="form-group">
                 <label for="exampleFormControlSelect1">Grupo starstup categoria :</label>
                 <select name="grcat_id" class="form-control" id="exampleFormControlSelect1" required>
+                  
                  {% for grupo in grupoAll %}
-                  <option value="{{grupo.cg_id}}">{{grupo.cg_nome}}</option>
+                  {% if meusGrupo.grcat_id == grupo.cg_id%}
+		                     <option selected value="{{grupo.cg_id}}">{{grupo.cg_nome}}</option>
+              {% else %}
+                                <option value="{{grupo.cg_id}}">{{grupo.cg_nome}}</option>
+              {% endif %}
+
               {% endfor %}
                 </select>
               </section>
@@ -107,14 +134,6 @@
         </section>
       </section>
     </section>
-
-        <article class="card border-left-success shadow h-100 py-2">
-          <section class="card-body">
-
-            <h4 class ="text-dark" align="center">  Explore grupos de starstup  </h4>
-             <button  type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Criar grupo</button>             
-<hr>
-            {% for grupo in grupoAll %}
             <section class="card"> 
               <section class="card-body">
              
@@ -124,19 +143,15 @@
                       <img src="../../assets/img/outline-ballot-24px.svg" class="mr-1" >
                     </figure>
                     <section class="media-body"> 
-                      <h4 class="mt-0 mb-1"> <a href="\empresavervaga\show\{{minhavaga.vag_id}}" class=" text-primary "> {{minhavaga.post_titulo}}</a></h4>
-                      <h5 class="mt-0 mb-1 text-primary">{{grupo.cg_nome}}</h5>
-                      <!--   <i>  <img width="25" src="../../assets/img/categoria-24px.svg" class="mt-1" > </i>
-                        <strong class="text-success"> {{minhavaga.cat_nome}} </strong>
-                        <i>  <img width="25" src="../../assets/img/localizacao24px.svg" class="mr-0 mt-1" > </i> 
-                        <i>  <img width="25" src="../../assets/img/prestador-24px.svg" class="mr-0 mt-1" > </i> -->
+                      <h4 class="mt-0 mb-1"> {{meusGrupo.gr_nome}}</h4>
+                      <h5 class="mt-0 mb-1 text-primary">{{meusGrupo.cg_nome}}</h5>
                         Grupos(20) | Membros(10) 
                       </a> 
                     </section>
                   </li>
                 </ul>
                 <section align="center" class="group-button">
-                  <a href="\empresavervaga\show\{{minhavaga.vag_id}}"  class="btn btn-primary btn-sm">ver grupo</a>
+                   <button  type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">editar</button>   
              
                 </section>
               </section>

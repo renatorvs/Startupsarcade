@@ -17,14 +17,16 @@ class MeusGruposController extends ContainerController {
 		} else {
 			redirecionar("/");
 		}
+		$grupoAll = CategoriaGrupo::CategoriaGrupoAll();
 
-		$meusGrupos = Grupo::meusGrupos();
+		$meusGrupos = Grupo::meusGrupos(Session::get('USUARIO_ID'));
 
 		$this->view([
-			'title' => 'SA | Categoria startup',
-			'session' => Session::get('EMPRESA_SESSION'),
-			'pref' => Session::get("USER_PREFERENCIAS"),
+			'title' => 'SA | Grupos startup',
+			'meusGrupos' => $meusGrupos,
+			'listEstados' => Estado::listEstados(),
 			'grupoAll' => $grupoAll,
+
 			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
 			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
 
