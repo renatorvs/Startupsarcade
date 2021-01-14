@@ -1,3 +1,4 @@
+
 <?php
 namespace app\controllers\grupo;
 
@@ -9,7 +10,7 @@ use app\session\Session;
 use app\validate\Imagem;
 use app\validate\Validate;
 
-class MeusGruposController extends ContainerController {
+class GruposMembrosController extends ContainerController {
 	public function grupos() {
 		if (Session::get('USUARIO_ID')) {
 			Session::get('US_FOTO');

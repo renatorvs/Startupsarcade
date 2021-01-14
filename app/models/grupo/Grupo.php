@@ -156,7 +156,7 @@ class Grupo {
 
 		$banco = new Banco();
 
-		$banco->query("INSERT INTO grupo_usuario (gu_private, gu_accept, gu_user_admin_id, gu_user_id, gu_grupo_id) VALUES (:gu_private, :gu_accept, :gu_user_admin_id, :gu_user_id, :gu_grupo_id)  ",
+		$banco->query("INSERT INTO grupo_usuario (gu_private, gu_accept, gu_user_admin_id, gu_user_id, gu_grupo_id) VALUES (:gu_private, :gu_accept, :gu_user_admin_id, :gu_user_id, :gu_grupo_id) ",
 			array(
 				":gu_private" => $this->getGu_private(),
 				":gu_accept" => $this->getGu_accept(),
@@ -178,18 +178,48 @@ class Grupo {
 
 	// UPDATE `usuario` SET `us_id`=[value-1],`us_email`=[value-2],`us_nome`=[value-3],`us_tipo_pessoa`=[value-4],`us_senha`=[value-5],`us_foto`=[value-6],`us_status_conta`=[value-7],`us_data_compra`=[value-8],`us_data_expiracao`=[value-9],`us_cpf_cnpj`=[value-10],`us_dataCadastro`=[value-11] WHERE 1
 
-	public static function grupoUpdate($gr_id) {
+	public function grupoUpdate() {
 		$banco = new Banco();
 
-		return $banco->query("UPDATE  grupo  SET  gr_nome = :gr_nome, gr_descricao = :gr_descricao, gr_cidade = :gr_cidade, gr_estado = gr_estado, gr_foto = :gr_foto, grcat_id = :grcat_id WHERE gr_id = :gr_id",
+		return $banco->query("UPDATE  grupo  SET  gr_nome = :gr_nome, gr_descricao = :gr_descricao, gr_cidade = :gr_cidade, gr_estado = :gr_estado, gr_foto = :gr_foto, grcat_id = :grcat_id WHERE gr_id = :gr_id", array(
+			":gr_nome" => $this->getGr_nome(),
+			":gr_descricao" => $this->getGr_descricao(),
+			":gr_cidade" => $this->getGr_cidade(),
+			":gr_estado" => $this->getGr_estado(),
+			":gr_foto" => $this->getGr_foto(),
+			":grcat_id" => $this->getGrcat_id(),
+			":gr_id" => $this->getGr_id(),
+		));
+	}
+
+	public function grupoUsuarioUpdate() {
+		$banco = new Banco();
+
+		return $banco->query("UPDATE  grupo_usuario  SET  gu_private = :gu_private  WHERE gu_grupo_id = :gu_grupo_id",
 			array(
-				":gr_id" => $this->getGr_id(),
-				":gr_nome" => $this->getGr_nome(),
-				":gr_descricao" => $this->getGr_descricao(),
-				":gr_cidade" => $this->getGr_cidade(),
-				":gr_estado" => $this->getGr_estado(),
-				":gr_foto" => $this->getGr_foto(),
-				":grcat_id" => $this->getGrcat_id(),
+				":gu_grupo_id" => $this->getGu_grupo_id(),
+				":gu_private" => $this->getGu_private(),
+
+			));
+	}
+
+	public static function grupoDelete($gr_id) {
+		$banco = new Banco();
+
+		return $banco->query("DELETE FROM `grupo` WHERE  gr_id = :gr_id",
+			array(
+				":gr_id" => $gr_id,
+
+			));
+	}
+
+	public static function grupoUsuarioDelete($gu_grupo_id) {
+		$banco = new Banco();
+
+		return $banco->query("DELETE FROM grupo_usuario WHERE  gu_grupo_id = :gu_grupo_id",
+			array(
+				":gu_grupo_id" => $gu_grupo_id,
+
 			));
 	}
 }
