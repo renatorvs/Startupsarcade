@@ -33,29 +33,6 @@ class MeusGruposController extends ContainerController {
 		], 'grupo.meusGrupos');
 	}
 
-	public function grupo() {
-
-		if (Session::get('USUARIO_ID')) {
-			Session::get('US_FOTO');
-			Session::get('US_NOME');
-		} else {
-			redirecionar("/");
-		}
-		$grupoAll = CategoriaGrupo::CategoriaGrupoAll();
-
-		$this->view([
-			'title' => 'Planos',
-			'session' => Session::get('EMPRESA_SESSION'),
-			'pref' => Session::get("USER_PREFERENCIAS"),
-			'grupoAll' => $grupoAll,
-			'listEstados' => Estado::listEstados(),
-			'session' => Session::get('USUARIO_ID'),
-			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
-			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
-
-		], 'grupo.grupo');
-	}
-
 	public function grupoUsuarioUpdate() {
 
 		if (Session::get('USUARIO_ID')) {

@@ -22,7 +22,7 @@ class GruposController extends ContainerController {
 
 		$this->view([
 			'title' => 'SA | Categoria startup',
-			'session' => Session::get('EMPRESA_SESSION'),
+
 			'pref' => Session::get("USER_PREFERENCIAS"),
 			'grupoAll' => $grupoAll,
 			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
@@ -31,7 +31,7 @@ class GruposController extends ContainerController {
 		], 'grupo.grupocategorias');
 	}
 
-	public function grupo() {
+	public function grupo($grcat_id) {
 
 		if (Session::get('USUARIO_ID')) {
 			Session::get('US_FOTO');
@@ -39,13 +39,12 @@ class GruposController extends ContainerController {
 		} else {
 			redirecionar("/");
 		}
-		$grupoAll = CategoriaGrupo::CategoriaGrupoAll();
-
+		$getGrupoCategoria = Grupo::getGrupoCategoriaId($grcat_id->parameter);
 		$this->view([
 			'title' => 'Planos',
-			'session' => Session::get('EMPRESA_SESSION'),
+
 			'pref' => Session::get("USER_PREFERENCIAS"),
-			'grupoAll' => $grupoAll,
+			'getGrupoCategoria' => $getGrupoCategoria,
 			'listEstados' => Estado::listEstados(),
 			'session' => Session::get('USUARIO_ID'),
 			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
@@ -96,9 +95,39 @@ class GruposController extends ContainerController {
 
 		$grupo->addgrupo_usuario();
 
+	}
+
+	public function aderirgrupo() {
+
+		if (Session::get('USUARIO_ID')) {
+			Session::get('US_FOTO');
+			Session::get('US_NOME');
+		} else {
+			redirecionar("/");
+		}
+
+		$grupoAll = CategoriaGrupo::CategoriaGrupoAll();
+
+		$grupo = new Grupo();
+
+		$v = Validate::validate([
+			'gu_accept' => 'integer',
+			'gu_private' => 'integer',
+			'gu_grupo_id' => 'integer',
+			'gu_user_id' => 'integer',
+			'gr_id' => 'integer',
+		]);
+
+		$grupo->setGu_private($v->gu_private);
+		$grupo->setGu_user_id(Session::get('USUARIO_ID'));
+		$grupo->setGu_grupo_id($v->gr_id);
+		$grupo->setGu_accept($v->gu_accept);
+
+		$grupo->addgrupo_usuario();
+
 		$this->view([
 			'title' => 'Planos',
-			'session' => Session::get('EMPRESA_SESSION'),
+
 			'pref' => Session::get("USER_PREFERENCIAS"),
 			'grupoAll' => $grupoAll,
 			// 'NotsSe	$grupo->guir' => getNotificantionSeguir($sessionUsuario_id),

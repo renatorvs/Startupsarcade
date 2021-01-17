@@ -167,6 +167,19 @@ class Grupo {
 
 	}
 
+	public function addgrupoMembro() {
+
+		$banco = new Banco();
+
+		$banco->query("INSERT INTO grupo_usuario (gu_private, gu_accept, gu_user_id, gu_grupo_id) VALUES (:gu_private, :gu_accept, :gu_user_id, :gu_grupo_id) ",
+			array(
+				":gu_private" => $this->getGu_private(),
+				":gu_accept" => $this->getGu_accept(),
+				":gu_user_id" => $this->getGu_user_id(),
+				":gu_grupo_id" => $this->getGu_grupo_id(),
+			));
+
+	}
 	public static function meusGrupos($us_id) {
 		$banco = new Banco();
 
@@ -222,4 +235,16 @@ class Grupo {
 
 			));
 	}
+
+	public static function getGrupoCategoriaId($grcat_id) {
+
+		$banco = new Banco();
+
+		return $banco->select("SELECT * FROM  grupocategorias  WHERE  grcat_id = :grcat_id", array(
+			":grcat_id" => $grcat_id,
+
+		));
+
+	}
+
 }
