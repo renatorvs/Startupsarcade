@@ -32,7 +32,7 @@
 
 
               <h4 class ="text-dark" align="center">   Grupos  </h4>
-              {% for meusGrupo in getGrupoCategoria %}
+              {% for grupo in getdadosGrupocategoria %}
 
 
 
@@ -46,32 +46,38 @@
                         <img src="../../assets/img/outline-ballot-24px.svg" class="mr-1" >
                       </figure>
                       <section class="media-body"> 
-                        <h4 class="mt-0 mb-1"> {{meusGrupo.gr_nome}}</h4>
-                        <h5 class="mt-0 mb-1 text-primary">{{meusGrupo.cg_nome}}</h5>
-                        {% if meusGrupo.gu_private == 1%}
+                        <h4 class="mt-0 mb-1"> {{grupo.gr_nome}}</h4>
+                        <h5 class="mt-0 mb-1 text-primary">{{grupo.cg_nome}}</h5>
+                        {% if grupo.gr_private == 1 %}
                         Grupo Privado |
                         {% endif %}
-                        Membros(10) {{meusGrupo.gu_accept}}
+                        Membros(10)
                       </a> 
                     </section>
                   </li>
                 </ul>
                 <section align="center" class="group-button">
-
                   <form action="\grupos\aderirgrupo" method="post">
-                  {% if meusGrupo.gu_private == 1 %}
-                      {% if meusGrupo.gu_accept == 1 %}
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">visitar</button>
-                        {% elseif meusGrupo.gu_accept == 0 %}
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Cancelar pedido </button>
-                        {% else %}
-                        <button class="btn btn-primary" role="button" data-toggle="modal" data-target=".bd-example-modal-lg">Aderir grupo</button>
+                  <input type="hidden" name="gr_private" value="{{grupo.gr_private}}">
+                  <input type="hidden" name="gu_grupo_id" value="{{grupo.gr_id}}">
+                  <input type="hidden" name="catgr_id" value="{{catgr_id}}">
+                  {% if grupo.gr_private == 1 %} 
+                      {% if grupo.gu_accept == 2 %}
+                        <a href="\grupo\chat\{{grupo.gr_id}}" class="btn btn-success md" >visitar</a>
+                      
+                      {% elseif grupo.gu_accept == 1 %}
+                         <input type="hidden" name="gu_accept" value="3">
+                        <button type="submit"  class="btn btn-danger" >Cancelar pedido </button>
+                      {% elseif grupo.gu_accept == 0 %}
+                       <input type="hidden" name="gu_accept" value="1">
+                        <button class="btn btn-primary" type="submit"  >Aderir grupo</button>
                       {% endif %}
-                    {% else %}
-                        {% if meusGrupo.gu_accept == 1 %}
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">visitar</button>
+                  {% else %}
+                        {% if grupo.gu_accept == 2 %}
+                        <a   href="\grupo\chat\{{grupo.gr_id}}" class="btn btn-success">visitar</a>
                         {% else %}
-                        <button class="btn btn-primary" role="button" data-toggle="modal" data-target=".bd-example-modal-lg">Aderir grupo</button>
+                         <input type="hidden" name="gu_accept" value="2">
+                        <button class="btn btn-primary" type="submit" >Aderiraa grupo</button>
                       {% endif %}
                     {% endif %}
 

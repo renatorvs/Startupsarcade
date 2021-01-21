@@ -39,14 +39,22 @@ class GruposController extends ContainerController {
 		} else {
 			redirecionar("/");
 		}
-		$getGrupoCategoria = Grupo::getGrupoCategoriaId($grcat_id->parameter);
+
+		$getdadosGrupocategoria = Grupo::getdadosGrupocategoria($grcat_id->parameter, Session::get('USUARIO_ID'));
+		if ($getdadosGrupocategoria[0] == null) {
+			$getdadosGrupocategoria = Grupo::getGrupoCategoriaId($grcat_id->parameter);
+
+		}
+
+		//	debug($getdadosGrupocategoria);
 		$this->view([
 			'title' => 'Planos',
 
 			'pref' => Session::get("USER_PREFERENCIAS"),
 			'getGrupoCategoria' => $getGrupoCategoria,
 			'listEstados' => Estado::listEstados(),
-			'session' => Session::get('USUARIO_ID'),
+			'getdadosGrupocategoria' => $getdadosGrupocategoria,
+			'catgr_id' => $grcat_id->parameter,
 			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
 			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
 
@@ -83,17 +91,19 @@ class GruposController extends ContainerController {
 		$gr_foto = Imagem::uploadImage($_FILES['gr_foto']);
 		$grupo->setGr_foto($gr_foto);
 		$grupo->setGrcat_id($v->grcat_id);
+		$grupo->setGr_private($v->gu_private);
 
 		$grupo->addGrupo();
 		$getLastGrupo = $grupo->getLastGrupo();
 
-		$grupo->setGu_private($v->gu_private);
 		$grupo->setGu_user_admin_id(Session::get('USUARIO_ID'));
 		$grupo->setGu_user_id(Session::get('USUARIO_ID'));
 		$grupo->setGu_grupo_id($getLastGrupo[0]['gr_id']);
 		$grupo->setGu_accept(1);
 
 		$grupo->addgrupo_usuario();
+
+		redirecionar("/grupos/grupo/$v->grcat_id");
 
 	}
 
@@ -106,34 +116,30 @@ class GruposController extends ContainerController {
 			redirecionar("/");
 		}
 
-		$grupoAll = CategoriaGrupo::CategoriaGrupoAll();
-
 		$grupo = new Grupo();
 
 		$v = Validate::validate([
 			'gu_accept' => 'integer',
 			'gu_private' => 'integer',
 			'gu_grupo_id' => 'integer',
-			'gu_user_id' => 'integer',
-			'gr_id' => 'integer',
+			'catgr_id' => 'integer',
 		]);
 
-		$grupo->setGu_private($v->gu_private);
-		$grupo->setGu_user_id(Session::get('USUARIO_ID'));
-		$grupo->setGu_grupo_id($v->gr_id);
-		$grupo->setGu_accept($v->gu_accept);
+		if ($v->gu_accept == 3) {
+			Grupo::cancelaPedidoGrupo(Session::get('USUARIO_ID'), $v->gu_grupo_id);
+			redirecionar("/grupos/grupo/$v->catgr_id");
 
-		$grupo->addgrupo_usuario();
+		} else {
 
-		$this->view([
-			'title' => 'Planos',
+			$grupo->setGr_private($v->gr_private);
+			$grupo->setGu_user_id(Session::get('USUARIO_ID'));
+			$grupo->setGu_grupo_id($v->gu_grupo_id);
+			$grupo->setGu_accept($v->gu_accept);
+			$grupo->addgrupoMembro();
+			redirecionar("/grupos/grupo/$v->catgr_id");
 
-			'pref' => Session::get("USER_PREFERENCIAS"),
-			'grupoAll' => $grupoAll,
-			// 'NotsSe	$grupo->guir' => getNotificantionSeguir($sessionUsuario_id),
-			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
+		}
 
-		], 'grupo.grupo');
 	}
 
 }
