@@ -31,6 +31,8 @@ class EntrarController extends ContainerController {
 		$senhaVerify = Validate::getPasswordVerify($senha, $password_hash);
 
 		if ($senhaVerify) {
+
+			//debug($respUsuario);
 			Session::set("USUARIO_ID", $respUsuario[0]['us_id']);
 			Session::set("US_NOME", $respUsuario[0]['us_nome']);
 			Session::set("US_FOTO", $respUsuario[0]['us_foto']);

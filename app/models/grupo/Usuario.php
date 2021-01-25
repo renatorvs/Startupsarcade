@@ -98,7 +98,7 @@ class Usuario {
 
 		$banco = new Banco();
 
-		return $banco->select("SELECT us_id, us_email, us_senha  FROM usuario WHERE us_email = :us_email LIMIT 1", array(
+		return $banco->select("SELECT us_id, us_nome, us_email, us_senha  FROM usuario WHERE us_email = :us_email LIMIT 1", array(
 			":us_email" => $this->getus_email(),
 		));
 

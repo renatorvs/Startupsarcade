@@ -99,7 +99,7 @@ class GruposController extends ContainerController {
 		$grupo->setGu_user_admin_id(Session::get('USUARIO_ID'));
 		$grupo->setGu_user_id(Session::get('USUARIO_ID'));
 		$grupo->setGu_grupo_id($getLastGrupo[0]['gr_id']);
-		$grupo->setGu_accept(1);
+		$grupo->setGu_accept(2);
 
 		$grupo->addgrupo_usuario();
 

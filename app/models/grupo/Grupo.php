@@ -236,6 +236,17 @@ class Grupo {
 
 	}
 
+	public static function CategoriaGrupoLoad($gr_id) {
+
+		$banco = new Banco();
+
+		return $banco->select("SELECT * FROM  grupocategorias  WHERE  gr_id  = :gr_id", array(
+			":gr_id" => $gr_id,
+
+		));
+
+	}
+
 	public static function getdadosGrupocategoria($grcat_id, $user_id) {
 
 		$banco = new Banco();

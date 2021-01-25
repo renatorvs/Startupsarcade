@@ -2,11 +2,11 @@
 namespace app\controllers\grupo;
 
 use app\controllers\ContainerController;
-use app\models\grupo\CategoriaGrupo;
 use app\models\grupo\Estado;
 use app\models\grupo\Grupo;
+use app\models\grupo\grupo_mensagem_link;
+use app\models\grupo\Mensagem;
 use app\session\Session;
-use app\validate\Imagem;
 use app\validate\Validate;
 
 class GrupoController extends ContainerController {
@@ -18,23 +18,29 @@ class GrupoController extends ContainerController {
 		} else {
 			redirecionar("/");
 		}
-		$grupoAll = CategoriaGrupo::CategoriaGrupoAll();
 
-		$meusGrupos = Grupo::meusGrupos(Session::get('USUARIO_ID'));
-
+		$categoriaGrupoLoad = Grupo::CategoriaGrupoLoad($gr_id->parameter);
+		$chatGrupoMensagem = Mensagem::chatGrupoMensagem($gr_id->parameter);
+		//debug($chatGrupoMensagem);
 		$this->view([
 			'title' => 'SA | Grupos startup',
-			'meusGrupos' => $meusGrupos,
+			'meusGrupos' => $categoriaGrupoLoad[0]['gr_nome'],
+			'nomgrupo' => $categoriaGrupoLoad[0]['gr_nome'],
+			'categoriagrupo' => $categoriaGrupoLoad[0]['cg_nome'],
+			'fotogrupo' => $categoriaGrupoLoad[0]['gr_foto'],
 			'listEstados' => Estado::listEstados(),
-			'grupoAll' => $grupoAll,
-
+			'CategoriaGrupoLoad' => $CategoriaGrupoLoad,
+			'gml_grupo_id' => $gr_id->parameter,
+			'chatGrupoMensagem' => $chatGrupoMensagem,
+			'usuario_id' => Session::get('USUARIO_ID'),
+			'usuario_nome' => Session::get('US_NOME'),
 			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
 			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
 
 		], 'grupo.chatgrupo');
 	}
 
-	public function grupoUsuarioUpdate() {
+	public function grupochatStore() {
 
 		if (Session::get('USUARIO_ID')) {
 			Session::get('US_FOTO');
@@ -43,62 +49,28 @@ class GrupoController extends ContainerController {
 			redirecionar("/");
 		}
 
-		$grupoAll = CategoriaGrupo::CategoriaGrupoAll();
+		$val = Validate::validate([
 
-		$grupo = new Grupo();
+			'gml_grupo_id' => 'integer',
+			'gml_remetente_id' => 'integer',
+			'msn_nome' => 'string',
+			'msn_type' => 'integer',
 
-		$v = Validate::validate([
-			'gr_id' => 'integer',
-			'gr_nome' => 'string',
-			'gr_descricao' => 'string',
-			'gr_cidade' => 'string',
-			'gr_estado' => 'string',
-			'gu_private' => 'integer',
-			'grcat_id' => 'integer',
-			'grcat_id' => 'integer',
-			'gr_old_foto' => 'string',
 		]);
 
-		$grupo->setGr_id($v->gr_id);
-		$grupo->setGr_nome($v->gr_nome);
-		$grupo->setGr_descricao($v->gr_descricao);
-		$grupo->setGr_cidade($v->gr_cidade);
-		$grupo->setGr_estado($v->gr_estado);
+		Mensagem::addMensagem($val->msn_nome, $val->msn_type);
 
-		if ($_FILES['gr_foto']['name'] == null or $_FILES['gr_foto']['name'] == NULL) {
-			$grupo->setGr_foto($v->gr_old_foto);
-		} else {
+		$msn_id = Mensagem::getLastMessagem_id();
+		$getMensagemDadoslink = Mensagem::getMensagemDadoslink(Session::get('USUARIO_ID'));
 
-			$gr_foto = Imagem::uploadImage($_FILES['gr_foto']);
-			$grupo->setGr_foto($gr_foto);
-		}
-		$grupo->setGrcat_id($v->grcat_id);
-
-		$grupo->grupoUpdate();
-
-		$grupo->setGu_grupo_id($v->gr_id);
-		$grupo->setGu_private($v->gu_private);
-		$grupo->grupoUsuarioUpdate();
-
-		redirecionar('\meusGrupos\grupos');
-
-	}
-
-	public function grupoDelete($gr_id) {
-
-		if (Session::get('USUARIO_ID')) {
-			Session::get('US_FOTO');
-			Session::get('US_NOME');
-		} else {
-			redirecionar("/");
+		if ($getMensagemDadoslink[0] == NULL) {
+			Mensagem::addMensagemdados(Session::get('US_NOME'), $val->gml_grupo_id, Session::get('USUARIO_ID'));
 		}
 
-		$grupo = new Grupo();
+		$getMensagemDadoslink = Mensagem::getMensagemDadoslink(Session::get('USUARIO_ID'));
 
-		Grupo::grupoDelete($gr_id->parameter);
-		Grupo::grupoUsuarioDelete($gr_id->parameter);
-
-		redirecionar('\meusGrupos\grupos');
+		grupo_mensagem_link::addGrupoMensagemLink($val->gml_grupo_id, Session::get('USUARIO_ID'), $msn_id[0]['msn_id'],
+			$getMensagemDadoslink[0]['mdl_id']);
 
 	}
 

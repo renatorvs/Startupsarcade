@@ -31,7 +31,7 @@ class PrivadoController extends ContainerController {
 			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
 			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
 
-		], 'grupo.chatprivadi');
+		], 'grupo.chatprivadi ');
 	}
 
 	public function grupoUsuarioUpdate() {

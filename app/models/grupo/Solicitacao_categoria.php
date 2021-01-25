@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models\usuario;
+namespace app\models\grupo;
 
 use app\models\Banco;
 
