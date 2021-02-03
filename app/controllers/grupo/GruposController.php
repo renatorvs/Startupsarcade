@@ -103,7 +103,7 @@ class GruposController extends ContainerController {
 
 		$grupo->addgrupo_usuario();
 
-		redirecionar("/grupos/grupo/$v->grcat_id");
+		redirecionar("/meusgrupos/informacoes/" . $getLastGrupo[0]['gr_id']);
 
 	}
 
@@ -139,6 +139,31 @@ class GruposController extends ContainerController {
 			redirecionar("/grupos/grupo/$v->catgr_id");
 
 		}
+
+	}
+
+	public function informacoes($gr_id) {
+		if (Session::get('USUARIO_ID')) {
+			Session::get('US_FOTO');
+			Session::get('US_NOME');
+		} else {
+			redirecionar("/");
+		}
+
+		$grupo = new Grupo();
+
+		$this->view([
+			'title' => 'Planos',
+
+			'pref' => Session::get("USER_PREFERENCIAS"),
+			'getGrupoCategoria' => $getGrupoCategoria,
+			'listEstados' => Estado::listEstados(),
+			'getdadosGrupocategoria' => $getdadosGrupocategoria,
+			'catgr_id' => $grcat_id->parameter,
+			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
+			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
+
+		], 'grupo.grupoinformacoes');
 
 	}
 

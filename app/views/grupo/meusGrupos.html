@@ -103,7 +103,7 @@
 													</section>
 													
 												</section>
-												
+											
 												
 												<button class="btn btn-primary" type="submit">Criar grupo</button>
 											</form>
@@ -236,7 +236,7 @@
 						</section>
 						<section class="card"> 
 							<section class="card-body">
-
+  
 								<ul class="list-unstyled" class="mr-1">
 									<li class="media my-4">
 										<figure>
@@ -245,7 +245,8 @@
 										<section class="media-body"> 
 											<h4 class="mt-0 mb-1"> {{meusGrupo.gr_nome}}</h4>
 											<h5 class="mt-0 mb-1 text-primary">{{meusGrupo.cg_nome}}</h5>
-											Grupos(20) | Membros(10) 
+										 Membros(10) | {{meusGrupo.gr_cidade}}, {{meusGrupo.gr_estado}} {{meusGrupo.gr_pais}}<br>
+                        <a href="\meusgrupos\informacoes\{{meusGrupo.gr_id}}" class="text-primary">Grupo informaçoes</a>
 										</a> 
 									</section>
 								</li>
