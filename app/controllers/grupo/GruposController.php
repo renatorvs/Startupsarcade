@@ -39,22 +39,19 @@ class GruposController extends ContainerController {
 		} else {
 			redirecionar("/");
 		}
+		$getGruposAll = Grupo::getGruposAll($grcat_id->parameter, Session::get('USUARIO_ID'));
 
-		$getdadosGrupocategoria = Grupo::getdadosGrupocategoria($grcat_id->parameter, Session::get('USUARIO_ID'));
-		if ($getdadosGrupocategoria[0] == null) {
-			$getdadosGrupocategoria = Grupo::getGrupoCategoriaId($grcat_id->parameter);
-
-		}
-
-		//	debug($getdadosGrupocategoria);
 		$this->view([
 			'title' => 'Planos',
 
 			'pref' => Session::get("USER_PREFERENCIAS"),
 			'getGrupoCategoria' => $getGrupoCategoria,
 			'listEstados' => Estado::listEstados(),
-			'getdadosGrupocategoria' => $getdadosGrupocategoria,
+			'getdadosGrupocategoria' => $getGruposAll,
 			'catgr_id' => $grcat_id->parameter,
+			'hacheckgrupos' => $hacheckgrupos,
+			'checkgrupos' => $checkgrupos,
+			's' => Session::get('USUARIO_ID'),
 			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
 			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
 
@@ -96,12 +93,12 @@ class GruposController extends ContainerController {
 		$grupo->addGrupo();
 		$getLastGrupo = $grupo->getLastGrupo();
 
-		$grupo->setGu_user_admin_id(Session::get('USUARIO_ID'));
 		$grupo->setGu_user_id(Session::get('USUARIO_ID'));
 		$grupo->setGu_grupo_id($getLastGrupo[0]['gr_id']);
 		$grupo->setGu_accept(2);
 
 		$grupo->addgrupo_usuario();
+		$grupo->grupoadmin(Session::get('USUARIO_ID'), $getLastGrupo[0]['gr_id']);
 
 		redirecionar("/meusgrupos/informacoes/" . $getLastGrupo[0]['gr_id']);
 
@@ -123,19 +120,44 @@ class GruposController extends ContainerController {
 			'gu_private' => 'integer',
 			'gu_grupo_id' => 'integer',
 			'catgr_id' => 'integer',
+			'redirect' => 'integer',
 		]);
 
+		$checkuser = Grupo::checkgrupos(Session::get('USUARIO_ID'), $v->gu_grupo_id);
+		//debug($checkuser);
+
+		//cencela pedido
 		if ($v->gu_accept == 3) {
 			Grupo::cancelaPedidoGrupo(Session::get('USUARIO_ID'), $v->gu_grupo_id);
+			if ($v->redirect == 1) {
+				redirecionar("/grupos/grupospendentes");
+
+			}
+
 			redirecionar("/grupos/grupo/$v->catgr_id");
 
+			// atuaçizar pedido
+		} else if ($v->gu_accept == 4) {
+
+			Grupo::updateconvite(Session::get('USUARIO_ID'), $v->gu_grupo_id);
+
+			redirecionar("/grupos/grupo/$v->catgr_id");
 		} else {
 
 			$grupo->setGr_private($v->gr_private);
 			$grupo->setGu_user_id(Session::get('USUARIO_ID'));
 			$grupo->setGu_grupo_id($v->gu_grupo_id);
 			$grupo->setGu_accept($v->gu_accept);
-			$grupo->addgrupoMembro();
+
+			if ($checkuser[0] != null) {
+				flash(['checkgrupo' => "Você já mandou convite para esse grupo"]);
+				redirecionar("/grupos/grupo/$v->catgr_id");
+			} else {
+				$grupo->addgrupoMembro();
+				flash(['conviteenviado' => "Pedido enviado "]);
+
+			}
+
 			redirecionar("/grupos/grupo/$v->catgr_id");
 
 		}
@@ -164,6 +186,56 @@ class GruposController extends ContainerController {
 			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
 
 		], 'grupo.grupoinformacoes');
+
+	}
+
+	public function usuarios($gr_id) {
+		if (Session::get('USUARIO_ID')) {
+			Session::get('US_FOTO');
+			Session::get('US_NOME');
+		} else {
+			redirecionar("/");
+		}
+
+		$grupo = new Grupo();
+
+		$this->view([
+			'title' => 'Planos',
+
+			'pref' => Session::get("USER_PREFERENCIAS"),
+			'getGrupoCategoria' => $getGrupoCategoria,
+			'listEstados' => Estado::listEstados(),
+			'getdadosGrupocategoria' => $getdadosGrupocategoria,
+			'catgr_id' => $grcat_id->parameter,
+			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
+			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
+
+		], 'grupo.grupousuarios');
+
+	}
+	public function grupospendentes($gr_id) {
+		if (Session::get('USUARIO_ID')) {
+			Session::get('US_FOTO');
+			Session::get('US_NOME');
+		} else {
+			redirecionar("/");
+		}
+		$grupoAll = CategoriaGrupo::CategoriaGrupoAll();
+
+		$meusGrupos = Grupo::meusGruposPendentes(Session::get('USUARIO_ID'));
+
+		$this->view([
+			'title' => 'SA | Grupos startup',
+			'meusGrupos' => $meusGrupos,
+			'listEstados' => Estado::listEstados(),
+			'grupoAll' => $grupoAll,
+
+			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
+			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
+			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
+			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
+
+		], 'grupo.grupospendentes');
 
 	}
 

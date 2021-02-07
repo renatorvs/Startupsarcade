@@ -72,7 +72,7 @@ Oferece respaldo de confiança, facilitando a captação de potenciais investido
                     <section class="card-body">   
                       <form class="needs-validation" action="/MeusGrupos/meusgruposinfostore" enctype="multipart/form-data" method ="post">
                                                                 <h5>Proposta para grupo: {{grupo_nome}}</h5>
-                                                                <h5>Categoria:  {cg_nome}</h6>
+                                                                <h5>Categoria:  {{cg_nome}}</h6>
                                                                   <hr>
 
                         <section class="form-row">
@@ -125,7 +125,7 @@ Oferece respaldo de confiança, facilitando a captação de potenciais investido
                         </section>
                    
                              <input type="hidden" name="pn_grupo_id" value="{{grupo_id}}">
-  {{grupo_id}}
+
                       
 
                       </section>
@@ -165,14 +165,14 @@ Oferece respaldo de confiança, facilitando a captação de potenciais investido
                         <section class="col-md-6 mb-3">
 
                           <label for="acompanhamento">Acompanhamento </label>
-                          <input type="text" name="acompanhamento" class="form-control" id="acompanhamento" placeholder="acompanhamento" required>
+                          <input type="text" name="pn_acompanhamento"  value="{{pn_acompanhamento}}"  class="form-control" id="acompanhamento" placeholder="acompanhamento" required>
                           <section class="invalid-feedback">
                             acompanhamento invalido !
                           </section>  
                         </section>
                         <section class="col-md-6 mb-3">
                           <label for="pn_estrategias_de_venda">Estrategias de venda </label>
-                          <input type="text" name="pn_estrategias_de_venda"  class="form-control" id="pn_estrategias_de_venda" placeholder="Estrategias_de_venda"  required>
+                          <input type="text" name="pn_estrategias_de_venda"  VALUE="{{pn_estrategias_de_venda}}" class="form-control" id="pn_estrategias_de_venda" placeholder="Estrategias_de_venda"  required>
                           <section class="invalid-feedback">
                             Por favor, informe a Estrategias de renda/venda.
                           </section>
@@ -181,7 +181,7 @@ Oferece respaldo de confiança, facilitando a captação de potenciais investido
 
                          <section class="col-md-6 mb-3">
                           <label for="pn_projecao_financeira">Projecao financeiro </label>
-                          <input type="text" name="pn_projecao_financeira"   class="form-control" id="pn_projecao_financeira" placeholder="Estrategias_de_venda"  required>
+                          <input type="text" name="pn_projecao_financeira"  value="{{pn_projecao_financeira}}"   class="form-control" id="pn_projecao_financeira" placeholder="Estrategias_de_venda"  required>
                           <section class="invalid-feedback">
                             Por favor, informe a Estrategias de renda/venda.
                           </section>
@@ -202,9 +202,10 @@ Oferece respaldo de confiança, facilitando a captação de potenciais investido
                         </section>
 
                    
+                             <input type="hidden" name="pn_id" value="{{pn_id}}">
                              <input type="hidden" name="pn_grupo_id" value="{{pn_grupo_id}}">
   
-                      
+                      {{pn_id}}
 
                       </section>
 

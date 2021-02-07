@@ -157,12 +157,23 @@ class Grupo {
 
 		$banco = new Banco();
 
-		$banco->query("INSERT INTO grupo_usuario (gu_accept, gu_user_admin_id, gu_user_id, gu_grupo_id) VALUES (:gu_accept, :gu_user_admin_id, :gu_user_id, :gu_grupo_id) ",
+		$banco->query("INSERT INTO grupo_usuario (gu_accept, gu_user_id, gu_grupo_id) VALUES (:gu_accept, :gu_user_id, :gu_grupo_id) ",
 			array(
 				":gu_accept" => $this->getGu_accept(),
-				":gu_user_admin_id" => $this->getGu_user_admin_id(),
 				":gu_user_id" => $this->getGu_user_id(),
 				":gu_grupo_id" => $this->getGu_grupo_id(),
+			));
+
+	}
+
+	public function grupoadmin($adm_user_id, $adm_grupo_id) {
+
+		$banco = new Banco();
+
+		$banco->query("INSERT INTO grupoadmin( adm_user_id, adm_grupo_id) VALUES(:adm_user_id, :adm_grupo_id) ;",
+			array(
+				":adm_user_id" => $this->getGu_accept(),
+				":adm_grupo_id" => $this->getGu_grupo_id(),
 			));
 
 	}
@@ -179,16 +190,63 @@ class Grupo {
 			));
 
 	}
-	public static function meusGrupos($us_id) {
+
+	public static function meusGrupos($gu_user_id) {
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM usuariogrupos WHERE us_id = :us_id",
+		return $banco->select("SELECT * FROM `usuariogrupos` WHERE adm_user_id = :adm_user_id and gu_accept = 2 GROUP BY gr_id ",
 			array(
-				":us_id" => $us_id,
+				":adm_user_id" => $gu_user_id,
 			));
 	}
 
-	// UPDATE `usuario` SET `us_id`=[value-1],`us_email`=[value-2],`us_nome`=[value-3],`us_tipo_pessoa`=[value-4],`us_senha`=[value-5],`us_foto`=[value-6],`us_status_conta`=[value-7],`us_data_compra`=[value-8],`us_data_expiracao`=[value-9],`us_cpf_cnpj`=[value-10],`us_dataCadastro`=[value-11] WHERE 1
+	public static function getGruposAll($gu_user_id) {
+		$banco = new Banco();
+
+		return $banco->select("SELECT * FROM dadosgrupo ",
+			array(
+				":gu_user_id" => $gu_user_id,
+			));
+	}
+
+	public static function checkgrupos($gu_user_id, $gr_id) {
+		$banco = new Banco();
+
+		return $banco->select("SELECT gr_id  FROM usuariogrupos WHERE  gr_id = :gr_id and gu_user_id = :gu_user_id  ",
+			array(
+				":gu_user_id" => $gu_user_id,
+				":gr_id" => $gr_id,
+			));
+	}
+
+	public static function meusGruposPendentes($gu_user_id) {
+		$banco = new Banco();
+
+		return $banco->select("SELECT * FROM usuariogrupos WHERE gu_user_id = :gu_user_id  And gu_accept = 1",
+			array(
+				":gu_user_id" => $gu_user_id,
+			));
+	}
+
+	public static function meusGruposConvites($gu_user_id) {
+		$banco = new Banco();
+
+		return $banco->select("SELECT * FROM usuariogrupos WHERE gu_user_id = :gu_user_id  And gu_accept = 1",
+			array(
+				":gu_user_id" => $gu_user_id,
+			));
+	}
+
+	public static function updateconvite($gu_user_id, $gu_grupo_id) {
+		$banco = new Banco();
+
+		return $banco->select("UPDATE grupo_usuario SET gu_accept = :gu_accept,  WHERE  gu_grupo_id = :gu_grupo_id",
+			array(
+				":gu_grupo_id" => $gu_grupo_id,
+			));
+	}
+
+	// UPDATE usuario SET us_id=[value-1],us_email=[value-2],us_nome=[value-3],us_tipo_pessoa=[value-4],us_senha=[value-5],us_foto=[value-6],us_status_conta=[value-7],us_data_compra=[value-8],us_data_expiracao=[value-9],us_cpf_cnpj=[value-10],us_dataCadastro=[value-11] WHERE 1
 
 	public function grupoUpdate() {
 		$banco = new Banco();
@@ -208,7 +266,7 @@ class Grupo {
 	public static function grupoDelete($gr_id) {
 		$banco = new Banco();
 
-		return $banco->query("DELETE FROM `grupo` WHERE  gr_id = :gr_id",
+		return $banco->query("DELETE FROM grupo WHERE  gr_id = :gr_id",
 			array(
 				":gr_id" => $gr_id,
 
@@ -225,11 +283,11 @@ class Grupo {
 			));
 	}
 
-	public static function getGrupoCategoriaId($grcat_id) {
+	public static function getGrupoCategoriaId($grcat_id, $session_id) {
 
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM  grupocategorias  WHERE  grcat_id = :grcat_id", array(
+		return $banco->select("SELECT * FROM  usuariogrupos  WHERE  grcat_id = :grcat_id    ", array(
 			":grcat_id" => $grcat_id,
 
 		));
@@ -263,7 +321,7 @@ class Grupo {
 
 		$banco = new Banco();
 
-		return $banco->select("UPDATE `grupo_mensagem_link` SET gml_view = 1 WHERE gml_grupo_id = :gml_grupo_id AND  gml_destinatario_id = :gml_destinatario_id ", array(
+		return $banco->select("UPDATE grupo_mensagem_link SET gml_view = 1 WHERE gml_grupo_id = :gml_grupo_id AND  gml_destinatario_id = :gml_destinatario_id ", array(
 			":gml_destinatario_id" => $gml_destinatario_id,
 			":gml_grupo_id" => $gml_grupo_id,
 
@@ -275,7 +333,7 @@ class Grupo {
 
 		$banco = new Banco();
 
-		return $banco->select("UPDATE `privado_mensagem_link` SET pml_view = 1 WHERE pml_grupo_id = :pml_grupo_id AND  pml_user_destinatario_id = :pml_user_destinatario_id ", array(
+		return $banco->select("UPDATE privado_mensagem_link SET pml_view = 1 WHERE pml_grupo_id = :pml_grupo_id AND  pml_user_destinatario_id = :pml_user_destinatario_id ", array(
 			":pml_grupo_id" => $pml_grupo_id,
 			":pml_user_destinatario_id" => $pml_user_destinatario_id,
 

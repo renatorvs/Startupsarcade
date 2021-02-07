@@ -245,19 +245,28 @@
 										<section class="media-body"> 
 											<h4 class="mt-0 mb-1"> {{meusGrupo.gr_nome}}</h4>
 											<h5 class="mt-0 mb-1 text-primary">{{meusGrupo.cg_nome}}</h5>
+											  {% if meusGrupo.gr_private == 1 %}
+                        Grupo Privado |
+                        {% endif %}
 										 Membros(10) | {{meusGrupo.gr_cidade}}, {{meusGrupo.gr_estado}} {{meusGrupo.gr_pais}}<br>
                         <a href="\meusgrupos\informacoes\{{meusGrupo.gr_id}}" class="text-primary">Grupo informaçoes</a>
 										</a> 
 									</section>
 								</li>
 							</ul>
+
+
 							<section align="center" class="group-button">
+								                        	<button class="btn btn-success"><a class="text-white" href="\grupo\chat\{{meusGrupo.gr_id}}"  >visitar</a> 	</button>
+
+							 {% if meusGrupo.adm_user_id == usuario_id or meusGrupo.adm_sub_user_id == usuario_id %}</h4>
+
 								<button class="btn btn-primary" role="button" data-toggle="modal" data-target=".bd-example-modal-lg">editar</button>
 								<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
 									excluir
 								</button>
 
-
+		{% endif %}
 							</section>
 						</section>
 					</section>

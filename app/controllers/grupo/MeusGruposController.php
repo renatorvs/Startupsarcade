@@ -21,12 +21,13 @@ class MeusGruposController extends ContainerController {
 		$grupoAll = CategoriaGrupo::CategoriaGrupoAll();
 
 		$meusGrupos = Grupo::meusGrupos(Session::get('USUARIO_ID'));
-
+		//debug($meusGrupos);
 		$this->view([
 			'title' => 'SA | Grupos startup',
 			'meusGrupos' => $meusGrupos,
 			'listEstados' => Estado::listEstados(),
 			'grupoAll' => $grupoAll,
+			'usuario_id' => Session::get('USUARIO_ID'),
 
 			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
 			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
@@ -179,9 +180,9 @@ class MeusGruposController extends ContainerController {
 		$pn->setPn_projecao_financeira($v->pn_projecao_financeira);
 		$pn->setPn_publico_alvo($v->pn_publico_alvo);
 		$pn->setPn_grupo_id($v->pn_grupo_id);
-		$pn->addPrivadoMensagemLink();
+		$pn->addPlanoDeNegocios();
 
-		redirecionar('\meusGrupos\informacoes\$v->pn_grupo_id');
+		redirecionar("/meusGrupos/informacoes/$v->pn_grupo_id");
 
 	}
 
@@ -194,13 +195,14 @@ class MeusGruposController extends ContainerController {
 		}
 
 		$v = Validate::validate([
+			'pn_id' => 'integer',
 			'pn_compreensao_de_mercado' => 'string',
 			'pn_acompanhamento' => 'string',
 			'pn_estrategias_de_venda' => 'string',
 			'pn_projecao_financeira' => 'string',
 			'pn_captacao_fundos_investimento' => 'string',
 			'pn_grupo_id' => 'integer',
-			'pn_publico_alvo' => 'integer',
+			'pn_publico_alvo' => 'string',
 
 		]);
 
@@ -213,8 +215,36 @@ class MeusGruposController extends ContainerController {
 		$pn->setPn_projecao_financeira($v->pn_projecao_financeira);
 		$pn->setPn_publico_alvo($v->pn_publico_alvo);
 		$pn->setPn_grupo_id($v->pn_grupo_id);
+		$pn->setPn_id($v->pn_id);
+		$pn->updateplanoDeNegocios();
 
-		redirecionar('\meusGrupos\informacoes\$v->pn_grupo_id');
+		redirecionar("/meusGrupos/informacoes/$v->pn_grupo_id");
+
+	}
+
+	public function gruposconvites($gr_id) {
+		if (Session::get('USUARIO_ID')) {
+			Session::get('US_FOTO');
+			Session::get('US_NOME');
+		} else {
+			redirecionar("/");
+		}
+		$grupoAll = CategoriaGrupo::CategoriaGrupoAll();
+
+		$meusGrupos = Grupo::meusGruposConvites(Session::get('USUARIO_ID'));
+
+		$this->view([
+			'title' => 'SA | Grupos startup',
+			'meusGrupos' => $meusGrupos,
+			'listEstados' => Estado::listEstados(),
+			'grupoAll' => $grupoAll,
+
+			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
+			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
+			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
+			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
+
+		], 'grupo.gruposconvites');
 
 	}
 

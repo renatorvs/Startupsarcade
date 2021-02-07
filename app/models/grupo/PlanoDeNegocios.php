@@ -80,10 +80,26 @@ class PlanoDeNegocios {
 		$this->pn_grupo_id = $pn_grupo_id;
 	}
 
-	public function addPrivadoMensagemLink() {
+	public function addPlanoDeNegocios() {
 		$banco = new Banco();
 
 		return $banco->query("INSERT INTO plano_de_negocios(pn_compreensao_de_mercado, pn_acompanhamento,pn_estrategias_de_venda,pn_projecao_financeira, pn_captacao_fundos_investimento, pn_grupo_id, pn_publico_alvo) VALUES  ( :pn_compreensao_de_mercado, :pn_acompanhamento, :pn_estrategias_de_venda, :pn_projecao_financeira, :pn_captacao_fundos_investimento, :pn_grupo_id, :pn_publico_alvo) ", array(
+			":pn_grupo_id" => $this->getPn_grupo_id(),
+			":pn_compreensao_de_mercado" => $this->getPn_compreensao_de_mercado(),
+			":pn_acompanhamento" => $this->getPn_acompanhamento(),
+			":pn_estrategias_de_venda" => $this->getPn_estrategias_de_venda(),
+			":pn_projecao_financeira" => $this->getPn_projecao_financeira(),
+			":pn_captacao_fundos_investimento" => $this->getPn_captacao_fundos_investimento(),
+			":pn_publico_alvo" => $this->getPn_publico_alvo(),
+		));
+
+	}
+
+	public function updateplanoDeNegocios() {
+		$banco = new Banco();
+
+		return $banco->query("UPDATE plano_de_negocios  SET  pn_compreensao_de_mercado = :pn_compreensao_de_mercado, pn_acompanhamento = :pn_acompanhamento, pn_estrategias_de_venda = :pn_estrategias_de_venda, pn_projecao_financeira = :pn_projecao_financeira, pn_captacao_fundos_investimento = :pn_captacao_fundos_investimento, pn_grupo_id = :pn_grupo_id, pn_publico_alvo = :pn_publico_alvo WHERE pn_id = :pn_id ", array(
+			":pn_id" => $this->getPn_id(),
 			":pn_grupo_id" => $this->getPn_grupo_id(),
 			":pn_compreensao_de_mercado" => $this->getPn_compreensao_de_mercado(),
 			":pn_acompanhamento" => $this->getPn_acompanhamento(),

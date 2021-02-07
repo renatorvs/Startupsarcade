@@ -32,13 +32,11 @@
 
 
               <h4 class ="text-dark" align="center">   Grupos  </h4>
-              <h5 class ="text-danger" align="center">              {{  messagem('checkgrupo') | raw }}
- </h5>
-
- <h5 class ="text-success" align="center">              {{  messagem('conviteenviado') | raw }}
- </h5>
               {% for grupo in getdadosGrupocategoria %}
-              
+
+
+
+
               <section class="card"> 
                 <section class="card-body">
 
@@ -57,30 +55,41 @@
                         {% if grupo.pn_id %} 
                           <a href="\grupos\informacoes\{{grupo.gr_id}}" class="text-primary">Grupo informaçoes</a>
                         {% endif %}
- 
 
                       </a> 
                     </section>
                   </li>
                 </ul>
-  <!--   <a hr  ef="\grupo\chat\{{grupo.gr_id}}" class="btn btn-success md" >visitar</a>
-                     
-                        <input type="hidden" name="gu_accept" value="3">
-                        <button type="submit"  class="btn btn-danger" >Cancelar pedido </button> -->
                 <section align="center" class="group-button">
                   <form action="\grupos\aderirgrupo" method="post">
                   <input type="hidden" name="gr_private" value="{{grupo.gr_private}}">
                   <input type="hidden" name="gu_grupo_id" value="{{grupo.gr_id}}">
                   <input type="hidden" name="catgr_id" value="{{catgr_id}}">
-                
-                       
+                  {% if grupo.gr_private == 1 %} 
+                      {% if grupo.gu_accept == 2 %}
+                        <a href="\grupo\chat\{{grupo.gr_id}}" class="btn btn-success md" >visitar</a>
+                      
+                      {% elseif grupo.gu_accept == 1 %}
+                         <input type="hidden" name="gu_accept" value="3">
+                        <button type="submit"  class="btn btn-danger" >Cancelar pedido </button>
+                      {% elseif grupo.gu_accept == 0 %}
                        <input type="hidden" name="gu_accept" value="1">
                         <button class="btn btn-primary" type="submit"  >Aderir grupo</button>
-                        
-                  </form>
-                </section>
-              
+                      {% endif %}
+                  {% else %}
+                        {% if grupo.gu_accept == 2 %}
+                        <a   href="\grupo\chat\{{grupo.gr_id}}" class="btn btn-success">visitar</a>
+                        {% else %}
+                         <input type="hidden" name="gu_accept" value="2">
+                        <button class="btn btn-primary" type="submit" >Aderiraa grupo</button>
+                      {% endif %}
+                    {% endif %}
 
+
+
+                  </form>
+
+                </section>
               </section>
             </section>
             <br>
