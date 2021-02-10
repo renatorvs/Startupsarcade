@@ -21,7 +21,7 @@ class MeusGruposController extends ContainerController {
 		$grupoAll = CategoriaGrupo::CategoriaGrupoAll();
 
 		$meusGrupos = Grupo::meusGrupos(Session::get('USUARIO_ID'));
-		//debug($meusGrupos);
+		//	debug($meusGrupos);
 		$this->view([
 			'title' => 'SA | Grupos startup',
 			'meusGrupos' => $meusGrupos,
@@ -229,15 +229,16 @@ class MeusGruposController extends ContainerController {
 		} else {
 			redirecionar("/");
 		}
-		$grupoAll = CategoriaGrupo::CategoriaGrupoAll();
+		//$grupoAll = CategoriaGrupo::CategoriaGrupoAll();
 
-		$meusGrupos = Grupo::meusGruposConvites(Session::get('USUARIO_ID'));
+		$meusGruposConvites = Grupo::meusGruposConvites(Session::get('USUARIO_ID'));
 
+		// debug(Session::get('USUARIO_ID'));
 		$this->view([
 			'title' => 'SA | Grupos startup',
-			'meusGrupos' => $meusGrupos,
+			'meusGruposConvite' => $meusGruposConvites,
 			'listEstados' => Estado::listEstados(),
-			'grupoAll' => $grupoAll,
+			'grupoAll' => $meusGruposConvites,
 
 			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
 			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),

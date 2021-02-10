@@ -114,7 +114,7 @@ class PlanoDeNegocios {
 	public static function getpropostaGrupo($gr_id) {
 		$banco = new Banco();
 
-		return $banco->select("SELECT * from  grupocategorias WHERE pn_grupo_id = :pn_grupo_id", array(
+		return $banco->select("SELECT * from  plano_de_negocios WHERE pn_grupo_id = :pn_grupo_id", array(
 			":pn_grupo_id" => $gr_id,
 		));
 

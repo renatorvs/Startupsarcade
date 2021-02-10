@@ -172,8 +172,8 @@ class Grupo {
 
 		$banco->query("INSERT INTO grupoadmin( adm_user_id, adm_grupo_id) VALUES(:adm_user_id, :adm_grupo_id) ;",
 			array(
-				":adm_user_id" => $this->getGu_accept(),
-				":adm_grupo_id" => $this->getGu_grupo_id(),
+				":adm_user_id" => $adm_user_id,
+				":adm_grupo_id" => $adm_grupo_id,
 			));
 
 	}
@@ -194,9 +194,9 @@ class Grupo {
 	public static function meusGrupos($gu_user_id) {
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM `usuariogrupos` WHERE adm_user_id = :adm_user_id and gu_accept = 2 GROUP BY gr_id ",
+		return $banco->select("SELECT * FROM `usuariogrupos` WHERE gu_user_id = :gu_user_id and gu_accept = 2 GROUP BY gr_id ",
 			array(
-				":adm_user_id" => $gu_user_id,
+				":gu_user_id" => $gu_user_id,
 			));
 	}
 
@@ -231,18 +231,20 @@ class Grupo {
 	public static function meusGruposConvites($gu_user_id) {
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM usuariogrupos WHERE gu_user_id = :gu_user_id  And gu_accept = 1",
+		return $banco->select("SELECT * FROM usuariogrupos WHERE gu_accept = 1 and adm_user_id = 2 or adm_sub_user_id = 2",
 			array(
-				":gu_user_id" => $gu_user_id,
+				":adm_user_id" => $gu_user_id,
+				":adm_sub_user_id" => $gu_user_id,
 			));
 	}
 
 	public static function updateconvite($gu_user_id, $gu_grupo_id) {
 		$banco = new Banco();
 
-		return $banco->select("UPDATE grupo_usuario SET gu_accept = :gu_accept,  WHERE  gu_grupo_id = :gu_grupo_id",
+		return $banco->select("UPDATE grupo_usuario SET gu_accept = :gu_accept  WHERE  gu_user_id = :gu_user_id  and  gu_grupo_id = :gu_grupo_id",
 			array(
 				":gu_grupo_id" => $gu_grupo_id,
+				":gu_user_id" => $gu_user_id,
 			));
 	}
 

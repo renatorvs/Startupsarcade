@@ -24,62 +24,67 @@
       <hr class="m-1">  
       <section class="row">
         <section class="col-xl-12 col-md-12 mb-4">
-          Compartilhe ideias
+       <!--    Compartilhe ideias
           Tudo começa com uma ideia ! 
+        -->
+        ssssss
 
-
-
-          <article class="card border-left-success shadow h-100 py-2">
-            <section class="card-body">
-              
-                  
-              <hr>
-              {% for meusGrupo in meusGrupos %}
-              
+        <article class="card border-left-success shadow h-100 py-2">
+          <section class="card-body">
+            <h4 class="text-primary" align="center">Pedido para entradar em seus grupos</h4>
             
+            <hr>
+            {% for convite in meusGruposConvite %}
+            
+            sss
 
             <section class="card"> 
               <section class="card-body">
-  
+                
                 <ul class="list-unstyled" class="mr-1">
                   <li class="media my-4">
                     <figure>
                       <img src="../../assets/img/outline-ballot-24px.svg" class="mr-1" >
                     </figure>
 
-                    {{meusGrupo.gu_accept}}
+                    {{convite.gu_accept}}
                     <section class="media-body"> 
-                      <h4 class="mt-0 mb-1"> {{meusGrupo.gr_nome}}</h4>
-                      <h5 class="mt-0 mb-1 text-primary">{{meusGrupo.cg_nome}}</h5>
-                     Membros(10) | {{meusGrupo.gr_cidade}}, {{meusGrupo.gr_estado}} {{meusGrupo.gr_pais}}<br>
-                        <a href="\meusgrupos\informacoes\{{meusGrupo.gr_id}}" class="text-primary">Grupo informaçoes</a>
+                      <h4 class="mt-0 mb-1"> {{convite.gr_nome}}</h4>
+                      <h5 class="mt-0 mb-1 text-primary">{{convite.cg_nome}}</h5>
+                      Membros(10) | {{convite.gr_cidade}}, {{convite.gr_estado}} {{convite.gr_pais}}<br>
+                      <a href="\meusgrupos\informacoes\{{convite.gr_id}}" class="text-primary">Grupo informaçoes</a>
                     </a> 
                   </section>
                 </li>
               </ul>
               <section align="center" class="group-button">
- <form action="\grupos\aderirgrupo" method="post">
-                  <input type="hidden" name="gr_private" value="{{meusGrupo.gr_private}}">
-                  <input type="hidden" name="gu_grupo_id" value="{{meusGrupo.gr_id}}">
-                  <input type="hidden" name="catgr_id" value="{{meusGrupo.catgr_id}}">
-                         <input type="hidden" name="gu_accept" value="3">
-                        <button type="submit"  class="btn btn-danger" >Cancelar pedido </button>
-</form><form action="\grupos\aderirgrupo" method="post">
-                  <input type="hidden" name="gr_private" value="{{meusGrupo.gr_private}}">
-                  <input type="hidden" name="gu_grupo_id" value="{{meusGrupo.gr_id}}">
-                  <input type="hidden" name="catgr_id" value="{{meusGrupo.catgr_id}}">
-                         <input type="hidden" name="gu_accept" value="4">
-                        <button type="submit"  class="btn btn-danger" >Cancelar pedido </button>
-</form>
-              </section>
+               <form action="\pedidogrupo\aceitar" method="post" style="display: inline;">
+                <input type="hidden" name="redirect" value="2">
+                <input type="hidden" name="gu_grupo_id" value="{{convite.gr_id}}">
+                <input type="hidden" name="catgr_id" value="{{convite.catgr_id}}">
+                <input type="hidden" name="gu_accept" value="3">
+                <button type="submit"  class="btn btn-danger" >Cancelar </button>
+              </form>
+              
+              
+
+               <form action="\pedidogrupo\cancelar" method="post" style="display: inline;">
+                <input type="hidden" name="redirect" value="2">
+                <input type="hidden" name="gu_grupo_id" value="{{convite.gr_id}}">
+                <input type="hidden" name="gu_user_id" value="{{convite.gu_user_id}}">
+                <input type="hidden" name="catgr_id" value="{{convite.catgr_id}}">
+                <input type="hidden" name="gu_accept" value="4">
+                <button type="submit"  class="btn btn-success" >aceitar</button>
+              </form>
             </section>
           </section>
-          <br>
-          {% endfor %}
         </section>
-      </article>
-    </section>
-  </section> 
+        <br>
+        {% endfor %}
+      </section>
+    </article>
+  </section>
+</section> 
 
 </section>
 </main>

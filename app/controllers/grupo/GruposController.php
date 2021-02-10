@@ -96,9 +96,8 @@ class GruposController extends ContainerController {
 		$grupo->setGu_user_id(Session::get('USUARIO_ID'));
 		$grupo->setGu_grupo_id($getLastGrupo[0]['gr_id']);
 		$grupo->setGu_accept(2);
-
-		$grupo->addgrupo_usuario();
 		$grupo->grupoadmin(Session::get('USUARIO_ID'), $getLastGrupo[0]['gr_id']);
+		$grupo->addgrupo_usuario();
 
 		redirecionar("/meusgrupos/informacoes/" . $getLastGrupo[0]['gr_id']);
 
@@ -124,43 +123,22 @@ class GruposController extends ContainerController {
 		]);
 
 		$checkuser = Grupo::checkgrupos(Session::get('USUARIO_ID'), $v->gu_grupo_id);
-		//debug($checkuser);
 
-		//cencela pedido
-		if ($v->gu_accept == 3) {
-			Grupo::cancelaPedidoGrupo(Session::get('USUARIO_ID'), $v->gu_grupo_id);
-			if ($v->redirect == 1) {
-				redirecionar("/grupos/grupospendentes");
+		$grupo->setGr_private($v->gr_private);
+		$grupo->setGu_user_id(Session::get('USUARIO_ID'));
+		$grupo->setGu_grupo_id($v->gu_grupo_id);
+		$grupo->setGu_accept($v->gu_accept);
 
-			}
-
-			redirecionar("/grupos/grupo/$v->catgr_id");
-
-			// atuaçizar pedido
-		} else if ($v->gu_accept == 4) {
-
-			Grupo::updateconvite(Session::get('USUARIO_ID'), $v->gu_grupo_id);
-
+		if ($checkuser[0] != null) {
+			flash(['checkgrupo' => "Você já mandou convite para esse grupo"]);
 			redirecionar("/grupos/grupo/$v->catgr_id");
 		} else {
-
-			$grupo->setGr_private($v->gr_private);
-			$grupo->setGu_user_id(Session::get('USUARIO_ID'));
-			$grupo->setGu_grupo_id($v->gu_grupo_id);
-			$grupo->setGu_accept($v->gu_accept);
-
-			if ($checkuser[0] != null) {
-				flash(['checkgrupo' => "Você já mandou convite para esse grupo"]);
-				redirecionar("/grupos/grupo/$v->catgr_id");
-			} else {
-				$grupo->addgrupoMembro();
-				flash(['conviteenviado' => "Pedido enviado "]);
-
-			}
-
-			redirecionar("/grupos/grupo/$v->catgr_id");
+			$grupo->addgrupoMembro();
+			flash(['conviteenviado' => "Pedido enviado "]);
 
 		}
+
+		redirecionar("/grupos/grupo/$v->catgr_id");
 
 	}
 
