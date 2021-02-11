@@ -58,17 +58,19 @@
                 </li>
               </ul>
               <section align="center" class="group-button">
-               <form action="\pedidogrupo\aceitar" method="post" style="display: inline;">
+               <form action="\pedidogrupo\cancelar " method="post" style="display: inline;">
                 <input type="hidden" name="redirect" value="2">
                 <input type="hidden" name="gu_grupo_id" value="{{convite.gr_id}}">
                 <input type="hidden" name="catgr_id" value="{{convite.catgr_id}}">
                 <input type="hidden" name="gu_accept" value="3">
+               <input type="hidden" name="gu_user_id" value="{{convite.gu_user_id}}">
+
                 <button type="submit"  class="btn btn-danger" >Cancelar </button>
               </form>
               
               
 
-               <form action="\pedidogrupo\cancelar" method="post" style="display: inline;">
+               <form action="\pedidogrupo\aceitar" method="post" style="display: inline;">
                 <input type="hidden" name="redirect" value="2">
                 <input type="hidden" name="gu_grupo_id" value="{{convite.gr_id}}">
                 <input type="hidden" name="gu_user_id" value="{{convite.gu_user_id}}">

@@ -233,7 +233,7 @@ class MeusGruposController extends ContainerController {
 
 		$meusGruposConvites = Grupo::meusGruposConvites(Session::get('USUARIO_ID'));
 
-		// debug(Session::get('USUARIO_ID'));
+		// :debug($meusGruposConvites);
 		$this->view([
 			'title' => 'SA | Grupos startup',
 			'meusGruposConvite' => $meusGruposConvites,

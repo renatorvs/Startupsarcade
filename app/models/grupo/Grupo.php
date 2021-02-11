@@ -241,7 +241,7 @@ class Grupo {
 	public static function updateconvite($gu_user_id, $gu_grupo_id) {
 		$banco = new Banco();
 
-		return $banco->select("UPDATE grupo_usuario SET gu_accept = :gu_accept  WHERE  gu_user_id = :gu_user_id  and  gu_grupo_id = :gu_grupo_id",
+		return $banco->query("UPDATE grupo_usuario SET gu_accept = 2   WHERE  gu_user_id = :gu_user_id  and  gu_grupo_id = :gu_grupo_id",
 			array(
 				":gu_grupo_id" => $gu_grupo_id,
 				":gu_user_id" => $gu_user_id,
@@ -343,13 +343,13 @@ class Grupo {
 
 	}
 
-	public static function cancelaPedidoGrupo($user_id, $gu_grupo_id) {
+	public static function cancelaPedidoGrupo($gu_user_id, $gu_grupo_id) {
 
 		$banco = new Banco();
 
 		return $banco->query("DELETE FROM grupo_usuario WHERE gu_user_id = :gu_user_id AND gu_grupo_id = :gu_grupo_id ", array(
 			":gu_grupo_id" => $gu_grupo_id,
-			":gu_user_id" => $user_id,
+			":gu_user_id" => $gu_user_id,
 
 		));
 
