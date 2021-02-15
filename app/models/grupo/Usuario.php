@@ -131,6 +131,16 @@ class Usuario {
 
 	}
 
+	public static function geUsuariosgrupos($gr_id) {
+
+		$banco = new Banco();
+
+		return $banco->select("SELECT * FROM usuariogrupos WHERE gr_id = :gr_id LIMIT 1 ", array(
+			":gr_id" => $gr_id,
+		));
+
+	}
+
 	public function adicionaUsuario() {
 
 		$banco = new Banco();

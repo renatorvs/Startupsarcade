@@ -6,11 +6,12 @@ use app\models\grupo\CategoriaGrupo;
 use app\models\grupo\Estado;
 use app\models\grupo\Grupo;
 use app\models\grupo\PlanoDeNegocios;
+use app\models\grupo\Usuario;
 use app\session\Session;
 use app\validate\Imagem;
 use app\validate\Validate;
 
-class MeusGruposController extends ContainerController {
+class MeusgruposController extends ContainerController {
 	public function grupos() {
 		if (Session::get('USUARIO_ID')) {
 			Session::get('US_FOTO');
@@ -151,6 +152,37 @@ class MeusGruposController extends ContainerController {
 
 	}
 
+	public function grupousuarios($gr_id) {
+		if (Session::get('USUARIO_ID')) {
+			Session::get('US_FOTO');
+			Session::get('US_NOME');
+		} else {
+			redirecionar("/");
+		}
+
+		$dadosgrupo = Usuario::geUsuariosgrupos($gr_id->parameter);
+		$hadadosgrupo = true;
+		if ($dadosgrupo[0] == null) {
+			$hadadosgrupo = false;
+		}
+
+		$grupo = new Grupo();
+		//debug($dadosgrupo);
+		$this->view([
+			'title' => $dadosgrupo['gr_nome'],
+			'cg_nome' => $dadosgrupo[0]['cg_nome'],
+			'grupo_nome' => $dadosgrupo[0]['gr_nome'],
+			'getGrupoCategoria' => $getGrupoCategoria,
+			'listEstados' => Estado::listEstados(),
+			'meusGrupos' => $dadosgrupo,
+			'grupo_id' => $gr_id->parameter,
+			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
+			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
+
+		], 'grupo.grupousuarios');
+
+	}
+
 	public function meusgruposinfostore() {
 		if (Session::get('USUARIO_ID')) {
 			Session::get('US_FOTO');
@@ -246,6 +278,36 @@ class MeusGruposController extends ContainerController {
 			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
 
 		], 'grupo.gruposconvites');
+
+	}
+
+	public function admin($gr_id) {
+		if (Session::get('USUARIO_ID')) {
+			Session::get('US_FOTO');
+			Session::get('US_NOME');
+		} else {
+			redirecionar("/");
+		}
+		//$grupoAll = CategoriaGrupo::CategoriaGrupoAll();
+
+		$meusGruposConvites = Grupo::meusGruposConvites(Session::get('USUARIO_ID'));
+
+		// :debug($meusGruposConvites);
+
+	}
+
+	public function bloquear($gr_id) {
+		if (Session::get('USUARIO_ID')) {
+			Session::get('US_FOTO');
+			Session::get('US_NOME');
+		} else {
+			redirecionar("/");
+		}
+		//$grupoAll = CategoriaGrupo::CategoriaGrupoAll();
+
+		$meusGruposConvites = Grupo::meusGruposConvites(Session::get('USUARIO_ID'));
+
+		// :debug($meusGruposConvites);
 
 	}
 
