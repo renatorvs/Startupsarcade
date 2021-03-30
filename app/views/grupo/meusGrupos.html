@@ -1,26 +1,36 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-	<meta charset="UTF-8">
-	<meta name="description" content="Empresa vagas">
-	<meta name="keywords" content="Empresa vagas">
-	<meta name="author" content="onclickup">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap-reboot.css">
-	<link rel="stylesheet" href="../../assets/css/layout/layout.css">
-	<link rel="stylesheet" href="../../assets/css/layout/footer.css">
-	<link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-	<title> SA | meus grupos</title>
-	<link href="../../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="description" content="Empresa vagas">
+  <meta name="keywords" content="Empresa vagas">
+  <meta name="author" content="onclickup">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap-reboot.css">
+  <link rel="stylesheet" href="../../assets/css/layout/layout.css">
+  <link rel="stylesheet" href="../../assets/css/layout/footer.css">
+  <link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <title>starstup arcade | Meus grupos
+</title>
+  <link href="../../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
 </head>
 <body id="page-top">
-	<header>
-		{{ include('layout/nav-header-empresa.html') }}
-	</header>
-	<main>
-		{{ include('layout/nav-dashboard-empresa.html') }}
-		<section class="main-experi" >
+  <header>
+      {% if pais_id == 1 %}
+        {{ include('layout/nav-header-portugues.html') }}
+                        {% else %}
+        {{ include('layout/nav-header-ingles.html') }}
+                     {% endif %}
+
+
+  </header>
+  <main>
+      {% if pais_id == 1 %}
+        {{ include('layout/nav-dashboard-portugues.html') }}
+      {% else %}
+          {{ include('layout/nav-dashboard-ingles.html') }}
+      {% endif %}		<section class="main-experi" >
 			<hr class="m-1">  
 			<section class="row">
 				<section class="col-xl-12 col-md-12 mb-4">

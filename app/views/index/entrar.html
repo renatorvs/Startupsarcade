@@ -34,43 +34,24 @@
 					</figure>
 				</section>
 
-				<nav class="nav-menu d-none d-lg-block">
-					<ul>
-						<li class="drop-down"><a href="">sobre</a>
-							<ul>
-								<li><a href="#about">About Us</a></li>
-								<li><a href="#testimonials">Testimonials</a></li>
-								<li class="drop-down"><a href="#">Deep Drop Down</a>
-									<ul>
+			        <nav class="nav-menu d-none d-lg-block">
+          <ul>
+           <li><a href="#services">{{navmenu_1}}</a></li>
 
-										<li><a href="#">Deep Drop Down 5</a></li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-						<li><a href="#services">Serviços</a></li>
-						<li><a href="#portfolio">Portfolio</a></li>
-						<li><a href="#pricing">Para empresas</a></li>
-						<li class="drop-down"><a href="#">Inscreva-se</a>
-							<ul>
+              <li><a href="#portfolio">{{navmenu_2}}</a></li>
+            <li><a href="/usuario/show">{{navmenu_3}}</a></li>
+            <li><a href="/entrar/show">{{navmenu_4}}</a></li>
+            <li><a href="#contact">{{navmenu_5}}</a></li>
 
-								<li><a href="/cadastroempresa/show">Pessoa juridica</a></li>
-								<li><a href="/cadastrocandidato/show">Pessoa fisica</a></li>
-							</ul>
-						</li>
-						<li><a href="/entrar/show">Entrar</a></li>
-						<li><a href="#contact">Contato</a></li>
+          </ul>
+        </nav>
 
-					</ul>
-				</nav>
-
-				<section class="header-social-links">
-					<a href="#" class="twitter"><i class="icofont-twitter"></i></a>
-					<a href="#" class="facebook"><i class="icofont-facebook"></i></a>
-					<a href="#" class="instagram"><i class="icofont-instagram"></i></a>
-					<a href="#" class="linkedin"><i class="icofont-linkedin"></i></i></a>
-				</section>
-
+        <section class="header-social-links">
+          <a href="{{nav_redesocial_1}}" class="twitter"><i class="icofont-twitter"></i></a>
+          <a href="{{nav_redesocial_2}}" class="facebook"><i class="icofont-facebook"></i></a>
+          <a href="{{nav_redesocial_3}}" class="instagram"><i class="icofont-instagram"></i></a>
+          <a href="{{nav_redesocial_4}}" class="linkedin"><i class="icofont-linkedin"></i></i></a>
+        </section>
 			</section>
 		</section>
 	</header><!-- End Header -->
@@ -82,27 +63,28 @@
 
 				<section class="col-sm-6 mt-5 ">
 					<section class="card-body" >
-						<h4>Efetue o login</h4>
-						<strong>	Não tem cadastro ? <a href="/cadastrocandidato/show">  cadastra-se </a></strong>
+						<h4>{{login_h4}}</h4>
+
+						<strong>	{{login_a_strong}}  ? <a href="/cadastrocandidato/show"> {{login_a_cadastra_se}}</a></strong>
 						<hr>
 
 						{{  messagem('login') | raw }}
 
 						<form action="/entrar/store" method="post" >
 							<section class="form-group">
-								usuario1@gmail.com
-								usuario@gmail.com
-								nato.re.vieira@gmail.com
-							<label for="exampleInputEmail1">Endereço de email ou nome de usuario</label>
-								<input type="email" name="user_email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Seu email ou user name">
-								<small id="emailHelp" class="form-text text-muted">Nunca vamos compartilhar seu email, com ninguém.</small>
+								usuario1@gmail.com <br>
+								usuario@gmail.com <br>
+								nato.re.vieira@gmail. <br>
+							<label for="exampleInputEmail1">{{login_email}}:</label>
+								<input type="email" name="user_email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="{{login_email_reploceholder}} ">
+								<small id="emailHelp" class="form-text text-muted">{{email_texto}}</small>
 							</section>
 							<section class="form-group">
-								<label for="exampleInputPassword1">Senha</label>
+								<label for="exampleInputPassword1">{{login_senha}} </label>
 								<input type="password" name="user_senha" class="form-control" id="exampleInputPassword1" placeholder="Senha">
 							</section>
-							<button type="submit" class="btn btn-primary btn-sm">Entrar</button><br>
-							<strong>Entra com:</strong><br>
+							<button type="submit" class="btn btn-primary btn-sm">{{button_entrar}}</button><br>
+							<strong>{{entrar_com}} </strong><br>
 
 							<a href="" class="btn btn-primary btn-circle btn-lg" > <i class="fab fa-facebook-f"> 	</i>	</a>
 							<a href="" class="btn btn-danger btn-circle btn-lg" > <i class="fab fa-google fa-fw"> 	</i>	</a>
@@ -113,8 +95,8 @@
 				<section class="col-sm-6 mt-5">
 					<section class="card-body mt-5" >
 						<section class="alert alert-success" role="alert">
-							<h4 class="alert-heading">Entre, assim  poder ultilizar nossa plataforma</h4>
-							<p>Você podera explorar serviços, concursos, dicas, empregos e estagios. </p>
+							<h4 class="alert-heading">{{card_alert_h4}} </h4>
+							<p>{{card_alert_p}} </p>
 						</p>
 					</section>
 				</section>

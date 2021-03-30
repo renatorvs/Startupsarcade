@@ -1,6 +1,7 @@
 <?php
 use app\classes\Flash;
 use app\models\usuario\Notifications;
+use app\session\Session;
 
 function debug($dump) {
 
@@ -23,6 +24,22 @@ function debug($dump) {
 	print '<br>';
 	exit();
 
+}
+
+function getLanguage() {
+
+	$http_accept = substr($_SERVER["HTTP_ACCEPT_LANGUAGE"], 0, 2);
+
+	switch ($http_accept) {
+	case 'en':
+		$linguege = Session::set("PAIS_ID", 2);
+		break;
+	default:
+		$linguege = Session::set("PAIS_ID", 1);
+		break;
+	}
+
+	return $linguage;
 }
 
 function checkParameter($metodoReturn) {

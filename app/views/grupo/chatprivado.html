@@ -16,12 +16,22 @@
      <link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
    </head>
    <body id="page-top">
-     <header>
-       {{ include('layout/nav-header-empresa.html') }}
-           
-     </header>
-     <main>
-      {{ include('layout/nav-dashboard-empresa.html') }}
+<header>
+      {% if pais_id == 1 %}
+
+        {{ include('layout/nav-header-portugues.html') }}
+                        {% else %}
+        {{ include('layout/nav-header-ingles.html') }}
+                     {% endif %}
+
+
+  </header>
+  <main>
+      {% if pais_id == 1 %}
+        {{ include('layout/nav-dashboard-portugues.html') }}
+      {% else %}
+          {{ include('layout/nav-dashboard-ingles.html') }}
+      {% endif %}
      
       <section class="container">
         <form action="/chatservico/chatservicostore" method="post">

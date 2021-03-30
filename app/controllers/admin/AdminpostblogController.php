@@ -85,7 +85,6 @@ class AdminpostblogController extends ContainerController {
 		$blog->setPost_description($val->blog_text);
 		$blog->setCat_id(0);
 		$blog->setTipo_post_id(5);
-		$blog->setPost_ender_id(0);
 		$blog->setUser_id($session_id);
 
 		$blog->adicionaPost();

@@ -14,12 +14,20 @@
 <title> SA | meus grupos</title>
 <link href="../../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
 </head>
-<body id="page-top">
-<header>
-  {{ include('layout/nav-header-empresa.html') }}
-</header>
-<main>
-  {{ include('layout/nav-dashboard-empresa.html') }}
+<body id="page-top">    <header>
+      {% if pais_id == 1 %}
+                      {{ include('layout/nav-header-portugues.html') }}
+                {% else %}
+                    {{ include('layout/nav-header-ingles.html') }}
+                {% endif %}
+
+  </header>
+  <main>
+      {% if pais_id == 1 %}
+        {{ include('layout/nav-dashboard-portugues.html') }}
+      {% else %}
+          {{ include('layout/nav-dashboard-ingles.html') }}
+      {% endif %}
   <section class="main-experi" >
     <hr class="m-1">  
     <section class="row">

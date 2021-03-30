@@ -8,6 +8,7 @@ class TermosController extends ContainerController {
 	public function show() {
 
 		$this->view([
+			'pais_id' => Session::get("PAIS_ID"),
 
 		], 'index.termos');
 	}

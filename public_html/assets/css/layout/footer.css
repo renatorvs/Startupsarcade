@@ -1,9 +1,9 @@
 footer {
 	margin-top: -16px;
-	    background-color: #37474f;
+	background-color: #37474f;
 	color: white;
- position:relative;
-clear: both; 
+ 	
+    bottom:0;
     width:100%;
 }
 

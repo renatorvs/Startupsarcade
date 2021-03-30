@@ -71,6 +71,23 @@ class Mensagem {
 
 			));
 	}
+	public static function addconversaprivate($cp_remetente, $cp_destinatario) {
+		$banco = new Banco();
+
+		return $banco->query("INSERT INTO `conversaprivate`( `cp_remetente`, `cp_destinatario`) VALUES ( `cp_remetente`, `cp_destinatario`)",
+			array(
+				":cp_remetente" => $cp_remetente,
+				":cp_destinatario" => $cp_destinatario,
+
+			));
+	}
+
+	public static function getconversaprivate() {
+		$banco = new Banco();
+
+		return $banco->select("SELECT * FROM conversaprivate  group by  cp_id desc");
+	}
+
 	public static function chatGrupoMensagem($gml_grupo_id) {
 		$banco = new Banco();
 
@@ -86,6 +103,17 @@ class Mensagem {
 		return $banco->select("SELECT * FROM chatprivadomensagem WHERE mdl_user_id = :mdl_user_id ",
 			array(
 				":mdl_user_id" => $mdl_user_id,
+
+			));
+	}
+
+	public static function getchatPrivadoMensagem($mdl_user_id) {
+		$banco = new Banco();
+
+		return $banco->select("SELECT * FROM chatprivadomensagem WHERE pml_user_remetente_id = :pml_user_remetente_id or pml_user_destinatario_id = :pml_user_destinatario_id  GROUP BY pml_grupo_id",
+			array(
+				":pml_user_remetente_id" => $mdl_user_id,
+				":pml_user_destinatario_id" => $mdl_user_id,
 
 			));
 	}

@@ -16,23 +16,24 @@
   <link href="../../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
 </head>
 <body id="page-top">
-  <header>
-   {% if candidato_session %}
-   {{ include('layout/nav-headercandidato.html') }}
-   {% elseif empresa_session %}
-   {{ include('layout/nav-headerempresa.html') }}
-   {% else  %} 
-   {{ include('layout/nav-header-admin.html') }}
-   {% endif  %}
- </header>
- <main >
-   {% if candidato_session %}
-   {{ include('layout/nav-dashboardcandidado.html') }}
-   {% elseif empresa_session  %}
-   {{ include('layout/nav-dashboardempresa.html') }}  
-   {% else %}
-   {{ include('layout/nav-dashboard-admin.html') }}  
-   {% endif %}
+<header>
+      {% if pais_id == 1 %}
+
+        {{ include('layout/nav-header-portugues.html') }}
+                        {% else %}
+        {{ include('layout/nav-header-ingles.html') }}
+                     {% endif %}
+
+
+  </header>
+  <main>
+      {% if pais_id == 1 %}
+        {{ include('layout/nav-dashboard-portugues.html') }}
+      {% else %}
+          {{ include('layout/nav-dashboard-ingles.html') }}
+      {% endif %}
+     
+
    <section class="main-experi">
     <nav class="nav d-flex justify-content-between">  
      {% for duvidaempresa in  getduvidacategoria %}           

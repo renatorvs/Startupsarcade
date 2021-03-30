@@ -1,0 +1,194 @@
+  
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+  <!-- Sidebar -->
+  <div class="page-wrapper chiller-theme toggled">
+
+    <nav id="sidebar" class="sidebar-wrapper">
+      <div class="sidebar-content">
+        <div class="sidebar-brand">
+          <a href="#"  class="text-black">  <img src="../../../assets/Logotipo/iconelogo.svg"  alt="onclickup logo" class="width=device-width mg-2" style="margin-left:-15px" width="35vm" ></a>
+          <div id="close-sidebar">
+            <i class="fas fa-times"></i>
+          </div>
+        </div>
+       
+        
+        <div class="sidebar-menu">
+          <ul>
+  <li class="sidebar-dropdown" >
+          <a href="#" class="text-black">
+            <img src="../../../assets/img/dica24px.svg">
+            <span class="text-black">Grupos</span>
+          </a>
+          <div class="sidebar-submenu">
+            <ul>
+               <li>
+                <a href="/grupos/categorias"> Explore grupos</a>
+              </li>
+              <li>
+                <a href="/meusgrupos/grupos">Meus grupos</a>
+              </li>
+                  <li>
+                <a href="/grupos/grupospendentes">Grupos pendentes</a>
+              </li>  
+               </li>
+                  <li>
+                <a href="/meusgrupos/gruposconvites">Grupos convites</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+              
+
+            </li>
+            <li class="header-menu">
+            </li>
+            <li>
+              <a href="/blog/create">
+                <img src="../../../assets/img/library_books-24px.svg" >
+                <span class="text-black">Blog Starstup arcade</span>
+              </a>
+            </li>
+        
+
+
+
+      
+      <li>
+        <a href="/empresaduvidas/create">
+         <img src="../../../assets/img/outline-help_outline-24px.svg">
+         <span class="text-black">Duvidas</span>
+       </a>
+     </li>
+
+
+
+    <li class="sidebar-dropdown">
+      <a href="#" class="text-black">
+        <img src="../../../assets/img/config-24px.svg">
+        <span class="text-black">preferencias</span>
+      </a>
+      <div class="sidebar-submenu">
+        <ul>
+          <li>
+            <a href="/entrar/destroy">logout</a>
+          </li>
+          <li>
+            <a href="/senha/create">senhas</a>
+          </li>  
+  <li>
+            <a href="/senha/create">foto</a>
+          </li> 
+          
+        </ul>
+      </div>
+    </li>
+    
+  </ul>
+</div>
+</div>
+
+</nav>
+
+</div>
+
+
+
+
+<!-- End of Sidebar -->
+
+<!-- Content Wrapper -->
+<div id="content-wrapper" class="d-flex flex-column">
+
+  <!-- Main Content -->
+  <div id="content">
+
+    <!-- Topbar -->
+    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+      <!-- Sidebar Toggle (Topbar) -->
+      <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+        <i class="fas fa-bars"></i>
+      </a>
+
+      <!-- Topbar Search -->
+      
+
+
+      
+      <ul class="navbar-nav ml-auto">
+
+        <li class="nav-item dropdown no-arrow d-sm-none">                        
+        </li>
+        <div class="topbar-divider d-none d-sm-block"></div>
+
+
+
+
+            <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="small material-icons" id="color-icons"><img src="../../../assets/img/mail_outline24px.svg"></i> <!-- Counter - Alerts -->
+                <span class="badge badge-success badge-counter"> <span class ="text-success">0</span></span>
+              </a>
+              <!-- Dropdown - Messages -->
+              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+                <h6 class="dropdown-header">
+                  Message Center
+                </h6>
+                
+                {% if NotsMessagem  %}
+
+                {% for NotsMessagems in  NotsMessagem %}           
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="dropdown-list-image mr-3">
+                    <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
+                    <div class="status-indicator bg-success"></div>
+                  </div>
+                  <div class="font-weight-bold">
+                    <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
+                    <div class="small text-gray-500">Emily Fowler · 58m</div>
+                  </div>
+                </a>
+                {% endfor %}
+                {% else  %}
+
+                <center class="text-danger m-3">Não há Mensagens</center>
+
+                {% endif %}
+                
+                
+                <a class="dropdown-item text-center small text-gray-500" href="#">mais Mensagens </a>
+              </div>
+            </li>
+
+          </ul>
+
+        </nav>
+        
+
+        <div class="m-1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

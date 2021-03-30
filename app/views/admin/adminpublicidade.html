@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Empresa vagas">
+  <meta name="keywords" content="Empresa vagas">
+  <meta name="author" content="onclickup">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap-reboot.css">
+  <link rel="stylesheet" href="../../assets/css/layout/layout.css">
+  <link rel="stylesheet" href="../../assets/css/layout/footer.css">
+  <link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <title>starstup arcade | Meus grupos
+</title>
+  <link href="../../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
+</head>
+<body id="page-top">
+  <header>
+      {% if pais_id == 1 %}
+        {{ include('layout/nav-header-portugues.html') }}
+                        {% else %}
+        {{ include('layout/nav-header-ingles.html') }}
+                     {% endif %}
+
+
+  </header>
+  <main>
+      {% if pais_id == 1 %}
+        {{ include('layout/nav-dashboard-portugues.html') }}
+      {% else %}
+          {{ include('layout/nav-dashboard-ingles.html') }}
+      {% endif %}		<section class="main-experi" >
+			<hr class="m-1">  
+			<section class="row">
+				<section class="col-xl-12 col-md-12 mb-4">
+					Compartilhe ideias
+					Tudo começa com uma ideia ! 
+All In One Positivo Union C464A-21 |Por: R$2.319,10| Em até 10x R$ 231,91 sem juros
+
+					<article class="card border-left-success shadow h-100 py-2">
+						<section class="card-body">
+							<section class="modal fade criargrupo-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+								<section class="modal-dialog modal-lg">
+									<section class="modal-content">
+										<section class="card-body">   
+
+											<form class="needs-validation" action="/adminpublicidade/addpublicidade" enctype="multipart/form-data" method ="post">
+												<section class="form-row">
+													
+													<section class="col-md-12 mb-3">
+														<label for="validationCustom081">Nome do produto</label>
+														<input type="text" name="pu_produto" class="form-control" id="validationCustom81" placeholder="Nome do projeto (starstup)" required>
+														<section class="invalid-feedback">
+															produto invalido !
+														</section>  
+													</section>													<section class="col-md-6 mb-3">
+														<label for="validationCustom051">Nome do preco</label>
+														<input type="text" name="pu_preco" class="form-control" id="validationCustom051" placeholder="Nome do projeto (starstup)" required>
+														<section class="invalid-feedback">
+															preco invalido !
+														</section>  
+													</section>	
+
+													<section class="col-md-6 mb-3">
+														<label for="validationCustom085"> parcela</label>
+														<input type="text" name="pu_parcela" class="form-control" id="validationCustom085" placeholder="Nome do projeto (starstup)" required>
+														<section class="invalid-feedback">
+															parcela invalido !
+														</section>  
+													</section>													
+													<section class="col-md-6 mb-3">
+														<label for="validationCustom085"> src</label>
+														<input type="text" name="pu_src" class="form-control" id="validationCustom085" placeholder="Nome do projeto (starstup)" required>
+														<section class="invalid-feedback">
+															parcela invalido !
+														</section>  
+													</section>
+												
+													
+													<section class="col-md-6 mb-3">
+														<section class="form-group">
+															<label for="validationCustom05">Pais</label>
+															<select name="pu_pais" class="form-control" id="validationCustom05" required>
+																<option value="1">BR</option>
+																<option value="2">USA</option>
+															</select>
+														</section>
+													</section>
+													<section class="col-md-6 mb-3">
+														<section class="form-group">
+															<label for="exampleFormControlSelect1">Grupo starstup categoria :</label>
+															<select name="pu_categoria_id" class="form-control" id="exampleFormControlSelect1" required>
+																{% for grupo in categoriaGrupoPublicidade  %}
+																<option value="{{grupo.cg_id}}">{{grupo.cg_nome}}</option>
+																{% endfor %}
+															</select>
+														</section>
+													</section>
+													<section class="col-md-12 mb-3">
+														
+														<label for="validationCustom01">link de filiado</label>
+														<textarea name="pu_link" class="form-control" id="validationCustom01" placeholder="Descriçao do plano de negocio" required></textarea>
+														<section class="invalid-feedback">
+															contato invalido !
+														</section>  
+													</section>
+													
+												</section>
+											
+												
+												<button class="btn btn-primary" type="submit">Criar grupo</button>
+											</form>
+										</section>
+									</section>
+								</section>
+							</section>
+							<h4 class ="text-dark" align="center">  Meus grupos  </h4>
+							<button  type="button" class="btn btn-primary" data-toggle="modal" data-target=".criargrupo-lg">Criar grupo</button>             
+
+							<hr>
+							{% for getPublicidade in getPublicidadeAll %}
+							<section class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+								<section class="modal-dialog modal-lg">
+									<section class="modal-content">
+										<section class="card-body">   
+											<form class="needs-validation" action="/getPublicidades/grupoUsuarioUpdate" enctype="multipart/form-data" method ="post">
+
+
+												<section class="form-row">
+												</h4>
+												<section class="col-md-6 mb-3">
+													<label for="validationCustom01">Nome do projeto (starstup)</label>
+													<input type="hidden" name="gr_id" value="{{getPublicidade.pu_id}}">
+													<input type="text" name="pu_produto" class="form-control" id="validationCustom01" placeholder="Nome do projeto (starstup)" value="{{getPublicidade.pu_produto}}" required>
+													<section class="invalid-feedback">
+														cnpj invalido !
+													</section>  
+												</section>
+											
+											<section class="col-md-6 mb-3">
+													<label for="validationCustom04">parcela </label>
+													<input type="text" name="pu_parcela"  value="{{getPublicidade.pu_parcela}}" class="form-control" id="validationCustom04" placeholder="Cidade"  required>
+													<section class="invalid-feedback">
+														Por favor, informe um estado válido.
+													</section>
+												</section>	
+											
+											<section class="col-md-6 mb-3">
+													<label for="validationCustom04">preco </label>
+													<input type="text" name="pu_preco"  value="{{getPublicidade.pu_preco}}" class="form-control" id="validationCustom04" placeholder="Cidade"  required>
+													<section class="invalid-feedback">
+														Por favor, informe um estado válido.
+													</section>
+												</section>	
+
+													<section class="col-md-6 mb-3">
+														<label for="validationCustom085"> src</label>
+														<input type="text" name="pu_src" value="{{getPublicidade.pu_src}}"  class="form-control" id="validationCustom085" placeholder="Nome do projeto (starstup)" required>
+														<section class="invalid-feedback">
+															parcela invalido !
+														</section>  
+													</section>
+												
+
+											
+												<section class="col-md-6 mb-3">
+													<section class="form-group">
+														<label for="exampleFormControlSelect1">Grupo starstup categoria :</label>
+														<select name="grcat_id" class="form-control" id="exampleFormControlSelect1" required>
+
+															{% for grupo in getPublicidade %}
+															{% if grupo.pu_categoria_id == grupo.cg_id%}
+															<option selected value="{{grupo.cg_id}}">{{grupo.cg_nome}}</option>
+															{% else %}
+															<option value="{{grupo.cg_id}}">{{grupo.cg_nome}}</option>
+															{% endif %}
+
+															{% endfor %}
+														</select>
+													</section>
+												</section>
+
+				
+
+
+											<button class="btn btn-primary" type="submit">Criar grupo</button>
+										</form>
+									</section>
+								</section>
+							</section>
+						</section>
+						<section class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<section class="modal-dialog" role="document">
+								<section class="modal-content">
+									<section class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">Tem certeza que deseja excluir </h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</section>
+									<section class="modal-body">
+										<a  class="btn btn-primary btn-lg btn-block"  href="/grupos/grupoDelete/{{grupo.gr_id}}">excluir</a>
+
+									</section>
+									
+								</section>
+							</section>
+						</section>
+						<section class="card"> 
+							<section class="card-body">
+  
+								<ul class="list-unstyled" class="mr-1">
+									<li class="media my-4">
+										<figure>
+											<img src="../../assets/img/outline-ballot-24px.svg" class="mr-1" >
+										</figure>
+										<section class="media-body"> 
+											<h4 class="mt-0 mb-1"> Produto:{{getPublicidade.pu_produto}}</h4>
+											<h6 class="mt-0 mb-1 text-primary">Preco:{{getPublicidade.pu_preco}}</h6>
+											<h6 class="mt-0 mb-1 text-primary">Parcela:{{getPublicidade.pu_parcela}}</h6>
+											<h6 class="mt-0 mb-1 text-primary">link:{{getPublicidade.pu_link}}</h6>
+											<h6 class="mt-0 mb-1 text-primary">src:{{getPublicidade.pu_src}}</h6>
+										</a> 
+									</section>
+								</li>
+							</ul>
+
+
+
+								<button class="btn btn-primary" role="button" data-toggle="modal" data-target=".bd-example-modal-lg">editar</button>
+								<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+									excluir
+								</button>
+
+							</section>
+						</section>
+					</section>
+					<br>
+					{% endfor %}
+				</section>
+			</article>
+		</section>
+	</section> 
+
+</section>
+</main>
+{{ include('layout/nav-dashboard-end.html') }}
+{{ include('layout/footer.html') }}
+<script src="../../assets/vendor/chart.js/Chart.min.js"></script>
+<script src="../../assets/js/demo/chart-area-demo.js"></script>
+<script src="../../assets/js/demo/chart-pie-demo.js"></script>
+<script src="../../assets/vendor/jquery/jquery.min.js"></script>
+<script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="../../assets/js/sb-admin-2.min.js"></script>
+</body>
+</html>

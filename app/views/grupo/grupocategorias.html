@@ -16,10 +16,21 @@
 </head>
 <body id="page-top">
   <header>
-    {{ include('layout/nav-header-empresa.html') }}
+      {% if pais_id == 1 %}
+        {{ include('layout/nav-header-portugues.html') }}
+                        {% else %}
+        {{ include('layout/nav-header-ingles.html') }}
+                     {% endif %}
+
+
   </header>
   <main>
-    {{ include('layout/nav-dashboard-empresa.html') }}
+      {% if pais_id == 1 %}
+        {{ include('layout/nav-dashboard-portugues.html') }}
+      {% else %}
+          {{ include('layout/nav-dashboard-ingles.html') }}
+      {% endif %}
+
     <section class="main-experi" >
      <hr class="m-1">  
      <section class="row">
@@ -39,11 +50,7 @@
                     <section class="media-body"> 
                       <h4 class="mt-0 mb-1"> <a href="\empresavervaga\show\{{minhavaga.vag_id}}" class=" text-primary "> {{minhavaga.post_titulo}}</a></h4>
                       <h5 class="mt-0 mb-1 text-primary">{{grupo.cg_nome}}</h5>
-                      <!--   <i>  <img width="25" src="../../assets/img/categoria-24px.svg" class="mt-1" > </i>
-                        <strong class="text-success"> {{minhavaga.cat_nome}} </strong>
-                        <i>  <img width="25" src="../../assets/img/localizacao24px.svg" class="mr-0 mt-1" > </i> 
-                        <i>  <img width="25" src="../../assets/img/prestador-24px.svg" class="mr-0 mt-1" > </i> -->
-                        Grupos(20) | Membros(10) 
+                        Grupos({{grupo.quantidade}})
                       </a> 
                     </section>
                   </li>

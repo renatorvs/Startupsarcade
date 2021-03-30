@@ -27,6 +27,7 @@ class GruposMembrosController extends ContainerController {
 			'meusGrupos' => $meusGrupos,
 			'listEstados' => Estado::listEstados(),
 			'grupoAll' => $grupoAll,
+			'pais_id' => Session::get("PAIS_ID"),
 
 			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
 			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
@@ -51,6 +52,8 @@ class GruposMembrosController extends ContainerController {
 			'grupoAll' => $grupoAll,
 			'listEstados' => Estado::listEstados(),
 			'session' => Session::get('USUARIO_ID'),
+						'pais_id' => Session::get("PAIS_ID"),
+
 			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
 			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
 

@@ -19,7 +19,7 @@ class MeusgruposController extends ContainerController {
 		} else {
 			redirecionar("/");
 		}
-		$grupoAll = CategoriaGrupo::CategoriaGrupoAll();
+		$grupoAll = CategoriaGrupo::CategoriaGrupoAll(Session::get('PAIS_ID'));
 
 		$meusGrupos = Grupo::meusGrupos(Session::get('USUARIO_ID'));
 		//	debug($meusGrupos);
@@ -29,7 +29,7 @@ class MeusgruposController extends ContainerController {
 			'listEstados' => Estado::listEstados(),
 			'grupoAll' => $grupoAll,
 			'usuario_id' => Session::get('USUARIO_ID'),
-
+			'pais_id' => Session::get("PAIS_ID"),
 			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
 			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
 
@@ -145,6 +145,7 @@ class MeusgruposController extends ContainerController {
 			'pn_grupo_id' => $planoDeNegocios[0]['pn_grupo_id'],
 			'pn_publico_alvo' => $planoDeNegocios[0]['pn_publico_alvo'],
 			'grupo_id' => $gr_id->parameter,
+			'pais_id' => Session::get("PAIS_ID"),
 			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
 			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
 
@@ -160,26 +161,58 @@ class MeusgruposController extends ContainerController {
 			redirecionar("/");
 		}
 
-		$dadosgrupo = Usuario::geUsuariosgrupos($gr_id->parameter);
+		$dadosgrupo = Usuario::getUsuariosgrupos($gr_id->parameter);
+		$gruponome = Usuario::getUsuariosgrupo($gr_id->parameter);
 		$hadadosgrupo = true;
 		if ($dadosgrupo[0] == null) {
 			$hadadosgrupo = false;
 		}
-
-		$grupo = new Grupo();
 		//debug($dadosgrupo);
+		$grupo = new Grupo();
 		$this->view([
-			'title' => $dadosgrupo['gr_nome'],
-			'cg_nome' => $dadosgrupo[0]['cg_nome'],
-			'grupo_nome' => $dadosgrupo[0]['gr_nome'],
+
+			'gruponome' => $gruponome,
 			'getGrupoCategoria' => $getGrupoCategoria,
 			'listEstados' => Estado::listEstados(),
 			'meusGrupos' => $dadosgrupo,
 			'grupo_id' => $gr_id->parameter,
+			'usuario_id' => Session::get('USUARIO_ID'),
+			'pais_id' => Session::get("PAIS_ID"),
 			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
 			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
 
 		], 'grupo.grupousuarios');
+
+	}
+
+	public function grupousuariosadmin($gr_id) {
+		if (Session::get('USUARIO_ID')) {
+			Session::get('US_FOTO');
+			Session::get('US_NOME');
+		} else {
+			redirecionar("/");
+		}
+
+		$dadosgrupo = Usuario::getUsuariosgrupos($gr_id->parameter);
+		$gruponome = Usuario::getUsuariosgrupo($gr_id->parameter);
+		$hadadosgrupo = true;
+		if ($dadosgrupo[0] == null) {
+			$hadadosgrupo = false;
+		}
+		//debug($dadosgrupo);
+		$grupo = new Grupo();
+		$this->view([
+
+			'gruponome' => $gruponome,
+			'getGrupoCategoria' => $getGrupoCategoria,
+			'listEstados' => Estado::listEstados(),
+			'meusGrupos' => $dadosgrupo,
+			'grupo_id' => $gr_id->parameter,
+			'usuario_id' => Session::get('USUARIO_ID'),
+			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
+			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
+
+		], 'grupo.grupousuariosadmin');
 
 	}
 
@@ -271,7 +304,7 @@ class MeusgruposController extends ContainerController {
 			'meusGruposConvite' => $meusGruposConvites,
 			'listEstados' => Estado::listEstados(),
 			'grupoAll' => $meusGruposConvites,
-
+			'pais_id' => Session::get("PAIS_ID"),
 			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
 			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
 			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
@@ -288,11 +321,28 @@ class MeusgruposController extends ContainerController {
 		} else {
 			redirecionar("/");
 		}
-		//$grupoAll = CategoriaGrupo::CategoriaGrupoAll();
 
-		$meusGruposConvites = Grupo::meusGruposConvites(Session::get('USUARIO_ID'));
+		$v = Validate::validate([
+			'gu_grupo_id' => 'integer',
+			'adm_sub_user_id' => 'integer',
+			'adm_user_id' => 'integer',
+			'admin' => 'integer',
 
-		// :debug($meusGruposConvites);
+		]);
+		if ($v->adm_sub_user_id == $v->adm_user_id) {
+			flash(['admin' => "Admin vitalicio"]);
+			redirecionar("/meusgrupos/grupousuariosadmin/$v->gu_grupo_id");
+		}
+
+		//debug($v);
+		if ($v->admin == 1) {
+			Grupo::deletegrupoadmin($v->admin_id, $v->adm_user_id, $v->adm_sub_user_id, $v->gu_grupo_id);
+		} else if ($v->admin == 0) {
+			Grupo::addusuarioadmin($v->adm_user_id, $v->adm_sub_user_id, $v->gu_grupo_id);
+
+		}
+
+		redirecionar("/meusgrupos/grupousuariosadmin/$v->gu_grupo_id");
 
 	}
 
@@ -303,11 +353,33 @@ class MeusgruposController extends ContainerController {
 		} else {
 			redirecionar("/");
 		}
-		//$grupoAll = CategoriaGrupo::CategoriaGrupoAll();
 
-		$meusGruposConvites = Grupo::meusGruposConvites(Session::get('USUARIO_ID'));
+		$v = Validate::validate([
+			'gu_grupo_id' => 'integer',
+			'adm_sub_user_id' => 'integer',
 
-		// :debug($meusGruposConvites);
+		]);
+
+		Grupo::bloquear($v->adm_sub_user_id, $v->gu_grupo_id);
+		redirecionar("/meusgrupos/grupousuariosadmin/$v->gu_grupo_id");
+
+	}
+
+	public function desbloquear($gr_id) {
+		if (Session::get('USUARIO_ID')) {
+			Session::get('US_FOTO');
+			Session::get('US_NOME');
+		} else {
+			redirecionar("/");
+		}
+
+		$v = Validate::validate([
+			'gu_grupo_id' => 'integer',
+			'adm_sub_user_id' => 'integer',
+
+		]);
+		Grupo::desbloquear($v->adm_sub_user_id, $v->gu_grupo_id);
+		redirecionar("/meusgrupos/grupousuariosadmin/$v->gu_grupo_id");
 
 	}
 

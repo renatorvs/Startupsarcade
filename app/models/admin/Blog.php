@@ -1,9 +1,9 @@
 <?php
 namespace app\models\admin;
-
+use app\models\admin\Post;
 use app\models\Banco;
 
-class Blog {
+class Blog extends Post {
 
 	private $blog_id;
 	private $blogdestaque_id;
@@ -12,7 +12,71 @@ class Blog {
 	private $blog_categoria_id;
 	private $blog_date;
 	private $blog_img;
+	private $post_id;
+	private $post_titulo;
+	private $post_subtitulo;
+	private $post_description;
+	private $cat_id;
+	private $tipo_post_id;
+	private $post_ender_id;
+	private $user_id;
 
+	public function getUser_id() {
+		return $this->user_id;
+	}
+
+	public function setUser_id($user_id) {
+		$this->user_id = $user_id;
+	}
+	public function getPost_ender_id() {
+		return $this->post_ender_id;
+	}
+
+	public function setPost_ender_id($post_ender_id) {
+		$this->post_ender_id = $post_ender_id;
+	}
+	public function getPost_id() {
+		return $this->post_id;
+	}
+
+	public function setPost_id($post_id) {
+		$this->post_id = $post_id;
+	}
+	public function getPost_titulo() {
+		return $this->post_titulo;
+	}
+
+	public function setPost_titulo($post_titulo) {
+		$this->post_titulo = $post_titulo;
+	}
+	public function getPost_subtitulo() {
+		return $this->post_subtitulo;
+	}
+
+	public function setPost_subtitulo($post_subtitulo) {
+		$this->post_subtitulo = $post_subtitulo;
+	}
+	public function getPost_description() {
+		return $this->post_description;
+	}
+
+	public function setPost_description($post_description) {
+		$this->post_description = $post_description;
+	}
+	public function getCat_id() {
+		return $this->cat_id;
+	}
+
+	public function setCat_id($cat_id) {
+		$this->cat_id = $cat_id;
+	}
+	public function getTipo_post_id() {
+		return $this->tipo_post_id;
+	}
+
+	public function setTipo_post_id($tipo_post_id) {
+		$this->tipo_post_id = $tipo_post_id;
+	}
 	public function getBlogpost_id() {
 		return $this->blogpost_id;
 	}
@@ -66,6 +130,20 @@ class Blog {
 		$this->blog_categoria_id = $blog_categoria_id;
 	}
 
+	public function adicionaPost() {
+		$banco = new Banco();
+
+		$result = $banco->query(" INSERT INTO post (post_titulo, post_subtitulo, post_description, postcat_id, tipo_post_id, userpost_id) VALUES  (:post_titulo, :post_subtitulo, :post_description, :postcat_id, :tipo_post_id, :userpost_id) ", array(
+
+			":post_titulo" => $this->getPost_titulo(),
+			":post_subtitulo" => $this->getPost_subtitulo(),
+			":post_description" => $this->getPost_description(),
+			":postcat_id" => $this->getCat_id(),
+			":tipo_post_id" => $this->getTipo_post_id(),
+			":userpost_id" => $this->getUser_id(),
+
+		));
+	}
 	public function adicionaPostBlog() {
 
 		$banco = new Banco();
@@ -111,7 +189,7 @@ class Blog {
 
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM post_blog_categorias WHERE  blogdestaque_id  IN(1, 3)  ");
+		return $banco->select("SELECT * FROM blog_post_categoria WHERE  blogdestaque_id  IN(1, 3)  ");
 
 	}
 
@@ -127,7 +205,7 @@ class Blog {
 
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM post_blog_categorias   WHERE blog_categoria_id = :blog_categoria_id ", array(
+		return $banco->select("SELECT * FROM blog_post_categoria   WHERE blog_categoria_id = :blog_categoria_id ", array(
 			':blog_categoria_id' => $blog_categoria_id,
 		));
 
@@ -138,7 +216,7 @@ class Blog {
 
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM post_blog_categorias  WHERE blogdestaque_id = 2 ORDER by blog_id DESC LIMIT 1  ");
+		return $banco->select("SELECT * FROM blog_post_categoria  WHERE blogdestaque_id = 2 ORDER by blog_id DESC LIMIT 1  ");
 
 	}
 
@@ -147,7 +225,7 @@ class Blog {
 
 		$banco = new Banco();
 
-		return $banco->select(" SELECT * FROM post_blog_categorias  WHERE blogdestaque_id = 2  ORDER by blog_id DESC  ");
+		return $banco->select(" SELECT * FROM blog_post_categoria  WHERE blogdestaque_id = 2  ORDER by blog_id DESC  ");
 
 	}
 
@@ -157,7 +235,7 @@ class Blog {
 
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM post_blog_categorias  WHERE blogdestaque_id = 3  ORDER by blog_id DESC LIMIT 2  ");
+		return $banco->select("SELECT * FROM blog_post_categoria  WHERE blogdestaque_id = 3  ORDER by blog_id DESC LIMIT 2  ");
 
 	}
 
@@ -165,8 +243,8 @@ class Blog {
 
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM post_blog_categorias  WHERE post_id = :post_id  LIMIT 1  ", array(
-			'post_id' => $post_id,
+		return $banco->select("SELECT * FROM blog_post_categoria  WHERE blogpost_id = :blogpost_id  LIMIT 1  ", array(
+			':blogpost_id' => $post_id,
 		));
 
 	}

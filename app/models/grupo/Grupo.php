@@ -170,10 +170,61 @@ class Grupo {
 
 		$banco = new Banco();
 
-		$banco->query("INSERT INTO grupoadmin( adm_user_id, adm_grupo_id) VALUES(:adm_user_id, :adm_grupo_id) ;",
+		$banco->query("INSERT INTO grupoadmin( adm_user_id, adm_sub_user_id, adm_grupo_id) VALUES(:adm_user_id, :adm_sub_user_id, :adm_grupo_id) ;",
 			array(
 				":adm_user_id" => $adm_user_id,
+				":adm_sub_user_id" => $adm_user_id,
 				":adm_grupo_id" => $adm_grupo_id,
+			));
+
+	}
+
+	public static function desbloquear($gu_user_id, $gu_grupo_id) {
+
+		$banco = new Banco();
+
+		$banco->query("UPDATE grupo_usuario SET gu_accept = 2 where gu_user_id = :gu_user_id AND  gu_grupo_id = :gu_grupo_id ",
+			array(
+				":gu_user_id" => $gu_user_id,
+				":gu_grupo_id" => $gu_grupo_id,
+			));
+
+	}
+	public static function bloquear($gu_user_id, $gu_grupo_id) {
+
+		$banco = new Banco();
+
+		$banco->query("UPDATE grupo_usuario SET gu_accept = 3 WHERE gu_user_id = :gu_user_id AND  gu_grupo_id = :gu_grupo_id",
+			array(
+				":gu_user_id" => $gu_user_id,
+				":gu_grupo_id" => $gu_grupo_id,
+			));
+
+	}
+
+	public static function addusuarioadmin($adm_user_id, $adm_sub_user_id, $adm_grupo_id) {
+
+		$banco = new Banco();
+
+		$banco->query("INSERT INTO grupoadmin( adm_user_id, adm_sub_user_id, adm_grupo_id) VALUES ( :adm_user_id, :adm_sub_user_id, :adm_grupo_id)",
+			array(
+				":adm_user_id" => $adm_user_id,
+				":adm_sub_user_id" => $adm_sub_user_id,
+				":adm_grupo_id" => $adm_grupo_id,
+			));
+
+	}
+
+	public static function deletegrupoadmin($admin_id, $adm_user_id, $adm_sub_user_id, $adm_grupo_id) {
+
+		$banco = new Banco();
+
+		$banco->query(" DELETE FROM grupoadmin WHERE  admin_id = :admin_id AND  adm_grupo_id = :adm_grupo_id AND adm_user_id = :adm_user_id or adm_sub_user_id = :adm_sub_user_id  ",
+			array(
+				":adm_user_id" => $adm_user_id,
+				":adm_sub_user_id" => $adm_sub_user_id,
+				":adm_grupo_id" => $adm_grupo_id,
+				":admin_id" => $admin_id,
 			));
 
 	}
@@ -194,18 +245,19 @@ class Grupo {
 	public static function meusGrupos($gu_user_id) {
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM `usuariogrupos` WHERE gu_user_id = :gu_user_id and gu_accept = 2 GROUP BY gr_id ",
+		return $banco->select("SELECT * FROM usuariogrupos WHERE gu_user_id = :gu_user_id and gu_accept = 2 GROUP BY gr_id ",
 			array(
 				":gu_user_id" => $gu_user_id,
 			));
 	}
 
-	public static function getGruposAll($gu_user_id) {
+	public static function getGruposAll($cg_id, $gr_pais) {
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM dadosgrupo ",
+		return $banco->select("SELECT * FROM dadosgrupo WHERE  cg_id  = :cg_id and   gr_pais = :gr_pais",
 			array(
-				":gu_user_id" => $gu_user_id,
+				":gr_pais" => $gr_pais,
+				":cg_id" => $cg_id,
 			));
 	}
 
@@ -247,8 +299,6 @@ class Grupo {
 				":gu_user_id" => $gu_user_id,
 			));
 	}
-
-	// UPDATE usuario SET us_id=[value-1],us_email=[value-2],us_nome=[value-3],us_tipo_pessoa=[value-4],us_senha=[value-5],us_foto=[value-6],us_status_conta=[value-7],us_data_compra=[value-8],us_data_expiracao=[value-9],us_cpf_cnpj=[value-10],us_dataCadastro=[value-11] WHERE 1
 
 	public function grupoUpdate() {
 		$banco = new Banco();

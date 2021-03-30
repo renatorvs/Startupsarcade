@@ -13,24 +13,17 @@ class privado_mensagem_link {
 	private $pml_view;
 	private $pml_destinatario_id;
 
-// pml_id
-	// pml_grupo_id
-	// pml_user_remetente_id
-	// pml_msn_id
-	// pml_user_destinatario_id
-	// pml_date
-	// pml_view
-	// pmld_id
-	public static function addPrivadoMensagemLink($pml_grupo_id, $pml_remetente_id, $pml_msn_id,
-		$pmdl_id) {
+	public static function addPrivadoMensagemLink($pml_grupo_id, $pml_user_remetente_id, $pml_user_destinatario_id, $pml_msn_id,
+		$pmdl_id, $cp_id) {
 		$banco = new Banco();
 
-		return $banco->query("INSERT INTO privado_mensagem_link( pml_grupo_id, pml_user_remetente_id, pml_msn_id, pmld_id, pml_user_destinatario_id) VALUES ( :pml_grupo_id, :pml_user_remetente_id, :pml_msn_id, :pmld_id, :pml_user_destinatario_id)", array(
+		return $banco->query("INSERT INTO privado_mensagem_link( pml_grupo_id, pml_user_remetente_id, pml_msn_id, pmld_id, pml_user_destinatario_id, cp_id) VALUES ( :pml_grupo_id, :pml_user_remetente_id, :pml_msn_id, :pmld_id, :pml_user_destinatario_id, :cp_id)", array(
 			":pml_grupo_id" => $pml_grupo_id,
-			":pml_remetente_id" => $pml_remetente_id,
-			":pml_destinatario_id" => $pml_remetente_id,
+			":pml_user_remetente_id" => $pml_user_remetente_id,
+			":pml_user_destinatario_id" => $pml_user_destinatario_id,
 			":pml_msn_id" => $pml_msn_id,
-			":pmdl_id" => $pmdl_id,
+			":pmld_id" => $pmdl_id,
+			":cp_id" => $cp_id,
 		));
 
 	}

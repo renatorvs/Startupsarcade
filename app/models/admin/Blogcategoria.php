@@ -21,11 +21,13 @@ class Blogcategoria {
 	public function setBlogcat_nome($blogcat_nome) {
 		$this->blogcat_nome = $blogcat_nome;
 	}
-	public static function getblogCategoria() {
+	public static function getblogCategoria($blogpais_id) {
 
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM blog_categoria");
+		return $banco->select("SELECT * FROM blog_categoria WHERE blogpais_id = :blogpais_id", array(
+			":blogpais_id" => $blogpais_id,
+		));
 	}
 
 	public static function getblogCategoria_nome($blogcat_id) {

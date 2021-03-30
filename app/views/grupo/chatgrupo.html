@@ -16,25 +16,24 @@
   <link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 </head>
 <body id="page-top">
-  <header>
-    {{ include('layout/nav-header-empresa.html') }}
+<header>
+      {% if pais_id == 1 %}
+
+        {{ include('layout/nav-header-portugues.html') }}
+                        {% else %}
+        {{ include('layout/nav-header-ingles.html') }}
+                     {% endif %}
+
 
   </header>
   <main>
-    {{ include('layout/nav-dashboard-empresa.html') }}
+      {% if pais_id == 1 %}
+        {{ include('layout/nav-dashboard-portugues.html') }}
+      {% else %}
+          {{ include('layout/nav-dashboard-ingles.html') }}
+      {% endif %}
 
     <section class="container">
-<!--    <form action="/chatservico/chatservicostore" method="post">                  
- <input type="hidden" name="pml_pedi_id"  value="{{pedidoMensagem.pml_pedi_id}}">
- <input type="hidden" name="pml_pmdl_id" value="{{pedidoMensagem.pml_pmdl_id}}">
- <input type="hidden" name="pml_user_destinatario_id"  value="{{pedidoMensagem.pml_user_destinatario_id}}">
- <input type="hidden" name="pml_user_remetente_id"  value="{{session_id}}">
- <input type="hidden" name="pml_user_remetente_id" value="{{session_id}}">
- <input type="hidden" name="pml_user_destinatario_id"  value="{{pedidoMensagem.pml_user_remetente_id}}">
- <input type="hidden" name="pml_pedi_id"  value="{{pedidoMensagem.pml_pedi_id}}">
- <input type="hidden" name="pml_pmdl_id" value="{{pedidoMensagem.pml_pmdl_id}}">
- <input type="hidden" name="msn_type" value="1">
--->
 
 
 <div id="frame">

@@ -20,18 +20,21 @@
 </head>
 <body id="page-top">
     <header>
-        {% if empresa_session  %}
-        {{ include('layout/nav-header-empresa.html') }}
-        {% else %}
-        {{ include('layout/nav-header-candidato.html') }}
-        {% endif %}
-    </header>
-    <main >
-        {% if empresa_session  %}
-        {{ include('layout/nav-dashboard-empresa.html') }}
-        {% else %}
-        {{ include('layout/nav-dashboard-candidato.html') }}
-        {% endif %}
+      {% if pais_id == 1 %}
+                      {{ include('layout/nav-header-portugues.html') }}
+                {% else %}
+                    {{ include('layout/nav-header-ingles.html') }}
+                {% endif %}
+
+  </header>
+  <main>
+      {% if pais_id == 1 %}
+        {{ include('layout/nav-dashboard-portugues.html') }}
+      {% else %}
+          {{ include('layout/nav-dashboard-ingles.html') }}
+      {% endif %}
+     
+
         <section class="main-experi">
             <section class="container">
                 <section class="row">

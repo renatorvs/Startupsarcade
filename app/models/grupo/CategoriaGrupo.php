@@ -22,11 +22,23 @@ class CategoriaGrupo {
 	public function setCg_nome($cg_nome) {
 		$this->cg_nome = $cg_nome;
 	}
-	public static function CategoriaGrupoAll() {
+	public static function CategoriaGrupoAll($cg_pais_id) {
 
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM categoria_grupo");
+		return $banco->select(" SELECT cg.cg_id, cg.cg_nome, count(g.gr_id) AS quantidade FROM categoria_grupo cg LEFT JOIN grupo g ON g.grcat_id = cg.cg_id WHERE cg.cg_pais_id = :cg_pais_id GROUP BY cg.cg_id, cg.cg_nome ORDER BY g.grcat_id",
+			array(
+				":cg_pais_id" => $cg_pais_id,
+
+			));
+
+	}
+
+	public static function categoriaGrupoPublicidade() {
+
+		$banco = new Banco();
+
+		return $banco->select(" SELECT  * FROM  categoria_grupo ");
 
 	}
 	public function adicionaCategoria() {

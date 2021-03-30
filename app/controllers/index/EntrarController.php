@@ -2,6 +2,7 @@
 
 namespace app\controllers\index;
 use app\controllers\ContainerController;
+use app\linguagem\Linguagem;
 use app\models\grupo\Usuario;
 use app\session\Session;
 use app\validate\Validate;
@@ -9,8 +10,24 @@ use app\validate\Validate;
 class EntrarController extends ContainerController {
 
 	public function show() {
+		$lin = Linguagem::getIdiomaEntrar();
 
 		$this->view([
+			'navmenu_1' => $lin->navmenu_1,
+			'navmenu_2' => $lin->navmenu_2,
+			'navmenu_3' => $lin->navmenu_3,
+			'navmenu_4' => $lin->navmenu_4,
+			'navmenu_5' => $lin->navmenu_5,
+			'login_h4' => $lin->login_h4,
+			'login_a_strong' => $lin->login_a_strong,
+			'login_a_cadastra_se' => $lin->login_a_cadastra_se,
+			'login_email' => $lin->login_email,
+			'login_email_reploceholder' => $lin->login_email_reploceholder,
+			'login_senha' => $lin->login_senha,
+			'entrar_com' => $lin->entrar_com,
+			'card_alert_h4' => $lin->card_alert_h4,
+			'card_alert_p' => $lin->card_alert_p,
+			'button_entrar' => $lin->button_entrar,
 
 		], 'index.entrar');
 	}
@@ -39,7 +56,7 @@ class EntrarController extends ContainerController {
 
 			redirecionar("/grupos/categorias");
 		} else {
-			flash(['login' => "senha ou usuario incorretos"]);
+			flash(['login' => "$lin->login_frash"]);
 
 			redirecionar("/entrar/show");
 		}

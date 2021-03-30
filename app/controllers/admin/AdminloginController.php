@@ -9,7 +9,6 @@ use app\validate\Validate;
 class AdminloginController extends ContainerController {
 
 	public function admin() {
-
 		$this->view([
 
 		], 'admin.adminlogin');

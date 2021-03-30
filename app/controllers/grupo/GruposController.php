@@ -2,6 +2,7 @@
 namespace app\controllers\grupo;
 
 use app\controllers\ContainerController;
+use app\models\admin\Publicidade;
 use app\models\grupo\CategoriaGrupo;
 use app\models\grupo\Estado;
 use app\models\grupo\Grupo;
@@ -18,13 +19,15 @@ class GruposController extends ContainerController {
 			redirecionar("/");
 		}
 
-		$grupoAll = CategoriaGrupo::CategoriaGrupoAll();
+		$grupoAll = CategoriaGrupo::CategoriaGrupoAll(Session::get('PAIS_ID'));
 
 		$this->view([
 			'title' => 'SA | Categoria startup',
 
 			'pref' => Session::get("USER_PREFERENCIAS"),
 			'grupoAll' => $grupoAll,
+			'pais_id' => Session::get("PAIS_ID"),
+
 			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
 			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
 
@@ -39,7 +42,9 @@ class GruposController extends ContainerController {
 		} else {
 			redirecionar("/");
 		}
-		$getGruposAll = Grupo::getGruposAll($grcat_id->parameter, Session::get('USUARIO_ID'));
+
+		$getGruposAll = Grupo::getGruposAll($grcat_id->parameter, Session::get('PAIS_ID'));
+		$getPublicidadeAll = Publicidade::getPublicidade();
 
 		$this->view([
 			'title' => 'Planos',
@@ -52,6 +57,9 @@ class GruposController extends ContainerController {
 			'hacheckgrupos' => $hacheckgrupos,
 			'checkgrupos' => $checkgrupos,
 			's' => Session::get('USUARIO_ID'),
+			'pais_id' => Session::get("PAIS_ID"),
+			'getPublicidadeAll' => $getPublicidadeAll,
+
 			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
 			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
 
@@ -67,7 +75,7 @@ class GruposController extends ContainerController {
 			redirecionar("/");
 		}
 
-		$grupoAll = CategoriaGrupo::CategoriaGrupoAll();
+		$grupoAll = CategoriaGrupo::CategoriaGrupoAll(Session::get('PAIS_ID'));
 
 		$grupo = new Grupo();
 
@@ -84,7 +92,7 @@ class GruposController extends ContainerController {
 		$grupo->setGr_descricao($v->gr_descricao);
 		$grupo->setGr_cidade($v->gr_cidade);
 		$grupo->setGr_estado($v->gr_estado);
-		$grupo->setGr_pais("Brasil");
+		$grupo->setGr_pais(Session::get('PAIS_ID'));
 		$gr_foto = Imagem::uploadImage($_FILES['gr_foto']);
 		$grupo->setGr_foto($gr_foto);
 		$grupo->setGrcat_id($v->grcat_id);
@@ -129,9 +137,12 @@ class GruposController extends ContainerController {
 		$grupo->setGu_grupo_id($v->gu_grupo_id);
 		$grupo->setGu_accept($v->gu_accept);
 
-		if ($checkuser[0] != null) {
-			flash(['checkgrupo' => "Você já mandou convite para esse grupo"]);
+		if ($checkuser[0]['gu_accept'] == 3) {
+			flash(['checkbloqueado' => "Você esta bloquado nesse grupo"]);
 			redirecionar("/grupos/grupo/$v->catgr_id");
+		} else if ($checkuser[0] != null) {
+			flash(['checkgrupo' => "Você já mandou convite para esse grupo"]);
+
 		} else {
 			$grupo->addgrupoMembro();
 			flash(['conviteenviado' => "Pedido enviado "]);
@@ -160,6 +171,8 @@ class GruposController extends ContainerController {
 			'listEstados' => Estado::listEstados(),
 			'getdadosGrupocategoria' => $getdadosGrupocategoria,
 			'catgr_id' => $grcat_id->parameter,
+			'pais_id' => Session::get("PAIS_ID"),
+
 			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
 			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
 
@@ -185,6 +198,8 @@ class GruposController extends ContainerController {
 			'listEstados' => Estado::listEstados(),
 			'getdadosGrupocategoria' => $getdadosGrupocategoria,
 			'catgr_id' => $grcat_id->parameter,
+			'pais_id' => Session::get("PAIS_ID"),
+
 			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
 			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
 
@@ -192,6 +207,33 @@ class GruposController extends ContainerController {
 
 	}
 	public function grupospendentes($gr_id) {
+		if (Session::get('USUARIO_ID')) {
+			Session::get('US_FOTO');
+			Session::get('US_NOME');
+		} else {
+			redirecionar("/");
+		}
+		$grupoAll = CategoriaGrupo::CategoriaGrupoAll(Session::get('PAIS_ID'));
+
+		$meusGrupos = Grupo::meusGruposPendentes(Session::get('USUARIO_ID'));
+
+		$this->view([
+			'title' => 'SA | Grupos startup',
+			'meusGrupos' => $meusGrupos,
+			'listEstados' => Estado::listEstados(),
+			'grupoAll' => $grupoAll,
+			'pais_id' => Session::get("PAIS_ID"),
+
+			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
+			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
+			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
+			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
+
+		], 'grupo.grupospendentes');
+
+	}
+
+	public function perfil($gr_id) {
 		if (Session::get('USUARIO_ID')) {
 			Session::get('US_FOTO');
 			Session::get('US_NOME');
@@ -207,13 +249,14 @@ class GruposController extends ContainerController {
 			'meusGrupos' => $meusGrupos,
 			'listEstados' => Estado::listEstados(),
 			'grupoAll' => $grupoAll,
+			'pais_id' => Session::get("PAIS_ID"),
 
 			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
 			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
 			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
 			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
 
-		], 'grupo.grupospendentes');
+		], 'grupo.perfil');
 
 	}
 

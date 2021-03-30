@@ -5,6 +5,7 @@ use app\controllers\ContainerController;
 use app\models\grupo\CategoriaGrupo;
 use app\models\grupo\Estado;
 use app\models\grupo\Grupo;
+use app\models\grupo\Mensagem;
 use app\session\Session;
 use app\validate\Imagem;
 use app\validate\Validate;
@@ -27,11 +28,33 @@ class PrivadoController extends ContainerController {
 			'meusGrupos' => $meusGrupos,
 			'listEstados' => Estado::listEstados(),
 			'grupoAll' => $grupoAll,
-
+			'pais_id' => Session::get("PAIS_ID"),
 			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
 			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
 
-		], 'grupo.chatprivadi ');
+		], 'grupo.chatprivado ');
+	}
+
+	public function conversas($gr_id) {
+		if (Session::get('USUARIO_ID')) {
+			Session::get('US_FOTO');
+			Session::get('US_NOME');
+		} else {
+			redirecionar("/");
+		}
+		$grupoAll = CategoriaGrupo::CategoriaGrupoAll();
+
+		$getchatPrivadoMensagem = Mensagem::getchatPrivadoMensagem(Session::get('USUARIO_ID'));
+		$this->view([
+			'title' => 'SA | Grupos startup',
+			'getchatPrivadoMensagem' => $getchatPrivadoMensagem,
+			'listEstados' => Estado::listEstados(),
+			'grupoAll' => $grupoAll,
+			'pais_id' => Session::get("PAIS_ID"),
+			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
+			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
+
+		], 'grupo.conversas');
 	}
 
 	public function grupoUsuarioUpdate() {

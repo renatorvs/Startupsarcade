@@ -15,12 +15,21 @@
 <title> SA | meus grupos</title>
 <link href="../../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
 </head>
-<body id="page-top">
-<header>
-  {{ include('layout/nav-header-empresa.html') }}
-</header>
-<main>
-  {{ include('layout/nav-dashboard-empresa.html') }}
+<body id="page-top"> 
+  <header>
+                {% if pais_id %}
+                      {{ include('layout/nav-header-portugues.html') }}
+                {% else %}
+                    {{ include('layout/nav-header-ingles.html') }}
+                {% endif %}
+
+  </header>
+  <main>
+     {% if pais_id %}
+        {{ include('layout/nav-dashboard-portugues.html') }}
+      {% else %}
+          {{ include('layout/nav-dashboard-ingles.html') }}
+      {% endif %}
   <section class="main-experi" >
     <hr class="m-1">  
     <section class="row">
@@ -71,9 +80,9 @@ Oferece respaldo de confiança, facilitando a captação de potenciais investido
                   <section class="modal-content">
                     <section class="card-body">   
                       <form class="needs-validation" action="/MeusGrupos/meusgruposinfostore" enctype="multipart/form-data" method ="post">
-                                                                <h5>Proposta para grupo: {{grupo_nome}}</h5>
-                                                                <h5>Categoria:  {{cg_nome}}</h6>
-                                                                  <hr>
+                                <h5>Proposta para grupo: {{grupo_nome}}</h5>
+                                <h5>Categoria:  {{cg_nome}}</h6>
+                                  <hr>
 
                         <section class="form-row">
                         </h4>

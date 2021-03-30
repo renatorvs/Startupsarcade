@@ -1,0 +1,138 @@
+
+    <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Empresa vagas">
+  <meta name="keywords" content="Empresa vagas">
+  <meta name="author" content="onclickup">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap-reboot.css">
+  <link rel="stylesheet" href="../../assets/css/layout/layout.css">
+  <link rel="stylesheet" href="../../assets/css/layout/footer.css">
+  <link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <title> SA | meus grupos</title>
+  <link href="../../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
+</head>
+<body id="page-top">
+<header>
+      {% if pais_id == 1 %}
+
+        {{ include('layout/nav-header-portugues.html') }}
+                        {% else %}
+        {{ include('layout/nav-header-ingles.html') }}
+                     {% endif %}
+
+
+  </header>
+  <main>
+      {% if pais_id == 1 %}
+        {{ include('layout/nav-dashboard-portugues.html') }}
+      {% else %}
+          {{ include('layout/nav-dashboard-ingles.html') }}
+      {% endif %}
+
+  
+      <section class="container">
+       
+        <section class="nav-scroller py-1 mb-2">
+          <nav class="nav d-flex justify-content-between">  
+           {% for blogcategoria in  getblogcategorias %}           
+           <a class="p-2 text-muted" href="/blog/blogcategoria/{{blogcategoria.blogcat_id}}"> {{blogcategoria.blogcat_nome|e}}</a>
+
+           {% endfor %}
+         </nav>
+
+         <hr>
+         {% if admin_session  %}
+         <a href="/adminpostblog/create" class="btn btn-outline-secondary"> Adicionar novo artigo ao blog </a>
+         
+         {% endif %}
+       </section>
+
+
+       {% for postBlogDestaques in  postBlogDestaque %}  
+       <section class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
+        {% if admin_session  %}
+        <strong class=text-white> Local post: {{postBlogDestaques.blogdest_nome}} </strong>
+        {% endif %}         
+        <section class="col-md-6 px-0">
+         <strong class="d-inline-block mb-2 text-white">{{postBlogDestaques.blogcat_nome}}</strong>
+         <h1 class="display-4 font-italic">{{postBlogDestaques.post_titulo}}</h1>
+         <p class="lead my-3">{{postBlogDestaques.post_subtitulo}}</p>
+         <p class="lead mb-0">   <a href="/blog/show/{{postBlogDestaques.blogpost_id}}" class="text-white 
+          font-weight-bold">Continue lendo...</a></p>
+          <section class="card-body">
+           {% if admin_session  %}
+           <a href="/adminpostblog/destroy/{{postBlogDestaques.blogpost_id}}" class="btn btn-danger btn-sm"> excluir </a>
+           <a href="/adminpostblog/show/{{postBlogDestaques.blogpost_id}}" class="btn btn-primary btn-sm"> editar </a>
+           <a href="/blog/blogdestaque" class="btn btn-info btn-sm"> posts em destaque </a>
+           {% endif %}
+         </section>
+       </section>
+     </section>
+     {% endfor %}
+
+
+     <section class="row mb-2">
+      {% for post in  postBlog %}  
+      
+      
+
+
+
+
+      <section class="col-md-6">
+        <section class="card flex-md-row mb-4 box-shadow h-md-250">
+          <section class="card-body d-flex flex-column align-items-start">
+            {% if admin_session  %}
+            <strong class=text-dark>Local post: {{post.blogdest_nome}} </strong>
+            {% endif %} 
+            <strong class="d-inline-block mb-2 text-dark">{{post.blogcat_nome}}</strong>
+
+            <h3 class="mb-0">
+              {{post.post_titulo}}
+            </h3>
+            <section class="mb-1 text-muted">{{post.blog_date | date("m/d/y")}}</section>
+            <p class="card-text mb-auto">{{post.post_subtitulo}}.</p>
+            <form action="/sherepoint/shered" method="post">
+              <a href="/blog/show/{{post.blogpost_id}} " class="btn btn-primary btn-sm"> ver artigo </a>
+          
+              <a type="submit" class="btn btn-success btn-sm"> <span class="text-white">sharepoint</span> </i> </a>
+
+            </form>
+            {% if admin_session  %}
+            <section class="card-body">
+             <a href="/adminpostblog/destroy/{{post.blogpost_id}}" class="btn btn-danger btn-sm"> excluir </a>
+             <a href="/adminpostblog/show/{{post.blogpost_id}}" class="btn btn-primary btn-sm"> editar </a>
+           </section>
+           {% endif %}
+         </section>
+         
+       </section>
+
+     </section>     
+     
+     {% endfor %}
+   </section>
+ </section>
+ 
+</main>
+
+{{ include('layout/nav-dashboard-end.html') }}
+{{ include('layout/footer.html') }}
+<!-- Bootstrap core JavaScript-->
+<script src="../assets/vendor/jquery/jquery.min.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="../assets/js/sb-admin-2.min.js"></script>
+
+</body>
+
+</html>
+
