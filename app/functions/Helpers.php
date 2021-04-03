@@ -1,6 +1,6 @@
 <?php
 use app\classes\Flash;
-use app\models\usuario\Notifications;
+use app\models\grupo\Notifications;
 use app\session\Session;
 
 function debug($dump) {
@@ -28,18 +28,24 @@ function debug($dump) {
 
 function getLanguage() {
 
-	$http_accept = substr($_SERVER["HTTP_ACCEPT_LANGUAGE"], 0, 2);
+	if (Session::get("PAIS_ID") == NULL) {
 
-	switch ($http_accept) {
-	case 'en':
-		$linguege = Session::set("PAIS_ID", 2);
-		break;
-	default:
-		$linguege = Session::set("PAIS_ID", 1);
-		break;
+		$http_accept = substr($_SERVER["HTTP_ACCEPT_LANGUAGE"], 0, 2);
+
+		switch ($http_accept) {
+		case 'en':
+			$linguege = Session::set("PAIS_ID", 2);
+			break;
+		default:
+			$linguege = Session::set("PAIS_ID", 1);
+			break;
+		}
+		return $linguage;
+
+	} else {
+		return Session::get("PAIS_ID");
 	}
 
-	return $linguage;
 }
 
 function checkParameter($metodoReturn) {
@@ -113,8 +119,8 @@ function getNotificantionMessagem($sessionUsuario_id) {
 
 }
 
-function getNotificantionCandidatoVaga($sessionUsuario_id) {
-	$get = Notifications::getNotificantionCandidatoVaga($sessionUsuario_id);
+function getNotificantionGrupo($sessionUsuario_id) {
+	$get = Notifications::getNotificantionGrupo($sessionUsuario_id);
 	if ($get) {
 		return $get;
 	} else {

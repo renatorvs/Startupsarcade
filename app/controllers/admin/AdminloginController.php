@@ -10,6 +10,7 @@ class AdminloginController extends ContainerController {
 
 	public function admin() {
 		$this->view([
+			'pais_id' => Session::get("PAIS_ID"),
 
 		], 'admin.adminlogin');
 	}

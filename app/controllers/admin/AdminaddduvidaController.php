@@ -8,6 +8,7 @@ class AdminaddduvidaController extends ContainerController {
 	public function create() {
 		$this->view([
 			'title' => 'Duvidas Preguentes',
+			'pais_id' => Session::get("PAIS_ID"),
 
 		], 'admin.adminaddduvida');
 	}

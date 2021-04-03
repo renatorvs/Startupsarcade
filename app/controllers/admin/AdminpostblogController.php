@@ -36,6 +36,7 @@ class AdminpostblogController extends ContainerController {
 			'blogdest_nome' => $getBlogLoad_id[0]['blogdest_nome'],
 			'blogcat_id' => $getBlogLoad_id[0]['blogcat_id'],
 			'blogcat_nome' => $getBlogLoad_id[0]['blogcat_nome'],
+			'pais_id' => Session::get("PAIS_ID"),
 
 		], 'admin.admineditpostblog');
 	}
@@ -52,6 +53,7 @@ class AdminpostblogController extends ContainerController {
 			'title' => 'novo artigo',
 			'getblogcategoria' => $getcategoria,
 			'getBlogDestaques' => $getPostBlog,
+			'pais_id' => Session::get("PAIS_ID"),
 
 		], 'admin.adminaddpostblog');
 	}

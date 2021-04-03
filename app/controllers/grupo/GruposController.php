@@ -28,8 +28,8 @@ class GruposController extends ContainerController {
 			'grupoAll' => $grupoAll,
 			'pais_id' => Session::get("PAIS_ID"),
 
-			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
-			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
+			'NotsGrupo' => getNotificantionGrupo($sessionUsuario_id),
+			'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
 
 		], 'grupo.grupocategorias');
 	}
@@ -60,8 +60,8 @@ class GruposController extends ContainerController {
 			'pais_id' => Session::get("PAIS_ID"),
 			'getPublicidadeAll' => $getPublicidadeAll,
 
-			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
-			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
+			'NotsGrupo' => getNotificantionGrupo(Session::get('USUARIO_ID')),
+			'NotsMessagem' => getNotificantionMessagem(Session::get('USUARIO_ID')),
 
 		], 'grupo.grupo');
 	}
@@ -172,9 +172,8 @@ class GruposController extends ContainerController {
 			'getdadosGrupocategoria' => $getdadosGrupocategoria,
 			'catgr_id' => $grcat_id->parameter,
 			'pais_id' => Session::get("PAIS_ID"),
-
-			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
-			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
+			'NotsGrupo' => getNotificantionGrupo(Session::get('USUARIO_ID')),
+			'NotsMessagem' => getNotificantionMessagem(Session::get('USUARIO_ID')),
 
 		], 'grupo.grupoinformacoes');
 
@@ -200,9 +199,8 @@ class GruposController extends ContainerController {
 			'catgr_id' => $grcat_id->parameter,
 			'pais_id' => Session::get("PAIS_ID"),
 
-			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
-			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
-
+			'NotsGrupo' => getNotificantionGrupo(Session::get('USUARIO_ID')),
+			'NotsMessagem' => getNotificantionMessagem(Session::get('USUARIO_ID')),
 		], 'grupo.grupousuarios');
 
 	}
@@ -224,10 +222,8 @@ class GruposController extends ContainerController {
 			'grupoAll' => $grupoAll,
 			'pais_id' => Session::get("PAIS_ID"),
 
-			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
-			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
-			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
-			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
+			'NotsGrupo' => getNotificantionGrupo(Session::get('USUARIO_ID')),
+			'NotsMessagem' => getNotificantionMessagem(Session::get('USUARIO_ID')),
 
 		], 'grupo.grupospendentes');
 
@@ -251,10 +247,8 @@ class GruposController extends ContainerController {
 			'grupoAll' => $grupoAll,
 			'pais_id' => Session::get("PAIS_ID"),
 
-			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
-			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
-			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
-			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
+			'NotsGrupo' => getNotificantionGrupo(Session::get('USUARIO_ID')),
+			'NotsMessagem' => getNotificantionMessagem(Session::get('USUARIO_ID')),
 
 		], 'grupo.perfil');
 

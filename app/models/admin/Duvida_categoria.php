@@ -4,6 +4,17 @@ namespace app\models\admin;
 use app\models\Banco;
 
 class Duvida_categoria {
+	private $duvcat_id;
+	private $duvcat_nome;
+	private $duvpais_id;
+
+	public function getDuvpais_id() {
+		return $this->duvpais_id;
+	}
+
+	public function setDuvpais_id($duvpais_id) {
+		$this->duvpais_id = $duvpais_id;
+	}
 	public function getDuvcat_id() {
 		return $this->duvcat_id;
 	}
@@ -18,21 +29,14 @@ class Duvida_categoria {
 	public function setDuvcat_nome($duvcat_nome) {
 		$this->duvcat_nome = $duvcat_nome;
 	}
-	public function getDuvcat_tipo_id() {
-		return $this->duvcat_tipo_id;
-	}
-
-	public function setDuvcat_tipo_id($duvcat_tipo_id) {
-		$this->duvcat_tipo_id = $duvcat_tipo_id;
-	}
 
 	public function addDuvidaCategoria() {
 
 		$banco = new Banco();
 
-		$result = $banco->query("INSERT INTO duvidas_categoria(duvcat_nome, duvcat_tipo_id) VALUES (:duvcat_nome, :duvcat_tipo_id) ", array(
+		$result = $banco->query("INSERT INTO duvidas_categoria(duvcat_nome, duvpais_id) VALUES (:duvcat_nome, :duvpais_id) ", array(
 			":duvcat_nome" => $this->getDuvcat_nome(),
-			":duvcat_tipo_id" => $this->getDuvcat_tipo_id(),
+			":duvpais_id" => $this->getDuvpais_id(),
 
 		));
 	}
@@ -47,14 +51,14 @@ class Duvida_categoria {
 
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM duvidas_categoria WHERE duvcat_tipo_id = 1");
+		return $banco->select("SELECT * FROM duvidas_categoria");
 	}
 
 	public static function getDuvidasEmpresaCategoria() {
 
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM duvidas_categoria WHERE duvcat_tipo_id = 2");
+		return $banco->select("SELECT * FROM duvidas_categoria");
 	}
 
 	public static function loadByDuvidaCategoria($duvcat_id) {

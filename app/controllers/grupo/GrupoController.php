@@ -35,9 +35,8 @@ class GrupoController extends ContainerController {
 			'usuario_nome' => Session::get('US_NOME'),
 			'pais_id' => Session::get("PAIS_ID"),
 
-			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
-			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
-
+			'NotsGrupo' => getNotificantionGrupo($sessionUsuario_id),
+			'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
 		], 'grupo.chatgrupo');
 	}
 

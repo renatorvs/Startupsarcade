@@ -13,6 +13,7 @@ class AdminplanosController extends ContainerController {
 		}
 
 		$this->view([
+			'pais_id' => Session::get("PAIS_ID"),
 
 		], 'admin.adminplanos');
 	}

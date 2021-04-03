@@ -50,6 +50,7 @@ class EntrarController extends ContainerController {
 		if ($senhaVerify) {
 
 			//debug($respUsuario);
+			Session::set("US_EMAIL", $respUsuario[0]['us_email']);
 			Session::set("USUARIO_ID", $respUsuario[0]['us_id']);
 			Session::set("US_NOME", $respUsuario[0]['us_nome']);
 			Session::set("US_FOTO", $respUsuario[0]['us_foto']);

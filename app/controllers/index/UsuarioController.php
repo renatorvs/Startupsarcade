@@ -77,6 +77,7 @@ class UsuarioController extends ContainerController {
 		Session::set("USUARIO_ID", $user_id[0]['us_id']);
 		Session::set("US_NOME", $user_id[0]['us_nome']);
 		Session::set("US_FOTO", $user_id[0]['us_foto']);
+		Session::set("US_EMAIL", $respUsuario[0]['us_email']);
 
 		redirecionar("/grupos/categorias");
 

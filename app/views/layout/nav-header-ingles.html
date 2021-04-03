@@ -24,17 +24,17 @@
 						<h6 class="dropdown-header">
 							Seguidores
 						</h6>
-						{% if  NotsSeguir %}
+						{% if  NotsGrupo %}
 
-						 {% for notsSeguirs in  NotsSeguir %}           
-							<a class="dropdown-item d-flex align-items-center" href="/usuario/perfil/{{notsSeguirs.us_usuario_id}}">
+						 {% for grupo in  NotsGrupo %}           
+							<a class="dropdown-item d-flex align-items-center" href="/usuario/perfil/{{grupo.us_usuario_id}}">
 								<div class="dropdown-list-image mr-3">
 									<img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
 									<div class="status-indicator bg-success"></div>
 								</div>
 								<div class="font-weight-bold">
-									<div class="text-truncate">{{ notsSeguirs.us_usuario_nome}} <span class="text-primary"> começou a seguir você</span>.</div>
-									<div class="small text-gray-500">{{notsSeguirs.us_data_registro | date("d/m/yy") }}</div>
+									<div class="text-truncate">{{ grupo.us_usuario_nome}} <span class="text-primary"> começou a seguir você</span>.</div>
+									<div class="small text-gray-500">{{grupo.us_data_registro | date("d/m/yy") }}</div>
 								</div>
 							</a>
 						{% endfor %}

@@ -29,8 +29,8 @@ class PrivadoController extends ContainerController {
 			'listEstados' => Estado::listEstados(),
 			'grupoAll' => $grupoAll,
 			'pais_id' => Session::get("PAIS_ID"),
-			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
-			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
+			'NotsGrupo' => getNotificantionGrupo(Session::get('USUARIO_ID')),
+			'NotsMessagem' => getNotificantionMessagem(Session::get('USUARIO_ID')),
 
 		], 'grupo.chatprivado ');
 	}
@@ -51,8 +51,8 @@ class PrivadoController extends ContainerController {
 			'listEstados' => Estado::listEstados(),
 			'grupoAll' => $grupoAll,
 			'pais_id' => Session::get("PAIS_ID"),
-			// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
-			// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
+			'NotsGrupo' => getNotificantionGrupo(Session::get('USUARIO_ID')),
+			'NotsMessagem' => getNotificantionMessagem(Session::get('USUARIO_ID')),
 
 		], 'grupo.conversas');
 	}

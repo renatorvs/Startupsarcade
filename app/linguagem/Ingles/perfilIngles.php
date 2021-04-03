@@ -1,8 +1,8 @@
 <?php
 
-namespace app\linguagem\Portugues;
+namespace app\linguagem\ingles;
 
-class InscrevasePortugues {
+class PerfilIngles {
 
 	public $navmenu_1 = "Sobre";
 	public $navmenu_2 = "Blog";
@@ -22,7 +22,6 @@ class InscrevasePortugues {
 	public $email_foto = "Foto";
 	public $login_frash = "senha ou usuario incorretos";
 	public $button_inscrever = "inscrever";
-	public $login_nome_usuario_placeholder = "nome e sobrenome";
 	public $termos = "Concordo com os termos e condições";
 	public $requered_termo = "Você deve concordar, antes de continuar.";
 	public $required_foto = "Por favor, insira uma foto.";

@@ -8,7 +8,9 @@ use app\session\Session;
 
 class DuvidasController extends ContainerController {
 	public function create($request) {
-
+		if (Session::get('ADMIN_SESSION')) {
+			$admin_session = TRUE;
+		}
 		$getduvidasempresa = Duvidas::getDuvidasEmpresa();
 		$getDuvidasempresacategoria = Duvida_categoria::getDuvidasEmpresaCategoria();
 
@@ -21,13 +23,11 @@ class DuvidasController extends ContainerController {
 			'title' => 'Empresa duvidas',
 			'pref' => Session::get("USER_PREFERENCIAS"),
 			'pais_id' => Session::get("PAIS_ID"),
-			'NotsSShere' => getNotificantionShere($sessionUsuario_id),
-			'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
-			'NotsContratouServico' => getNotificantionContratouServico($session_id),
-			'NotsCandidatoVaga' => getNotificantionCandidatoVaga($sessionUsuario_id),
+
+			'NotsGrupo' => getNotificantionGrupo($sessionUsuario_id),
 			'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
 
-		], 'empresa.duvidas');
+		], 'grupo.duvidas');
 	}
 
 	public function destroy($request) {

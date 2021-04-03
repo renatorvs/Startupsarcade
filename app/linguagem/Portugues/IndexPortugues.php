@@ -4,7 +4,7 @@ namespace app\linguagem\portugues;
 
 class IndexPortugues {
 
-	public $betas_Version = "Olá é um prazer. estamos em fase BETA";
+	public $betas_version = "Olá é um prazer. estamos em fase BETA";
 	public $navmenu_1 = "Sobre";
 	public $navmenu_2 = "Blog";
 	public $navmenu_3 = "Increva-se";

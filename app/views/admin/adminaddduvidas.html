@@ -32,6 +32,28 @@
     {% endif %}
         <section class="main-experi">
                   <h4 class="text-dark" align="center"> Adiciona duvidas frequentes</h4>
+        
+   <section class="card border-success mb-4 mt-4" >
+                <section class="card-body">
+                  <h5 class="text-dark"> Adicionar Categorias</h5>
+                  <form action="/adminaddduvidas/addduvidacategoria" method="">
+                  <section class="form-group">
+                    <label for="Categoria">Categoria nome </label>
+                    <input type="text" name="duvcat_nome" class="form-control" id="Categoria" placeholder="categoria nome">
+                  </section>
+                  <section class="form-group">
+                    <label for="exampleFormControlSelect1">Pais</label>
+                    <select class="form-control" name="duvpais_id" id="exampleFormControlSelect1">
+                      <option value="1">BR</option> 
+                      <option value="2">USA</option> 
+                    </select>
+                  </section> 
+                <button class="btn btn-primary btn-sm"> criar categoria</button>
+                </form>
+             </section>
+            </section>
+
+
           <section class="card border-success">
                 <section class="card-body">
                   <form action="/adminaddduvidas/addduvida">
@@ -45,45 +67,21 @@
                   </section>
                   <section class="form-group">
                     <label for="exampleFormControlSelect1">Categoria pergunta </label>
-                    <select class="form-control" name="getduvcat_id" id="exampleFormControlSelect1">
+                    <select class="form-control" name="duvcategoria_id" id="exampleFormControlSelect1">
                      {% for duvidascategoria in  getduvidascategoria %}           
-                      <option value="{{duvidascategoria.duvcat_nome}}">{{duvidascategoria.duvcat_nome}}
+                      <option value="{{duvidascategoria.duvcat_id}}">{{duvidascategoria.duvcat_nome}}
                       </option> 
                             {% endfor %}
                     </select>
                   </section> 
 
-                  <section class="form-group">
-                    <label for="exampleFormControlSelect1">Tipo pergunta</label>
-                    <select class="form-control" name="tiuser_id" id="exampleFormControlSelect1">
-                      <option value="1">Candidato</option> 
-                      <option value="2">Empresa</option> 
-                    </select>
-                  </section>
                 <button class="btn btn-primary btn-sm"> criar pergunta</button>
                 </form>
              </section>
             </section> 
-             <section class="card border-success mb-4 mt-4" >
-                <section class="card-body">
-                  <h5 class="text-dark"> Adicionar Categorias</h5>
-                  <form action="/adminaddduvidas/addduvidacategoria" method="">
-                  <section class="form-group">
-                    <label for="Categoria">Categoria nome </label>
-                    <input type="text" name="duvcat_nome" class="form-control" id="Categoria" placeholder="categoria nome">
-                  </section>
-                  <section class="form-group">
-                    <label for="Categoriapergunta">Categoriapergunta</label>
-                    <select class="form-control" name="duvcat_tipo_id" id="Categoriapergunta">
-                      <option value="1">Candidato</option> 
-                      <option value="2">Empresa</option> 
-                      <option value="3">Ambos</option> 
-                    </select>
-                  </section>
-                <button class="btn btn-primary btn-sm"> criar categoria</button>
-                </form>
-             </section>
-            </section>
+
+
+          
         </section>
     </main>
 

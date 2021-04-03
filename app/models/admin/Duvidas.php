@@ -9,9 +9,15 @@ class Duvidas {
 	private $duv_id;
 	private $duv_pergunta;
 	private $duv_resposta;
-	private $duvcat_id;
-	private $tiuser_id;
+	private $duvcategoria_id;
 
+	public function getDuvcategoria_id() {
+		return $this->duvcategoria_id;
+	}
+
+	public function setDuvcategoria_id($duvcategoria_id) {
+		$this->duvcategoria_id = $duvcategoria_id;
+	}
 	public function getDuvcat_id() {
 		return $this->duvcat_id;
 	}
@@ -51,27 +57,23 @@ class Duvidas {
 	public static function getDuvidasCandidato() {
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM duvidas WHERE tiuser_id = 1");
+		return $banco->select("SELECT * FROM duvidas ");
 	}
 
 	public static function getDuvidasEmpresa() {
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM duvidas WHERE tiuser_id = 2");
-	}
-	public static function getDuvidaCategoria() {
-
+		return $banco->select("SELECT * FROM duvidas");
 	}
 
 	public function addDuvida() {
 
 		$banco = new Banco();
 
-		$result = $banco->query("INSERT INTO duvidas(duv_pergunta, duv_resposta, duvcategoria_id, tiuser_id) VALUES ( :duv_pergunta, :duv_resposta, :duvcategoria_id, :tiuser_id) ", array(
+		$result = $banco->query("INSERT INTO duvidas(duv_pergunta, duv_resposta, duvcategoria_id) VALUES ( :duv_pergunta, :duv_resposta, :duvcategoria_id) ", array(
 			":duv_pergunta" => $this->getDuv_pergunta(),
 			":duv_resposta" => $this->getDuv_resposta(),
-			":duvcategoria_id" => $this->getduvcat_id(),
-			":tiuser_id" => $this->getTiuser_id(),
+			":duvcategoria_id" => $this->getDuvcategoria_id(),
 
 		));
 	}

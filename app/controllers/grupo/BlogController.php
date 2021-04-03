@@ -28,7 +28,8 @@ class BlogController extends ContainerController {
 				'postBlog' => $postBlog,
 				'postBlogDestaque' => $postBlogDestaque,
 				'pais_id' => Session::get("PAIS_ID"),
-
+				'NotsGrupo' => getNotificantionGrupo(Session::get('USUARIO_ID')),
+				'NotsMessagem' => getNotificantionMessagem(Session::get('USUARIO_ID')),
 			], 'grupo.bloginterior');
 
 		} else {
@@ -70,15 +71,10 @@ class BlogController extends ContainerController {
 				'blog_date' => $blogLoad_id[0]['blog_date'],
 				'blog_img' => $blogLoad_id[0]['blog_img'],
 				'pais_id' => Session::get("PAIS_ID"),
+				'NotsGrupo' => getNotificantionGrupo(Session::get('USUARIO_ID')),
+				'NotsMessagem' => getNotificantionMessagem(Session::get('USUARIO_ID')),
 
-				// 'NotsSShere' => getNotificantionShere($sessionUsuario_id),
-				// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
-				// 'NotsContratouServico' => getNotificantionContratouServico($sessionUsuario_id),
-				// 'NotsCandidatoVaga' => getNotificantionCandidatoVaga($sessionUsuario_id),
-				// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
-				// 'NotsEmpresaContacta' => getNotificantionEmpresaContacta($sessionUsuario_id),
-
-			], 'grupo.blogartigoexterno');
+			], 'grupo.blogartigointerno');
 
 		} else {
 			$this->view([
@@ -95,13 +91,6 @@ class BlogController extends ContainerController {
 				'blog_date' => $blogLoad_id[0]['blog_date'],
 				'blog_img' => $blogLoad_id[0]['blog_img'],
 				'pais_id' => Session::get("PAIS_ID"),
-
-				// 'NotsSShere' => getNotificantionShere($sessionUsuario_id),
-				// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
-				// 'NotsContratouServico' => getNotificantionContratouServico($sessionUsuario_id),
-				// 'NotsCandidatoVaga' => getNotificantionCandidatoVaga($sessionUsuario_id),
-				// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
-				// 'NotsEmpresaContacta' => getNotificantionEmpresaContacta($sessionUsuario_id),
 
 			], 'index.blogartigoexterno');
 		}
@@ -135,7 +124,8 @@ class BlogController extends ContainerController {
 				'blogCategoria' => $blogCategoria,
 				'getcategorias' => $getcategorias,
 				'pais_id' => Session::get("PAIS_ID"),
-
+				'NotsGrupo' => getNotificantionGrupo(Session::get('USUARIO_ID')),
+				'NotsMessagem' => getNotificantionMessagem(Session::get('USUARIO_ID')),
 			], 'grupo.blogcategoriainterior');
 
 		} else {
@@ -174,12 +164,8 @@ class BlogController extends ContainerController {
 				'admin_session' => $admin_session,
 				'getBlogDestaque' => $getBlogDestaque,
 				'pais_id' => Session::get("PAIS_ID"),
-				// 'NotsSShere' => getNotificantionShere($sessionUsuario_id),
-				// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
-				// 'NotsContratouServico' => getNotificantionContratouServico($sessionUsuario_id),
-				// 'NotsCandidatoVaga' => getNotificantionCandidatoVaga($sessionUsuario_id),
-				// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
-				// 'NotsEmpresaContacta' => getNotificantionEmpresaContacta($sessionUsuario_id),
+				'NotsGrupo' => getNotificantionGrupo(Session::get('USUARIO_ID')),
+				'NotsMessagem' => getNotificantionMessagem(Session::get('USUARIO_ID')),
 
 			], 'grupo.blogdestaqueinterior');
 
@@ -189,12 +175,6 @@ class BlogController extends ContainerController {
 				'admin_session' => $admin_session,
 				'getBlogDestaque' => $getBlogDestaque,
 				'pais_id' => Session::get("PAIS_ID"),
-				// 'NotsSShere' => getNotificantionShere($sessionUsuario_id),
-				// 'NotsSeguir' => getNotificantionSeguir($sessionUsuario_id),
-				// 'NotsContratouServico' => getNotificantionContratouServico($sessionUsuario_id),
-				// 'NotsCandidatoVaga' => getNotificantionCandidatoVaga($sessionUsuario_id),
-				// 'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
-				// 'NotsEmpresaContacta' => getNotificantionEmpresaContacta($sessionUsuario_id),
 
 			], 'index.blogdestaqueexterior');
 		}

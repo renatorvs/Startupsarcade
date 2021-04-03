@@ -1,11 +1,13 @@
 <?php
 namespace app\linguagem;
 
-use app\linguagem\portugues\EntrarIngles;
+use app\linguagem\ingles\EntrarIngles;
+use app\linguagem\ingles\IndexIngles;
+use app\linguagem\ingles\PerfilIngles;
 use app\linguagem\portugues\EntrarPortugues;
-use app\linguagem\portugues\IndexIngles;
 use app\linguagem\portugues\IndexPortugues;
 use app\linguagem\portugues\InscrevasePortugues;
+use app\linguagem\portugues\PerfilPortugues;
 
 class Linguagem {
 
@@ -34,6 +36,22 @@ class Linguagem {
 	}
 
 	public static function getIdiomaInscrevase() {
+		if (getLanguage() == 1) {
+			return new IndexIngles();
+		} else {
+			return new InscrevasePortugues();
+		}
+	}
+
+	public static function getIdiomaPerfil() {
+		if (getLanguage() == 1) {
+			return new PerfilPortugues();
+		} else {
+			return new PerfilIngles();
+		}
+	}
+
+	public static function getIdiomaCategoriaGrupo() {
 		if (getLanguage() == 1) {
 			return new IndexIngles();
 		} else {

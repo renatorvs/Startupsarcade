@@ -40,7 +40,7 @@ class AdminpublicidadeController extends ContainerController {
 
 		$val = Validate::validate(['comp_nome' => 'string', 'compcate_id' => 'integer']);
 		$compentencias = new Competencias();
-		$compentencias->setComp_nome($val->comp_nome);
+		$compentenciasv b   ->setComp_nome($val->comp_nome);
 		$compentencias->setCompcate_id($val->compcate_id);
 		$compentencias->addCompetencias();
 

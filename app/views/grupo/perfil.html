@@ -1,150 +1,202 @@
-        <!DOCTYPE html>
-        <html lang="pt-br">
-
-
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
 	<meta charset="UTF-8">
-	<meta name="description" content="perfil">
-	<meta name="keywords" content="perfil">
+	<meta name="description" content="Empresa vagas">
+	<meta name="keywords" content="Empresa vagas">
 	<meta name="author" content="onclickup">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-	<!-- Compiled and minified materialize CSS -->
-	<link rel="stylesheet" href="../../../../assets/css/bootstrap/bootstrap-reboot.css">
-	<link rel="stylesheet" href="../../../../assets/css/bootstrap/bootstrap.min.css">
-	<link rel="stylesheet" href="../../../../assets/css/layout/perfil.css">
-	<link rel="stylesheet" href="../../../../assets/css/layout/layout.css">
-	<link rel="stylesheet" href="../../../../assets/css/layout/footer.css">
-	<!-- Custom fonts for this template-->
-	<link href="../../../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap-reboot.css">
+	<link rel="stylesheet" href="../../assets/css/layout/layout.css">
+	<link rel="stylesheet" href="../../assets/css/layout/footer.css">
+	<link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-	<title> onclickup| {{empresa_nome}}</title>
-	<!-- Custom styles for this template-->
-	<link href="../../../../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
-
+	<title> starstup´s  arcade | perfil</title>
+	<link href="../../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
 </head>
-
 <body id="page-top">
 	<header>
-		{{ include('layout/nav-header-empresa.html') }}
-		
+		{% if pais_id == 1 %}
+		{{ include('layout/nav-header-portugues.html') }}
+		{% else %}
+		{{ include('layout/nav-header-ingles.html') }}
+		{% endif %}
 
 	</header>
-	<main >
-		{{ include('layout/nav-dashboard-empresa.html') }}
+	<main>
+		{% if pais_id == 1 %}
+		{{ include('layout/nav-dashboard-portugues.html') }}
+		{% else %}
+		{{ include('layout/nav-dashboard-ingles.html') }}
+		{% endif %}
+		<section class="main-experi" >
+			<hr class="m-1">  
+			<section class="row">
+				<section class="col-xl-12 col-md-12 mb-4">
 
 
-		<section class="card" >
-			<br>
 
-			<br>
-
-			<section class="col-md-12">
-
-				<section align="center">
-
-					{% if cand_img  %}
-
-					<img class="img-thumbnail" src="/lll/lll" alt="" c>
+					<article class="card border-left-success shadow h-100 py-2">
+						<section class="card-body">
 
 
-					{% else %}
-					<img class="img-thumbnail " src="../../../../../assets/img/padraoperfil.svg" alt="foto_perfil">
-					{% endif %}
+							<h4 class ="text-dark" align="center">  Perfil  </h4>
+						</h5>
+
+
+
+						{% for perfil in getusuarioPerfil %}
+						<section class="modal fade editarusuario-senha-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+							<section class="modal-dialog modal-lg">
+								<section class="modal-content">
+									<section class="card-body">   
+
+										<form  enctype="multipart/form-data"  class="needs-validation" action="/perfil/storesenha" method ="post">
+											<section class="form-row">
+
+
+											</section>
+											<section class="form-row">
+
+												<input type="hidden" name="us_foto_old" value="{{perfil.us_foto}}">
+												<input type="hidden" name="us_email" value="{{perfil.us_email}}">
+												<section class="col-md-12 mb-3">
+													<label for="validationCustom03">{{senha_old}}</label>
+													<input type="password" value="" class="form-control" name="senha_old" id="validationCustom03" placeholder="{{senha_old}}">
+													<section class="invalid-feedback"> 
+														{{required_senha}}
+													</section>
+												</section>
+												<section class="col-md-12 mb-3">
+													<label for="validationCustom003">{{login_senha}}</label>
+													<input type="password" class="form-control" name="us_senha" id="validationCustom003" placeholder="{{login_senha}}">
+													<section class="invalid-feedback"> 
+														{{required_senha}}
+													</section>
+												</section>
+
+											</section>
+
+											<button class="btn btn-primary" type="submit">{{button_inscrever}}</button>
+										</form>
+
+
+
+									</section>
+								</section>
+							</section>
+						</section>
+
+
+						
+
+							<section class="modal fade editarusuario-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+							<section class="modal-dialog modal-lg">
+								<section class="modal-content">
+									<section class="card-body">   
+										
+										<form  enctype="multipart/form-data"  class="needs-validation" action="/perfil/store" method ="post">
+											<section class="form-row">
+												
+												<section class="col-md-12 mb-3">
+													<label for="validationCustomUsname">{{login_nome_usuario}}</label>
+													<section class="input-group">
+														<input type="text" name="us_nome" value="{{perfil.us_nome}}" class="form-control" id="validationCustomUsername" 
+														placeholder="{{login_nome_usuario}}" aria-describedby="inputGroupPrepend" required>
+														<section class="invalid-feedback">
+															{{requered_nome}} 
+														</section>
+													</section>
+												</section>
+											</section>
+											<section class="form-row">
+												
+												<input type="hidden" name="us_foto_old" value="{{perfil.us_foto}}">
+												<input type="hidden" name="us_email" value="{{perfil.us_email}}">
+											
+
+												<section class="col-md-12 mb-3">
+													<label for="validationCustom04">{{email_foto}}</label>
+													<input type="file" name="us_foto" class="form-control" id="us_foto">
+													<section class="invalid-feedback">
+														{{required_foto}} 
+													</section>  
+												</section>
+												
+												<section class="col-md-12 mb-3" >
+													<label for="validationCustom04">{{login_tipo_user}}</label>
+
+													<select name="us_tipo_pessoa" class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+														<option value="1">{{pf}}</option>
+														<option value="2">{{pj}}</option>
+													</select>
+												</section>
+											</section>
+
+											<button class="btn btn-primary" type="submit">{{button_inscrever}}</button>
+										</form>
+
+
+
+									</section>
+								</section>
+							</section>
+						</section>
+						<section class="card"> 
+							{{  messagem('login_frash') | raw }}
+							{{  messagem('login_aceito') | raw }}
+
+							<section class="card-body">
+
+								<ul class="list-unstyled" class="mr-1">
+									<li class="media my-4">
+										<figure>
+											<img src="../../assets/user_images/{{perfil.us_foto}}" width="80" height="80" class="mr-1" >
+										</figure>
+										<section class="media-body"> 
+											<h4 class="mt-0 mb-1"> {{perfil.us_nome}}</h4>
+											<h5 class="mt-0 mb-1 text-primary">{{perfil.us_email}}</h5>
+
+
+
+											<button class="btn btn-success" role="button" data-toggle="modal" data-target=".editarusuario-lg"type="submit">editar</button>	
+											<button class="btn btn-info" role="button" data-toggle="modal" data-target=".editarusuario-senha-lg"type="submit">editar senha</button>
+
+
+										</a> 
+									</section>
+								</li>
+							</ul>
+							{% endfor %}
+
+
+
+
+
+						</section>
+
+					</section>
+
+					<br>
+
+
+
+
 				</section>
-
-				<h4 class="card-title" align="center">{{empresa_nome}}</h4>
-				<ul class="list-inline" id="courses">								 									
-				</ul>
-
-				
-
-
-				<section class="address">								
-					<ul class="w3-ul w3-small">
-
-						<strong>Nome</strong> {{empresa_nome}} <br>	
-						<strong> E-mail :</strong>  {{ender_cidade}}, {{est_nome}}	<br>	
-							
-
-					</ul>
-				</section>
-				<hr> 
-			<section style=" display:none">
-				<nav class="nav d-flex justify-content-between">  
-					<li>	<a class="p-2 text-muted">  <strong>Servicos e produtos prestados:	</strong></a></li>
-					<li>			<a href="\meusservicos\create" class="btn btn-primary btn-sm "> mais servicos</a></li>
-				</nav>
-				{% if haGetMeusServicosLimit %} <br>	
-				{% for getservicosLimit in getMeusServicosLimit %}
-				<nav class="nav d-flex justify-content-between">  
-					<a class="p-2 text-success"> {{getservicosLimit.post_titulo}}</a>
-				</nav>
-				{% endfor %}
-
-				{% else %}
-
-				<p class="text-center text-danger" >	Há servicos</p>
-
-
-				{% endif %}
-				</section>
-				<hr>
-				<nav class="nav d-flex justify-content-between">  
-					<li>	<a class="p-2 text-muted">  <strong>Ultimas vagas:	</strong></a></li>
-					<li>			<a href="\empresavagas\create" class="btn btn-primary btn-sm "> mais vagas</a></li>
-
-				</nav>
-
-				{% if haGetMinhasvagasLimit %} <br>
-				{% for getvagasLimit in getMinhasvagasLimit %}
-				<nav class="nav d-flex justify-content-between">  
-					<a class="p-2 text-success"> {{getvagasLimit.post_titulo}}</a>
-				</nav>
-				{% endfor %}
-
-				{% else %}
-
-
-				<p class="text-center">	Há vaga</p>
-
-				{% endif %}
-
-
-
-				<p class="lower-case ">  Pode ser entcontrado em </p>
-				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d123405.88854614287!2d120.60617944332368!3d14.856990020414184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33965af30887de57%3A0x1aa8d246509d51e5!2sMacabebe%2C+Pampanga!5e0!3m2!1sen!2sph!4v1514036434857" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
-
-				<hr>
-
-				<a class="twitter-timeline" href="https://twitter.com/Jhean_Yhu" data-widget-id="731156277431140352"></a>
-				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
-
-				<br>
-
-			</section>
+			</article>
 		</section>
-	</main>
+	</section> 
 
-	{{ include('layout/nav-dashboard-end.html') }}
-	{{ include('layout/footer.html') }}
-
-
-
-
-
-	<!-- Bootstrap core JavaScript-->
-	<script src="../../../../assets/vendor/jquery/jquery.min.js"></script>
-	<script src="../../../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-	<!-- Core plugin JavaScript-->
-	<script src="../../../../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-	<!-- Custom scripts for all pages-->
-	<script src="../../../../assets/js/sb-admin-2.min.js"></script>
-
+</section>
+</main>
+{{ include('layout/nav-dashboard-end.html') }}
+{{ include('layout/footer.html') }}
+<script src="../../assets/vendor/chart.js/Chart.min.js"></script>
+<script src="../../assets/js/demo/chart-area-demo.js"></script>
+<script src="../../assets/js/demo/chart-pie-demo.js"></script>
+<script src="../../assets/vendor/jquery/jquery.min.js"></script>
+<script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="../../assets/js/sb-admin-2.min.js"></script>
 </body>
-
 </html>

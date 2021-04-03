@@ -18,6 +18,7 @@ class AdmindashboardController extends ContainerController {
 
 		$this->view([
 			'title' => 'Curso',
+			'pais_id' => Session::get("PAIS_ID"),
 
 		], 'admin.admindashboard');
 	}

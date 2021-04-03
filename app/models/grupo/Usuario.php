@@ -99,7 +99,7 @@ class Usuario {
 		$banco = new Banco();
 
 		return $banco->select("SELECT us_id, us_nome, us_email, us_senha  FROM usuario WHERE us_email = :us_email LIMIT 1", array(
-			":us_email" => $this->getus_email(),
+			":us_email" => $this->getUs_email(),
 		));
 
 	}
@@ -171,14 +171,25 @@ class Usuario {
 
 		$banco = new Banco();
 
-		$result = $banco->query("UPDATE usuario SET us_email = :us_email,us_nome= :us_nome, us_senha = :us_senha,us_preferences_id= :us_preferences_id  WHEREus_id = :us_id ", array(
+		$result = $banco->query("UPDATE  usuario SET us_nome = :us_nome, us_tipo_pessoa = :us_tipo_pessoa, us_foto = :us_foto WHERE us_id = :us_id ", array(
 
-			":us_id" => $this->getUs_id(),
 			":us_nome" => $this->getUs_nome(),
-			":us_foto" => $this->getUs_email(),
-			":us_senha" => $this->getUs_senha(),
+			":us_foto" => $this->getUs_foto(),
 			":us_tipo_pessoa" => $this->getUs_tipo_pessoa(),
-			":us_cpf_cnpj" => $this->getUss_cpf_cnpj(),
+			":us_id" => $this->getUs_id(),
+
+		));
+
+	}
+
+	public function updateUsuarioSenha() {
+
+		$banco = new Banco();
+
+		$result = $banco->query("UPDATE  usuario SET  us_senha =:us_senha WHERE us_id = :us_id ", array(
+
+			":us_senha" => $this->getus_senha(),
+			":us_id" => $this->getUs_id(),
 
 		));
 
