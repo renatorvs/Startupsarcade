@@ -1,10 +1,6 @@
   
-<!-- Page Wrapper -->
 <div id="wrapper">
-
-  <!-- Sidebar -->
   <div class="page-wrapper chiller-theme toggled">
-
     <nav id="sidebar" class="sidebar-wrapper">
       <div class="sidebar-content">
         <div class="sidebar-brand">
@@ -13,73 +9,73 @@
             <i class="fas fa-times"></i>
           </div>
         </div>
-       
-        
         <div class="sidebar-menu">
           <ul>
-  <li class="sidebar-dropdown" >
-          <a href="#" class="text-black">
-            <img src="../../../assets/img/dica24px.svg">
-            <span class="text-black">Grupos</span>
-          </a>
-          <div class="sidebar-submenu">
-            <ul>
-               <li>
-                <a href="/grupos/categorias"> Explore grupos</a>
+             <li>
+              <a href="/statistics/show">
+                <img src="../../../assets/img/library_books-24px.svg" >
+                <span class="text-black"> Starstup Estatística</span>
+              </a>
+            </li> 
+            <li>
+              <a href="/learning/show">
+                <img src="../../../assets/img/library_books-24px.svg" >
+                <span class="text-black">Academia startup</span>
+              </a>
+            </li>
+            <li class="sidebar-dropdown" >
+              <a href="#" class="text-black">
+                <img src="../../../assets/img/dica24px.svg">
+                <span class="text-black">Grupos</span>
+              </a>
+              <div class="sidebar-submenu">
+                <ul>
+                 <li>
+                  <a href="/grupos/categorias"> Explore grupos</a>
+                </li>
+                <li>
+                  <a href="/meusgrupos/grupos">Meus grupos</a>
+                </li>
+                <li>
+                  <a href="/grupos/grupospendentes">Grupos pendentes</a>
+                </li>  
               </li>
               <li>
-                <a href="/meusgrupos/grupos">Meus grupos</a>
-              </li>
-                  <li>
-                <a href="/grupos/grupospendentes">Grupos pendentes</a>
-              </li>  
-               </li>
-                  <li>
                 <a href="/meusgrupos/gruposconvites">Grupos convites</a>
               </li>
             </ul>
           </div>
         </li>
-              
-
-            </li>
-            <li class="header-menu">
-            </li>
-            <li>
-              <a href="/blog/create">
-                <img src="../../../assets/img/library_books-24px.svg" >
-                <span class="text-black">Blog Starstup arcade</span>
-              </a>
-            </li>
-        
-
-
-
-      
+      </li>
+      <li class="header-menu">
+      </li>
+      <li>
+        <a href="/blog/create">
+          <img src="../../../assets/img/library_books-24px.svg" >
+          <span class="text-black">Blog starstup arcade</span>
+        </a>
+      </li>
       <li>
         <a href="/duvidas/create">
          <img src="../../../assets/img/outline-help_outline-24px.svg">
          <span class="text-black">Duvidas</span>
        </a>
      </li>
-
-
-
-    <li class="sidebar-dropdown">
+     <li class="sidebar-dropdown">
       <a href="#" class="text-black">
         <img src="../../../assets/img/config-24px.svg">
-        <span class="text-black">preferencias</span>
+        <span class="text-black">Preferencias</span>
       </a>
       <div class="sidebar-submenu">
         <ul>
           <li>
-            <a href="/entrar/destroy">logout</a>
+            <a href="/entrar/destroy">Logout</a>
           </li>
           <li>
-            <a href="/senha/create">senhas</a>
+            <a href="/senha/create">Senhas</a>
           </li>  
-  <li>
-            <a href="/perfil/create">foto</a>
+          <li>
+            <a href="/perfil/create">Foto</a>
           </li> 
           
         </ul>
@@ -127,48 +123,48 @@
 
 
 
-            <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="small material-icons" id="color-icons"><img src="../../../assets/img/mail_outline24px.svg"></i> <!-- Counter - Alerts -->
-                <span class="badge badge-success badge-counter"> <span class ="text-success">0</span></span>
-              </a>
-              <!-- Dropdown - Messages -->
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
-                <h6 class="dropdown-header">
-                  Message Center
-                </h6>
-                
-                {% if NotsMessagem  %}
+        <li class="nav-item dropdown no-arrow mx-1">
+          <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="small material-icons" id="color-icons"><img src="../../../assets/img/mail_outline24px.svg"></i> <!-- Counter - Alerts -->
+            <span class="badge badge-success badge-counter"> <span class ="text-success">0</span></span>
+          </a>
+          <!-- Dropdown - Messages -->
+          <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+            <h6 class="dropdown-header">
+              Message Center
+            </h6>
 
-                {% for NotsMessagems in  NotsMessagem %}           
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
-                    <div class="status-indicator bg-success"></div>
-                  </div>
-                  <div class="font-weight-bold">
-                    <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
-                    <div class="small text-gray-500">Emily Fowler · 58m</div>
-                  </div>
-                </a>
-                {% endfor %}
-                {% else  %}
+            {% if NotsMessagem  %}
 
-                <center class="text-danger m-3">Não há Mensagens</center>
-
-                {% endif %}
-                
-                
-                <a class="dropdown-item text-center small text-gray-500" href="#">mais Mensagens </a>
+            {% for NotsMessagems in  NotsMessagem %}           
+            <a class="dropdown-item d-flex align-items-center" href="#">
+              <div class="dropdown-list-image mr-3">
+                <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
+                <div class="status-indicator bg-success"></div>
               </div>
-            </li>
+              <div class="font-weight-bold">
+                <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
+                <div class="small text-gray-500">Emily Fowler · 58m</div>
+              </div>
+            </a>
+            {% endfor %}
+            {% else  %}
 
-          </ul>
+            <center class="text-danger m-3">Não há Mensagens</center>
 
-        </nav>
-        
+            {% endif %}
 
-        <div class="m-1">
+
+            <a class="dropdown-item text-center small text-gray-500" href="#">mais Mensagens </a>
+          </div>
+        </li>
+
+      </ul>
+
+    </nav>
+
+
+    <div class="m-1">
 
 
 

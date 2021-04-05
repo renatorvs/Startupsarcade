@@ -1,7 +1,7 @@
 RewriteEngine on
-RewriteCond %{HTTP_HOST} ^onclickup.com.br$ [NC,OR]
-RewriteCond %{HTTP_HOST} ^www.onclickup.com.br$
-RewriteCond %{REQUEST_URI} onclickup.com/
+RewriteCond %{HTTP_HOST} ^starstupsarcade.com.br$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^www.starstupsarcade.com.br$
+RewriteCond %{REQUEST_URI} starstupsarcade.com/
 
 RewriteEngine On
 RewriteBase /

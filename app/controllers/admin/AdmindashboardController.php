@@ -6,10 +6,6 @@ use app\session\Session;
 
 class AdmindashboardController extends ContainerController {
 
-	public function index() {
-
-	}
-
 	public function create($request) {
 
 		if (!Session::get("ADMIN_SESSION")) {

@@ -24,11 +24,21 @@
 
 <body id="page-top">
 <header>
-    {{ include('layout/nav-header-admin.html') }}
-</header>
-    <main >
-    {{ include('layout/nav-dashboard-admin.html') }}
+      {% if pais_id == 1 %}
 
+        {{ include('layout/nav-header-portugues.html') }}
+                        {% else %}
+        {{ include('layout/nav-header-ingles.html') }}
+                     {% endif %}
+
+
+  </header>
+  <main>
+      {% if pais_id == 1 %}
+        {{ include('layout/nav-dashboard-portugues.html') }}
+      {% else %}
+          {{ include('layout/nav-dashboard-ingles.html') }}
+      {% endif %}
         <div class="main-experi">
       <a class = "btn btn-primary btn-sm"href="/admincompetencias/show">ver competencias</a>
                   <h4 class="text-dark" align="center"> Adiciona Competencias </h4>

@@ -20,9 +20,7 @@ class MeusgruposController extends ContainerController {
 			redirecionar("/");
 		}
 		$grupoAll = CategoriaGrupo::CategoriaGrupoAll(Session::get('PAIS_ID'));
-
 		$meusGrupos = Grupo::meusGrupos(Session::get('USUARIO_ID'));
-		//	debug($meusGrupos);
 		$this->view([
 			'title' => 'SA | Grupos startup',
 			'meusGrupos' => $meusGrupos,

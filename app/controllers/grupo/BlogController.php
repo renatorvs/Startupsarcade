@@ -20,7 +20,7 @@ class BlogController extends ContainerController {
 				$admin_session = true;
 			}
 			$this->view([
-				'title' => " onclickup bWWlog",
+				'title' => " Blog Startup´s arcade ",
 				'usuario_id' => Session::get('USUARIO_ID'),
 				'admin_session' => $admin_session,
 				'candidato_session' => $candidato_session,
@@ -34,7 +34,7 @@ class BlogController extends ContainerController {
 
 		} else {
 			$this->view([
-				'title' => " onclickup blog",
+				'title' => " Blog Startup´s arcade ",
 				'usuario_id' => Session::get('USUARIO_ID'),
 				'admin_session' => $admin_session,
 				'candidato_session' => $candidato_session,

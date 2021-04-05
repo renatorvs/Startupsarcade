@@ -13,7 +13,7 @@ class Publicidade {
 	private $pu_parcela;
 	private $pu_src;
 
-	public function __construct($pu_produto, $pu_link, $pu_src $pu_categoria_id, $pu_pais, $pu_preco, $pu_parcela) {
+	public function __construct($pu_produto, $pu_link, $pu_src, $pu_categoria_id, $pu_pais, $pu_preco, $pu_parcela) {
 		$this->pu_produto = $pu_produto;
 		$this->pu_link = $pu_link;
 		$this->pu_categoria_id = $pu_categoria_id;

@@ -1,0 +1,121 @@
+    <html lang="pt-br">
+    <!DOCTYPE html>
+
+    <head>
+      <meta charset="UTF-8">
+      <meta name="description" content="dashboard">
+      <meta name="keywords" content="dashboard">
+      <meta name="author" content="onclickup">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="../assets/css/bootstrap/bootstrap-reboot.css">
+      <link rel="stylesheet" href="../assets/css/bootstrap/bootstrap.min.css">
+      <link rel="stylesheet" href="../assets/css/layout/adddica.css">
+      <link rel="stylesheet" href="../assets/css/layout/layout.css">
+      <link rel="stylesheet" href="../assets/css/layout/footer.css">
+      <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+      <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+      <title> starstup´s arcade | dashboard </title>
+
+      <link href="../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
+
+    </head>
+    <body id="page-top">
+
+      <header>
+        {% if pais_id %}
+
+        {{ include('layout/nav-header-portugues.html') }}
+        {% else %}
+        {{ include('layout/nav-header-ingles.html') }}
+        {% endif %}
+
+
+      </header>
+      <main>
+       {% if pais_id %}
+       {{ include('layout/nav-dashboard-portugues.html') }}
+       {% else %}
+       {{ include('layout/nav-dashboard-ingles.html') }}
+       {% endif %}
+       <div id="content">
+
+
+        <div class="container-fluid">
+
+          <h1 class="h3 mb-2 text-gray-800">Empreendedores Brasileiros</h1>
+          <p class="mb-4"><a target="_blank" href="https://www.chartjs.org/docs/latest/"></a>perfis e percepções</p>
+
+          <div class="row">
+
+            <div class="col-xl-8 col-lg-7">
+
+
+            <!-- Bar Chart -->
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Um país de empreendedores</h6>
+                Um país de empreendedores
+                Seguindo a tendência de ter visões positivas sobre empreendedorismo, não surpreende que o brasileiro quer
+                empreender e que a perspectiva do empreendedorismo como opção de carreira está ganhando cada vez mais força
+                no Brasil. Cerca de três em cada quatro pessoas alegam preferir ter o próprio negócio a ser empregado ou funcionário de terceiros, uma taxa também entre as maiores do mundo, só ficando atrás da Turquia (Eurobarometer, 2012).
+              </div>
+              <div class="card-body">
+                <div class="chart-bar">
+                  <canvas id="myBarChart"></canvas>
+                </div>
+                <hr>
+                Essa taxa é extremamente alta, mas o dado seguinte mostra uma perspectiva mais realista. Quando perguntando sobre a probabilidade de abrir uma empresa de fato, nos próximos cinco anos, o grupo que respondeu
+                “muito provável” cai para 19%, com 33% da população respondendo “provável” – seja abrindo o primeiro ou um
+                novo negócio (para aqueles que já possuem um). Mesmo com este corte mais realista contra os sonhos otimistas
+              do brasileiro, essa é uma das maiores taxas em todo o mundo, como visto nos dados do Eurobarometer (2012)              </div>
+            </div>
+
+          </div>
+
+          <div class="col-xl-4 col-lg-5">
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Perfis dos Segmentos</h6>
+              </div>
+              <div class="card-body">
+                 Distribuição dos segmentos entre os que pretendem ser empreendedores (futuro empreendedores)
+                <div class="chart-pie pt-6">
+                  <canvas id="myPieChart1"></canvas>
+                </div>
+                <hr>
+              </div>
+            </div>         
+            <div class="card shadow mb-4">
+
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Perfis dos Segmentos</h6>
+              </div>
+              <div class="card-body">
+              Distribuição dos segmentos entre os empreendedores formais (Já empreendem)
+                <div class="chart-pie pt-6">
+                  <canvas id="myPieChart2"></canvas>
+                </div>
+                <hr>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+
+</body>
+<script src="../assets/vendor/chart.js/Chart.min.js"></script>
+<script src="../assets/js/demo/chart-area-demo.js"></script>
+<script src="../assets/js/demo/chart-pie-demo.js"></script>
+<script src="../assets/js/demo/chart-bar-demo.js"></script>
+<script src="../assets/vendor/jquery/jquery.min.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="../assets/js/sb-admin-2.min.js"></script>
+</body>
+</html>

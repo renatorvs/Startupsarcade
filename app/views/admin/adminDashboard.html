@@ -29,13 +29,21 @@
 
     <body id="page-top">
     <header>
-      {{ include('layout/nav-header-admin.html') }}
-    </header>
+      {% if pais_id == 1 %}
 
-      <main>
-    {{ include('layout/nav-dashboard-admin.html') }}
+        {{ include('layout/nav-header-portugues.html') }}
+                        {% else %}
+        {{ include('layout/nav-header-ingles.html') }}
+                     {% endif %}
 
 
+  </header>
+  <main>
+      {% if pais_id == 1 %}
+        {{ include('layout/nav-dashboard-portugues.html') }}
+      {% else %}
+          {{ include('layout/nav-dashboard-ingles.html') }}
+      {% endif %}
 
 
         
@@ -45,11 +53,7 @@
       <!-- Bootstrap core JavaScript-->
       <script src="../assets/vendor/jquery/jquery.min.js"></script>
       <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-      <!-- Core plugin JavaScript-->
       <script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-      <!-- Custom scripts for all pages-->
       <script src="../assets/js/sb-admin-2.min.js"></script>
 
     </body>

@@ -28,8 +28,7 @@ class AdminpublicidadeController extends ContainerController {
 		$categoriaGrupoPublicidade = categoriaGrupo::categoriaGrupoPublicidade();
 		// debug()
 		$this->view([
-			//	'title' => 'Competencias',
-			//'getCompetenciaCategoria' => Competencias_categoria::getCompetenciaCategoria(),
+			'pais_id' => Session::get("PAIS_ID"),
 			'getPublicidadeAll' => $getPublicidadeAll,
 			'categoriaGrupoPublicidade' => $categoriaGrupoPublicidade,
 		], 'admin.adminpublicidade');
@@ -40,7 +39,6 @@ class AdminpublicidadeController extends ContainerController {
 
 		$val = Validate::validate(['comp_nome' => 'string', 'compcate_id' => 'integer']);
 		$compentencias = new Competencias();
-		$compentenciasv b   ->setComp_nome($val->comp_nome);
 		$compentencias->setCompcate_id($val->compcate_id);
 		$compentencias->addCompetencias();
 
