@@ -42,7 +42,7 @@ class MeusgruposController extends ContainerController {
 			redirecionar("/");
 		}
 
-		$grupoAll = CategoriaGrupo::CategoriaGrupoAll();
+		$grupoAll = CategoriaGrupo::CategoriaGrupoAll(Session::get('PAIS_ID'));
 
 		$grupo = new Grupo();
 
@@ -52,11 +52,13 @@ class MeusgruposController extends ContainerController {
 			'gr_descricao' => 'string',
 			'gr_cidade' => 'string',
 			'gr_estado' => 'string',
-			'gu_private' => 'integer',
+			'gr_private' => 'integer',
 			'grcat_id' => 'integer',
 			'grcat_id' => 'integer',
 			'gr_old_foto' => 'string',
 		]);
+
+		//	debug($v);
 
 		$grupo->setGr_id($v->gr_id);
 		$grupo->setGr_nome($v->gr_nome);
@@ -73,11 +75,11 @@ class MeusgruposController extends ContainerController {
 		}
 		$grupo->setGrcat_id($v->grcat_id);
 
-		$grupo->grupoUpdate();
-
 		$grupo->setGu_grupo_id($v->gr_id);
-		$grupo->setGu_private($v->gu_private);
-		$grupo->grupoUsuarioUpdate();
+		$grupo->setGr_private($v->gr_private);
+		//debug($grupo->getGr_private());
+
+		$grupo->grupoUpdate();
 
 		redirecionar('\meusGrupos\grupos');
 
@@ -97,6 +99,42 @@ class MeusgruposController extends ContainerController {
 		Grupo::grupoUsuarioDelete($gr_id->parameter);
 
 		redirecionar('\meusGrupos\grupos');
+
+	}
+	public function grupoDeleteUsuario($gr_id) {
+		if (Session::get('USUARIO_ID')) {
+			Session::get('US_FOTO');
+			Session::get('US_NOME');
+		} else {
+			redirecionar("/");
+		}
+
+		$grupo = new Grupo();
+
+		Grupo::grupoUsuarioSair($gr_id->parameter, Session::get('USUARIO_ID'));
+
+		redirecionar('\meusGrupos\grupos');
+
+	}
+	public function grupoDeleteUsuarioSair($gr_id) {
+		if (Session::get('USUARIO_ID')) {
+			Session::get('US_FOTO');
+			Session::get('US_NOME');
+		} else {
+			redirecionar("/");
+		}
+
+		$v = Validate::validate([
+			'gu_grupo_id' => 'integer',
+			'us_id' => 'integer',
+
+		]);
+
+		$grupo = new Grupo();
+
+		Grupo::grupoUsuarioSair($v->gu_grupo_id, $v->us_id);
+
+		redirecionar('/meusgrupos/grupousuariosadmin/$v->gu_grupo_id');
 
 	}
 

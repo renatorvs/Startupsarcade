@@ -48,8 +48,11 @@
             </h5>
 
             <h5 class ="text-danger" align="center">              {{  messagem('checkbloqueado') | raw }}
+            </h5>  
+
+            <h5 class ="text-success" align="center">              {{  messagem('Pedidoaceito') | raw }}
             </h5>
-                              {% set counter = 0 %}
+            {% set counter = 0 %}
 
             {% for grupo in getdadosGrupocategoria %}
             {% set counter = ( counter | default(0) ) + 1 %}
@@ -59,7 +62,7 @@
                 <ul class="list-unstyled" class="mr-1">
                   <li class="media my-4">
                     <figure>
-                      <img src="../../assets/img/outline-ballot-24px.svg" class="mr-1" >
+                      <img src="../../assets/user_images/{{grupo.gr_foto}}" class="mr-1" width="50" height="50" >
                     </figure>
                     <section class="media-body"> 
                       <h4 class="mt-0 mb-1"> {{grupo.gr_nome}}</h4>
@@ -105,7 +108,7 @@
           <br>
           {% endfor %}
           {% if counter >= 3 %}
-           {% set counter = 0 %}
+          {% set counter = 0 %}
 
           {% for publicidade in getPublicidadeAll %}
           <section class="card"> 

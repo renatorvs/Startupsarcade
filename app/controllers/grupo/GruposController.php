@@ -84,7 +84,7 @@ class GruposController extends ContainerController {
 			'gr_descricao' => 'string',
 			'gr_cidade' => 'string',
 			'gr_estado' => 'string',
-			'gu_private' => 'integer',
+			'gr_private' => 'integer',
 			'grcat_id' => 'integer',
 		]);
 
@@ -93,10 +93,19 @@ class GruposController extends ContainerController {
 		$grupo->setGr_cidade($v->gr_cidade);
 		$grupo->setGr_estado($v->gr_estado);
 		$grupo->setGr_pais(Session::get('PAIS_ID'));
-		$gr_foto = Imagem::uploadImage($_FILES['gr_foto']);
-		$grupo->setGr_foto($gr_foto);
+
+		if ($_FILES['us_foto']['name'] != null) {
+			$us_foto = Imagem::uploadImage($_FILES['us_foto']);
+			$grupo->setGr_foto($us_foto);
+		} else {
+			$us_foto = "starstup-logo.PNG";
+
+			$grupo->setGr_foto($us_foto);
+
+		}
+
 		$grupo->setGrcat_id($v->grcat_id);
-		$grupo->setGr_private($v->gu_private);
+		$grupo->setGr_private($v->gr_private);
 
 		$grupo->addGrupo();
 		$getLastGrupo = $grupo->getLastGrupo();
@@ -140,9 +149,11 @@ class GruposController extends ContainerController {
 		if ($checkuser[0]['gu_accept'] == 3) {
 			flash(['checkbloqueado' => "Você esta bloquado nesse grupo"]);
 			redirecionar("/grupos/grupo/$v->catgr_id");
-		} else if ($checkuser[0] != null) {
+		} else if ($v->gu_accept == 2) {
+			flash(['Pedidoaceito' => "Pedido aceito"]);
+			$grupo->addgrupoMembro();
+		} else if ($checkuser[0] == 1) {
 			flash(['checkgrupo' => "Você já mandou convite para esse grupo"]);
-
 		} else {
 			$grupo->addgrupoMembro();
 			flash(['conviteenviado' => "Pedido enviado "]);

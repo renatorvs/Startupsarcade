@@ -1,47 +1,46 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="description" content="Empresa vagas">
-  <meta name="keywords" content="Empresa vagas">
-  <meta name="author" content="onclickup">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap-reboot.css">
-  <link rel="stylesheet" href="../../assets/css/layout/layout.css">
-  <link rel="stylesheet" href="../../assets/css/layout/footer.css">
-  <link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-  <title>starstup arcade | Meus grupos
-</title>
-  <link href="../../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
+	<meta charset="UTF-8">
+	<meta name="description" content="Empresa vagas">
+	<meta name="keywords" content="Empresa vagas">
+	<meta name="author" content="onclickup">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap-reboot.css">
+	<link rel="stylesheet" href="../../assets/css/layout/layout.css">
+	<link rel="stylesheet" href="../../assets/css/layout/footer.css">
+	<link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+	<title>starstup arcade | Meus grupos
+	</title>
+	<link href="../../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
 </head>
 <body id="page-top">
-  <header>
-      {% if pais_id == 1 %}
-        {{ include('layout/nav-header-portugues.html') }}
-                        {% else %}
-        {{ include('layout/nav-header-ingles.html') }}
-                     {% endif %}
+	<header>
+		{% if pais_id == 1 %}
+		{{ include('layout/nav-header-portugues.html') }}
+		{% else %}
+		{{ include('layout/nav-header-ingles.html') }}
+		{% endif %}
 
 
-  </header>
-  <main>
-      {% if pais_id == 1 %}
-        {{ include('layout/nav-dashboard-portugues.html') }}
-      {% else %}
-          {{ include('layout/nav-dashboard-ingles.html') }}
-      {% endif %}		<section class="main-experi" >
+	</header>
+	<main>
+		{% if pais_id == 1 %}
+		{{ include('layout/nav-dashboard-portugues.html') }}
+		{% else %}
+		{{ include('layout/nav-dashboard-ingles.html') }}
+		{% endif %}		<section class="main-experi" >
 			<hr class="m-1">  
 			<section class="row">
 				<section class="col-xl-12 col-md-12 mb-4">
-					Compartilhe ideias
-					Tudo começa com uma ideia ! 
+
 
 
 
 					<article class="card border-left-success shadow h-100 py-2">
 						<section class="card-body">
-							<section class="modal fade criargrupo-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+							<section class="modal fade criargrupo-{{meusGrupo.gr_id}}-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 								<section class="modal-dialog modal-lg">
 									<section class="modal-content">
 										<section class="card-body">   
@@ -92,7 +91,7 @@
 													<section class="col-md-6 mb-3">
 														<section class="form-group">
 															<label for="exampleFormControlSelect1">Grupo Privado ?</label>
-															<select name="gu_private" class="form-control" id="exampleFormControlSelect1">
+															<select name="gr_private" class="form-control" id="exampleFormControlSelect1">
 																<option value="1">sim</option>
 																<option value="0">não</option>
 															</select>
@@ -113,19 +112,19 @@
 													</section>
 													
 												</section>
-											
+
 												
-												<button class="btn btn-primary" type="submit">Criar grupo</button>
+												<button class="btn btn-primary" type="submit">Salvar</button>
 											</form>
 										</section>
 									</section>
 								</section>
 							</section>
 							<h4 class ="text-dark" align="center">  Meus grupos  </h4>
-							<button  type="button" class="btn btn-primary" data-toggle="modal" data-target=".criargrupo-lg">Criar grupo</button>             
+							<button  type="button" class="btn btn-primary" data-toggle="modal" data-target=".criargrupo-{{meusGrupo.gr_id}}-lg">Criar grupo</button>             
 							<hr>
 							{% for meusGrupo in meusGrupos %}
-							<section class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+							<section class="modal fade bd-example-modal-{{meusGrupo.gr_id}}-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 								<section class="modal-dialog modal-lg">
 									<section class="modal-content">
 										<section class="card-body">   
@@ -180,14 +179,13 @@
 													<input type="file" class="form-control"  value="{{meusGrupo.gr_foto}}" name="gr_foto" id="gr_foto" placeholder="Foto grupo">
 												</section>
 
-												{{meusGrupo.gu_private}}
 												<section class="col-md-6 mb-3">
 													<section class="form-group">
 														<label for="exampleFormControlSelect1">Grupo Privado ?</label>
-														<select name="gu_private" class="form-control" id="exampleFormControlSelect1">
+														<select name="gr_private" class="form-control" id="exampleFormControlSelect1">
 															
 
-															{% if meusGrupo.gu_private == 1 %}
+															{% if meusGrupo.gr_private == 1 %}
 															<option  selected value="1">sim</option>
 															<option value="0">não</option>
 															{% else %}
@@ -231,13 +229,18 @@
 							<section class="modal-dialog" role="document">
 								<section class="modal-content">
 									<section class="modal-header">
-										<h5 class="modal-title" id="exampleModalLabel">Tem certeza que deseja excluir </h5>
+										<h5 class="modal-title" id="exampleModalLabel">Tem certeza que deseja excluir/sair </h5>
 										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 											<span aria-hidden="true">&times;</span>
 										</button>
 									</section>
 									<section class="modal-body">
+										{% if meusGrupo.adm_user_id == usuario_id or meusGrupo.adm_sub_user_id == usuario_id %}
 										<a  class="btn btn-primary btn-lg btn-block"  href="/MeusGrupos/grupoDelete/{{meusGrupo.gr_id}}">excluir</a>
+										{% else %}
+
+										<a  class="btn btn-primary btn-lg btn-block"  href="/MeusGrupos/grupoDeleteUsuario/{{meusGrupo.gr_id}}">sair</a>
+										{% endif %}
 
 									</section>
 									
@@ -246,20 +249,20 @@
 						</section>
 						<section class="card"> 
 							<section class="card-body">
-  
+
 								<ul class="list-unstyled" class="mr-1">
 									<li class="media my-4">
 										<figure>
-											<img src="../../assets/img/outline-ballot-24px.svg" class="mr-1" >
+											<img src="../../assets/user_images/{{meusGrupo.gr_foto}}" class="mr-1" width="50" height="50" >
 										</figure>
 										<section class="media-body"> 
 											<h4 class="mt-0 mb-1"> {{meusGrupo.gr_nome}}</h4>
 											<h5 class="mt-0 mb-1 text-primary">{{meusGrupo.cg_nome}}</h5>
-											  {% if meusGrupo.gr_private == 1 %}
-                        Grupo Privado |
-                        {% endif %}
-										 Membros(10) | {{meusGrupo.gr_cidade}}, {{meusGrupo.gr_estado}} {{meusGrupo.gr_pais}}<br>
-                        <a href="\meusgrupos\informacoes\{{meusGrupo.gr_id}}" class="text-primary">Grupo informaçoes</a>
+											{% if meusGrupo.gr_private == 1 %}
+											Grupo Privado |
+											{% endif %}
+											Membros(10) | {{meusGrupo.gr_cidade}}, {{meusGrupo.gr_estado}} {{meusGrupo.gr_pais}}<br>
+											<a href="\meusgrupos\informacoes\{{meusGrupo.gr_id}}" class="text-primary">Grupo informaçoes</a>
 										</a> 
 									</section>
 								</li>
@@ -267,16 +270,17 @@
 
 
 							<section align="center" class="group-button">
-								                        	<button class="btn btn-success"><a class="text-white" href="\grupo\chat\{{meusGrupo.gr_id}}"  >visitar</a> 	</button>
-
-							 {% if meusGrupo.adm_user_id == usuario_id or meusGrupo.adm_sub_user_id == usuario_id %}</h4>
-
-								<button class="btn btn-primary" role="button" data-toggle="modal" data-target=".bd-example-modal-lg">editar</button>
+								<button class="btn btn-success"><a class="text-white" href="\grupo\chat\{{meusGrupo.gr_id}}"  >visitar</a> 
+									</button>
 								<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
-									excluir
+									sair/excluir
 								</button>
 
-		{% endif %}
+								{% if meusGrupo.adm_user_id == usuario_id or meusGrupo.adm_sub_user_id == usuario_id %}
+
+								<button class="btn btn-primary" role="button" data-toggle="modal" data-target=".bd-example-modal-{{meusGrupo.gr_id}}-lg">editar</button>
+
+								{% endif %}
 							</section>
 						</section>
 					</section>

@@ -53,7 +53,7 @@
              <img class="img-thumbnail" src="../../assets/user_images/{{fotogrupo}}" width="150" height="150">
 
           {% else %}
-          <img class="img-thumbnail " src="../../../../../assets/img/padraoperfil.svg" alt="foto_perfil" width="150" height="150">
+          <img class="img-thumbnail " src="../../assets/img/padraoperfil.svg" alt="foto_perfil" width="150" height="150">
           {% endif %}
         </section>
 
@@ -116,7 +116,19 @@
 
                               <button type="submit"  class="btn btn-success" >ADD admin </button>
                             </form>
+                        
 
+                              {% if meusGrupo.adm_sub_user_id != meusGrupo.us_id or meusGrupo.us_id != meusGrupo.adm_user_id %}
+
+
+                                <form action="\meusgrupos\grupoDeleteUsuarioSair" method="post" style="display: inline;">
+                                  <input type="hidden" name="gu_grupo_id" value="{{meusGrupo.gr_id}}">
+                                  <input type="hidden" name="us_id" value="{{meusGrupo.us_id}}">
+                                
+
+                                  <button type="submit"  class="btn btn-success" >excluir </button>
+                                </form>
+                              {% endif %}
 
 
 

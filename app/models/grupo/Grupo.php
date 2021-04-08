@@ -334,6 +334,16 @@ class Grupo {
 
 			));
 	}
+	public static function grupoUsuarioSair($gu_grupo_id, $gu_user_id) {
+		$banco = new Banco();
+
+		return $banco->query("DELETE FROM grupo_usuario WHERE  gu_user_id = :gu_user_id and gu_grupo_id = :gu_grupo_id",
+			array(
+				":gu_grupo_id" => $gu_grupo_id,
+				":gu_user_id" => $gu_user_id,
+
+			));
+	}
 
 	public static function getGrupoCategoriaId($grcat_id, $session_id) {
 

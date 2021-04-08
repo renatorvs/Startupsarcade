@@ -10,7 +10,7 @@ class Imagem {
 		$tipo = $arquivo['type'];
 		$tamanho = $arquivo['size'] / 1024;
 		$erro = $arquivo['error'];
-		$foto = $arquivo['name'] . time();
+		$foto = time() . $arquivo['name'];
 		$temp = $arquivo['tmp_name'];
 
 		move_uploaded_file($temp, $pasta . $foto);

@@ -4,6 +4,7 @@ namespace app\controllers\grupo;
 use app\controllers\ContainerController;
 use app\models\grupo\Estado;
 use app\models\grupo\Grupo;
+use app\models\grupo\Grupo_mensagem_link;
 use app\models\grupo\Mensagem;
 use app\session\Session;
 use app\validate\Validate;
@@ -70,8 +71,10 @@ class GrupoController extends ContainerController {
 
 		$getMensagemDadoslink = Mensagem::getMensagemDadoslink(Session::get('USUARIO_ID'));
 
-		grupo_mensagem_link::addGrupoMensagemLink($val->gml_grupo_id, Session::get('USUARIO_ID'), $msn_id[0]['msn_id'],
+		Grupo_mensagem_link::addGrupoMensagemLink($val->gml_grupo_id, Session::get('USUARIO_ID'), $msn_id[0]['msn_id'],
 			$getMensagemDadoslink[0]['mdl_id']);
+
+		redirecionar("/grupo/chat/$val->gml_grupo_id");
 
 	}
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 05-Abr-2021 às 01:31
+-- Tempo de geração: 08-Abr-2021 às 02:11
 -- Versão do servidor: 10.4.10-MariaDB
 -- versão do PHP: 7.2.25
 
@@ -59,14 +59,7 @@ CREATE TABLE IF NOT EXISTS `adm` (
   `car_id` int(11) DEFAULT NULL,
   `admuser_id` int(11) NOT NULL,
   PRIMARY KEY (`adm_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `adm`
---
-
-INSERT INTO `adm` (`adm_id`, `adm_nome`, `adm_email`, `adm_senha`, `car_id`, `admuser_id`) VALUES
-(1, 'Renato Vieira', 'onclickup_admin@gmail.com', '$2y$12$3tht8uM3Op2LDKiGYZz9Xe5K6bQ7d7MirESsyxUWcX3QnRxUhWVvG', 1, 0);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -92,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `blog` (
 
 INSERT INTO `blog` (`blog_id`, `blogdestaque_id`, `blog_text`, `blog_date`, `blog_img`, `blog_categoria_id`, `blogpost_id`) VALUES
 (1, 2, ' \r\n                         TESTE\r\n                      \r\n                      ', '2021-03-25', 'logo02.svg1616713812', 1, 4),
-(3, 1, ' \r\n                         loremggg\r\n                      \r\n                      ', '2021-04-04', '1617534583', 8, 6);
+(3, 1, ' \r\n                         \r\n                         \r\n                         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\n quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\n consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\n cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\n proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n                         loremggg\r\n                      \r\n                      \r\n                      \r\n                      \r\n                      ', '2021-04-05', '1617663374undraw_posting_photo.svg', 8, 6);
 
 -- --------------------------------------------------------
 
@@ -169,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `blog_post_categoria` (
 `post_id` int(11)
 ,`post_titulo` varchar(50)
 ,`post_subtitulo` varchar(50)
-,`post_description` varchar(150)
+,`post_description` text
 ,`postcat_id` int(11)
 ,`tipo_post_id` int(11)
 ,`userpost_id` int(11)
@@ -333,14 +326,7 @@ CREATE TABLE IF NOT EXISTS `conversaprivate` (
   `cp_remetente` int(11) NOT NULL,
   `cp_destinatario` int(11) NOT NULL,
   PRIMARY KEY (`cp_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `conversaprivate`
---
-
-INSERT INTO `conversaprivate` (`cp_id`, `cp_remetente`, `cp_destinatario`) VALUES
-(1, 0, 0);
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -493,15 +479,7 @@ CREATE TABLE IF NOT EXISTS `grupo` (
   `gr_private` int(11) NOT NULL,
   `gr_pais` int(11) NOT NULL,
   PRIMARY KEY (`gr_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `grupo`
---
-
-INSERT INTO `grupo` (`gr_id`, `gr_nome`, `gr_descricao`, `gr_cidade`, `gr_estado`, `gr_foto`, `grcat_id`, `gr_private`, `gr_pais`) VALUES
-(1, 'TESTE', 'DDD', 'MAUA', 'AC', '1616480492', 1, 0, 1),
-(2, 'AAA', 'AAAAAAAAAAAAAAAA', 'AAAAAAAAAAA', 'AL', '1617080452', 1, 0, 1);
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -516,15 +494,7 @@ CREATE TABLE IF NOT EXISTS `grupoadmin` (
   `adm_sub_user_id` int(11) DEFAULT NULL,
   `adm_grupo_id` int(11) NOT NULL,
   PRIMARY KEY (`admin_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=42 DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `grupoadmin`
---
-
-INSERT INTO `grupoadmin` (`admin_id`, `adm_user_id`, `adm_sub_user_id`, `adm_grupo_id`) VALUES
-(41, 3, 3, 2),
-(1, 1, 1, 1);
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -563,17 +533,7 @@ CREATE TABLE IF NOT EXISTS `grupo_mensagem_link` (
   `gmdl_id` int(11) NOT NULL,
   `gml_view` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`gml_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `grupo_mensagem_link`
---
-
-INSERT INTO `grupo_mensagem_link` (`gml_id`, `gml_date`, `gml_grupo_id`, `gml_remetente_id`, `gml_msn_id`, `gmdl_id`, `gml_view`) VALUES
-(1, '2021-01-25 01:05:12', 4, 3, 1, 1, 0),
-(2, '2021-01-25 02:28:50', 4, 1, 2, 2, 0),
-(3, '2021-01-26 01:06:15', 6, 3, 3, 1, 0),
-(4, '2021-02-11 04:39:49', 1, 3, 4, 1, 0);
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -588,15 +548,6 @@ CREATE TABLE IF NOT EXISTS `grupo_usuario` (
   `gu_grupo_id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Extraindo dados da tabela `grupo_usuario`
---
-
-INSERT INTO `grupo_usuario` (`gu_accept`, `gu_user_id`, `gu_grupo_id`) VALUES
-(2, 1, 1),
-(2, 3, 1),
-(2, 3, 2);
-
 -- --------------------------------------------------------
 
 --
@@ -610,21 +561,7 @@ CREATE TABLE IF NOT EXISTS `mensagem` (
   `msn_date` timestamp NOT NULL DEFAULT current_timestamp(),
   `msn_type` int(11) NOT NULL,
   PRIMARY KEY (`msn_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `mensagem`
---
-
-INSERT INTO `mensagem` (`msn_id`, `msn_nome`, `msn_date`, `msn_type`) VALUES
-(1, 'oi', '2021-03-24 21:24:43', 1),
-(2, 'oi', '2021-03-24 21:24:43', 1),
-(3, 'oi', '2021-03-24 21:24:43', 1),
-(4, 'oi', '2021-03-24 21:25:10', 1),
-(5, 'oi', '2021-03-24 21:25:16', 1),
-(6, 'ppppp', '2021-03-24 21:26:21', 1),
-(7, 'oi', '2021-03-24 21:27:29', 1),
-(8, 'ssss', '2021-03-24 22:43:53', 1);
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -679,20 +616,12 @@ CREATE TABLE IF NOT EXISTS `post` (
   `post_id` int(11) NOT NULL AUTO_INCREMENT,
   `post_titulo` varchar(50) DEFAULT NULL,
   `post_subtitulo` varchar(50) DEFAULT NULL,
-  `post_description` varchar(150) DEFAULT NULL,
+  `post_description` text DEFAULT NULL,
   `postcat_id` int(11) DEFAULT NULL,
   `tipo_post_id` int(11) NOT NULL,
   `userpost_id` int(11) NOT NULL,
   PRIMARY KEY (`post_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `post`
---
-
-INSERT INTO `post` (`post_id`, `post_titulo`, `post_subtitulo`, `post_description`, `postcat_id`, `tipo_post_id`, `userpost_id`) VALUES
-(4, 'TESTE', 'Subtitulo artigo:', ' \r\n                         TESTE\r\n                      \r\n                      ', 0, 5, 1),
-(6, 'Girias das startup´s', 'Giras', ' \r\n                         loremggg\r\n                      \r\n                      ', 0, 5, 1);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -793,18 +722,6 @@ INSERT INTO `publicidade` (`pu_id`, `pu_produto`, `pu_link`, `pu_categoria_id`, 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `solicitaao_categoria`
---
-
-DROP TABLE IF EXISTS `solicitaao_categoria`;
-CREATE TABLE IF NOT EXISTS `solicitaao_categoria` (
-  `solicat_id` varchar(10) DEFAULT NULL,
-  `soli_cat_nome` varchar(10) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Estrutura da tabela `solicitacao`
 --
 
@@ -823,6 +740,18 @@ CREATE TABLE IF NOT EXISTS `solicitacao` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `solicitacao_categoria`
+--
+
+DROP TABLE IF EXISTS `solicitacao_categoria`;
+CREATE TABLE IF NOT EXISTS `solicitacao_categoria` (
+  `solicat_id` varchar(10) DEFAULT NULL,
+  `soli_cat_nome` varchar(10) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `usuario`
 --
 
@@ -833,7 +762,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `us_nome` varchar(100) DEFAULT NULL,
   `us_tipo_pessoa` int(11) NOT NULL,
   `us_senha` varchar(255) DEFAULT NULL,
-  `us_foto` varchar(255) DEFAULT NULL,
+  `us_foto` varchar(255) DEFAULT 'padraoperfil.svg',
   `us_status_conta` int(11) DEFAULT NULL,
   `us_data_compra` date DEFAULT NULL,
   `us_data_expiracao` date DEFAULT NULL,
@@ -848,9 +777,9 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 --
 
 INSERT INTO `usuario` (`us_id`, `us_email`, `us_nome`, `us_tipo_pessoa`, `us_senha`, `us_foto`, `us_status_conta`, `us_data_compra`, `us_data_expiracao`, `us_cpf_cnpj`, `us_dataCadastro`, `us_pais_id`) VALUES
-(1, 'nato.re.vieira@gmail.com', 'Renato nato', 1, '$2y$12$6LnTXgn3kZAaxmbK62b96OfhqSiiGWeag47TDYioBmL6OGfrTdjZ.', 'Lamborghini_2018_Urus_Yellow_Metallic_561785_1280x854.jpg1610904835', 1, NULL, NULL, NULL, '2021-01-09 18:52:53', 1),
-(2, 'usuario@gmail.com', 'Renato u', 1, '$2y$12$6LnTXgn3kZAaxmbK62b96OfhqSiiGWeag47TDYioBmL6OGfrTdjZ.', 'Lamborghini_2018_Urus_Yellow_Metallic_561785_1280x854.jpg1610904835', 1, NULL, NULL, NULL, '2021-01-17 02:17:23', 1),
-(3, 'usuario1@gmail.com', 'Renato Vieira', 1, '$2y$12$M2cAdPhfMm05adJGmSJGGuubJ8k0VoMpXMzkxwiEdz7dDhVQiYYFG', '167480631_2680697645554863_8221771245333912096_n.jpg1617367604', 1, NULL, NULL, NULL, '2021-01-17 17:33:55', 1);
+(1, 'nato.re.vieira@gmail.com', 'Renato nato', 1, '$2y$12$6LnTXgn3kZAaxmbK62b96OfhqSiiGWeag47TDYioBmL6OGfrTdjZ.', 'padraoperfil.svg', 1, NULL, NULL, NULL, '2021-01-09 18:52:53', 1),
+(2, 'usuario@gmail.com', 'Renato u', 1, '$2y$12$6LnTXgn3kZAaxmbK62b96OfhqSiiGWeag47TDYioBmL6OGfrTdjZ.', 'padraoperfil.svg', 1, NULL, NULL, NULL, '2021-01-17 02:17:23', 1),
+(3, 'usuario1@gmail.com', 'Renato Vieira', 1, '$2y$12$M2cAdPhfMm05adJGmSJGGuubJ8k0VoMpXMzkxwiEdz7dDhVQiYYFG', 'padraoperfil.svg', 1, NULL, NULL, NULL, '2021-01-17 17:33:55', 1);
 
 -- --------------------------------------------------------
 
