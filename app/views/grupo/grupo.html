@@ -90,10 +90,10 @@
 
                   {% if grupo.gr_private == 0 %} 
                   <input type="hidden" name="gu_accept" value="2">
-                  {% endif %}
-
+                  {% else %}
 
                   <input type="hidden" name="gu_accept" value="1">
+                  {% endif %}
                   <button class="btn btn-primary" type="submit"  >Aderir grupo</button>
 
                 </form>
