@@ -47,13 +47,13 @@
                   <section class="card-body">   
             <section align="center">
 
-          {% if grupos.us_foto  %}
+          {% if grupos.us_foto != null  %}
 
 
-             <img class="img-thumbnail" src="../../assets/user_images/{{fotogrupo}}" width="150" height="150">
+             <img class="img-thumbnail" src="../../assets/user_images/{{grupos.us_foto}}" width="150" height="150">
 
           {% else %}
-          <img class="img-thumbnail " src="../../assets/img/padraoperfil.svg" alt="foto_perfil" width="150" height="150">
+          <img class="img-thumbnail " src="../../assets/user_images/padraoperfil.svg" alt="foto_perfil" width="150" height="150">
           {% endif %}
         </section>
 
@@ -71,12 +71,13 @@
                 {% endfor %}
 
                 {% for meusGrupo in meusGrupos %}
+                                                      <center> {{  messagem('admin') | raw }} </center> 
 
                 <section class="card"> 
+
                   <section class="card-body">
 
-
-                    {% if meusGrupo.us_id == meusGrupo.adm_sub_user_id or  meusGrupo.adm_user_id == meusGrupo.us_id %}
+                    {% if meusGrupo.adm_flag == 1 %}
                     <strong class="text-success"> Administrador</strong>
 
                     {% endif %}
@@ -89,7 +90,6 @@
 
                     {% endif %}
                     <br>
-                    {{  messagem('admin') | raw }}
 
                     <ul class="list-unstyled" class="mr-1">
                       <li class="media my-4">
@@ -101,20 +101,20 @@
 
                           <section align="center" class="group-button">
 
-                            <form action="\meusgrupos\admin " method="post" style="display: inline;">
+                            <form action="\meusgrupos\admin" method="post" style="display: inline;">
                               <input type="hidden" name="gu_grupo_id" value="{{meusGrupo.gr_id}}">
                               <input type="hidden" name="adm_user_id" value="{{meusGrupo.adm_user_id}}">
                               <input type="hidden" name="adm_sub_user_id" value="{{meusGrupo.gu_user_id}}">
-                              {% if meusGrupo.adm_sub_user_id != meusGrupo.adm_user_id %}
+                              {% if meusGrupo.adm_flag == 1 %}
                               <input type="hidden" name="admin" value="1">
-
                               {% else %}
-
                               <input type="hidden" name="admin" value="0">
                               {% endif %}
+
+                              
                               <input type="hidden" name="admin_id"  value="{{meusGrupo.admin_id}}">
 
-                              <button type="submit"  class="btn btn-success" >ADD admin </button>
+                              <button type="submit"  class="btn btn-success" >aaa admin </button>
                             </form>
                         
 
@@ -126,19 +126,18 @@
                                   <input type="hidden" name="us_id" value="{{meusGrupo.us_id}}">
                                 
 
-                                  <button type="submit"  class="btn btn-success" >excluir </button>
+                                  <button type="submit"  class="btn btn-danger" >excluir </button>
                                 </form>
                               {% endif %}
 
-
-
+                          {% if meusGrupo.adm_sub_user_id != meusGrupo.us_id or meusGrupo.us_id != meusGrupo.adm_user_id %}
                             {% if meusGrupo.gu_accept == 2 %}
                             <form action="\meusgrupos\bloquear" method="post" style="display: inline;">
                               <input type="hidden" name="gu_grupo_id" value="{{meusGrupo.gr_id}}">
                               <input type="hidden" name="adm_sub_user_id" value="{{meusGrupo.gu_user_id}}">
                               {% if meusGrupo.adm_user_id != meusGrupo.us_id %}
 
-                              <button type="submit"  class="btn btn-danger" >bloquear</button>
+                              <button type="submit"  class="btn btn-warning" >bloquear</button>
                               {% endif %}
 
                             </form> 
@@ -148,9 +147,10 @@
                               <input type="hidden" name="gu_grupo_id" value="{{meusGrupo.gr_id}}">
                               <input type="hidden" name="adm_sub_user_id" value="{{meusGrupo.gu_user_id}}">
                               {% if meusGrupo.adm_user_id != meusGrupo.us_id %}
-                              <button type="submit"  class="btn btn-danger" >desbloquear</button>
-                              {% endif %}
-                              {% endif %}
+                              <button type="submit"  class="btn btn-warning" >desbloquear</button>
+                               {% endif %}
+                             {% endif %}
+                           {% endif %}
 
 
 

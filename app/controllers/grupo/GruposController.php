@@ -44,8 +44,8 @@ class GruposController extends ContainerController {
 		}
 
 		$getGruposAll = Grupo::getGruposAll($grcat_id->parameter, Session::get('PAIS_ID'));
-		$getPublicidadeAll = Publicidade::getPublicidade();
-
+		$getPublicidadeAll = Publicidade::getPublicidade($grcat_id->parameter, Session::get('PAIS_ID'));
+		//debug($getGruposAll);
 		$this->view([
 			'title' => 'Planos',
 
@@ -113,7 +113,8 @@ class GruposController extends ContainerController {
 		$grupo->setGu_user_id(Session::get('USUARIO_ID'));
 		$grupo->setGu_grupo_id($getLastGrupo[0]['gr_id']);
 		$grupo->setGu_accept(2);
-		$grupo->grupoadmin(Session::get('USUARIO_ID'), $getLastGrupo[0]['gr_id']);
+
+		$grupo->grupoadmin(Session::get('USUARIO_ID'), Session::get('USUARIO_ID'), $getLastGrupo[0]['gr_id'], 1);
 		$grupo->addgrupo_usuario();
 
 		redirecionar("/meusgrupos/informacoes/" . $getLastGrupo[0]['gr_id']);
@@ -137,6 +138,7 @@ class GruposController extends ContainerController {
 			'gu_grupo_id' => 'integer',
 			'catgr_id' => 'integer',
 			'redirect' => 'integer',
+			'adm_user_id' => 'integer',
 		]);
 
 		$checkuser = Grupo::checkgrupos(Session::get('USUARIO_ID'), $v->gu_grupo_id);
@@ -151,6 +153,8 @@ class GruposController extends ContainerController {
 			redirecionar("/grupos/grupo/$v->catgr_id");
 		} else if ($v->gu_accept == 2) {
 			flash(['Pedidoaceito' => "Pedido aceito"]);
+			$grupo->grupoadmin($v->adm_user_id, Session::get('USUARIO_ID'), $v->gu_grupo_id, 0);
+
 			$grupo->addgrupoMembro();
 		} else if ($checkuser[0] == 1) {
 			flash(['checkgrupo' => "Você já mandou convite para esse grupo"]);

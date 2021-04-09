@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 08-Abr-2021 às 02:11
+-- Tempo de geração: 09-Abr-2021 às 03:38
 -- Versão do servidor: 10.4.10-MariaDB
 -- versão do PHP: 7.2.25
 
@@ -338,15 +338,21 @@ DROP VIEW IF EXISTS `dadosgrupo`;
 CREATE TABLE IF NOT EXISTS `dadosgrupo` (
 `cg_id` int(11)
 ,`cg_nome` varchar(100)
+,`cg_pais_id` int(11)
 ,`gr_id` int(11)
 ,`gr_nome` varchar(50)
 ,`gr_descricao` varchar(255)
 ,`gr_cidade` varchar(50)
 ,`gr_estado` varchar(50)
-,`gr_pais` int(11)
 ,`gr_foto` varchar(255)
 ,`grcat_id` int(11)
 ,`gr_private` int(11)
+,`gr_pais` int(11)
+,`admin_id` int(11)
+,`adm_user_id` int(11)
+,`adm_sub_user_id` int(11)
+,`adm_grupo_id` int(11)
+,`adm_flag` int(11)
 );
 
 -- --------------------------------------------------------
@@ -479,7 +485,16 @@ CREATE TABLE IF NOT EXISTS `grupo` (
   `gr_private` int(11) NOT NULL,
   `gr_pais` int(11) NOT NULL,
   PRIMARY KEY (`gr_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `grupo`
+--
+
+INSERT INTO `grupo` (`gr_id`, `gr_nome`, `gr_descricao`, `gr_cidade`, `gr_estado`, `gr_foto`, `grcat_id`, `gr_private`, `gr_pais`) VALUES
+(1, 'usuario1@gmail.com', 'descrei', 'Mauá', 'SP', 'starstup-logo.PNG', 1, 0, 1),
+(2, 'usuario1 -  2', 'descricao', 'Mauá', 'SP', 'starstup-logo.PNG', 11, 0, 1),
+(3, 'usuario -3', 'descricao', 'Aruja', 'SP', 'starstup-logo.PNG', 2, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -493,8 +508,20 @@ CREATE TABLE IF NOT EXISTS `grupoadmin` (
   `adm_user_id` int(11) NOT NULL,
   `adm_sub_user_id` int(11) DEFAULT NULL,
   `adm_grupo_id` int(11) NOT NULL,
+  `adm_flag` int(11) NOT NULL,
   PRIMARY KEY (`admin_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=42 DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `grupoadmin`
+--
+
+INSERT INTO `grupoadmin` (`admin_id`, `adm_user_id`, `adm_sub_user_id`, `adm_grupo_id`, `adm_flag`) VALUES
+(1, 3, 3, 1, 1),
+(2, 3, 3, 2, 1),
+(35, 3, 1, 2, 0),
+(36, 3, 3, 3, 1),
+(39, 3, 1, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -547,6 +574,17 @@ CREATE TABLE IF NOT EXISTS `grupo_usuario` (
   `gu_user_id` int(11) DEFAULT NULL,
   `gu_grupo_id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `grupo_usuario`
+--
+
+INSERT INTO `grupo_usuario` (`gu_accept`, `gu_user_id`, `gu_grupo_id`) VALUES
+(2, 3, 1),
+(2, 3, 2),
+(2, 3, 3),
+(2, 1, 3),
+(2, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -791,15 +829,16 @@ DROP VIEW IF EXISTS `usuariogrupos`;
 CREATE TABLE IF NOT EXISTS `usuariogrupos` (
 `cg_id` int(11)
 ,`cg_nome` varchar(100)
+,`cg_pais_id` int(11)
 ,`gr_id` int(11)
 ,`gr_nome` varchar(50)
 ,`gr_descricao` varchar(255)
 ,`gr_cidade` varchar(50)
 ,`gr_estado` varchar(50)
-,`gr_pais` int(11)
 ,`gr_foto` varchar(255)
 ,`grcat_id` int(11)
 ,`gr_private` int(11)
+,`gr_pais` int(11)
 ,`gu_accept` int(11)
 ,`gu_user_id` int(11)
 ,`gu_grupo_id` int(11)
@@ -814,10 +853,12 @@ CREATE TABLE IF NOT EXISTS `usuariogrupos` (
 ,`us_data_expiracao` date
 ,`us_cpf_cnpj` varchar(50)
 ,`us_dataCadastro` timestamp
+,`us_pais_id` int(11)
 ,`admin_id` int(11)
 ,`adm_user_id` int(11)
 ,`adm_sub_user_id` int(11)
 ,`adm_grupo_id` int(11)
+,`adm_flag` int(11)
 );
 
 -- --------------------------------------------------------
@@ -884,7 +925,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `dadosgrupo`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `dadosgrupo`  AS  select `cg`.`cg_id` AS `cg_id`,`cg`.`cg_nome` AS `cg_nome`,`g`.`gr_id` AS `gr_id`,`g`.`gr_nome` AS `gr_nome`,`g`.`gr_descricao` AS `gr_descricao`,`g`.`gr_cidade` AS `gr_cidade`,`g`.`gr_estado` AS `gr_estado`,`g`.`gr_pais` AS `gr_pais`,`g`.`gr_foto` AS `gr_foto`,`g`.`grcat_id` AS `grcat_id`,`g`.`gr_private` AS `gr_private` from (`categoria_grupo` `cg` join `grupo` `g` on(`cg`.`cg_id` = `g`.`grcat_id`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `dadosgrupo`  AS  select `cg`.`cg_id` AS `cg_id`,`cg`.`cg_nome` AS `cg_nome`,`cg`.`cg_pais_id` AS `cg_pais_id`,`g`.`gr_id` AS `gr_id`,`g`.`gr_nome` AS `gr_nome`,`g`.`gr_descricao` AS `gr_descricao`,`g`.`gr_cidade` AS `gr_cidade`,`g`.`gr_estado` AS `gr_estado`,`g`.`gr_foto` AS `gr_foto`,`g`.`grcat_id` AS `grcat_id`,`g`.`gr_private` AS `gr_private`,`g`.`gr_pais` AS `gr_pais`,`ga`.`admin_id` AS `admin_id`,`ga`.`adm_user_id` AS `adm_user_id`,`ga`.`adm_sub_user_id` AS `adm_sub_user_id`,`ga`.`adm_grupo_id` AS `adm_grupo_id`,`ga`.`adm_flag` AS `adm_flag` from ((`categoria_grupo` `cg` join `grupo` `g` on(`cg`.`cg_id` = `g`.`grcat_id`)) join `grupoadmin` `ga` on(`ga`.`adm_grupo_id` = `g`.`gr_id`)) ;
 
 -- --------------------------------------------------------
 
@@ -929,7 +970,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `usuariogrupos`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `usuariogrupos`  AS  select `cg`.`cg_id` AS `cg_id`,`cg`.`cg_nome` AS `cg_nome`,`g`.`gr_id` AS `gr_id`,`g`.`gr_nome` AS `gr_nome`,`g`.`gr_descricao` AS `gr_descricao`,`g`.`gr_cidade` AS `gr_cidade`,`g`.`gr_estado` AS `gr_estado`,`g`.`gr_pais` AS `gr_pais`,`g`.`gr_foto` AS `gr_foto`,`g`.`grcat_id` AS `grcat_id`,`g`.`gr_private` AS `gr_private`,`gu`.`gu_accept` AS `gu_accept`,`gu`.`gu_user_id` AS `gu_user_id`,`gu`.`gu_grupo_id` AS `gu_grupo_id`,`u`.`us_id` AS `us_id`,`u`.`us_email` AS `us_email`,`u`.`us_nome` AS `us_nome`,`u`.`us_tipo_pessoa` AS `us_tipo_pessoa`,`u`.`us_senha` AS `us_senha`,`u`.`us_foto` AS `us_foto`,`u`.`us_status_conta` AS `us_status_conta`,`u`.`us_data_compra` AS `us_data_compra`,`u`.`us_data_expiracao` AS `us_data_expiracao`,`u`.`us_cpf_cnpj` AS `us_cpf_cnpj`,`u`.`us_dataCadastro` AS `us_dataCadastro`,`ga`.`admin_id` AS `admin_id`,`ga`.`adm_user_id` AS `adm_user_id`,`ga`.`adm_sub_user_id` AS `adm_sub_user_id`,`ga`.`adm_grupo_id` AS `adm_grupo_id` from ((((`categoria_grupo` `cg` join `grupo` `g` on(`cg`.`cg_id` = `g`.`grcat_id`)) join `grupo_usuario` `gu` on(`g`.`gr_id` = `gu`.`gu_grupo_id`)) join `usuario` `u` on(`gu`.`gu_user_id` = `u`.`us_id`)) join `grupoadmin` `ga` on(`gu`.`gu_grupo_id` = `ga`.`adm_grupo_id`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `usuariogrupos`  AS  select `cg`.`cg_id` AS `cg_id`,`cg`.`cg_nome` AS `cg_nome`,`cg`.`cg_pais_id` AS `cg_pais_id`,`g`.`gr_id` AS `gr_id`,`g`.`gr_nome` AS `gr_nome`,`g`.`gr_descricao` AS `gr_descricao`,`g`.`gr_cidade` AS `gr_cidade`,`g`.`gr_estado` AS `gr_estado`,`g`.`gr_foto` AS `gr_foto`,`g`.`grcat_id` AS `grcat_id`,`g`.`gr_private` AS `gr_private`,`g`.`gr_pais` AS `gr_pais`,`gu`.`gu_accept` AS `gu_accept`,`gu`.`gu_user_id` AS `gu_user_id`,`gu`.`gu_grupo_id` AS `gu_grupo_id`,`u`.`us_id` AS `us_id`,`u`.`us_email` AS `us_email`,`u`.`us_nome` AS `us_nome`,`u`.`us_tipo_pessoa` AS `us_tipo_pessoa`,`u`.`us_senha` AS `us_senha`,`u`.`us_foto` AS `us_foto`,`u`.`us_status_conta` AS `us_status_conta`,`u`.`us_data_compra` AS `us_data_compra`,`u`.`us_data_expiracao` AS `us_data_expiracao`,`u`.`us_cpf_cnpj` AS `us_cpf_cnpj`,`u`.`us_dataCadastro` AS `us_dataCadastro`,`u`.`us_pais_id` AS `us_pais_id`,`ga`.`admin_id` AS `admin_id`,`ga`.`adm_user_id` AS `adm_user_id`,`ga`.`adm_sub_user_id` AS `adm_sub_user_id`,`ga`.`adm_grupo_id` AS `adm_grupo_id`,`ga`.`adm_flag` AS `adm_flag` from ((((`categoria_grupo` `cg` join `grupo` `g` on(`cg`.`cg_id` = `g`.`grcat_id`)) join `grupo_usuario` `gu` on(`g`.`gr_id` = `gu`.`gu_grupo_id`)) join `usuario` `u` on(`gu`.`gu_user_id` = `u`.`us_id`)) join `grupoadmin` `ga` on(`ga`.`adm_sub_user_id` = `u`.`us_id`)) ;
 
 -- --------------------------------------------------------
 

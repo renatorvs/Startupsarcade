@@ -80,10 +80,13 @@ class Publicidade {
 		$this->pu_pais = $pu_pais;
 	}
 
-	public static function getPublicidade() {
+	public static function getPublicidade($pu_categoria_id, $pu_pais) {
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM publicidade ");
+		return $banco->select("SELECT * FROM publicidade where  pu_categoria_id = :pu_categoria_id and pu_categoria_id = 0 and pu_pais = :pu_pais ", array(
+			":pu_categoria_id" => $pu_categoria_id,
+			":pu_pais" => $pu_pais,
+		));
 	}
 
 	public static function getDuvidaCategoria() {

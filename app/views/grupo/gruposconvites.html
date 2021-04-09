@@ -15,53 +15,50 @@
   <link href="../../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
 </head>
 <body id="page-top">
-    <header>
-      {% if pais_id == 1 %}
-                      {{ include('layout/nav-header-portugues.html') }}
-                {% else %}
-                    {{ include('layout/nav-header-ingles.html') }}
-                {% endif %}
+  <header>
+    {% if pais_id == 1 %}
+    {{ include('layout/nav-header-portugues.html') }}
+    {% else %}
+    {{ include('layout/nav-header-ingles.html') }}
+    {% endif %}
 
   </header>
   <main>
-      {% if pais_id == 1 %}
-        {{ include('layout/nav-dashboard-portugues.html') }}
-      {% else %}
-          {{ include('layout/nav-dashboard-ingles.html') }}
-      {% endif %}
+    {% if pais_id == 1 %}
+    {{ include('layout/nav-dashboard-portugues.html') }}
+    {% else %}
+    {{ include('layout/nav-dashboard-ingles.html') }}
+    {% endif %}
     <section class="main-experi" >
       <hr class="m-1">  
       <section class="row">
         <section class="col-xl-12 col-md-12 mb-4">
-       <!--    Compartilhe ideias
-          Tudo começa com uma ideia ! 
-        -->
-        ssssss
 
-        <article class="card border-left-success shadow h-100 py-2">
-          <section class="card-body">
-            <h4 class="text-primary" align="center">Pedido para entradar em seus grupos</h4>
-            
-            <hr>
-            {% for convite in meusGruposConvite %}
-            
-            sss
 
-            <section class="card"> 
-              <section class="card-body">
-                
-                <ul class="list-unstyled" class="mr-1">
-                  <li class="media my-4">
-                    <figure>
-                      <img src="../../assets/img/outline-ballot-24px.svg" class="mr-1" >
-                    </figure>
 
-                    {{convite.gu_accept}}
-                    <section class="media-body"> 
-                      <h4 class="mt-0 mb-1"> {{convite.gr_nome}}</h4>
-                      <h5 class="mt-0 mb-1 text-primary">{{convite.cg_nome}}</h5>
-                      Membros(10) | {{convite.gr_cidade}}, {{convite.gr_estado}} {{convite.gr_pais}}<br>
-                      <a href="\meusgrupos\informacoes\{{convite.gr_id}}" class="text-primary">Grupo informaçoes</a>
+          <article class="card border-left-success shadow h-100 py-2">
+            <section class="card-body">
+              <h4 class="text-primary" align="center">Pedido para entradar em seus grupos</h4>
+
+              <hr>
+              {% for convite in meusGruposConvite %}
+
+
+
+              <section class="card"> 
+                <section class="card-body">
+
+                  <ul class="list-unstyled" class="mr-1">
+                    <li class="media my-4">
+                      <figure>
+                       <img  src="../../assets/user_images/{{convite.us_foto}}" width="50" height="50">
+                     </figure>
+
+                     <section class="media-body"> 
+                      <h2 class="mt-0 mb-1"> {{convite.us_nome}}</h2>
+                      <h3 class="mt-0 mb-1"> {{convite.us_email}}</h3>
+                      <h4 class="mt-0 mb-1">Grupo: {{convite.gr_nome}} </h4>
+                      <h5 class="mt-0 mb-1">Categoria:{{convite.cg_nome}}</h5>
                     </a> 
                   </section>
                 </li>
@@ -72,17 +69,18 @@
                 <input type="hidden" name="gu_grupo_id" value="{{convite.gr_id}}">
                 <input type="hidden" name="catgr_id" value="{{convite.catgr_id}}">
                 <input type="hidden" name="gu_accept" value="3">
-               <input type="hidden" name="gu_user_id" value="{{convite.gu_user_id}}">
+                <input type="hidden" name="gu_user_id" value="{{convite.gu_user_id}}">
 
                 <button type="submit"  class="btn btn-danger" >Cancelar </button>
               </form>
               
               
 
-               <form action="\pedidogrupo\aceitar" method="post" style="display: inline;">
+              <form action="\pedidogrupo\aceitar" method="post" style="display: inline;">
                 <input type="hidden" name="redirect" value="2">
                 <input type="hidden" name="gu_grupo_id" value="{{convite.gr_id}}">
-                <input type="hidden" name="gu_user_id" value="{{convite.gu_user_id}}">
+                <input type="hidden" name="gu_user_id" value="{{convite.us_id}}">
+                <input type="hidden" name="adm_sub_user_id" value="{{convite.us_id}}">
                 <input type="hidden" name="catgr_id" value="{{convite.catgr_id}}">
                 <input type="hidden" name="gu_accept" value="4">
                 <button type="submit"  class="btn btn-success" >aceitar</button>

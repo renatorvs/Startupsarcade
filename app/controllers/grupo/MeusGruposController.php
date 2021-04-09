@@ -134,7 +134,7 @@ class MeusgruposController extends ContainerController {
 
 		Grupo::grupoUsuarioSair($v->gu_grupo_id, $v->us_id);
 
-		redirecionar('/meusgrupos/grupousuariosadmin/$v->gu_grupo_id');
+		redirecionar("/meusgrupos/grupousuariosadmin/$v->gu_grupo_id");
 
 	}
 
@@ -234,7 +234,7 @@ class MeusgruposController extends ContainerController {
 		if ($dadosgrupo[0] == null) {
 			$hadadosgrupo = false;
 		}
-		//debug($dadosgrupo);
+		//	debug($dadosgrupo);
 		$grupo = new Grupo();
 		$this->view([
 
@@ -360,14 +360,16 @@ class MeusgruposController extends ContainerController {
 			'adm_sub_user_id' => 'integer',
 			'adm_user_id' => 'integer',
 			'admin' => 'integer',
+			'admin_id' => 'integer',
 
 		]);
+
 		if ($v->adm_sub_user_id == $v->adm_user_id) {
-			flash(['admin' => "Admin vitalicio"]);
+			flash(['admin' => "ADMIN VITALICO "]);
 			redirecionar("/meusgrupos/grupousuariosadmin/$v->gu_grupo_id");
 		}
 
-		//debug($v);
+		///debug($v);
 		if ($v->admin == 1) {
 			Grupo::deletegrupoadmin($v->admin_id, $v->adm_user_id, $v->adm_sub_user_id, $v->gu_grupo_id);
 		} else if ($v->admin == 0) {

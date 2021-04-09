@@ -166,15 +166,16 @@ class Grupo {
 
 	}
 
-	public function grupoadmin($adm_user_id, $adm_grupo_id) {
+	public function grupoadmin($adm_user_id, $adm_sub_user_id, $adm_grupo_id, $adm_flag) {
 
 		$banco = new Banco();
 
-		$banco->query("INSERT INTO grupoadmin( adm_user_id, adm_sub_user_id, adm_grupo_id) VALUES(:adm_user_id, :adm_sub_user_id, :adm_grupo_id) ;",
+		$banco->query("INSERT INTO grupoadmin( adm_user_id, adm_sub_user_id, adm_grupo_id, adm_flag) VALUES(:adm_user_id, :adm_sub_user_id, :adm_grupo_id, :adm_flag)",
 			array(
 				":adm_user_id" => $adm_user_id,
-				":adm_sub_user_id" => $adm_user_id,
+				":adm_sub_user_id" => $adm_sub_user_id,
 				":adm_grupo_id" => $adm_grupo_id,
+				":adm_flag" => $adm_flag,
 			));
 
 	}
@@ -215,16 +216,15 @@ class Grupo {
 
 	}
 
-	public static function deletegrupoadmin($admin_id, $adm_user_id, $adm_sub_user_id, $adm_grupo_id) {
+	public static function deletegrupoadmin($adm_user_id, $adm_sub_user_id, $adm_grupo_id) {
 
 		$banco = new Banco();
 
-		$banco->query(" DELETE FROM grupoadmin WHERE  admin_id = :admin_id AND  adm_grupo_id = :adm_grupo_id AND adm_user_id = :adm_user_id or adm_sub_user_id = :adm_sub_user_id  ",
+		$banco->query(" DELETE FROM grupoadmin WHERE  adm_grupo_id = :adm_grupo_id AND adm_user_id = :adm_user_id or adm_sub_user_id = :adm_sub_user_id  ",
 			array(
 				":adm_user_id" => $adm_user_id,
 				":adm_sub_user_id" => $adm_sub_user_id,
 				":adm_grupo_id" => $adm_grupo_id,
-				":admin_id" => $admin_id,
 			));
 
 	}
@@ -254,7 +254,7 @@ class Grupo {
 	public static function getGruposAll($cg_id, $gr_pais) {
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM dadosgrupo WHERE  cg_id  = :cg_id and   gr_pais = :gr_pais",
+		return $banco->select("SELECT * FROM dadosgrupo WHERE  cg_id  = :cg_id and   gr_pais = :gr_pais  GROUP BY gr_id",
 			array(
 				":gr_pais" => $gr_pais,
 				":cg_id" => $cg_id,
@@ -283,7 +283,7 @@ class Grupo {
 	public static function meusGruposConvites($gu_user_id) {
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM usuariogrupos WHERE gu_accept = 1 and adm_user_id = 2 or adm_sub_user_id = 2",
+		return $banco->select("SELECT * FROM usuariogrupos WHERE gu_accept = 1 and adm_flag = 1 group by gr_id",
 			array(
 				":adm_user_id" => $gu_user_id,
 				":adm_sub_user_id" => $gu_user_id,

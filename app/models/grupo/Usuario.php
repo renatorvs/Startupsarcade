@@ -135,7 +135,7 @@ class Usuario {
 
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM usuariogrupos WHERE gr_id = :gr_id  GROUP BY us_id", array(
+		return $banco->select("SELECT * FROM usuariogrupos WHERE gr_id = :gr_id  GROUP BY us_id DESC", array(
 			":gr_id" => $gr_id,
 		));
 

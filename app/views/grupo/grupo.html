@@ -81,11 +81,11 @@
                   </section>
                 </li>
               </ul>
-
               <section align="center" class="group-button">
                 <form action="\grupos\aderirgrupo" method="post">
                   <input type="hidden" name="gr_private" value="{{grupo.gr_private}}">
                   <input type="hidden" name="gu_grupo_id" value="{{grupo.gr_id}}">
+                  <input type="hidden" name="adm_user_id" value="{{grupo.adm_user_id}}">
                   <input type="hidden" name="catgr_id" value="{{catgr_id}}">
 
                   {% if grupo.gr_private == 0 %} 
