@@ -112,7 +112,7 @@ class MeusgruposController extends ContainerController {
 		$grupo = new Grupo();
 
 		Grupo::grupoUsuarioSair($gr_id->parameter, Session::get('USUARIO_ID'));
-
+s
 		redirecionar('\meusGrupos\grupos');
 
 	}
@@ -228,6 +228,14 @@ class MeusgruposController extends ContainerController {
 			redirecionar("/");
 		}
 
+		$getAdmingrupos = Usuario::getAdmingrupos($gr_id->parameter, Session::get('USUARIO_ID'));
+
+		if ($getAdmingrupos[0] == null) {
+			flash(['naoadmin' => "Você não é administrador desse grupo"]);
+			redirecionar("/meusgrupos/grupousuarios/$gr_id->parameter");
+
+		}
+
 		$dadosgrupo = Usuario::getUsuariosgrupos($gr_id->parameter);
 		$gruponome = Usuario::getUsuariosgrupo($gr_id->parameter);
 		$hadadosgrupo = true;
@@ -244,6 +252,7 @@ class MeusgruposController extends ContainerController {
 			'meusGrupos' => $dadosgrupo,
 			'grupo_id' => $gr_id->parameter,
 			'usuario_id' => Session::get('USUARIO_ID'),
+			'pais_id' => Session::get('PAIS_ID'),
 			'NotsGrupo' => getNotificantionGrupo(Session::get('USUARIO_ID')),
 			'NotsMessagem' => getNotificantionMessagem(Session::get('USUARIO_ID')),
 
@@ -371,9 +380,11 @@ class MeusgruposController extends ContainerController {
 
 		///debug($v);
 		if ($v->admin == 1) {
-			Grupo::deletegrupoadmin($v->admin_id, $v->adm_user_id, $v->adm_sub_user_id, $v->gu_grupo_id);
+			Grupo::updateAdmin(0, $v->adm_sub_user_id, $v->gu_grupo_id);
+			redirecionar("/meusgrupos/grupousuarios/$v->gu_grupo_id");
+
 		} else if ($v->admin == 0) {
-			Grupo::addusuarioadmin($v->adm_user_id, $v->adm_sub_user_id, $v->gu_grupo_id);
+			Grupo::updateAdmin(1, $v->adm_sub_user_id, $v->gu_grupo_id);
 
 		}
 

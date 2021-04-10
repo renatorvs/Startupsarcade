@@ -42,11 +42,10 @@
               {% for grupos in gruponome %}
 
 
-              {% if usuario_id == grupos.adm_sub_user_id or  grupos.adm_user_id == usuario_id %}
               <a href="\meusgrupos\grupousuariosadmin\{{grupos.gr_id}}" style="display: inline;" class="btn btn-primary"> admin area</a> 
-              {% endif %}
               <hr>
-
+                          <h5 class ="text-danger" align="center">              {{  messagem('naoadmin') | raw }}
+            </h5>
               cod grupo: {{grupos.gr_id}}
               <h3 class="mt-0 mb-1"> Grupo:{{grupos.gr_nome}}</h4>
                 <h4 class="mt-0 mb-1"> Categoria:{{grupos.cg_nome}}</h4>
@@ -88,8 +87,8 @@
               <section class="card"> 
                 <section class="card-body">
 
+                   {% if meusGrupo.adm_flag == 1 %}
 
-                  {% if meusGrupo.us_id == meusGrupo.adm_sub_user_id or  meusGrupo.adm_user_id == meusGrupo.us_id %}
                   <strong class="text-success"> Administrador</strong>
 
                   {% endif %}

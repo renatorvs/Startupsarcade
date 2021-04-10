@@ -216,6 +216,19 @@ class Grupo {
 
 	}
 
+	public static function updateAdmin($adm_flag, $adm_sub_user_id, $adm_grupo_id) {
+
+		$banco = new Banco();
+
+		$banco->query("UPDATE grupoadmin SET adm_flag = :adm_flag  WHERE adm_sub_user_id = :adm_sub_user_id AND adm_grupo_id = :adm_grupo_id",
+			array(
+				":adm_flag" => $adm_flag,
+				":adm_sub_user_id" => $adm_sub_user_id,
+				":adm_grupo_id" => $adm_grupo_id,
+			));
+
+	}
+
 	public static function deletegrupoadmin($adm_user_id, $adm_sub_user_id, $adm_grupo_id) {
 
 		$banco = new Banco();

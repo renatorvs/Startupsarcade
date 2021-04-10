@@ -15,20 +15,20 @@
   <link href="../../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
 </head>
 <body id="page-top">
-    <header>
-      {% if pais_id == 1 %}
-                      {{ include('layout/nav-header-portugues.html') }}
-                {% else %}
-                    {{ include('layout/nav-header-ingles.html') }}
-                {% endif %}
+  <header>
+    {% if pais_id == 1 %}
+    {{ include('layout/nav-header-portugues.html') }}
+    {% else %}
+    {{ include('layout/nav-header-ingles.html') }}
+    {% endif %}
 
   </header>
   <main>
-      {% if pais_id == 1 %}
-        {{ include('layout/nav-dashboard-portugues.html') }}
-      {% else %}
-          {{ include('layout/nav-dashboard-ingles.html') }}
-      {% endif %}
+    {% if pais_id == 1 %}
+    {{ include('layout/nav-dashboard-portugues.html') }}
+    {% else %}
+    {{ include('layout/nav-dashboard-ingles.html') }}
+    {% endif %}
     <section class="main-experi" >
       <hr class="m-1">  
       <section class="row">
@@ -37,33 +37,11 @@
           <article class="card border-left-success shadow h-100 py-2">
             <section class="card-body">
 
-              <h4 class ="text-dark" align="center">  admin  </h4>
-      
+              <h4 class ="text-dark" align="center"> administradores    </h4>
+
               <hr>
               {% for grupos in gruponome %}
-     <section class="modal fade criargrupo-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-              <section class="modal-dialog modal-lg">
-                <section class="modal-content">
-                  <section class="card-body">   
-            <section align="center">
 
-          {% if grupos.us_foto != null  %}
-
-
-             <img class="img-thumbnail" src="../../assets/user_images/{{grupos.us_foto}}" width="150" height="150">
-
-          {% else %}
-          <img class="img-thumbnail " src="../../assets/user_images/padraoperfil.svg" alt="foto_perfil" width="150" height="150">
-          {% endif %}
-        </section>
-
-        <h4 class="card-title" align="center">{{grupos.us_nome}}</h4>
-        <h5 class="list-inline" align="center" id="courses">   {{grupos.us_email}}                              
-        </h5>
-                  </section>
-                </section>
-              </section>
-            </section>
               cod grupo: {{grupos.gr_id}}
               <h3 class="mt-0 mb-1"> Grupo:{{grupos.gr_nome}}</h4>
                 <h4 class="mt-0 mb-1"> Categoria:{{grupos.cg_nome}}</h4>
@@ -71,8 +49,30 @@
                 {% endfor %}
 
                 {% for meusGrupo in meusGrupos %}
-                                                      <center> {{  messagem('admin') | raw }} </center> 
+                <center> {{  messagem('admin') | raw }} </center> 
+               <section class="modal fade criargrupo-{{meusGrupo.us_id}}-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <section class="modal-dialog modal-lg">
+                  <section class="modal-content">
+                    <section class="card-body">   
+                      <section align="center">
 
+                        {% if grupos.us_foto != null  %}
+
+
+                        <img class="img-thumbnail" src="../../assets/user_images/{{meusGrupo.us_foto}}" width="150" height="150">
+
+                        {% else %}
+                        <img class="img-thumbnail " src="../../assets/user_images/padraoperfil.svg" alt="foto_perfil" width="150" height="150">
+                        {% endif %}
+                      </section>
+
+                      <h4 class="card-title" align="center">{{meusGrupo.us_nome}}</h4>
+                      <h5 class="list-inline" align="center" id="courses">   {{meusGrupo.us_email}}                              
+                      </h5>
+                    </section>
+                  </section>
+                </section>
+              </section>
                 <section class="card"> 
 
                   <section class="card-body">
@@ -116,21 +116,21 @@
 
                               <button type="submit"  class="btn btn-success" >aaa admin </button>
                             </form>
-                        
-
-                              {% if meusGrupo.adm_sub_user_id != meusGrupo.us_id or meusGrupo.us_id != meusGrupo.adm_user_id %}
 
 
-                                <form action="\meusgrupos\grupoDeleteUsuarioSair" method="post" style="display: inline;">
-                                  <input type="hidden" name="gu_grupo_id" value="{{meusGrupo.gr_id}}">
-                                  <input type="hidden" name="us_id" value="{{meusGrupo.us_id}}">
-                                
+                            {% if meusGrupo.adm_sub_user_id != meusGrupo.us_id or meusGrupo.us_id != meusGrupo.adm_user_id %}
 
-                                  <button type="submit"  class="btn btn-danger" >excluir </button>
-                                </form>
-                              {% endif %}
 
-                          {% if meusGrupo.adm_sub_user_id != meusGrupo.us_id or meusGrupo.us_id != meusGrupo.adm_user_id %}
+                            <form action="\meusgrupos\grupoDeleteUsuarioSair" method="post" style="display: inline;">
+                              <input type="hidden" name="gu_grupo_id" value="{{meusGrupo.gr_id}}">
+                              <input type="hidden" name="us_id" value="{{meusGrupo.us_id}}">
+
+
+                              <button type="submit"  class="btn btn-danger" >excluir </button>
+                            </form>
+                            {% endif %}
+
+                            {% if meusGrupo.adm_sub_user_id != meusGrupo.us_id or meusGrupo.us_id != usuario_id %}
                             {% if meusGrupo.gu_accept == 2 %}
                             <form action="\meusgrupos\bloquear" method="post" style="display: inline;">
                               <input type="hidden" name="gu_grupo_id" value="{{meusGrupo.gr_id}}">
@@ -148,16 +148,16 @@
                               <input type="hidden" name="adm_sub_user_id" value="{{meusGrupo.gu_user_id}}">
                               {% if meusGrupo.adm_user_id != meusGrupo.us_id %}
                               <button type="submit"  class="btn btn-warning" >desbloquear</button>
-                               {% endif %}
-                             {% endif %}
-                           {% endif %}
+                              {% endif %}
+                              {% endif %}
+                              {% endif %}
 
 
 
                             </form>
-            
 
-                            <button  class="btn btn-info" data-toggle="modal" data-target=".criargrupo-lg" style="display: inline;">perfil</button>
+
+                            <button  class="btn btn-info" data-toggle="modal" data-target=".criargrupo-{{meusGrupo.us_id}}-lg" style="display: inline;">perfil</button>
 
                           </section>
                         </section>

@@ -141,6 +141,17 @@ class Usuario {
 
 	}
 
+	public static function getAdmingrupos($adm_grupo_id, $adm_sub_user_id) {
+
+		$banco = new Banco();
+
+		return $banco->select("SELECT * FROM grupoadmin WHERE adm_grupo_id = :adm_grupo_id and adm_sub_user_id = :adm_sub_user_id and adm_flag = 1", array(
+			":adm_grupo_id" => $adm_grupo_id,
+			":adm_sub_user_id" => $adm_sub_user_id,
+		));
+
+	}
+
 	public static function getUsuariosgrupo($gr_id) {
 
 		$banco = new Banco();
