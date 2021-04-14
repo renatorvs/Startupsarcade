@@ -87,11 +87,9 @@
           <li>
             <a href="/entrar/destroy">logout</a>
           </li>
+            
           <li>
-            <a href="/senha/create">Password</a>
-          </li>  
-          <li>
-            <a href="/perfil/create">Photo</a>
+            <a href="/perfil/create">profile</a>
           </li>  
 
           
@@ -156,23 +154,21 @@
             {% for NotsMessagems in  NotsMessagem %}           
             <a class="dropdown-item d-flex align-items-center" href="#">
               <div class="dropdown-list-image mr-3">
-                <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
+            <img class="rounded-circle" src="../../assets/user_images/{{grupo.gr_foto}}" alt="">
                 <div class="status-indicator bg-success"></div>
               </div>
               <div class="font-weight-bold">
-                <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
-                <div class="small text-gray-500">Emily Fowler · 58m</div>
+                <div class="text-truncate"> You new messages in the group {{NotsMessagems.grupo.gr_nome}}</div>
               </div>
             </a>
             {% endfor %}
             {% else  %}
 
-            <center class="text-danger m-3">Não há Mensagens</center>
+            <center class="text-danger m-3">Not há Mensagem</center>
 
             {% endif %}
 
 
-            <a class="dropdown-item text-center small text-gray-500" href="#">mais Mensagens </a>
           </div>
         </li>
 

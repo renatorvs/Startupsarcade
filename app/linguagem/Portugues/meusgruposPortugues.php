@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="Empresa vagas">
+	<meta name="keywords" content="Empresa vagas">
+	<meta name="author" content="onclickup">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap-reboot.css">
+	<link rel="stylesheet" href="../../assets/css/layout/layout.css">
+	<link rel="stylesheet" href="../../assets/css/layout/footer.css">
+	<link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+	<title>starstup arcade | Meus grupos
+	</title>
+	<link href="../../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
+</head>
+<body id="page-top">
+	<header>
+		{% if pais_id == 1 %}
+		{{ include('layout/nav-header-portugues.html') }}
+		{% else %}
+		{{ include('layout/nav-header-ingles.html') }}
+		{% endif %}
+
+
+	</header>
+	<main>
+		{% if pais_id == 1 %}
+		{{ include('layout/nav-dashboard-portugues.html') }}
+		{% else %}
+		{{ include('layout/nav-dashboard-ingles.html') }}
+		{% endif %}		<section class="main-experi" >
+			<hr class="m-1">  
+			<section class="row">
+				<section class="col-xl-12 col-md-12 mb-4">
+
+
+
+
+					<article class="card border-left-success shadow h-100 py-2">
+						<section class="card-body">
+							<section class="modal fade criargrupo-{{meusGrupo.gr_id}}-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+								<section class="modal-dialog modal-lg">
+									<section class="modal-content">
+										<section class="card-body">   
+											<form class="needs-validation" action="/grupos/grupostore" enctype="multipart/form-data" method ="post">
+												<section class="form-row">
+													
+													<section class="col-md-6 mb-3">
+														<label for="validationCustom01">Nome do projeto (starstup)</label>
+														<input type="text" name="gr_nome" class="form-control" id="validationCustom01" placeholder="Nome do projeto (starstup)" required>
+														<section class="invalid-feedback">
+															Nome starstup invalido !
+														</section>  
+													</section>
+													<section class="col-md-6 mb-3">
+														
+														<label for="validationCustom01">Descriçao do plano de negocio </label>
+														<input type="text" name="gr_descricao" class="form-control" id="validationCustom01" placeholder="Descriçao do plano de negocio" required>
+														<section class="invalid-feedback">
+															plano invalido !
+														</section>  
+													</section>
+													<section class="col-md-6 mb-3">
+														<label for="validationCustom04">Cidade </label>
+														<input type="text" name="gr_cidade" class="form-control" id="validationCustom04" placeholder="Cidade"  required>
+														<section class="invalid-feedback">
+															Por favor, informe um Cidade válido.
+														</section>
+													</section>
+													
+													<section class="col-md-6 mb-3">
+														<section class="form-group">
+															<label for="validationCustom05">Estado</label>
+															<select name="gr_estado" class="form-control" id="validationCustom05" required>
+																{% for estado in listEstados %}
+																<option value="{{estado.est_nome}}">{{estado.est_nome}}</option>
+																{% endfor %}
+															</select>
+														</section>
+													</section>
+
+
+													<section class="col-md-6 mb-3">
+														<label for="Grupo">Grupo foto</label>
+														<input type="file" class="form-control" name="gr_foto" id="gr_foto" placeholder="Foto grupo">
+													</section>
+													
+													
+													<section class="col-md-6 mb-3">
+														<section class="form-group">
+															<label for="exampleFormControlSelect1">Grupo Privado ?</label>
+															<select name="gr_private" class="form-control" id="exampleFormControlSelect1">
+																<option value="1">sim</option>
+																<option value="0">não</option>
+															</select>
+														</section>
+														
+														
+
+													</section>
+													<section class="col-md-6 mb-3">
+														<section class="form-group">
+															<label for="exampleFormControlSelect1">Grupo starstup categoria :</label>
+															<select name="grcat_id" class="form-control" id="exampleFormControlSelect1" required>
+																{% for grupo in grupoAll %}
+																<option value="{{grupo.cg_id}}">{{grupo.cg_nome}}</option>
+																{% endfor %}
+															</select>
+														</section>
+													</section>
+													
+												</section>
+
+												
+												<button class="btn btn-primary" type="submit">Salvar</button>
+											</form>
+										</section>
+									</section>
+								</section>
+							</section>
+							<h4 class ="text-dark" align="center">  Meus grupos  </h4>
+							<h5 class ="text-dark" align="center">Atenção, você que criou o grupo você é o unico capaz de exclui-lo (existe sem você) e você não pode ser bloqueado, você é admin  vitalicio. </h5>
+							<button  type="button" class="btn btn-primary" data-toggle="modal" data-target=".criargrupo-{{meusGrupo.gr_id}}-lg">Criar grupo</button>             
+							<hr>
+							{% for meusGrupo in meusGrupos %}
+							<section class="modal fade bd-example-modal-{{meusGrupo.gr_id}}-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+								<section class="modal-dialog modal-lg">
+									<section class="modal-content">
+										<section class="card-body">   
+											<form class="needs-validation" action="/MeusGrupos/grupoUsuarioUpdate" enctype="multipart/form-data" method ="post">
+
+
+												<section class="form-row">
+												</h4>
+												<section class="col-md-6 mb-3">
+													<label for="validationCustom01">Nome do projeto (starstup)</label>
+													<input type="hidden" name="gr_id" value="{{meusGrupo.gr_id}}">
+													<input type="text" name="gr_nome" class="form-control" id="validationCustom01" placeholder="Nome do projeto (starstup)" value="{{meusGrupo.gr_nome}}" required>
+													<section class="invalid-feedback">
+														cnpj invalido !
+													</section>  
+												</section>
+												<section class="col-md-6 mb-3">
+
+													<label for="validationCustom01">Descriçao do plano de negocio </label>
+													<input type="text" name="gr_descricao" value="{{meusGrupo.gr_descricao}}" class="form-control" id="validationCustom01" placeholder="Descriçao do plano de negocio" required>
+													<section class="invalid-feedback">
+														contato invalido !
+													</section>  
+												</section>
+												<section class="col-md-6 mb-3">
+													<label for="validationCustom04">Cidade </label>
+													<input type="text" name="gr_cidade"  value="{{meusGrupo.gr_cidade}}" class="form-control" id="validationCustom04" placeholder="Cidade"  required>
+													<section class="invalid-feedback">
+														Por favor, informe um estado válido.
+													</section>
+												</section>
+
+												<section class="col-md-6 mb-3">
+													<section class="form-group">
+														<label for="validationCustom05">Estado</label>
+														<select name="gr_estado"  class="form-control" id="validationCustom05" required>
+															<option value="{{meusGrupo.gr_estado}}">{{meusGrupo.gr_estado}}</option>
+
+															{% for estado in listEstados %}
+															<option value="{{estado.est_nome}}">{{estado.est_nome}}</option>
+															{% endfor %}
+														</select>
+													</section>
+												</section>
+
+												<section class="col-md-6 mb-3">
+													<label for="Grupo">Grupo foto</label><br>
+													<img src="../../assets/user_images/{{meusGrupo.gr_foto}}" width="50" height="50">
+													<input type="hidden" name="gr_old_foto" value="{{meusGrupo.gr_foto}}">
+													<br>
+													<br>
+													<input type="file" class="form-control"  value="{{meusGrupo.gr_foto}}" name="gr_foto" id="gr_foto" placeholder="Foto grupo">
+												</section>
+
+												<section class="col-md-6 mb-3">
+													<section class="form-group">
+														<label for="exampleFormControlSelect1">Grupo Privado ?</label>
+														<select name="gr_private" class="form-control" id="exampleFormControlSelect1">
+															
+
+															{% if meusGrupo.gr_private == 1 %}
+															<option  selected value="1">sim</option>
+															<option value="0">não</option>
+															{% else %}
+															<option value="1">sim</option>
+															<option selected value="0">não</option>
+															{% endif %}
+
+														</select>
+													</section>
+
+
+
+												</section>
+												<section class="col-md-6 mb-3">
+													<section class="form-group">
+														<label for="exampleFormControlSelect1">Grupo starstup categoria :</label>
+														<select name="grcat_id" class="form-control" id="exampleFormControlSelect1" required>
+
+															{% for grupo in grupoAll %}
+															{% if meusGrupo.grcat_id == grupo.cg_id%}
+															<option selected value="{{grupo.cg_id}}">{{grupo.cg_nome}}</option>
+															{% else %}
+															<option value="{{grupo.cg_id}}">{{grupo.cg_nome}}</option>
+															{% endif %}
+
+															{% endfor %}
+														</select>
+													</section>
+												</section>
+
+											</section>
+
+
+											<button class="btn btn-primary" type="submit">Criar grupo</button>
+										</form>
+									</section>
+								</section>
+							</section>
+						</section>
+						<section class="modal fade" id="model-excluir-{{meusGrupo.gr_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<section class="modal-dialog" role="document">
+								<section class="modal-content">
+									<section class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">Tem certeza que deseja excluir/sair </h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</section>
+									<section class="modal-body">
+										{% if meusGrupo.adm_user_id == usuario_id or meusGrupo.adm_sub_user_id == usuario_id %}
+										<a  class="btn btn-primary btn-lg btn-block"  href="/MeusGrupos/grupoDelete/{{meusGrupo.gr_id}}">excluir</a>
+										{% else %}
+
+										<a  class="btn btn-primary btn-lg btn-block"  href="/MeusGrupos/grupoDeleteUsuario/{{meusGrupo.gr_id}}">sair</a>
+										{% endif %}
+
+									</section>
+									
+								</section>
+							</section>
+						</section>
+						<section class="card"> 
+							<section class="card-body">
+
+								<ul class="list-unstyled" class="mr-1">
+									<li class="media my-4">
+										<figure>
+											<img src="../../assets/user_images/{{meusGrupo.gr_foto}}" class="mr-1" width="50" height="50" >
+										</figure>
+										<section class="media-body"> 
+											<h4 class="mt-0 mb-1"> {{meusGrupo.gr_nome}}</h4>
+											<h5 class="mt-0 mb-1 text-primary">{{meusGrupo.cg_nome}}</h5>
+											{% if meusGrupo.gr_private == 1 %}
+											Grupo Privado |
+											{% endif %}
+											Membros(10) | {{meusGrupo.gr_cidade}}, {{meusGrupo.gr_estado}} {{meusGrupo.gr_pais}}<br>
+											<a href="\meusgrupos\informacoes\{{meusGrupo.gr_id}}" class="text-primary">Grupo informaçoes</a>
+										</a> 
+									</section>
+								</li>
+							</ul>
+
+
+							<section align="center" class="group-button">
+								<button class="btn btn-success"><a class="text-white" href="\grupo\chat\{{meusGrupo.gr_id}}"  >visitar</a> 
+									</button>
+								<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#model-excluir-{{meusGrupo.gr_id}}">
+									sair/excluir
+								</button>
+
+								{% if meusGrupo.adm_user_id == usuario_id or meusGrupo.adm_sub_user_id == usuario_id %}
+
+								<button class="btn btn-primary" role="button" data-toggle="modal" data-target=".bd-example-modal-{{meusGrupo.gr_id}}-lg">editar</button>
+
+								{% endif %}
+							</section>
+						</section>
+					</section>
+					<br>
+					{% endfor %}
+				</section>
+			</article>
+		</section>
+	</section> 
+
+</section>
+</main>
+{{ include('layout/nav-dashboard-end.html') }}
+{{ include('layout/footer.html') }}
+<script src="../../assets/vendor/chart.js/Chart.min.js"></script>
+<script src="../../assets/js/demo/chart-area-demo.js"></script>
+<script src="../../assets/js/demo/chart-pie-demo.js"></script>
+<script src="../../assets/vendor/jquery/jquery.min.js"></script>
+<script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="../../assets/js/sb-admin-2.min.js"></script>
+</body>
+</html>

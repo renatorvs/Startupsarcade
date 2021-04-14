@@ -4,58 +4,67 @@
 	.modal { z-index:999999;}
 </style>
 
-		<nav class="navbar navbar-expand navbar-light bg-white topbar static-top shadow">
-			<a class="navbar-brand" href="#"><img src="../../../assets/Logotipo/iconelogo.svg"  alt="onclickup logo" class="width=device-width mg-2" style="margin-left:-15px" width="70vm" ></a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse	" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
-				<span class="navbar-toggler-icon"></span>
-			</button>
+<nav class="navbar navbar-expand navbar-light bg-white topbar static-top shadow">
+	<a class="navbar-brand" href="#"><img src="../../../assets/Logotipo/iconelogo.svg"  alt="onclickup logo" class="width=device-width mg-2" style="margin-left:-15px" width="70vm" ></a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse	" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+		<span class="navbar-toggler-icon"></span>
+	</button>
 
-			<!-- Topbar Navbar -->
-			<ul class="navbar-nav ml-auto">
-
-
-				<li class="nav-item dropdown no-arrow mx-1">
-					<a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<i class="small material-icons" id="color-icons"><img src="../../../assets/img/outline-notifications-24px.svg"></i> <!-- Counter - Alerts -->
-						<span class="badge badge-success badge-counter"> <span class ="text-success">0</span></span>
-					</a>
-					<!-- Dropdown - seguidores -->
-					<div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-						<h6 class="dropdown-header">
-							Seguidores
-						</h6>
-						{% if  NotsSeguir %}
-
-						 {% for notsSeguirs in  NotsSeguir %}           
-							<a class="dropdown-item d-flex align-items-center" href="/usuario/perfil/{{notsSeguirs.us_usuario_id}}">
-								<div class="dropdown-list-image mr-3">
-									<img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
-									<div class="status-indicator bg-success"></div>
-								</div>
-								<div class="font-weight-bold">
-									<div class="text-truncate">{{ notsSeguirs.us_usuario_nome}} <span class="text-primary"> começou a seguir você</span>.</div>
-									<div class="small text-gray-500">{{notsSeguirs.us_data_registro | date("d/m/yy") }}</div>
-								</div>
-							</a>
-						{% endfor %}
-						{% else  %}
+	<!-- Topbar Navbar -->
+	<ul class="navbar-nav ml-auto">
 
 
-						<center class="text-danger m-3">Não há seguidores</center>
-						{% endif %}
-						
-						
-						<a class="dropdown-item text-center small text-gray-500" href="#">Mais seguidores </a>
+		<li class="nav-item dropdown no-arrow mx-1">
+			<a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<i class="small material-icons" id="color-icons"><img src="../../../assets/img/outline-notifications-24px.svg"></i> <!-- Counter - Alerts -->
+				<span class="badge badge-success badge-counter"> <span class ="text-success">0</span></span>
+			</a>
+			<!-- Dropdown - seguidores -->
+			<div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+				<h6 class="dropdown-header">
+					notificações grupos
+				</h6>
+				{% if  NotsGrupo %}
+
+				{% for grupo in  NotsGrupo %} 
+				<a class="dropdown-item d-flex align-items-center" href="/usuario/perfil/{{grupo.us_usuario_id}}">
+					<div class="dropdown-list-image mr-3">
+						<img class="rounded-circle" src="../../assets/user_images/{{grupo.gr_foto}}" alt="">
+						<div class="status-indicator bg-success"></div> 
 					</div>
-				</li>
+					<div class="font-weight-bold">
+
+						{% if  grupo.accept == 2 and grupo.adm_user_id != grupo.adm_sub_user_id  %}
+
+						<div class="text-truncate"><span class="text-success"> Você foi aceito no  (1)</span>{{grupo.gr_nome}}</div>
+						{% else if  grupo.accept == 3 %}
+
+						<div class="text-truncate"> <span class="text-danger"> Você foi bloqueado no grupo (2) </span> {{ grupo.gr_nome}}</div>
+
+						{% else if  grupo.adm_flag == 1 and grupo.adm_user_id != grupo.adm_sub_user_id %}
+						<div class="text-truncate"><span class="text-primary">Você se tornou administrador do grupo (3)</span> {{ grupo.gr_nome}} </div>
+						{% endif %}
+
+					</div>
+				</a>
+				{% endfor %}
+				{% else  %}
 
 
-				<!-- Nav Item - shere -->
+				<center class="text-danger m-3">Não há registros</center>
+				{% endif %}
 				
+				
+			</div>
+		</li>
+
+
+		<!-- Nav Item - shere -->
+		
 
 
 
-			</ul>
+	</ul>
 
-		</nav>
+</nav>
 

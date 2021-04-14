@@ -48,6 +48,9 @@
             </h5>
 
             <h5 class ="text-danger" align="center">              {{  messagem('checkbloqueado') | raw }}
+            </h5>  
+
+            <h5 class ="text-success" align="center">              {{  messagem('Pedidoaceito') | raw }}
             </h5>
             {% set counter = 0 %}
 
@@ -59,7 +62,7 @@
                 <ul class="list-unstyled" class="mr-1">
                   <li class="media my-4">
                     <figure>
-                      <img src="../../assets/img/outline-ballot-24px.svg" class="mr-1" >
+                      <img src="../../assets/user_images/{{grupo.gr_foto}}" class="mr-1" width="50" height="50" >
                     </figure>
                     <section class="media-body"> 
                       <h4 class="mt-0 mb-1"> {{grupo.gr_nome}}</h4>
@@ -78,19 +81,19 @@
                   </section>
                 </li>
               </ul>
-
               <section align="center" class="group-button">
                 <form action="\grupos\aderirgrupo" method="post">
                   <input type="hidden" name="gr_private" value="{{grupo.gr_private}}">
                   <input type="hidden" name="gu_grupo_id" value="{{grupo.gr_id}}">
+                  <input type="hidden" name="adm_user_id" value="{{grupo.adm_user_id}}">
                   <input type="hidden" name="catgr_id" value="{{catgr_id}}">
 
                   {% if grupo.gr_private == 0 %} 
                   <input type="hidden" name="gu_accept" value="2">
-                  {% endif %}
-
+                  {% else %}
 
                   <input type="hidden" name="gu_accept" value="1">
+                  {% endif %}
                   <button class="btn btn-primary" type="submit"  >Aderir grupo</button>
 
                 </form>

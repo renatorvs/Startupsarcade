@@ -30,7 +30,7 @@
   {{ include('layout/nav-dashboard-ingles.html') }}
   {% endif %}
   <section class="main-experi" >
-    <hr class="m-1">  
+    <hr class="m-1">
     <section class="row">
       <section class="col-xl-12 col-md-12 mb-4">
 
@@ -53,7 +53,7 @@
 
             {% for grupo in getdadosGrupocategoria %}
             {% set counter = ( counter | default(0) ) + 1 %}
-            <section class="card"> 
+            <section class="card">
               <section class="card-body">
 
                 <ul class="list-unstyled" class="mr-1">
@@ -61,7 +61,7 @@
                     <figure>
                       <img src="../../assets/img/outline-ballot-24px.svg" class="mr-1" >
                     </figure>
-                    <section class="media-body"> 
+                    <section class="media-body">
                       <h4 class="mt-0 mb-1"> {{grupo.gr_nome}}</h4>
                       <h5 class="mt-0 mb-1 text-primary">{{grupo.cg_nome}}</h5>
                       {% if grupo.gr_private == 1 %}
@@ -69,12 +69,12 @@
                       {% endif %}
                       Membros(10) | {{grupo.gr_cidade}}, {{grupo.gr_estado}} ({{grupo.gr_pais}})<br>
 
-                      {% if grupo.pn_id %} 
+                      {% if grupo.pn_id %}
                       <a href="\grupos\informacoes\{{grupo.gr_id}}" class="text-primary">Grupo informaçoes</a>
                       {% endif %}
 
 
-                    </a> 
+                    </a>
                   </section>
                 </li>
               </ul>
@@ -85,7 +85,7 @@
                   <input type="hidden" name="gu_grupo_id" value="{{grupo.gr_id}}">
                   <input type="hidden" name="catgr_id" value="{{catgr_id}}">
 
-                  {% if grupo.gr_private == 0 %} 
+                  {% if grupo.gr_private == 0 %}
                   <input type="hidden" name="gu_accept" value="2">
                   {% endif %}
 
@@ -95,56 +95,15 @@
 
                 </form>
               </section>
-              
 
 
+btn_aderir_grupo = "Aderir grupo"
             </section>
 
           </section>
-
+card_publicidade = "publicidade"
           <br>
           {% endfor %}
           {% if counter >= 3 %}
           {% set counter = 0 %}
 
-          {% for publicidade in getPublicidadeAll %}
-          <section class="card"> 
-            <span class="text-dark mt-1" align="center">publicidade</span> 
-            <hr>   
-            <section class="card-body" align="center">
-              <ul class="list-unstyled" class="mr-1">
-                <li class="media my-4">
-                  <a href="{{publicidade.pu_link}}" target="_blank">
-                    <img border="0" src="{{publicidade.pu_src}}" >{{publicidade.pu_produto}}  |<span class="text-success">{{publicidade.pu_preco}} |</span>
-                    <strong>{{publicidade.pu_parcela}}</strong>
-                  </a>
-
-                </li>
-              </ul>
-
-
-            </section>
-          </section>
-          {% endfor %}
-          {% endif %}
-
-
-
-        </section>
-      </article>
-    </section>
-  </section> 
-
-</section>
-</main>
-{{ include('layout/nav-dashboard-end.html') }}
-{{ include('layout/footer.html') }}
-<script src="../../assets/vendor/chart.js/Chart.min.js"></script>
-<script src="../../assets/js/demo/chart-area-demo.js"></script>
-<script src="../../assets/js/demo/chart-pie-demo.js"></script>
-<script src="../../assets/vendor/jquery/jquery.min.js"></script>
-<script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="../../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
-<script src="../../assets/js/sb-admin-2.min.js"></script>
-</body>
-</html>
