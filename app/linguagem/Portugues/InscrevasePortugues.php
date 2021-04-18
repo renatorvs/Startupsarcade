@@ -3,13 +3,16 @@
 namespace app\linguagem\Portugues;
 
 class InscrevasePortugues {
-
+	public $html_lang = "pt-br";
+	public $meta_charset = "UTF-8";
+	public $description = "";
+	public $keywords = "";
+	public $author  "";
 	public $navmenu_1 = "Sobre";
 	public $navmenu_2 = "Blog";
 	public $navmenu_3 = "Increva-se";
 	public $navmenu_4 = "Entrar";
 	public $navmenu_5 = "Contato";
-
 	public $login_h4 = "Inscreva-se ! Para poder ultilizar nossa plataforma";
 	public $login_p = "Você podera explorar a versão gratuita.";
 	public $login_tipo_user = "Tipo Usuario";

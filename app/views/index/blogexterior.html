@@ -90,17 +90,6 @@
 
 
 
-
-</section>
-
-</section>
-</section>
-
-
-<br>  
-</section>
-
-<!-- ======= F.A.Q Section ======= -->
 <section  class="text-lg-left">
   <section class="container">
 <section class="nav-scroller py-1 mr-2">
@@ -116,14 +105,6 @@
 
        {% endif %}
      </section>
-
-SSSSS
-
-
-
-      
-     
-
 
        {% for postBlogDestaques in  postBlogDestaque %}  
        <section class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
@@ -169,16 +150,7 @@ SSSSS
             </h3>
             <section class="mb-1 text-muted">{{post.blog_date | date("m/d/y")}}</section>
             <p class="card-text mb-auto">{{post.post_subtitulo}}.</p>
-            <form action="/sherepoint/shered" method="post">
               <a href="/blog/show/{{post.blogpost_id}} " class="btn btn-primary btn-sm"> ver artigo </a>
-              <input type="hidden" name="shere_blogpost_id" value="{{post.blogpost_id}}">
-              <input type="hidden" name="shere_user_id" value="{{sessionUsuario_id}}">
-              <input type="hidden" name="shere_user_nome" value="{{post}}">
-              <input type="hidden" name="shere_user_img" value="post.user_img">
-              <input type="hidden" name="shere_ti_post" value="{{post.tipoblogpost_id}}">
-              <a type="submit" class="btn btn-success btn-sm"> <span class="text-white">sharepoint</span> </i> </a>
-
-            </form>
             {% if admin_session  %}
             <section class="card-body">
              <a href="/adminpostblog/destroy/{{post.blogpost_id}}" class="btn btn-danger btn-sm"> excluir </a>
@@ -193,13 +165,10 @@ SSSSS
      
      {% endfor %}
    </section>
-SSSSS
 
   </section>
 </section>
-<!-- :?!-- End Frequently Asked Questions Section --> 
 
-<!-- ======= Contact Section ======= -->
 <section id="contact" class="contact section-bg">
   <section class="container">
     <br>  

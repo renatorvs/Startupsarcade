@@ -1,74 +1,19 @@
-    <!DOCTYPE html>
-    <html lang="pt-br">
-    <head>
-      <meta charset="UTF-8">
-      <meta name="description" content="ver artigo">
-      <meta name="keywords" content="ver artigo">
-      <meta name="author" content="onclickup">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title> onclickup | {{title}}</title>
-      <link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap-reboot.css">
-      <link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap.min.css">
-      <link rel="stylesheet" href="../../assets/css/layout/blog.css">
-      <link rel="stylesheet" href="../../assets/css/layout/layout.css">
-      <link rel="stylesheet" href="../../assets/css/layout/pedidos.css">
-      <link rel="stylesheet" href="../../assets/css/layout/footer.css">
-      <!-- Custom fonts for this template-->
-      <link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-      <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+<?php
 
-      <link href="../../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
-    </head>
+namespace app\linguagem\portugues;
 
-    <body id="page-top">
-     <header>
-      {% if pais_id == 1 %}
+class learningartigoPortugues {
+      public $html_lang = "pt-br";
+      public $title = "starstup´s arcade | lerning";
+      public $meta_charset = "UTF-8";
+      public $description = "";
+      public $keywords = "";
+      public $author  "";
+      public $btn_voltar = "voltar";
+      public $blog_categoria = "Categoria";
+      public $blog_artigo = "Artigo";
+      public $blog_Data_post = "Data post";
 
+}
 
-      {{ include('layout/nav-header-portugues.html') }}
-      {% else %}
-      {{ include('layout/nav-header-ingles.html') }}
-      {% endif %}
-
-
-    </header>
-    <main>
-      {% if pais_id == 1 %}
-      {{ include('layout/nav-dashboard-portugues.html') }}
-      {% else %}
-      {{ include('layout/nav-dashboard-ingles.html') }}
-      {% endif %}
-      
-      <section  class="container">
-        <a href="/learning/show"class="btn btn-primary btn-sm">voltar</a>
-
-        <br><br>
-        <section class="row">
-          <article class="col-md-8 blog-main">
-            <h3   class="pb-3 mb-4 font-italic border-bottom">
-             Categoria: {{blogcat_nome}}
-           </h3>
-           <section class="blog-post">
-            <h2 class="blog-post-title">Artigo: {{post_titulo}}</h2>
-            <h3>{{post_subtitulo}}</h3>
-            <p class="blog-post-meta">Data post: {{blog_date}} </p>
-            <hr>
-            <p>{{blog_text}} <br></p>
-          </section>
-          <figure>
-
-            <img src="../../public/assets/user_images/{{blog_img}}">
-          </figure>
-          <br> <hr>
-        </article> 
-      </section>
-    </section>
-  </main>
-  {{ include('layout/nav-dashboard-end.html') }}
-  {{ include('layout/footer.html') }}
-  <script src="../../assets/vendor/jquery/jquery.min.js"></script>
-  <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
-  <script src="../../assets/js/sb-admin-2.min.js"></script>
-</body>
-</html>
+    
