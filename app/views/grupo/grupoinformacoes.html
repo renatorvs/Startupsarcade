@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -14,8 +15,9 @@
 <title> SA | meus grupos</title>
 <link href="../../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
 </head>
-<body id="page-top">    <header>
-      {% if pais_id == 1 %}
+<body id="page-top"> 
+  <header>
+                {% if pais_id %}
                       {{ include('layout/nav-header-portugues.html') }}
                 {% else %}
                     {{ include('layout/nav-header-ingles.html') }}
@@ -23,7 +25,7 @@
 
   </header>
   <main>
-      {% if pais_id == 1 %}
+     {% if pais_id %}
         {{ include('layout/nav-dashboard-portugues.html') }}
       {% else %}
           {{ include('layout/nav-dashboard-ingles.html') }}
@@ -32,13 +34,13 @@
     <hr class="m-1">  
     <section class="row">
       <section class="col-xl-12 col-md-12 mb-4">
-        Compartilhe ideias
-        Tudo começa com uma ideia ! 
-         
+       
+
 
         <article class="card border-left-success shadow h-100 py-2">
+          
           <section class="card-body">
-            <section class="modal fade criargrupo-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <section class="modal fade info-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
               <section class="modal-dialog modal-lg">
                 <section class="modal-content">
                   <section class="card-body">   
@@ -71,9 +73,15 @@ Oferece respaldo de confiança, facilitando a captação de potenciais investido
                 </section>
               </section>
             </section>
+
+
+
+
+
             <h4 class ="text-dark" align="center">   Plano de negocios </h4>
            
-             <button  type="button" class="btn btn-info" data-toggle="modal" data-target=".criargrupo-lg">info</button>             
+             <button  type="button" class="btn btn-info" data-toggle="modal" data-target=".info-lg">info</button>  
+             <a  href="/meusgrupos/grupousuarios/{{grupo_id}}" class="btn btn-primary" style="display: inline;" >usuarios</a>  
             <hr>
 
            
@@ -85,35 +93,44 @@ Oferece respaldo de confiança, facilitando a captação de potenciais investido
                 <li class="media my-4">
                  
                   <section class="media-body"> 
-                            
 
-Compreensao de mercado: <br>
-R:<br>
+                             
+                      {% if haplanoDeNegocios %}
+
+
 
 Compreensão de mercado:<br>
-R:<br>
-
-
-
+R: {{pn_compreensao_de_mercado}}
+<br>
 
 Acompanhamento:<br>
-R:<br>
+R: {{pn_acompanhamento}}
+<br>
 
 Estrategias de venda:<br>
-R:<br>
+R: {{pn_estrategias_de_venda}}
+<br>
 
 Projecao financeira:<br>
-R:<br>
+R: {{pn_projecao_financeira}} 
+<br>
 
-Evita perda de capital:<br>
-R:<br>
-
-
-Captaçãode fundos de investimento:<br>
-R:<br>
+Captação de fundos de investimento:<br>
+R: {{pn_captacao_fundos_investimento}}
+<br>
 
 Publico alvo:<br>
-R:<br>
+R: {{pn_publico_alvo}}
+<br>
+                                           
+
+                                </section>
+                      {% else %}
+<h5 class="center"> Não há propostas</h5>
+
+                      {% endif %}
+
+
                 </section>
               </li>
             </ul>

@@ -274,6 +274,16 @@ class Grupo {
 			));
 	}
 
+	public static function getGruposPlanosAll($gr_id, $gr_pais) {
+		$banco = new Banco();
+
+		return $banco->select("SELECT * FROM dadosgrupo WHERE  gr_id  = :gr_id and   gr_pais = :gr_pais  GROUP BY gr_id",
+			array(
+				":gr_pais" => $gr_pais,
+				":gr_id" => $gr_id,
+			));
+	}
+
 	public static function checkgrupos($gu_user_id, $gr_id) {
 		$banco = new Banco();
 

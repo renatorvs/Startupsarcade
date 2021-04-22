@@ -37,7 +37,7 @@ class Notifications {
 
 		));
 
-		$query_3 = $banco->select("SELECT us_id, us_nome,  gr_nome   FROM usuariogrupos WHERE adm_flag == 2  and gu_accept = 2", array(
+		$query_3 = $banco->select("SELECT us_id, us_nome,  gr_nome   FROM usuariogrupos WHERE adm_flag = 2  and gu_accept = 2", array(
 			":adm_sub_user_id" => $us_id,
 
 		));

@@ -10,8 +10,9 @@ use app\validate\Validate;
 class EntrarController extends ContainerController {
 
 	public function show() {
-		$lin = Linguagem::getIdiomaEntrar();
+		Session::sessionDestroy();
 
+		$lin = Linguagem::getIdiomaEntrar();
 		$this->view([
 			'navmenu_1' => $lin->navmenu_1,
 			'navmenu_2' => $lin->navmenu_2,
@@ -66,7 +67,7 @@ class EntrarController extends ContainerController {
 
 	public function destroy() {
 		Session::sessionDestroy();
-		redirecionar("/");
+		redirecionar("/entrar/show");
 
 	}
 

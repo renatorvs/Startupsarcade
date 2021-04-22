@@ -4,15 +4,10 @@ namespace app\linguagem\portugues;
 
 class IndexPortugues {
 	public $html_lang = "pt-br";
-
 	public $meta_charset = "UTF-8";
-
 	public $description = "";
-
 	public $keywords = "";
-
-	public $author  "";
-
+	public $author = "";
 	public $betas_version = "Olá é um prazer. estamos em fase BETA";
 	public $navmenu_1 = "Sobre";
 	public $navmenu_2 = "Blog";

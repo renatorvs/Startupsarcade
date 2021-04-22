@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 09-Abr-2021 às 03:38
+-- Tempo de geração: 22-Abr-2021 às 04:23
 -- Versão do servidor: 10.4.10-MariaDB
 -- versão do PHP: 7.2.25
 
@@ -353,6 +353,14 @@ CREATE TABLE IF NOT EXISTS `dadosgrupo` (
 ,`adm_sub_user_id` int(11)
 ,`adm_grupo_id` int(11)
 ,`adm_flag` int(11)
+,`pn_id` int(11)
+,`pn_compreensao_de_mercado` varchar(255)
+,`pn_acompanhamento` varchar(255)
+,`pn_estrategias_de_venda` varchar(255)
+,`pn_projecao_financeira` varchar(255)
+,`pn_captacao_fundos_investimento` varchar(255)
+,`pn_grupo_id` int(11)
+,`pn_publico_alvo` varchar(255)
 );
 
 -- --------------------------------------------------------
@@ -492,7 +500,6 @@ CREATE TABLE IF NOT EXISTS `grupo` (
 --
 
 INSERT INTO `grupo` (`gr_id`, `gr_nome`, `gr_descricao`, `gr_cidade`, `gr_estado`, `gr_foto`, `grcat_id`, `gr_private`, `gr_pais`) VALUES
-(1, 'usuario1@gmail.com', 'descrei', 'Mauá', 'SP', 'starstup-logo.PNG', 1, 0, 1),
 (2, 'usuario1 -  2', 'descricao', 'Mauá', 'SP', 'starstup-logo.PNG', 11, 0, 1),
 (3, 'usuario -3', 'descricao', 'Aruja', 'SP', 'starstup-logo.PNG', 2, 1, 1);
 
@@ -510,7 +517,7 @@ CREATE TABLE IF NOT EXISTS `grupoadmin` (
   `adm_grupo_id` int(11) NOT NULL,
   `adm_flag` int(11) NOT NULL,
   PRIMARY KEY (`admin_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=42 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `grupoadmin`
@@ -519,9 +526,10 @@ CREATE TABLE IF NOT EXISTS `grupoadmin` (
 INSERT INTO `grupoadmin` (`admin_id`, `adm_user_id`, `adm_sub_user_id`, `adm_grupo_id`, `adm_flag`) VALUES
 (1, 3, 3, 1, 1),
 (2, 3, 3, 2, 1),
-(35, 3, 1, 2, 0),
+(35, 3, 1, 2, 1),
 (36, 3, 3, 3, 1),
-(39, 3, 1, 3, 0);
+(39, 3, 1, 3, 1),
+(42, 3, 2, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -580,7 +588,7 @@ CREATE TABLE IF NOT EXISTS `grupo_usuario` (
 --
 
 INSERT INTO `grupo_usuario` (`gu_accept`, `gu_user_id`, `gu_grupo_id`) VALUES
-(2, 3, 1),
+(1, 2, 3),
 (2, 3, 2),
 (2, 3, 3),
 (2, 1, 3),
@@ -641,7 +649,14 @@ CREATE TABLE IF NOT EXISTS `plano_de_negocios` (
   `pn_grupo_id` int(11) NOT NULL,
   `pn_publico_alvo` varchar(255) NOT NULL,
   PRIMARY KEY (`pn_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `plano_de_negocios`
+--
+
+INSERT INTO `plano_de_negocios` (`pn_id`, `pn_compreensao_de_mercado`, `pn_acompanhamento`, `pn_estrategias_de_venda`, `pn_projecao_financeira`, `pn_captacao_fundos_investimento`, `pn_grupo_id`, `pn_publico_alvo`) VALUES
+(1, 'aaa', 'aaaaaaaaaaaaaaa', 'aaaaaaaaaaa', 'aaaaaaaaaaaaaaaaaa', 'aaaaaaaaa', 2, 'aaaaaa');
 
 -- --------------------------------------------------------
 
@@ -790,6 +805,19 @@ CREATE TABLE IF NOT EXISTS `solicitacao_categoria` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `termos`
+--
+
+DROP TABLE IF EXISTS `termos`;
+CREATE TABLE IF NOT EXISTS `termos` (
+  `term_text` text NOT NULL,
+  `term_pais_id` int(11) NOT NULL,
+  `term_date` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `usuario`
 --
 
@@ -925,7 +953,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `dadosgrupo`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `dadosgrupo`  AS  select `cg`.`cg_id` AS `cg_id`,`cg`.`cg_nome` AS `cg_nome`,`cg`.`cg_pais_id` AS `cg_pais_id`,`g`.`gr_id` AS `gr_id`,`g`.`gr_nome` AS `gr_nome`,`g`.`gr_descricao` AS `gr_descricao`,`g`.`gr_cidade` AS `gr_cidade`,`g`.`gr_estado` AS `gr_estado`,`g`.`gr_foto` AS `gr_foto`,`g`.`grcat_id` AS `grcat_id`,`g`.`gr_private` AS `gr_private`,`g`.`gr_pais` AS `gr_pais`,`ga`.`admin_id` AS `admin_id`,`ga`.`adm_user_id` AS `adm_user_id`,`ga`.`adm_sub_user_id` AS `adm_sub_user_id`,`ga`.`adm_grupo_id` AS `adm_grupo_id`,`ga`.`adm_flag` AS `adm_flag` from ((`categoria_grupo` `cg` join `grupo` `g` on(`cg`.`cg_id` = `g`.`grcat_id`)) join `grupoadmin` `ga` on(`ga`.`adm_grupo_id` = `g`.`gr_id`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `dadosgrupo`  AS  select `cg`.`cg_id` AS `cg_id`,`cg`.`cg_nome` AS `cg_nome`,`cg`.`cg_pais_id` AS `cg_pais_id`,`g`.`gr_id` AS `gr_id`,`g`.`gr_nome` AS `gr_nome`,`g`.`gr_descricao` AS `gr_descricao`,`g`.`gr_cidade` AS `gr_cidade`,`g`.`gr_estado` AS `gr_estado`,`g`.`gr_foto` AS `gr_foto`,`g`.`grcat_id` AS `grcat_id`,`g`.`gr_private` AS `gr_private`,`g`.`gr_pais` AS `gr_pais`,`ga`.`admin_id` AS `admin_id`,`ga`.`adm_user_id` AS `adm_user_id`,`ga`.`adm_sub_user_id` AS `adm_sub_user_id`,`ga`.`adm_grupo_id` AS `adm_grupo_id`,`ga`.`adm_flag` AS `adm_flag`,`pn`.`pn_id` AS `pn_id`,`pn`.`pn_compreensao_de_mercado` AS `pn_compreensao_de_mercado`,`pn`.`pn_acompanhamento` AS `pn_acompanhamento`,`pn`.`pn_estrategias_de_venda` AS `pn_estrategias_de_venda`,`pn`.`pn_projecao_financeira` AS `pn_projecao_financeira`,`pn`.`pn_captacao_fundos_investimento` AS `pn_captacao_fundos_investimento`,`pn`.`pn_grupo_id` AS `pn_grupo_id`,`pn`.`pn_publico_alvo` AS `pn_publico_alvo` from (((`categoria_grupo` `cg` join `grupo` `g` on(`cg`.`cg_id` = `g`.`grcat_id`)) join `grupoadmin` `ga` on(`ga`.`adm_grupo_id` = `g`.`gr_id`)) left join `plano_de_negocios` `pn` on(`pn`.`pn_grupo_id` = `g`.`gr_id`)) ;
 
 -- --------------------------------------------------------
 

@@ -19,6 +19,7 @@ class MeusgruposController extends ContainerController {
 		} else {
 			redirecionar("/");
 		}
+
 		$grupoAll = CategoriaGrupo::CategoriaGrupoAll(Session::get('PAIS_ID'));
 		$meusGrupos = Grupo::meusGrupos(Session::get('USUARIO_ID'));
 		$this->view([
@@ -112,7 +113,7 @@ class MeusgruposController extends ContainerController {
 		$grupo = new Grupo();
 
 		Grupo::grupoUsuarioSair($gr_id->parameter, Session::get('USUARIO_ID'));
-s
+
 		redirecionar('\meusGrupos\grupos');
 
 	}
@@ -146,11 +147,13 @@ s
 			redirecionar("/");
 		}
 		$dadosgrupo = PlanoDeNegocios::getpropostaGrupo($gr_id->parameter);
+
 		$planoDeNegocios = PlanoDeNegocios::getPlanoDeNegocios($gr_id->parameter);
 		$haplanoDeNegocios = true;
 		if ($planoDeNegocios[0] == null) {
 			$haplanoDeNegocios = false;
 		}
+
 		$planoDeNegocios[0]['pn_id'];
 		$planoDeNegocios[0]['pn_compreensao_de_mercado'];
 		$planoDeNegocios[0]['pn_acompanhamento'];
@@ -163,6 +166,7 @@ s
 		$grupo = new Grupo();
 
 		$this->view([
+			'session_id' => Session::get('USUARIO_ID'),
 			'title' => $dadosgrupo['gr_nome'],
 			'cg_nome' => $dadosgrupo[0]['cg_nome'],
 			'grupo_nome' => $dadosgrupo[0]['gr_nome'],

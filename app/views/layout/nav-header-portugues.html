@@ -37,11 +37,11 @@
 						{% if  grupo.accept == 2 and grupo.adm_user_id != grupo.adm_sub_user_id  %}
 
 						<div class="text-truncate"><span class="text-success"> Você foi aceito no  (1)</span>{{grupo.gr_nome}}</div>
-						{% else if  grupo.accept == 3 %}
+						{% elseif grupo.accept == 3 %}
 
 						<div class="text-truncate"> <span class="text-danger"> Você foi bloqueado no grupo (2) </span> {{ grupo.gr_nome}}</div>
 
-						{% else if  grupo.adm_flag == 1 and grupo.adm_user_id != grupo.adm_sub_user_id %}
+						{% elseif  grupo.adm_flag == 1 and grupo.adm_user_id != grupo.adm_sub_user_id %}
 						<div class="text-truncate"><span class="text-primary">Você se tornou administrador do grupo (3)</span> {{ grupo.gr_nome}} </div>
 						{% endif %}
 

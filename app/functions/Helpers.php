@@ -28,24 +28,17 @@ function debug($dump) {
 
 function getLanguage() {
 
-	if (Session::get("PAIS_ID") == NULL) {
+	$http_accept = substr($_SERVER["HTTP_ACCEPT_LANGUAGE"], 0, 2);
 
-		$http_accept = substr($_SERVER["HTTP_ACCEPT_LANGUAGE"], 0, 2);
-
-		switch ($http_accept) {
-		case 'en':
-			$linguege = Session::set("PAIS_ID", 2);
-			break;
-		default:
-			$linguege = Session::set("PAIS_ID", 1);
-			break;
-		}
-		return $linguage;
-
-	} else {
-		return Session::get("PAIS_ID");
+	switch ($http_accept) {
+	case 'en':
+		$linguege = Session::set("PAIS_ID", 2);
+		break;
+	case 'pt':
+		$linguege = Session::set("PAIS_ID", 1);
+		break;
 	}
-
+	return $linguage;
 }
 
 function checkParameter($metodoReturn) {

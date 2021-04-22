@@ -2,7 +2,7 @@
 
 namespace app\linguagem\portugues;
 
-class blogartigointernoPortugues {
+class blogartigoexteriorPortugues {
       public $html_lang = "pt-br";
       public $title = "starstup´s arcade | blog";
       public $meta_charset = "UTF-8";

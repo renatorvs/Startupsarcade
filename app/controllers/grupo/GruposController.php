@@ -6,6 +6,7 @@ use app\models\admin\Publicidade;
 use app\models\grupo\CategoriaGrupo;
 use app\models\grupo\Estado;
 use app\models\grupo\Grupo;
+use app\models\grupo\PlanoDeNegocios;
 use app\session\Session;
 use app\validate\Imagem;
 use app\validate\Validate;
@@ -18,7 +19,8 @@ class GruposController extends ContainerController {
 		} else {
 			redirecionar("/");
 		}
-
+		getLanguage();
+		//debug(Session::get('PAIS_ID'));
 		$grupoAll = CategoriaGrupo::CategoriaGrupoAll(Session::get('PAIS_ID'));
 
 		$this->view([
@@ -45,7 +47,7 @@ class GruposController extends ContainerController {
 
 		$getGruposAll = Grupo::getGruposAll($grcat_id->parameter, Session::get('PAIS_ID'));
 		$getPublicidadeAll = Publicidade::getPublicidade($grcat_id->parameter, Session::get('PAIS_ID'));
-		//debug($getGruposAll);
+
 		$this->view([
 			'title' => 'Planos',
 
@@ -177,15 +179,46 @@ class GruposController extends ContainerController {
 		}
 
 		$grupo = new Grupo();
+		$getGruposAll = Grupo::getGruposPlanosAll($gr_id->parameter, Session::get('PAIS_ID'));
+
+		//debug($getGruposAll);
+		$dadosgrupo = PlanoDeNegocios::getpropostaGrupo($gr_id->parameter);
+		$planoDeNegocios = PlanoDeNegocios::getPlanoDeNegocios($gr_id->parameter);
+		$haplanoDeNegocios = true;
+		if ($planoDeNegocios[0] == null) {
+			$haplanoDeNegocios = false;
+		}
+		$planoDeNegocios[0]['pn_id'];
+		$planoDeNegocios[0]['pn_compreensao_de_mercado'];
+		$planoDeNegocios[0]['pn_acompanhamento'];
+		$planoDeNegocios[0]['pn_estrategias_de_venda'];
+		$planoDeNegocios[0]['pn_projecao_financeira'];
+		$planoDeNegocios[0]['pn_captacao_fundos_investimento'];
+		$planoDeNegocios[0]['pn_grupo_id'];
+		$planoDeNegocios[0]['pn_publico_alvo'];
+
+		$grupo = new Grupo();
 
 		$this->view([
-			'title' => 'Planos',
-
-			'pref' => Session::get("USER_PREFERENCIAS"),
+			'session_id' => Session::get('USUARIO_ID'),
+			'pais_id' => Session::get('PAIS_ID'),
+			'title' => $dadosgrupo['gr_nome'],
+			'cg_nome' => $dadosgrupo[0]['cg_nome'],
+			'grupo_nome' => $dadosgrupo[0]['gr_nome'],
 			'getGrupoCategoria' => $getGrupoCategoria,
 			'listEstados' => Estado::listEstados(),
 			'getdadosGrupocategoria' => $getdadosGrupocategoria,
 			'catgr_id' => $grcat_id->parameter,
+			'haplanoDeNegocios' => $haplanoDeNegocios,
+			'pn_id' => $planoDeNegocios[0]['pn_id'],
+			'pn_compreensao_de_mercado' => $planoDeNegocios[0]['pn_compreensao_de_mercado'],
+			'pn_acompanhamento' => $planoDeNegocios[0]['pn_acompanhamento'],
+			'pn_estrategias_de_venda' => $planoDeNegocios[0]['pn_estrategias_de_venda'],
+			'pn_projecao_financeira' => $planoDeNegocios[0]['pn_projecao_financeira'],
+			'pn_captacao_fundos_investimento' => $planoDeNegocios[0]['pn_captacao_fundos_investimento'],
+			'pn_grupo_id' => $planoDeNegocios[0]['pn_grupo_id'],
+			'pn_publico_alvo' => $planoDeNegocios[0]['pn_publico_alvo'],
+			'grupo_id' => $gr_id->parameter,
 			'pais_id' => Session::get("PAIS_ID"),
 			'NotsGrupo' => getNotificantionGrupo(Session::get('USUARIO_ID')),
 			'NotsMessagem' => getNotificantionMessagem(Session::get('USUARIO_ID')),

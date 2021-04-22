@@ -1,110 +1,20 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="description" content="Empresa vagas">
-  <meta name="keywords" content="Empresa vagas">
-  <meta name="author" content="onclickup">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap-reboot.css">
-  <link rel="stylesheet" href="../../assets/css/layout/layout.css">
-  <link rel="stylesheet" href="../../assets/css/layout/footer.css">
-  <link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-  <title> SA | meus grupos</title>
-  <link href="../../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
-</head>
-<body id="page-top">
-  <header>
-    {% if pais_id == 1 %}
-    {{ include('layout/nav-header-portugues.html') }}
-    {% else %}
-    {{ include('layout/nav-header-ingles.html') }}
-    {% endif %}
+<?php
 
-  </header>
-  <main>
-    {% if pais_id == 1 %}
-    {{ include('layout/nav-dashboard-portugues.html') }}
-    {% else %}
-    {{ include('layout/nav-dashboard-ingles.html') }}
-    {% endif %}
-    <section class="main-experi" >
-      <hr class="m-1">  
-      <section class="row">
-        <section class="col-xl-12 col-md-12 mb-4">
+namespace app\linguagem\portugues;
+
+class gruposconvitesPortugues {
 
 
-
-          <article class="card border-left-success shadow h-100 py-2">
-            <section class="card-body">
-              <h4 class="text-primary" align="center">Pedido para entradar em seus grupos</h4>
-
-              <hr>
-              {% for convite in meusGruposConvite %}
-
-
-
-              <section class="card"> 
-                <section class="card-body">
-
-                  <ul class="list-unstyled" class="mr-1">
-                    <li class="media my-4">
-                      <figure>
-                       <img  src="../../assets/user_images/{{convite.us_foto}}" width="50" height="50">
-                     </figure>
-
-                     <section class="media-body"> 
-                      <h2 class="mt-0 mb-1"> {{convite.us_nome}}</h2>
-                      <h3 class="mt-0 mb-1"> {{convite.us_email}}</h3>
-                      <h4 class="mt-0 mb-1">Grupo: {{convite.gr_nome}} </h4>
-                      <h5 class="mt-0 mb-1">Categoria:{{convite.cg_nome}}</h5>
-                    </a> 
-                  </section>
-                </li>
-              </ul>
-              <section align="center" class="group-button">
-               <form action="\pedidogrupo\cancelar " method="post" style="display: inline;">
-                <input type="hidden" name="redirect" value="2">
-                <input type="hidden" name="gu_grupo_id" value="{{convite.gr_id}}">
-                <input type="hidden" name="catgr_id" value="{{convite.catgr_id}}">
-                <input type="hidden" name="gu_accept" value="3">
-                <input type="hidden" name="gu_user_id" value="{{convite.gu_user_id}}">
-
-                <button type="submit"  class="btn btn-danger" >Cancelar </button>
-              </form>
-              
-              
-
-              <form action="\pedidogrupo\aceitar" method="post" style="display: inline;">
-                <input type="hidden" name="redirect" value="2">
-                <input type="hidden" name="gu_grupo_id" value="{{convite.gr_id}}">
-                <input type="hidden" name="gu_user_id" value="{{convite.us_id}}">
-                <input type="hidden" name="adm_sub_user_id" value="{{convite.us_id}}">
-                <input type="hidden" name="catgr_id" value="{{convite.catgr_id}}">
-                <input type="hidden" name="gu_accept" value="4">
-                <button type="submit"  class="btn btn-success" >aceitar</button>
-              </form>
-            </section>
-          </section>
-        </section>
-        <br>
-        {% endfor %}
-      </section>
-    </article>
-  </section>
-</section> 
-
-</section>
-</main>
-{{ include('layout/nav-dashboard-end.html') }}
-{{ include('layout/footer.html') }}
-<script src="../../assets/vendor/chart.js/Chart.min.js"></script>
-<script src="../../assets/js/demo/chart-area-demo.js"></script>
-<script src="../../assets/js/demo/chart-pie-demo.js"></script>
-<script src="../../assets/vendor/jquery/jquery.min.js"></script>
-<script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="../../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
-<script src="../../assets/js/sb-admin-2.min.js"></script>
-</body>
-</html>
+  public $html_lang = "pt-br";
+  public $meta_charset = "UTF-8";
+  public $description = "";
+  public $keywords = "";
+  public $author  "";
+  public $title = "starstup´s arcade | grupo convites";
+  public $convite_h3 = "Convites para entrar em seus grupos"
+  public $convite_h4 = "Grupo"
+  public $convite_h5 = "Categoria"
+  public $n_ha_convite_h3 = "Não há convites para entrar em seus grupos"
+  public $btn_cancelar = "cancelar"
+  public $btn_aceitar = "aceitar"
+}

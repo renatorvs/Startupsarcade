@@ -11,25 +11,27 @@
   <link rel="stylesheet" href="../../assets/css/layout/footer.css">
   <link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-  <title>Onclickup | Empresa vagas</title>
+  <title>startup´s | categoria grupos</title>
   <link href="../../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
 </head>
 <body id="page-top">
   <header>
-      {% if pais_id == 1 %}
-        {{ include('layout/nav-header-portugues.html') }}
-                        {% else %}
-        {{ include('layout/nav-header-ingles.html') }}
-                     {% endif %}
+
+    {{pais_id}}
+    {% if pais_id == 1 %}
+    {{ include('layout/nav-header-portugues.html') }}
+    {% else %}
+    {{ include('layout/nav-header-ingles.html') }}
+    {% endif %}
 
 
   </header>
   <main>
-      {% if pais_id == 1 %}
-        {{ include('layout/nav-dashboard-portugues.html') }}
-      {% else %}
-          {{ include('layout/nav-dashboard-ingles.html') }}
-      {% endif %}
+    {% if pais_id == 1 %}
+    {{ include('layout/nav-dashboard-portugues.html') }}
+    {% else %}
+    {{ include('layout/nav-dashboard-ingles.html') }}
+    {% endif %}
 
     <section class="main-experi" >
      <hr class="m-1">  
@@ -41,7 +43,7 @@
             {% for grupo in grupoAll %}
             <section class="card"> 
               <section class="card-body">
-             
+
                 <ul class="list-unstyled" class="mr-1">
                   <li class="media my-4">
                     <figure>
@@ -50,34 +52,34 @@
                     <section class="media-body"> 
                       <h4 class="mt-0 mb-1"> <a href="\empresavervaga\show\{{minhavaga.vag_id}}" class=" text-primary "> {{minhavaga.post_titulo}}</a></h4>
                       <h5 class="mt-0 mb-1 text-primary">{{grupo.cg_nome}}</h5>
-                        Grupos({{grupo.quantidade}})
-                      </a> 
-                    </section>
-                  </li>
-                </ul>
-                <section align="center" class="group-button">
-                  <a href="\grupos\grupo\{{grupo.cg_id}}"  class="btn btn-primary btn-sm">ver grupo</a>
-             
-                </section>
+                      Grupos({{grupo.quantidade}})
+                    </a> 
+                  </section>
+                </li>
+              </ul>
+              <section align="center" class="group-button">
+                <a href="\grupos\grupo\{{grupo.cg_id}}"  class="btn btn-primary btn-sm">ver grupo</a>
+
               </section>
             </section>
-            <br>
-            {% endfor %}
           </section>
-        </article>
-      </section>
-    </section> 
-   
+          <br>
+          {% endfor %}
+        </section>
+      </article>
     </section>
-  </main>
-  {{ include('layout/nav-dashboard-end.html') }}
-  {{ include('layout/footer.html') }}
-  <script src="../../assets/vendor/chart.js/Chart.min.js"></script>
-  <script src="../../assets/js/demo/chart-area-demo.js"></script>
-  <script src="../../assets/js/demo/chart-pie-demo.js"></script>
-  <script src="../../assets/vendor/jquery/jquery.min.js"></script>
-  <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
-  <script src="../../assets/js/sb-admin-2.min.js"></script>
+  </section> 
+
+</section>
+</main>
+{{ include('layout/nav-dashboard-end.html') }}
+{{ include('layout/footer.html') }}
+<script src="../../assets/vendor/chart.js/Chart.min.js"></script>
+<script src="../../assets/js/demo/chart-area-demo.js"></script>
+<script src="../../assets/js/demo/chart-pie-demo.js"></script>
+<script src="../../assets/vendor/jquery/jquery.min.js"></script>
+<script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="../../assets/js/sb-admin-2.min.js"></script>
 </body>
 </html>
