@@ -17,9 +17,9 @@ class EntrarIngles {
 	public $login_email_reploceholder = "seu email";
 	public $login_senha = "senha";
 	public $email_texto = "Nunca vamos compartilhar seu email, com ninguém";
-	public $entar_com = "entrar com";
-	public $login_frash = "senha ou usuario incorretos";
+	public $entrar_com = "entrar com";
 	public $button_entrar = "entrar";
+	public $login_frash = "senha ou usuario incorretos";
 
 	public $card_alert_h4 = "faz o login, assim poder ultilizar nossa plataforma";
 	public $card_alert_p = "Publique e compartilhe ideias de um negocio";

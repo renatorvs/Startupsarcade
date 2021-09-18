@@ -19,9 +19,20 @@ class GruposController extends ContainerController {
 		} else {
 			redirecionar("/");
 		}
+
+		$haNotsMessagem = false;
+
 		getLanguage();
 		//debug(Session::get('PAIS_ID'));
 		$grupoAll = CategoriaGrupo::CategoriaGrupoAll(Session::get('PAIS_ID'));
+
+		$notsMessagem = getNotificantionMessagem(Session::get('USUARIO_ID'));
+
+		if ($notsMessagem[0]) {
+			$haNotsMessagem = true;
+		}
+
+		//debug(Session::get('USUARIO_ID'));
 
 		$this->view([
 			'title' => 'SA | Categoria startup',
@@ -29,9 +40,9 @@ class GruposController extends ContainerController {
 			'pref' => Session::get("USER_PREFERENCIAS"),
 			'grupoAll' => $grupoAll,
 			'pais_id' => Session::get("PAIS_ID"),
-
-			'NotsGrupo' => getNotificantionGrupo($sessionUsuario_id),
-			'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),
+			'haNotsMessagem' => $haNotsMessagem,
+			'NotsGrupo' => getNotificantionGrupo(Session::get('USUARIO_ID')),
+			'NotsMessagem' => getNotificantionMessagem(Session::get('USUARIO_ID')),
 
 		], 'grupo.grupocategorias');
 	}

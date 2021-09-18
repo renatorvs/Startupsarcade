@@ -45,7 +45,7 @@ class Linguagem {
 		return new $class();
 	}
 
-	-
+	
 	
 	public static function getBlogArtigoInterior() {
 		$idioma = Linguagem::getIdiomaSession();

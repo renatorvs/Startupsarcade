@@ -4,6 +4,10 @@ namespace app\linguagem\Ingles;
 
 class indexIngles {
 
+	public $description = "";
+	public $keywords = "";
+	public $author = "";
+	public $betas_version = "Olá é um prazer. estamos em fase BETA";
 	public $navmenu_1 = "Sobre";
 	public $navmenu_2 = "Blog";
 	public $navmenu_3 = "Increva-se";
@@ -55,14 +59,15 @@ class indexIngles {
 	public $main_question_6 = "Tortor vitae purus faucibus ornare. Varius vel pharetra vel turpis nunc eget lorem ";
 	public $main_question_resp_6 = "Crie grupo, preeeche a proposta.";
 
-	public $main_contato_h2 = "Entre em Contssato";
+	public $main_contato_h2 = "Entre em Contato";
 	public $main_contato_adress = "starstuparcade@gmail.com";
 	public $main_contato_email = "11 - 976238147";
-	public $main_contato_fone = "Entre em Contato";
+	public $main_contato_fone = "Entress em Contato";
 
 	public $main_contato_form_nome = "Seu Nome:";
 	public $main_contato_form_email = "Email";
 	public $main_contato_form_assunto = "Assunto";
 	public $main_contato_form_mensagem = "Mensagem";
+	public $main_contato_form_button = "Enviar mensagem";
 
 }

@@ -8,6 +8,8 @@ class ArtigoController extends ContainerController {
 
 	public function artigo() {
 
+		$lin = Linguagem::getIdiomaPerfil();
+
 		$this->view([
 			'pref' => Session::get("USER_PREFERENCIAS"),
 			'pais_id' => Session::get("PAIS_ID"),

@@ -107,7 +107,6 @@
         <i class="fas fa-bars"></i>
       </a>
 
-      <!-- Topbar Search -->
       
 
 
@@ -129,20 +128,20 @@
           <!-- Dropdown - Messages -->
           <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
             <h6 class="dropdown-header">
-              Message Center
-            </h6>
+Mensagems          
+  </h6>
 
-            {% if NotsMessagem  %}
+            {% if haNotsMessagem  %}
 
             {% for NotsMessagems in  NotsMessagem %}           
             <a class="dropdown-item d-flex align-items-center" href="#">
               <div class="dropdown-list-image mr-3">
-                <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
+                <img class="rounded-circle" src="../../assets/user_images/starstup-logo.PNG" alt="">
+              
                 <div class="status-indicator bg-success"></div>
               </div>
               <div class="font-weight-bold">
-                <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
-                <div class="small text-gray-500">Emily Fowler · 58m</div>
+                <div ><span class="text-primary"> Voce tem novas mensagems no grupo </span>{{NotsMessagems.gr_nome}} </div>
               </div>
             </a>
             {% endfor %}

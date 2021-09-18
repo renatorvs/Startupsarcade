@@ -1,8 +1,5 @@
   
-<!-- Page Wrapper -->
 <div id="wrapper">
-
-  <!-- Sidebar -->
   <div class="page-wrapper chiller-theme toggled">
 
     <nav id="sidebar" class="sidebar-wrapper">
@@ -124,7 +121,6 @@
         <i class="fas fa-bars"></i>
       </a>
 
-      <!-- Topbar Search -->
       
 
 
@@ -149,27 +145,31 @@
               Message Center
             </h6>
 
-            {% if NotsMessagem  %}
+            {% if haNotsMessagem  %}
 
             {% for NotsMessagems in  NotsMessagem %}           
             <a class="dropdown-item d-flex align-items-center" href="#">
               <div class="dropdown-list-image mr-3">
-            <img class="rounded-circle" src="../../assets/user_images/{{grupo.gr_foto}}" alt="">
+                <img class="rounded-circle" src="../../assets/user_images/starstup-logo.PNG" alt="">
+              
                 <div class="status-indicator bg-success"></div>
               </div>
               <div class="font-weight-bold">
-                <div class="text-truncate"> You new messages in the group {{NotsMessagems.grupo.gr_nome}}</div>
+                <div ><span class="text-primary"> Voce tem novas mensagems no grupo </span>{{NotsMessagems.gr_nome}} </div>
               </div>
             </a>
             {% endfor %}
             {% else  %}
 
-            <center class="text-danger m-3">Not há Mensagem</center>
+            <center class="text-danger m-3">Não há Mensagens</center>
 
             {% endif %}
 
 
           </div>
+
+
+
         </li>
 
       </ul>

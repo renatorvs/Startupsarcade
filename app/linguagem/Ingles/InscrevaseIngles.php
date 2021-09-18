@@ -1,15 +1,16 @@
 <?php
 
-namespace app\linguagem\ingles;
+namespace app\linguagem\Ingles;
 
 class InscrevaseIngles {
-
+	public $description = "";
+	public $keywords = "";
+	public $author  "";
 	public $navmenu_1 = "Sobre";
 	public $navmenu_2 = "Blog";
 	public $navmenu_3 = "Increva-se";
 	public $navmenu_4 = "Entrar";
 	public $navmenu_5 = "Contato";
-
 	public $login_h4 = "Inscreva-se ! Para poder ultilizar nossa plataforma";
 	public $login_p = "Você podera explorar a versão gratuita.";
 	public $login_tipo_user = "Tipo Usuario";
@@ -22,6 +23,7 @@ class InscrevaseIngles {
 	public $email_foto = "Foto";
 	public $login_frash = "senha ou usuario incorretos";
 	public $button_inscrever = "inscrever";
+	public $login_nome_usuario_placeholder = "nome e sobrenome";
 	public $termos = "Concordo com os termos e condições";
 	public $requered_termo = "Você deve concordar, antes de continuar.";
 	public $required_foto = "Por favor, insira uma foto.";

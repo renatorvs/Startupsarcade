@@ -1,6 +1,6 @@
 <?php
 
-namespace app\linguagem\ingles;
+namespace app\linguagem\Ingles;
 
 class PerfilIngles {
 
@@ -10,24 +10,22 @@ class PerfilIngles {
 	public $navmenu_4 = "Entrar";
 	public $navmenu_5 = "Contato";
 
-	public $login_h4 = "Inscreva-se ! Para poder ultilizar nossa plataforma";
-	public $login_p = "Você podera explorar a versão gratuita.";
 	public $login_tipo_user = "Tipo Usuario";
-	public $login_a_cadastra_se = "cadastra-se";
-	public $login_nome_usuario = "nome sobrenome";
-	public $login_nome__reploceholder = "nome e sobre nome";
-	public $login_senha = "senha";
+	public $login_a_cadastra_se = "Cadastra - se";
+	public $login_nome_usuario = "Nome e sobrenome";
+	public $login_nome_reploceholder = "Nome e sobrenome";
+	public $login_senha = "nova Senha";
 	public $pf = "Pessoa fisica (CPF)";
 	public $pj = "Pessoa juridica (CNPJ)";
 	public $email_foto = "Foto";
-	public $login_frash = "senha ou usuario incorretos";
-	public $button_inscrever = "inscrever";
-	public $termos = "Concordo com os termos e condições";
-	public $requered_termo = "Você deve concordar, antes de continuar.";
+	public $login_frash = "Senha ou usuario incorretos";
+	public $senha_old = "senha antiga";
+	public $button_inscrever = "Inscrever";
 	public $required_foto = "Por favor, insira uma foto.";
-	public $card_alert_h4 = "faz o login, assim poder ultilizar nossa plataforma";
+	public $card_alert_h4 = "Faz o login, assim poder ultilizar nossa plataforma";
 	public $card_alert_p = "Publique e compartilhe ideias de um negocio";
 	public $required_senha = "Por favor, informe a senha.";
 	public $requered_nome = "Por favor, seu nome e sobrenome.";
+	public $login_aceito = "Senha trocada com sucesso.";
 
 }

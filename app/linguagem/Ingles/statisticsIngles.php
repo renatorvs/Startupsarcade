@@ -1,9 +1,9 @@
 
 <?php
 
-namespace app\linguagem\portugues;
+namespace app\linguagem\Ingles;
 
-class termos {
+class statisticsIngles {
   
 
   public $html_lang = "pt-br";

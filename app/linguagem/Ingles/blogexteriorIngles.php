@@ -1,8 +1,8 @@
 <?php
 
-namespace app\linguagem\portugues;
+namespace app\linguagem\Ingles;
 
-class blogexteriorPortugues {
+class blogexteriorIngles {
 
   public $title = "startup´s arcade | blog ";
  public $html_lang = "pt-br";

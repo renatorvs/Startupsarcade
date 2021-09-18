@@ -1,14 +1,12 @@
 
 <?php
 
-namespace app\linguagem\Portugues;
+namespace app\linguagem\Ingles;
 
-class statisticsPortugues {
+class termosIngles extends InglesIndex{
   
 
-  public $html_lang = "pt-br";
   public $title = "starstup´s arcade | dashboard";
-  public $meta_charset = "UTF-8";
   public $description = "";
   public $h1_empreendedores =  "Empreendedores Brasileiros";
   public $p =  "perfis e percepções";
