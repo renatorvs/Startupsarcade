@@ -2,6 +2,7 @@
 namespace app\controllers\grupo;
 
 use app\controllers\ContainerController;
+use app\linguagem\Linguagem;
 use app\models\admin\Publicidade;
 use app\models\grupo\CategoriaGrupo;
 use app\models\grupo\Estado;
@@ -21,8 +22,8 @@ class GruposController extends ContainerController {
 		}
 
 		$haNotsMessagem = false;
+		$lin = Linguagem::getGrupoCategorias();
 
-		getLanguage();
 		//debug(Session::get('PAIS_ID'));
 		$grupoAll = CategoriaGrupo::CategoriaGrupoAll(Session::get('PAIS_ID'));
 
@@ -35,7 +36,14 @@ class GruposController extends ContainerController {
 		//debug(Session::get('USUARIO_ID'));
 
 		$this->view([
-			'title' => 'SA | Categoria startup',
+
+			'description' => $lin->description,
+			'keywords' => $lin->keywords,
+			'author' => $lin->author,
+			'title' => $lin->title,
+			'explore_h4' => $lin->explore_h4,
+			'btn_a_ver_grupo' => $lin->btn_a_ver_grupo,
+			'grupos' => $lin->grupos,
 
 			'pref' => Session::get("USER_PREFERENCIAS"),
 			'grupoAll' => $grupoAll,
@@ -61,6 +69,14 @@ class GruposController extends ContainerController {
 
 		$this->view([
 			'title' => 'Planos',
+
+			'description' => $lin->description,
+			'keywords' => $lin->keywords,
+			'author' => $lin->author,
+			'title' => $lin->title,
+			'explore_h4' => $lin->explore_h4,
+			'btn_a_ver_grupo' => $lin->btn_a_ver_grupo,
+			'grupos' => $lin->grupos,
 
 			'pref' => Session::get("USER_PREFERENCIAS"),
 			'getGrupoCategoria' => $getGrupoCategoria,

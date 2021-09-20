@@ -1,7 +1,6 @@
 <?php
 use app\classes\Flash;
 use app\models\grupo\Notifications;
-use app\session\Session;
 
 function debug($dump) {
 
@@ -32,13 +31,13 @@ function getLanguage() {
 
 	switch ($http_accept) {
 	case 'en':
-		$linguege = Session::set("PAIS_ID", 2);
+		$linguege = 1;
 		break;
 	case 'pt':
-		$linguege = Session::set("PAIS_ID", 1);
+		$linguege = 2;
 		break;
 	}
-	return $linguage;
+	return $linguege;
 }
 
 function checkParameter($metodoReturn) {
