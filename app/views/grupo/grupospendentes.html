@@ -1,7 +1,7 @@
     <!DOCTYPE html>
 <html lang="{{html_lang}}">
 <head>
-  <meta charset="{{meta_charse}}">
+  <meta charset="{{meta_charset}}">
   <meta name="description" content="{{description}}">
   <meta name="keywords" content="{{keywords}}">
   <meta name="author" content="{{author}}">
@@ -11,6 +11,8 @@
 	<link rel="stylesheet" href="../../assets/css/layout/layout.css">
 	<link rel="stylesheet" href="../../assets/css/layout/footer.css">
 	<link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+	    <link rel="icon" type="imagem/png" href="/imagens/meufavicon.png" />
+
 	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 	<title>{{title}}</title>
 	<link href="../../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
@@ -34,18 +36,20 @@
 			<hr class="m-1">  
 			<section class="row">
 				<section class="col-xl-12 col-md-12 mb-4">
-					Compartilhe ideias
-					Tudo começa com uma ideia ! 
+
+
+
+
+
 
 
 
 					<article class="card border-left-success shadow h-100 py-2">
 						<section class="card-body">
 							
-							
+							<h2>{{h5_pendencia}}</h2>
 							<hr>
 							{% for meusGrupo in meusGrupos %}
-							
 							
 
 							<section class="card"> 
@@ -62,11 +66,10 @@
 												<h4 class="mt-0 mb-1"> {{meusGrupo.gr_nome}}</h4>
 												<h5 class="mt-0 mb-1 text-primary">{{meusGrupo.cg_nome}}</h5>
 												Membros(10) | {{meusGrupo.gr_cidade}}, {{meusGrupo.gr_estado}} {{meusGrupo.gr_pais}}<br>
-												<a href="\meusgrupos\informacoes\{{meusGrupo.gr_id}}" class="text-primary">Grupo informaçoes</a>
+												<a href="\meusgrupos\informacoes\{{meusGrupo.gr_id}}" class="text-primary">{{btn_grupo}}</a>
 											</a> 
 										</section>
 									</li>
-
 								</ul>
 								<section align="center" class="group-button">
 									<form action="\Pedidogrupo\cancelarpedido" method="post">
@@ -75,7 +78,7 @@
 										<input type="hidden" name="catgr_id" value="{{meusGrupo.catgr_id}}">
 										<input type="hidden" name="redirect" value="1">
 										<input type="hidden" name="gu_accept" value="3">
-										<button type="submit"  class="btn btn-danger" >Cancelar pedido </button>
+										<button type="submit"  class="btn btn-danger" >{{btn_cancelar_pedido}} </button>
 									</form>
 								</section>
 							</section>

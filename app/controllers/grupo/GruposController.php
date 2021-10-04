@@ -12,6 +12,8 @@ use app\session\Session;
 use app\validate\Imagem;
 use app\validate\Validate;
 
+$lin = Linguagem::getIdiomaInscrevase();
+
 class GruposController extends ContainerController {
 	public function categorias() {
 		if (Session::get('USUARIO_ID')) {
@@ -205,6 +207,8 @@ class GruposController extends ContainerController {
 			redirecionar("/");
 		}
 
+		$lin = Linguagem::getGrupoInformacoes();
+
 		$grupo = new Grupo();
 		$getGruposAll = Grupo::getGruposPlanosAll($gr_id->parameter, Session::get('PAIS_ID'));
 
@@ -227,9 +231,44 @@ class GruposController extends ContainerController {
 		$grupo = new Grupo();
 
 		$this->view([
+			'description' => $lin->description,
+			'keywords' => $lin->keywords,
+			'author' => $lin->author,
+			'title' => $lin->title,
 			'session_id' => Session::get('USUARIO_ID'),
 			'pais_id' => Session::get('PAIS_ID'),
 			'title' => $dadosgrupo['gr_nome'],
+			'html_lang' => $lin->html_lang,
+			'meta_charset' => $lin->meta_charset,
+			'description' => $lin->description,
+			'plano_text_h4' => $lin->plano_text_h4,
+			'compreensao_de_mercado_text' => $lin->compreensao_de_mercado_text,
+			'acompanhamento_text' => $lin->acompanhamento_text,
+			'estrategias_text' => $lin->estrategias_text,
+			'projecao_financeira_text' => $lin->projecao_financeira_text,
+			'captacao_fundos_text' => $lin->captacao_fundos_text,
+			'Publico_alvo_text' => $lin->Publico_alvo_text,
+			'proposta_para_grupo' => $lin->proposta_para_grupo,
+			'categoria' => $lin->categoria,
+			'editar_h5' => $lin->editar_h5,
+			'plano_negocios_h4' => $lin->plano_negocios_h4,
+			'btn_usuarios' => $lin->btn_usuarios,
+			'info' => $lin->info,
+			'compreensao_de_mercado_required' => $lin->compreensao_de_mercado_required,
+			'acompanhamento_required' => $lin->acompanhamento_required,
+			'estrategias_required' => $lin->estrategias_required,
+			'projecao_financeira_required' => $lin->projecao_financeira_required,
+			'captacao_fundo_requireds' => $lin->captacao_fundo_requireds,
+			'Publico_alvo_required' => $lin->Publico_alvo_required,
+			'compreensao_de_mercado' => $lin->compreensao_de_mercado,
+			'acompanhamento' => $lin->acompanhamento,
+			'estrategias' => $lin->estrategias,
+			'projecao_financeira' => $lin->projecao_financeira,
+			'captacao_fundos' => $lin->captacao_fundos,
+			'Publico_alvo' => $lin->Publico_alvo,
+			'btn_criar_proposta' => $lin->btn_criar_proposta,
+			'btn_editar_proposta' => $lin->btn_editar_proposta,
+
 			'cg_nome' => $dadosgrupo[0]['cg_nome'],
 			'grupo_nome' => $dadosgrupo[0]['gr_nome'],
 			'getGrupoCategoria' => $getGrupoCategoria,
@@ -286,12 +325,24 @@ class GruposController extends ContainerController {
 		} else {
 			redirecionar("/");
 		}
-		$grupoAll = CategoriaGrupo::CategoriaGrupoAll(Session::get('PAIS_ID'));
 
+		$lin = Linguagem::getGruposPendentes();
+
+		$grupoAll = CategoriaGrupo::CategoriaGrupoAll(Session::get('PAIS_ID'));
 		$meusGrupos = Grupo::meusGruposPendentes(Session::get('USUARIO_ID'));
 
 		$this->view([
-			'title' => 'SA | Grupos startup',
+			'html_lang' => $lin->html_lang,
+			'description' => $lin->description,
+			'keywords' => $lin->keywords,
+			'author' => $lin->author,
+			'title' => $lin->title,
+			'meta_charset' => $lin->meta_charset,
+			'h5_pendencia' => $lin->h5_pendencia,
+			'h5_n_pendencia' => $lin->h5_n_pendencia,
+			'btn_cancelar_pedido' => $lin->btn_cancelar_pedido,
+			'btn_grupo' => $lin->btn_grupo,
+
 			'meusGrupos' => $meusGrupos,
 			'listEstados' => Estado::listEstados(),
 			'grupoAll' => $grupoAll,

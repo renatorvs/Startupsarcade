@@ -7,6 +7,7 @@
   <meta name="author" content="{{author}}">
 
          <title>{{title}}</title>
+    <link rel="icon" type="imagem/png" href="/imagens/meufavicon.png" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../assets/css/bootstrap/bootstrap-reboot.css">
@@ -38,17 +39,19 @@
             <section class="container">
                 <section class="row">
                     <section class="col-md-12">
-                        <article> class="error-template" >
+                        <article class="error-template" >
                             <h1>
                             Oops!</h1>
-                            <h2>
-                            404 Não encontrado </h2>
+                            <h2> 
+
+
+                            {{error_h2_404}} </h2>
                             <section class="error-details">
-                                Desculpe, ocorreu um erro. Página solicitada não encontrada!
-                            </section>
+                                {{errordetalhe}}
+                                                            </section>
                             <section class="error-actions">
                                 <a href="/error/perfiluser" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-home"></span>
-                                ir para perfil </a><a  class="btn btn-default btn-sm"><span class="glyphicon glyphicon-envelope"></span> ir para o suporte </a>
+                                {{btn_erro_grupos}} </a><a  class="btn btn-default btn-sm"><span class="glyphicon glyphicon-envelope"></span>  </a>
                             </section>
                             <img src="../../../assets/Logotipo/logoEmPe.svg" class="w-50" >
                         </article>

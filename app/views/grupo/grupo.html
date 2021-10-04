@@ -5,6 +5,7 @@
   <meta name="description" content="{{description}}">
   <meta name="keywords" content="{{keywords}}">
   <meta name="author" content="{{author}}">
+    <link rel="icon" type="imagem/png" href="/imagens/meufavicon.png" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap-reboot.css">
@@ -41,7 +42,7 @@
           <section class="card-body">
 
 
-            <h4 class ="text-dark" align="center">   Grupos  </h4>
+            <h4 class ="text-dark" align="center">   {{h5_grupo}}  </h4>
             <h5 class ="text-danger" align="center">              {{  messagem('checkgrupo') | raw }}
             </h5>
 
@@ -69,11 +70,11 @@
                       <h4 class="mt-0 mb-1"> {{grupo.gr_nome}}</h4>
                       <h5 class="mt-0 mb-1 text-primary">{{grupo.cg_nome}}</h5>
                       {% if grupo.gr_private == 1 %}
-                      Grupo Privado |
+                      {{grupo_privado}} |
                       {% endif %}
-                      Membros(10) | {{grupo.gr_cidade}}, {{grupo.gr_estado}} ({{grupo.gr_pais}})<br>
+                      {{grupo_membro}}(ajustar) | {{grupo.gr_cidade}}, {{grupo.gr_estado}} ({{grupo.gr_pais}})<br>
 
-                      <a href="\grupos\informacoes\{{grupo.gr_id}}" class="text-primary">Grupo informaçoes</a>
+                      <a href="\grupos\informacoes\{{grupo.gr_id}}" class="text-primary"> {{grupo_info}}</a>
 
 
                     </a> 
@@ -93,7 +94,7 @@
 
                   <input type="hidden" name="gu_accept" value="1">
                   {% endif %}
-                  <button class="btn btn-primary" type="submit"  >Aderir grupo</button>
+                  <button class="btn btn-primary" type="submit"  >{{grupo_btn_aderir}}</button>
 
                 </form>
               </section>
@@ -111,7 +112,7 @@
 
           {% for publicidade in getPublicidadeAll %}
           <section class="card"> 
-            <span class="text-dark mt-1" align="center">publicidade</span> 
+            <span class="text-dark mt-1" align="center">{{grupo_span}}</span> 
             <hr>   
             <section class="card-body" align="center">
               <ul class="list-unstyled" class="mr-1">

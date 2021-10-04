@@ -26,6 +26,10 @@ class PublicController extends ContainerController {
 			'header_button' => $lin->header_button,
 			'main_about_h3' => $lin->main_about_h3,
 			'main_about_P' => $lin->main_about_P,
+			'filter_app' = $lin->app,
+			'filter_card' = $lin->notificaçoes,
+'			filter_active' = $lin->active,
+			'filter_web' = $lin->perfil,
 
 			'main_features_1_h4' => $lin->main_features_1_h4,
 			'main_features_1_p' => $lin->main_features_1_p,

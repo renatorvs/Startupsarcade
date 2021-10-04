@@ -5,9 +5,10 @@
   <meta name="description" content="{{description}}">
   <meta name="keywords" content="{{keywords}}">
   <meta name="author" content="{{author}}">
+    <link rel="icon" type="imagem/png" href="/imagens/meufavicon.png" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Onclickup | Duvidas </title>
+  <title> {{title}} </title>
   <link rel="stylesheet" href="../assets/css/bootstrap/bootstrap-reboot.css">
   <link rel="stylesheet" href="../assets/css/layout/adddica.css">
   <link rel="stylesheet" href="../assets/css/layout/layout.css">
@@ -41,13 +42,17 @@
      <a class="p-2 text-muted" href="/duvidascategoria/show/{{duvidaempresa.duvcat_id}}"> {{duvidaempresa.duvcat_nome|e}}</a>
      {% endfor %}
    </nav>
-   <hr >
+
+
+
+
+   <hr>
    {% if admin_session  %}
-   <a href="/adminaddduvidas/create" class="btn btn-outline-secondary btn-sm"> Adicionar duvida </a>
+   <a href="/adminaddduvidas/create" class="btn btn-outline-secondary btn-sm"> {{btn_a_addduvida}} </a>
    {% endif %}
    <br>
    <section class="row">
-    <h5 class="text-dark mt-4"> Duvidas frequentes</h5>
+    <h5 class="text-dark mt-4"> {{h5_duvidas_frequentes}}</h5>
     <section class="col-xl-12 col-md-12 mb-4">
       {% for duvidas in  getduvidasempresa %}           
       <section id="accordion">
@@ -60,14 +65,15 @@
            </h5>
 
            {% if pais_id == 1  %} <br>
-           <strong>BR</strong>
+           <strong>{{strong_BR}}</strong>
            {% else %}
-           <strong>USA</strong>
+           <strong>{{strong_USA}}</strong>
            {% endif %}
            <hr>
 
            {% if admin_session  %}
-           <a class="btn btn-outline-secondary btn-sm" href="/duvidas/destroy/{{duvidas.duv_id}}"> excluir</a>
+           <a class="btn btn-outline-secondary btn-sm" href="/duvidas/destroy/{{duvidas.duv_id}}"> {{excluir_duvidas}}
+</a>
            {% endif %}
          </section>
          <section id="collapseOne{{ duvidas.duv_id}}" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">

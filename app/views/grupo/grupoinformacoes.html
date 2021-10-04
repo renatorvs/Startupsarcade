@@ -10,8 +10,10 @@
 <link rel="stylesheet" href="../../assets/css/layout/layout.css">
 <link rel="stylesheet" href="../../assets/css/layout/footer.css">
 <link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link rel="icon" type="imagem/png" href="/imagens/meufavicon.png" />
+
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-<title> SA | meus grupos</title>
+  <title> {{title}}</title>
 <link href="../../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
 </head>
 <body id="page-top"> 
@@ -43,31 +45,31 @@
               <section class="modal-dialog modal-lg">
                 <section class="modal-content">
                   <section class="card-body">   
-                    <h4 align="center"  class="text-primary">O que  é plano de negocios ?.? </h4>
+                    <h4 align="center"  class="text-primary">{{plano_text_h4}} </h4>
               <br>    
               <hr>
-Compreensao de mercado :<br>
-Proporciona uma visão clara e objetiva da empresa e do setor, identifica forças, oportunidades, fraquezas e ameaças para o empreendimento.​
 
-<br><br>
-Acompanhamento:<br>
-Documento centrando todas as estratégias e estudos realizados, facilitando o acompanhamento e direcionamento da empresa.<br>
-<br>
+                                  {{acompanhamento}}:<br>
+                    {{acompanhamento_text}}<br>
+                    <br>
 
-Estrategias de venda:<br>
-Defini as melhoes estratégias de comunicação com o público alvo, identifica possíveis direções que a empresa deve seguir.​
-<br> <br>
+                    {{estrategias}}:<br>
+                      {{estrategias_text}}
+                    <br> <br>
 
-Projecao financeira: <br>
-Define as projeções financeiras do empreendimento, determinando tempo de retorno do investimento e estrutura financeira da empresa.<br><br>
+                    {{projecao_financeira}}: <br>
+                    {{projecao_financeira_text}}
+                    <br><br>
 
 
-Evita perda de capital:<br>
-Evita chances de investimentos em negócios não viáveis bem como em produtos e/ou serviços que não possuem demanda do mercado. <br><br>
+                    {{Publico_alvo}}:<br>
+                    {{Publico_alvo_text}}. <br><br>
 
 
-Captacao fundos de  investimento: <br>
-Oferece respaldo de confiança, facilitando a captação de potenciais investidores e parceiros estratégicos.<br><br>
+                    {{captacao_fundos}}: <br>
+                    {{captacao_fundos_text}}
+
+
                   </section>
                 </section>
               </section>
@@ -77,10 +79,10 @@ Oferece respaldo de confiança, facilitando a captação de potenciais investido
 
 
 
-            <h4 class ="text-dark" align="center">   Plano de negocios </h4>
+            <h4 class ="text-dark" align="center">  {{plano_negocios_h4}} </h4>
            
-             <button  type="button" class="btn btn-info" data-toggle="modal" data-target=".info-lg">info</button>  
-             <a  href="/meusgrupos/grupousuarios/{{grupo_id}}" class="btn btn-primary" style="display: inline;" >usuarios</a>  
+             <button  type="button" class="btn btn-info" data-toggle="modal" data-target=".info-lg">{{info}}</button>  
+             <a  href="/meusgrupos/grupousuarios/{{grupo_id}}" class="btn btn-primary" style="display: inline;" >{{usuarios}}</a>  
             <hr>
 
            
@@ -97,35 +99,34 @@ Oferece respaldo de confiança, facilitando a captação de potenciais investido
                       {% if haplanoDeNegocios %}
 
 
-
-Compreensão de mercado:<br>
+{{compreensao_de_mercado}}:<br>
 R: {{pn_compreensao_de_mercado}}
 <br>
 
-Acompanhamento:<br>
+{{acompanhamento}}:<br>
 R: {{pn_acompanhamento}}
 <br>
 
-Estrategias de venda:<br>
+{{estrategias}}:<br>
 R: {{pn_estrategias_de_venda}}
 <br>
 
-Projecao financeira:<br>
+{{projecao_financeira}}:<br>
 R: {{pn_projecao_financeira}} 
 <br>
 
-Captação de fundos de investimento:<br>
+{{captacao_fundos}}:<br>
 R: {{pn_captacao_fundos_investimento}}
 <br>
 
-Publico alvo:<br>
+{{Publico_alvo}}:<br>
 R: {{pn_publico_alvo}}
 <br>
                                            
 
                                 </section>
                       {% else %}
-<h5 class="center"> Não há propostas</h5>
+    <h5 class="center"> {{h5_n_ha_propostas}}</h5>
 
                       {% endif %}
 

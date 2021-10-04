@@ -19,7 +19,10 @@ class IndexPortugues {
 	public $nav_redesocial_2;
 	public $nav_redesocial_3;
 	public $nav_redesocial_4;
-
+	public $app = "o app";
+	public $notificaçoes = "notificaçoes";
+	public $active = "tudo";
+	public $perfil = "perfil";
 	public $header_h1 = "Publique e compartilhe ideias de uma um negocio";
 	public $header_h2 = "Tudo começa uma uma ideia";
 	public $header_button = "inscreva- se";

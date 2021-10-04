@@ -4,12 +4,6 @@ namespace app\linguagem\Portugues;
 
 class GrupoCategoriaPortugues {
 
-	public static $navmenu_1 = "Sobre";
-	public static $navmenu_2 = "Blog";
-	public static $navmenu_3 = "Increva-se";
-	public static $navmenu_4 = "Entrar";
-	public static $navmenu_5 = "Contato";
-
 	public static $login_h4 = "Inscreva-se ! Para poder ultilizar nossa plataforma";
 	public static $login_p = "Você podera explorar a versão gratuita.";
 	public static $login_tipo_user = "Tipo Usuario";

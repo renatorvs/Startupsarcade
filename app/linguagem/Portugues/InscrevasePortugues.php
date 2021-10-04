@@ -7,7 +7,7 @@ class InscrevasePortugues {
 	public $meta_charset = "UTF-8";
 	public $description = "";
 	public $keywords = "";
-	public $author  "";
+	public $author = "";
 	public $navmenu_1 = "Sobre";
 	public $navmenu_2 = "Blog";
 	public $navmenu_3 = "Increva-se";

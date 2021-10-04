@@ -7,6 +7,7 @@
   <meta name="keywords" content="{{keywords}}">
   <meta name="author" content="{{author}}">
 
+    <link rel="icon" type="imagem/png" href="/imagens/meufavicon.png" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap-reboot.css">
@@ -14,7 +15,7 @@
   <link rel="stylesheet" href="../../assets/css/layout/footer.css">
   <link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-  <title> SA | meus grupos</title>
+  <title> {{title}}</title>
   <link href="../../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
 </head>
 <body id="page-top"> 
@@ -38,38 +39,42 @@
       <section class="col-xl-12 col-md-12 mb-4">
 
 
-
         <article class="card border-left-success shadow h-100 py-2">
           <section class="card-body">
             <section class="modal fade info-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
               <section class="modal-dialog modal-lg">
                 <section class="modal-content">
                   <section class="card-body">   
-                    <h4 align="center"  class="text-primary">O que  é plano de negocios ?.? </h4>
+                    <h4 align="center"  class="text-primary">{{plano_text_h4}} </h4>
                     <br>    
                     <hr>
-                    Compreensao de mercado :<br>
-                    Proporciona uma visão clara e objetiva da empresa e do setor, identifica forças, oportunidades, fraquezas e ameaças para o empreendimento.​
+                     :<br>
 
                     <br><br>
-                    Acompanhamento:<br>
-                    Documento centrando todas as estratégias e estudos realizados, facilitando o acompanhamento e direcionamento da empresa.<br>
+                    {{acompanhamento}}:<br>
+                    {{acompanhamento_text}}<br>
                     <br>
 
-                    Estrategias de venda:<br>
-                    Defini as melhoes estratégias de comunicação com o público alvo, identifica possíveis direções que a empresa deve seguir.​
+                    {{estrategias}}:<br>
+                    {{estrategias_text}}
                     <br> <br>
 
-                    Projecao financeira: <br>
-                    Define as projeções financeiras do empreendimento, determinando tempo de retorno do investimento e estrutura financeira da empresa.<br><br>
+                    {{projecao_financeira}}: <br>
+                    {{projecao_financeira_text}}
+                    <br><br>
 
 
-                    Evita perda de capital:<br>
-                    Evita chances de investimentos em negócios não viáveis bem como em produtos e/ou serviços que não possuem demanda do mercado. <br><br>
+                    {{Publico_alvo}}:<br>
+                    {{Publico_alvo_text}}. <br><br>
 
 
-                    Captacao fundos de  investimento: <br>
-                    Oferece respaldo de confiança, facilitando a captação de potenciais investidores e parceiros estratégicos.<br><br>
+                    {{captacao_fundos}}: <br>
+                    {{captacao_fundos_text}}
+
+
+                    {{compreensao_de_mercado}}: <br>
+                    {{compreensao_de_mercado_text}}
+                    <br><br>
                   </section>
                 </section>
               </section>
@@ -80,57 +85,59 @@
                 <section class="modal-content">
                   <section class="card-body">   
                     <form class="needs-validation" action="/MeusGrupos/meusgruposinfostore" enctype="multipart/form-data" method ="post">
-                      <h5>Proposta para grupo: {{grupo_nome}}</h5>
-                      <h5>Categoria:  {{cg_nome}}</h6>
+                      <h5>{{proposta_para_grupo}}: {{grupo_nome}}</h5>
+                      <h5>{{categoria}}:  {{cg_nome}}</h6>
                         <hr>
+
+
+
 
                         <section class="form-row">
                         </h4>
                         <section class="col-md-6 mb-3">
-                          <label for="validationCustom01">Compreensao de mercado</label>
-                          <input type="text" name="pn_compreensao_de_mercado" class="form-control" id="validationCustom01" placeholder="compreensao de mercado" required>
+                          <label for="validationCustom01">{{compreensao_de_mercado}}</label>
+                          <input type="text" name="pn_compreensao_de_mercado" class="form-control" id="validationCustom01" placeholder="{{compreensao_de_mercado}}" required>
                           <section class="invalid-feedback">
-                            Compreensao de mercado !
+                         {{compreensao_de_mercado_required}} !
                           </section>  
                         </section>
                         <section class="col-md-6 mb-3">
 
-                          <label for="pn_acompanhamento">Acompanhamento </label>
-                          <input type="text" name="pn_acompanhamento"  class="form-control" id="acompanhamento" placeholder="acompanhamento" required>
+                          <label for="pn_acompanhamento">{{acompanhamento}} </label>
+                          <input type="text" name="pn_acompanhamento"  class="form-control" id="acompanhamento" placeholder="{{acompanhamento}}" required>
                           <section class="invalid-feedback">
-                            acompanhamento invalido !
+                            {{acompanhamento_required}} !
                           </section>  
                         </section>
                         <section class="col-md-6 mb-3">
-                          <label for="pn_estrategias_de_venda">Estrategias de venda </label>
-                          <input type="text" name="pn_estrategias_de_venda"   class="form-control" id="pn_estrategias_de_venda" placeholder="Estrategias_de_venda"  required>
+                          <label for="pn_estrategias_de_venda"> {{estrategias}}</label>
+                          <input type="text" name="pn_estrategias_de_venda"   class="form-control" id="pn_estrategias_de_venda" placeholder="{{estrategias}}"  required>
                           <section class="invalid-feedback">
-                            Por favor, informe a Estrategias de renda/venda.
                           </section>
+                          {{estrategias_required}}
                         </section>
 
 
                         <section class="col-md-6 mb-3">
-                          <label for="pn_projecao_financeira">Projecao financeiro </label>
-                          <input type="text" name="pn_projecao_financeira"   class="form-control" id="pn_projecao_financeira" placeholder="Estrategias_de_venda"  required>
+                          <label for="pn_projecao_financeira"> {{projecao_financeira}}</label>
+                          <input type="text" name="pn_projecao_financeira"   class="form-control" id="pn_projecao_financeira" placeholder="{[projecao_financeira]}"  required>
                           <section class="invalid-feedback">
-                            Por favor, informe a Estrategias de renda/venda.
+{{projecao_financeira_required}}
                           </section>
                         </section> 
                         <section class="col-md-6 mb-3">
-                          <label for="pn_captacao_fundos_investimento">Captacao fundos investimento </label>
-                          <input type="text" name="pn_captacao_fundos_investimento"   class="form-control" id="pn_captacao_fundos_investimento" placeholder="Captacao fundos investimento "  required>
+                          <label for="pn_captacao_fundos_investimento">  {{captacao_fundos}}  </label>
+                          <input type="text" name="pn_captacao_fundos_investimento"   class="form-control" id="pn_captacao_fundos_investimento" placeholder="{{captacao_fundos}}"  required>
                           <section class="invalid-feedback">
-                            Por favor, informe a Estrategias de renda/venda.
-                          </section>
+
+{{captacao_fundo_required}}                          </section>
                         </section>
 
                         <section class="col-md-6 mb-3">
-                          <label for=" Publico alvo"> Publico alvdddo </label>
-                          <input type="text" name="pn_publico alvo"   class="form-control" id=" Publico alvo" placeholder=" Publico alvo"  required>
+                          <label for=" Publico alvo">  {{Publico_alvo}} </label>
+                          <input type="text" name="pn_publico_alvo"   class="form-control" id=" Publico alvo" placeholder=" {{Publico_alvo}} "  required>
                           <section class="invalid-feedback">
-                            Por favor, informe o  Publico alvo.
-                          </section>
+{{Publico_alvo_required}}                          </section>
                         </section>
 
                         <input type="hidden" name="pn_grupo_id" value="{{grupo_id}}">
@@ -140,7 +147,7 @@
                       </section>
 
 
-                      <button class="btn btn-primary" type="submit">Criar proposta</button>
+                      <button class="btn btn-primary" type="submit">{{btn_criar_proposta}}</button>
                     </form>
                   </section>
                 </section>
@@ -153,7 +160,7 @@
                 <section class="modal-content">
                   <section class="card-body">   
                     <form class="needs-validation" action="/MeusGrupos/meusgruposinfoupdate" enctype="multipart/form-data" method ="post">                                            
-                      <h5 align="center">Edição</h5>
+                      <h5 align="center">{{editar_h5}}</h5>
                         <hr>
 
 
@@ -163,48 +170,48 @@
                         <section class="form-row">
                         </h4>
                         <section class="col-md-6 mb-3">
-                          <label for="validationCustom01">Compreensao de mercado</label>
+                          <label for="validationCustom01"> {{compreensao_de_mercado}}</label>
                           <input type="text" name="pn_compreensao_de_mercado" class="form-control" id="validationCustom01" placeholder="compreensao de mercado" value="{{pn_compreensao_de_mercado}}" required>
                           <section class="invalid-feedback">
-                            Compreensao de mercado !
+                              {{compreensao_de_mercado_required}}
                           </section>  
                         </section>
                         <section class="col-md-6 mb-3">
-
-                          <label for="acompanhamento">Acompanhamento </label>
+                          <label for="acompanhamento"> {{acompanhamento}} </label>
                           <input type="text" name="pn_acompanhamento"  value="{{pn_acompanhamento}}"  class="form-control" id="acompanhamento" placeholder="acompanhamento" required>
                           <section class="invalid-feedback">
-                            acompanhamento invalido !
+                     {{acompanhamento_required}}
                           </section>  
                         </section>
                         <section class="col-md-6 mb-3">
-                          <label for="pn_estrategias_de_venda">Estrategias de venda </label>
-                          <input type="text" name="pn_estrategias_de_venda"  VALUE="{{pn_estrategias_de_venda}}" class="form-control" id="pn_estrategias_de_venda" placeholder="Estrategias_de_venda"  required>
+                          <label for="pn_estrategias_de_venda">{{estrategias}} </label>
+                          <input type="text" name="pn_estrategias_de_venda"  VALUE="{{pn_estrategias_de_venda}}" class="form-control" id="pn_estrategias_de_venda" placeholder="{{estrategias}}"  required>
                           <section class="invalid-feedback">
-                            Por favor, informe a Estrategias de renda/venda.
+                        {{estrategias_required}}
                           </section>
                         </section>
 
 
                         <section class="col-md-6 mb-3">
-                          <label for="pn_projecao_financeira">Projecao financeiro </label>
-                          <input type="text" name="pn_projecao_financeira"  value="{{pn_projecao_financeira}}"   class="form-control" id="pn_projecao_financeira" placeholder="Estrategias_de_venda"  required>
+                          <label for="pn_projecao_financeira"> {{projecao_financeira}} </label>
+                          <input type="text" name="pn_projecao_financeira"  value="{{pn_projecao_financeira}}"   class="form-control" id="pn_projecao_financeira" placeholder="{{projecao_financeira}}"  required>
                           <section class="invalid-feedback">
-                            Por favor, informe a Estrategias de renda/venda.
+ {{projecao_financeira_required}}
                           </section>
                         </section> 
                         <section class="col-md-6 mb-3">
-                          <label for="pn_captacao_fundos_investimento">Captacao fundos investimento </label>
-                          <input type="text" name="pn_captacao_fundos_investimento"  value="{{pn_captacao_fundos_investimento}}" class="form-control" id="pn_captacao_fundos_investimento" placeholder="Captacao fundos investimento "  required>
+                          <label for="pn_captacao_fundos_investimento">{{captacao_fundos}}
+ </label>
+                          <input type="text" name="pn_captacao_fundos_investimento"  value="{{pn_captacao_fundos_investimento}}" class="form-control" id="pn_captacao_fundos_investimento" placeholder="{{captacao_fundos}}"  required>
                           <section class="invalid-feedback">
-                            Por favor, informe a Estrategias de renda/venda.
+ {{captacao_fundo_required}}
                           </section>
                         </section> 
                         <section class="col-md-6 mb-3">
-                          <label for=" Publico alvo"> Publico alvo </label>
-                          <input type="text" name="pn_publico alvo"  value="{{pn_publico_alvo}}" class="form-control" id=" Publico alvo" placeholder=" Publico alvo"  required>
+                          <label for=" Publico alvo"> {{Publico_alvo}}</label>
+                          <input type="text" name="pn_publico alvo"  value="{{pn_publico_alvo}}" class="form-control" id=" Publico alvo" placeholder="{{Publico_alvo}}"  required>
                           <section class="invalid-feedback">
-                            Por favor, informe o  Publico alvo.
+                            {{Publico_alvo_required}}
                           </section>
                         </section>
 
@@ -212,12 +219,11 @@
                         <input type="hidden" name="pn_id" value="{{pn_id}}">
                         <input type="hidden" name="pn_grupo_id" value="{{pn_grupo_id}}">
 
-                        {{pn_id}}
 
                       </section>
 
 
-                      <button class="btn btn-primary" type="submit">Criar proposta</button>
+                      <button class="btn btn-primary" type="submit">{{btn_editar_proposta}}</button>
                     </form>
                   </section>
                 </section>
@@ -225,10 +231,12 @@
             </section>
 
 
-            <h4 class ="text-dark" align="center">   Plano de negocios </h4>
 
-            <button  type="button" class="btn btn-info" data-toggle="modal" data-target=".info-lg">info</button>  
-            <a  href="/meusgrupos/grupousuarios/{{grupo_id}}" class="btn btn-primary" style="display: inline;" >usuarios</a>  
+
+            <h4 class ="text-dark" align="center">  {{plano_negocios_h4}} </h4>
+
+            <button  type="button" class="btn btn-info" data-toggle="modal" data-target=".info-lg">{{info}}</button>  
+            <a  href="/meusgrupos/grupousuarios/{{grupo_id}}" class="btn btn-primary" style="display: inline;" >{{usuarios}}</a>  
             <hr>
 
 
@@ -246,39 +254,45 @@
 
 
 
-                      Compreensão de mercado:<br>
-                      R: {{pn_compreensao_de_mercado}}
-                      <br>
 
-                      Acompanhamento:<br>
-                      R: {{pn_acompanhamento}}
-                      <br>
+{{compreensao_de_mercado}}:<br>
+R: {{pn_compreensao_de_mercado}}
+<br>
 
-                      Estrategias de venda:<br>
-                      R: {{pn_estrategias_de_venda}}
-                      <br>
+{{acompanhamento}}:<br>
+R: {{pn_acompanhamento}}
+<br>
 
-                      Projecao financeira:<br>
-                      R: {{pn_projecao_financeira}} 
-                      <br>
+{{estrategias}}:<br>
+R: {{pn_estrategias_de_venda}}
+<br>
 
-                      Captação de fundos de investimento:<br>
-                      R: {{pn_captacao_fundos_investimento}}
-                      <br>
+{{projecao_financeira}}:<br>
+R: {{pn_projecao_financeira}} 
+<br>
 
-                      Publico alvo:<br>
-                      R: {{pn_publico_alvo}}
+{{captacao_fundos}}:<br>
+R: {{pn_captacao_fundos_investimento}}
+<br>
+
+{{Publico_alvo}}:<br>
+R: {{pn_publico_alvo}}
+<br>
+                                           
+
+
+
                       <br>
                       <section align="center" class="group-button">
-                       <button  type="button" class="btn btn-primary" data-toggle="modal" data-target=".editar-lg">editar</button>                
+                       <button  type="button" class="btn btn-primary" data-toggle="modal" data-target=".editar-lg">{{editar_h5}}</button>                
 
                      </section>
                      {% else %}
 
                      <section align="center" class="group-button">
-                       <button  type="button" class="btn btn-primary" data-toggle="modal" data-target=".proposta-lg">Criar proposta</button>
+                       <button  type="button" class="btn btn-primary" data-toggle="modal" data-target=".proposta-lg">{{btn_criar_proposta}}</button>
                      </section>
-                     {%endif %}
+                     {% endif %}
 
 
                    </section>

@@ -10,9 +10,9 @@ class grupospendentesPortugues {
   public $description = "";
   public $keywords = "";
   public $author  "";
-  public $title = "starstup´s arcade | seus pedidos pendentes";
-  public $h5_pendeica = "Seus pedidos pendentes";
-  public $h5_n_pendencia = "não pedidos pendentes";
+  public $title = "starstup´s arcade |  pedidos pendentes";
+  public $h5_pendencia = "Seus pedidos pendentes";
+  public $h5_n_pendencia = "não  há pedidos pendentes";
   public $btn_cancelar_pedido = "Cancelar pedido";
   public $btn_grupo = "grupo informações";
 

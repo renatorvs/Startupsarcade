@@ -61,6 +61,9 @@ class BlogController extends ContainerController {
 			$this->view([
 				'title' => " Artigo: " . $blogLoad_id[0]['post_titulo'],
 
+				// btn_voltar = "voltar"
+				// h3_categoria = "Categoria"
+				// h2_artigo = "Artigo"
 				'admin_session' => $admin_session,
 				'empresa_session' => $empresa_session,
 				'candidato_session' => $candidato_session,
@@ -80,6 +83,10 @@ class BlogController extends ContainerController {
 		} else {
 			$this->view([
 				'title' => " Artigo: " . $blogLoad_id[0]['post_titulo'],
+				// btn_voltar = "voltar"
+				// h3_categoria = "Categoria"
+				// h2_artigo = "Artigo"
+				//         	a_ir_blog = 'ir para o  blog"
 
 				'admin_session' => $admin_session,
 				'empresa_session' => $empresa_session,

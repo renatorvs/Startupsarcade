@@ -9,6 +9,8 @@
   <link href="../../assets/index/img/favicon.png" rel="icon">
   <link href="../../assets/index/img/apple-touch-icon.png" rel="apple-touch-icon">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+      <link rel="icon" type="imagem/png" href="/imagens/meufavicon.png" />
+
   <link href="../../assets/index/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="../../assets/index/vendor/icofont/icofont.min.css" rel="stylesheet">
   <link href="../../assets/index/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
@@ -73,17 +75,8 @@
 				{{  messagem('emailCadastrado') | raw }}
 				<form  enctype="multipart/form-data"  class="needs-validation" action="/usuario/store" method ="post">
 						<section class="form-row">
-							<section class="col-md-4 mb-3" >
-															<label for="validationCustom04">{{login_tipo_user}}</label>
-
-							<select name="us_tipo_pessoa" class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-								<option value="1">{{pf}}</option>
-								<option value="2">{{pj}}</option>
-							</select>
-						</section>
-					
 						
-						<section class="col-md-4 mb-3">
+						<section class="col-md-6 mb-6">
 							<label for="validationCustomUsname">{{login_nome_usuario}}</label>
 							<section class="input-group">
 								
