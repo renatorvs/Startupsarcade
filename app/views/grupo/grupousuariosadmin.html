@@ -13,7 +13,7 @@
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
       <link rel="icon" type="imagem/png" href="/imagens/meufavicon.png" />
 
-  <title> SA | meus grupos</title>
+  <title>{{title}}</title>
   <link href="../../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
 </head>
 <body id="page-top">
@@ -39,12 +39,12 @@
           <article class="card border-left-success shadow h-100 py-2">
             <section class="card-body">
 
-              <h4 class ="text-dark" align="center"> administradores    </h4>
+              <h4 class ="text-dark" align="center"> {{h5_user}}    </h4>
 
               <hr>
               {% for grupos in gruponome %}
 
-              cod grupo: {{grupos.gr_id}}
+              {{cod_grupo}}: {{grupos.gr_id}}
               <h3 class="mt-0 mb-1"> Grupo:{{grupos.gr_nome}}</h4>
                 <h4 class="mt-0 mb-1"> Categoria:{{grupos.cg_nome}}</h4>
                 <hr>
@@ -80,7 +80,7 @@
                   <section class="card-body">
 
                     {% if meusGrupo.adm_flag == 1 %}
-                    <strong class="text-success"> Administrador</strong>
+                    <strong class="text-success"> {{administrador}}</strong>
 
                     {% endif %}
 
@@ -88,7 +88,7 @@
                     {% if meusGrupo.gu_accept == 3 %}
 
 
-                    <strong class="danger"> Esse usuario esta bloqueado.</strong>
+                    <strong class="danger"> {{strong_danger}}</strong>
 
                     {% endif %}
                     <br>
@@ -96,7 +96,7 @@
                     <ul class="list-unstyled" class="mr-1">
                       <li class="media my-4">
                         <section class="media-body"> 
-                          cod usuario: {{meusGrupo.us_id}}
+                          {{cod_usuario}}: {{meusGrupo.us_id}}
 
                           <h4 class="mt-0 mb-1"> {{meusGrupo.us_nome}}</h4>
                           <h5 class="mt-0 mb-1"> Email:{{meusGrupo.us_email}}</h5>
@@ -116,7 +116,7 @@
                               
                               <input type="hidden" name="admin_id"  value="{{meusGrupo.admin_id}}">
 
-                              <button type="submit"  class="btn btn-success" >aaa admin </button>
+                              <button type="submit"  class="btn btn-success" > {{btn_admin}} </button>
                             </form>
 
 
@@ -127,8 +127,7 @@
                               <input type="hidden" name="gu_grupo_id" value="{{meusGrupo.gr_id}}">
                               <input type="hidden" name="us_id" value="{{meusGrupo.us_id}}">
 
-
-                              <button type="submit"  class="btn btn-danger" >excluir </button>
+                              <button type="submit"  class="btn btn-danger" >{{btn_excluir}} </button>
                             </form>
                             {% endif %}
 
@@ -139,7 +138,7 @@
                               <input type="hidden" name="adm_sub_user_id" value="{{meusGrupo.gu_user_id}}">
                               {% if meusGrupo.adm_user_id != meusGrupo.us_id %}
 
-                              <button type="submit"  class="btn btn-warning" >bloquear</button>
+                              <button type="submit"  class="btn btn-warning" >{{btn_bloquear}}</button>
                               {% endif %}
 
                             </form> 
@@ -149,7 +148,7 @@
                               <input type="hidden" name="gu_grupo_id" value="{{meusGrupo.gr_id}}">
                               <input type="hidden" name="adm_sub_user_id" value="{{meusGrupo.gu_user_id}}">
                               {% if meusGrupo.adm_user_id != meusGrupo.us_id %}
-                              <button type="submit"  class="btn btn-warning" >desbloquear</button>
+                              <button type="submit"  class="btn btn-warning" >{{btn_desbloquear}}</button>
                               {% endif %}
                               {% endif %}
                               {% endif %}
@@ -159,7 +158,7 @@
                             </form>
 
 
-                            <button  class="btn btn-info" data-toggle="modal" data-target=".criargrupo-{{meusGrupo.us_id}}-lg" style="display: inline;">perfil</button>
+                            <button  class="btn btn-info" data-toggle="modal" data-target=".criargrupo-{{meusGrupo.us_id}}-lg" style="display: inline;">{{btn_perfil}}</button>
 
                           </section>
                         </section>

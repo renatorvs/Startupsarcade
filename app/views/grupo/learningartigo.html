@@ -43,18 +43,18 @@
       {% endif %}
       
       <section  class="container">
-        <a href="/learning/show"class="btn btn-primary btn-sm">voltar</a>
+        <a href="/learning/show"class="btn btn-primary btn-sm">{{btn_voltar}}</a>
 
         <br><br>
         <section class="row">
           <article class="col-md-8 blog-main">
             <h3   class="pb-3 mb-4 font-italic border-bottom">
-             Categoria: {{blogcat_nome}}
+             {{blog_categoria}}: {{blogcat_nome}}
            </h3>
            <section class="blog-post">
-            <h2 class="blog-post-title">Artigo: {{post_titulo}}</h2>
+            <h2 class="blog-post-title">{{blog_artigo}}: {{post_titulo}}</h2>
             <h3>{{post_subtitulo}}</h3>
-            <p class="blog-post-meta">Data post: {{blog_date}} </p>
+            <p class="blog-post-meta">blog_Data_post: {{blog_date}} </p>
             <hr>
             <p>{{blog_text}} <br></p>
           </section>

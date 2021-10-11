@@ -14,7 +14,7 @@
       <link rel="icon" type="imagem/png" href="/imagens/meufavicon.png" />
 
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-  <title> SA | meus grupos</title>
+  <title>{{title}}</title>
   <link href="../../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
 </head>
 <body id="page-top">
@@ -32,6 +32,11 @@
       {% else %}
           {{ include('layout/nav-dashboard-ingles.html') }}
       {% endif %}
+   
+
+
+
+
     <section class="main-experi" >
       <hr class="m-1">  
       <section class="row">
@@ -40,16 +45,16 @@
           <article class="card border-left-success shadow h-100 py-2">
             <section class="card-body">
 
-              <h4 class ="text-dark" align="center">  Meus grupos  </h4>
+              <h4 class ="text-dark" align="center"> {{meus_grupos}}  </h4>
        
               {% for grupos in gruponome %}
 
 
-              <a href="\meusgrupos\grupousuariosadmin\{{grupos.gr_id}}" style="display: inline;" class="btn btn-primary"> admin area</a> 
+              <a href="\meusgrupos\grupousuariosadmin\{{grupos.gr_id}}" style="display: inline;" class="btn btn-primary">{{btn_admin}}</a> 
               <hr>
                           <h5 class ="text-danger" align="center">              {{  messagem('naoadmin') | raw }}
             </h5>
-              cod grupo: {{grupos.gr_id}}
+              {{cod_grupo}}: {{grupos.gr_id}}
               <h3 class="mt-0 mb-1"> Grupo:{{grupos.gr_nome}}</h4>
                 <h4 class="mt-0 mb-1"> Categoria:{{grupos.cg_nome}}</h4>
                 <hr>
@@ -74,7 +79,7 @@
                               <input type="text"  class="form-control" name="msn_nome" placeholder="escreava a sua mensagem" />
                            <section class="button-group">
                              
-                              <button  class="btn btn-primary" class="submit">Enviar</button> <br>
+                              <button  class="btn btn-primary" class="submit">{{btn_enviar}}</button> <br>
                            </section>
                         </form>
 
@@ -92,7 +97,8 @@
 
                    {% if meusGrupo.adm_flag == 1 %}
 
-                  <strong class="text-success"> Administrador</strong>
+
+                  <strong class="text-success"> {{adm_user}}</strong>
 
                   {% endif %}
 
@@ -100,14 +106,14 @@
                   {% if meusGrupo.gu_accept == 3 %}
 
 
-                  <strong class="danger"> Esse usuario esta bloqueado.</strong>
+                  <strong class="danger"> {{strong_danger}}.</strong>
 
                   {% endif %}
 
                   <ul class="list-unstyled" class="mr-1">
                     <li class="media my-4">
                       <section class="media-body"> 
-                        cod usuario: {{meusGrupo.us_id}}
+                        {{cod_usuario}}: {{meusGrupo.us_id}}
 
                         <h4 class="mt-0 mb-1"> {{meusGrupo.us_nome}}</h4>
                         <h5 class="mt-0 mb-1"> Email:{{meusGrupo.us_email}}</h5>

@@ -37,10 +37,10 @@
         <section class="col-xl-12 col-md-12 mb-4">
 
 
-
+implementar o if   = nao_ha_convite_h3
           <article class="card border-left-success shadow h-100 py-2">
             <section class="card-body">
-              <h4 class="text-primary" align="center">Pedido para entradar em seus grupos</h4>
+              <h4 class="text-primary" align="center">{{convite_convites_h4}}</h4>
 
               <hr>
               {% for convite in meusGruposConvite %}
@@ -59,8 +59,8 @@
                      <section class="media-body"> 
                       <h2 class="mt-0 mb-1"> {{convite.us_nome}}</h2>
                       <h3 class="mt-0 mb-1"> {{convite.us_email}}</h3>
-                      <h4 class="mt-0 mb-1">Grupo: {{convite.gr_nome}} </h4>
-                      <h5 class="mt-0 mb-1">Categoria:{{convite.cg_nome}}</h5>
+                      <h4 class="mt-0 mb-1">{{convite_grupo_h4}}: {{convite.gr_nome}} </h4>
+                      <h5 class="mt-0 mb-1">{{convite_categoria_h5}}:{{convite.cg_nome}}</h5>
                     </a> 
                   </section>
                 </li>
@@ -73,7 +73,8 @@
                 <input type="hidden" name="gu_accept" value="3">
                 <input type="hidden" name="gu_user_id" value="{{convite.gu_user_id}}">
 
-                <button type="submit"  class="btn btn-danger" >Cancelar </button>
+                <button type="submit"  class="btn btn-danger" >{{btn_cancelar}}
+ </button>
               </form>
               
               
@@ -85,7 +86,7 @@
                 <input type="hidden" name="adm_sub_user_id" value="{{convite.us_id}}">
                 <input type="hidden" name="catgr_id" value="{{convite.catgr_id}}">
                 <input type="hidden" name="gu_accept" value="4">
-                <button type="submit"  class="btn btn-success" >aceitar</button>
+                <button type="submit"  class="btn btn-success" >{{btn_aceitar}}</button>
               </form>
             </section>
           </section>
