@@ -1,12 +1,13 @@
 <?php
 
-namespace app\linguagem\portugues;
+namespace app\linguagem\ingles;
 
-class chatgrupoPortugues extends Portugues{
+class Chatgrupoingles extends Ingles{
 
   public $title = "startup´s arcade | chat grupo ";
+
   public $description = "";
   public $keywords = "";
-  public $p_strong = "Você"
+  public $p_strong = "you"
 
 }

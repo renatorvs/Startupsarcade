@@ -1,0 +1,14 @@
+blogcategoriainterior
+blogcategoriaexterior
+blogartigointerno
+blogartigoexterno
+getBlogExterior
+getBloginterno
+getDuvidasCategoria
+getDuvidas
+chatgrupo
+Entrar
+getError
+grupocategorias
+grupoinformacoes
+grupo

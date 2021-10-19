@@ -258,19 +258,21 @@ class Grupo {
 	public static function meusGrupos($gu_user_id) {
 		$banco = new Banco();
 
+// SELECT g.gr_id, g.gr_nome, g.gr_descricao, gr_cidade, g.gr_estado, g.gr_foto, g.grcat_id, g.gr_private, count(gu.gu_user_id) AS quantidade FROM grupo g LEFT JOIN grupo_usuario gu ON g.gr_id = gu.gu_grupo_id WHERE  grcat_id  = :grcat_id and   gr_pais = :gr_pais GROUP BY g.gr_id, g.gr_nome ORDER BY g.gr_id
+
 		return $banco->select("SELECT * FROM usuariogrupos WHERE gu_user_id = :gu_user_id and gu_accept = 2 GROUP BY gr_id ",
 			array(
 				":gu_user_id" => $gu_user_id,
 			));
 	}
 
-	public static function getGruposAll($cg_id, $gr_pais) {
+	public static function getGruposAll($grcat_id, $gr_pais) {
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM dadosgrupo WHERE  cg_id  = :cg_id and   gr_pais = :gr_pais  GROUP BY gr_id",
+		return $banco->select("SELECT g.gr_id, g.gr_nome, g.gr_descricao, gr_cidade, g.gr_estado, g.gr_foto, g.grcat_id, g.gr_private, count(gu.gu_user_id) AS quantidade FROM grupo g LEFT JOIN grupo_usuario gu ON g.gr_id = gu.gu_grupo_id WHERE  grcat_id  = :grcat_id and   gr_pais = :gr_pais GROUP BY g.gr_id, g.gr_nome ORDER BY g.gr_id",
 			array(
 				":gr_pais" => $gr_pais,
-				":cg_id" => $cg_id,
+				":grcat_id" => $grcat_id,
 			));
 	}
 
@@ -296,7 +298,7 @@ class Grupo {
 
 	public static function meusGruposPendentes($gu_user_id) {
 		$banco = new Banco();
-
+// SELECT g.gr_id, g.gr_nome, g.gr_descricao, gr_cidade, g.gr_estado, g.gr_foto, g.grcat_id, g.gr_private, count(gu.gu_user_id) AS quantidade FROM grupo g LEFT JOIN grupo_usuario gu ON g.gr_id = gu.gu_grupo_id WHERE  grcat_id  = :grcat_id and   gr_pais = :gr_pais GROUP BY g.gr_id, g.gr_nome ORDER BY g.gr_id
 		return $banco->select("SELECT * FROM usuariogrupos WHERE gu_user_id = :gu_user_id  And gu_accept = 1",
 			array(
 				":gu_user_id" => $gu_user_id,
@@ -305,7 +307,7 @@ class Grupo {
 
 	public static function meusGruposConvites($gu_user_id) {
 		$banco = new Banco();
-
+// SELECT g.gr_id, g.gr_nome, g.gr_descricao, gr_cidade, g.gr_estado, g.gr_foto, g.grcat_id, g.gr_private, count(gu.gu_user_id) AS quantidade FROM grupo g LEFT JOIN grupo_usuario gu ON g.gr_id = gu.gu_grupo_id WHERE  grcat_id  = :grcat_id and   gr_pais = :gr_pais GROUP BY g.gr_id, g.gr_nome ORDER BY g.gr_id
 		return $banco->select("SELECT * FROM usuariogrupos WHERE gu_accept = 1 and adm_flag = 1 group by gr_id",
 			array(
 				":adm_user_id" => $gu_user_id,

@@ -6,14 +6,12 @@ class grupoPortugues extends Portugues{
 
 
 
-  public $h5_grupo = "Grupos"
-  public $html_lang = "pt-br";
-  public $meta_charset = "UTF-8";
+  public $title = "starstup´s arcade | grupo ";
   public $description = "";
   public $keywords = "";
   public $author  "";
-  public $title = "starstup´s arcade | grupo ";
-  public $grupo_privado = "Grupo Privado";
+  public $h5_grupo = "Grupos"
+  public $grupo_privado = "Grupo privado";
   public $grupo = "Grupo";
   public $grupo_membro = "Membros";
   public $grupo_info = "grupo informações";

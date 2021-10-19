@@ -12,8 +12,6 @@ use app\session\Session;
 use app\validate\Imagem;
 use app\validate\Validate;
 
-$lin = Linguagem::getIdiomaInscrevase();
-
 class GruposController extends ContainerController {
 	public function categorias() {
 		if (Session::get('USUARIO_ID')) {
@@ -34,6 +32,7 @@ class GruposController extends ContainerController {
 		if ($notsMessagem[0]) {
 			$haNotsMessagem = true;
 		}
+		//debug($lin);
 
 		//debug(Session::get('USUARIO_ID'));
 
@@ -69,6 +68,8 @@ class GruposController extends ContainerController {
 		$getGruposAll = Grupo::getGruposAll($grcat_id->parameter, Session::get('PAIS_ID'));
 		$getPublicidadeAll = Publicidade::getPublicidade($grcat_id->parameter, Session::get('PAIS_ID'));
 
+		$lin = Linguagem::getGrupo();
+
 		$this->view([
 			'title' => 'Planos',
 
@@ -79,6 +80,13 @@ class GruposController extends ContainerController {
 			'explore_h4' => $lin->explore_h4,
 			'btn_a_ver_grupo' => $lin->btn_a_ver_grupo,
 			'grupos' => $lin->grupos,
+			'h5_grupo' => $lin->h5_grupo,
+			'grupo_membro' => $lin->grupo_membro,
+			'grupo_info' => $lin->grupo_info,
+			'grupo_btn_aderir' => $lin->grupo_btn_aderir,
+			'grupo_span' => $lin->grupo_span,
+			'grupo' => $lin->grupo,
+			'grupo_privado' => $lin->grupo_privado,
 
 			'pref' => Session::get("USER_PREFERENCIAS"),
 			'getGrupoCategoria' => $getGrupoCategoria,
@@ -87,7 +95,7 @@ class GruposController extends ContainerController {
 			'catgr_id' => $grcat_id->parameter,
 			'hacheckgrupos' => $hacheckgrupos,
 			'checkgrupos' => $checkgrupos,
-			's' => Session::get('USUARIO_ID'),
+			'USUARIO_ID' => Session::get('USUARIO_ID'),
 			'pais_id' => Session::get("PAIS_ID"),
 			'getPublicidadeAll' => $getPublicidadeAll,
 
@@ -259,13 +267,13 @@ class GruposController extends ContainerController {
 			'estrategias_required' => $lin->estrategias_required,
 			'projecao_financeira_required' => $lin->projecao_financeira_required,
 			'captacao_fundo_requireds' => $lin->captacao_fundo_requireds,
-			'Publico_alvo_required' => $lin->Publico_alvo_required,
+			'publico_alvo_required' => $lin->publico_alvo_required,
 			'compreensao_de_mercado' => $lin->compreensao_de_mercado,
 			'acompanhamento' => $lin->acompanhamento,
 			'estrategias' => $lin->estrategias,
 			'projecao_financeira' => $lin->projecao_financeira,
 			'captacao_fundos' => $lin->captacao_fundos,
-			'Publico_alvo' => $lin->Publico_alvo,
+			'publico_alvo' => $lin->Publico_alvo,
 			'btn_criar_proposta' => $lin->btn_criar_proposta,
 			'btn_editar_proposta' => $lin->btn_editar_proposta,
 

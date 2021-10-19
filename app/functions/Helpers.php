@@ -30,10 +30,10 @@ function getLanguage() {
 	$http_accept = substr($_SERVER["HTTP_ACCEPT_LANGUAGE"], 0, 2);
 
 	switch ($http_accept) {
-	case 'en':
+	case 'pt':
 		$linguege = 1;
 		break;
-	case 'pt':
+	case 'en':
 		$linguege = 2;
 		break;
 	}

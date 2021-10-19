@@ -23,7 +23,10 @@ class GrupoController extends ContainerController {
 		$chatGrupoMensagem = Mensagem::chatGrupoMensagem($gr_id->parameter);
 		//debug($chatGrupoMensagem);
 		$this->view([
-			'title' => 'SA | Grupos startup',
+			'title' => $lin->title,
+			'description' => $lin->description,
+			'keywords' => $lin->keywords,
+			'p_strong' => $lin->p_strong,
 			'meusGrupos' => $categoriaGrupoLoad[0]['gr_nome'],
 			'nomgrupo' => $categoriaGrupoLoad[0]['gr_nome'],
 			'categoriagrupo' => $categoriaGrupoLoad[0]['cg_nome'],

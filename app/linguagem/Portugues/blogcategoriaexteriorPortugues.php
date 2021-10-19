@@ -10,7 +10,7 @@ class blogcategoriaexteriorPortugues extends Portugues{
  public $description = "";
  public $keywords = "";
  public $author  "";
-  public $btn_excluir = "excluir";
+ public $btn_excluir = "excluir";
  public $btn_editar = "editar";
  public $btn_a_continue = "Continue lendo...";
  public $btn_a_destaque = "posts em destaque";
@@ -18,7 +18,7 @@ class blogcategoriaexteriorPortugues extends Portugues{
 
  public $btn_a_ir_blog = "ir para o  blog";
  public $categoria_artigo = "Categoria artigo";
- public $Nao_ha_artigo =  "Não_ha_artigo com essa categoria ainda";
- public $Continue_lendo = "Continue_lendo";
+ public $nao_ha_artigo =  "Não_ha_artigo com essa categoria ainda";
+ public $continue_lendo = "Continue_lendo";
 
 }

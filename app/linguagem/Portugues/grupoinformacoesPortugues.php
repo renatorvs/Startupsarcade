@@ -3,7 +3,7 @@
 namespace app\linguagem\portugues;
 
 class grupoinformacoesPortugues extends Portugues{
-
+s
 
   public $html_lang = "pt-br";
   public $title = "starstup´s arcade | informaçoes";
@@ -33,9 +33,10 @@ class grupoinformacoesPortugues extends Portugues{
   public $estrategias = "Estrategias de venda";
   public $projecao_financeira =  "Projecao financeira";
   public $captacao_fundos = "Captação de fundos de investimento";
-  public $Publico_alvo = "Publico alvo";
+  public $publico_alvo = "publico alvo";
   public $btn_criar_proposta  = "criar proposta";
   public $btn_editar_proposta  = "editar proposta";
   public $h5_n_ha_propostas = "Não há propostas";
+
 
 }

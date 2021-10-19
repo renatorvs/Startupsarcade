@@ -9,10 +9,10 @@ class Linguagem {
 
 		if (getLanguage() == 1) {
 			Session::set("PAIS_ID", 1);
-			return "Ingles";
+			return "Portugues";
 		} else if (getLanguage() == 2) {
 			Session::set("PAIS_ID", 2);
-			return "Portugues";
+			return "Ingles";
 		} else {
 			Session::set("PAIS_ID", 0);
 			return "Não esta pegando nenhum idioma ";
@@ -52,9 +52,14 @@ class Linguagem {
 		return new $class();
 	}
 
-	public static function getBlogArtigoInterior() {
+	public static function getIdiomaBlogArtigoInterior() {
 		$idioma = Linguagem::getIdiomaSession();
 		$class = "app\linguagem\\" . $idioma . "\blogartigointerno" . $idioma;
+		return new $class();
+	}
+	public static function getIdiomaBlogArtigoExterior() {
+		$idioma = Linguagem::getIdiomaSession();
+		$class = "app\linguagem\\" . $idioma . "\blogartigoexterior" . $idioma;
 		return new $class();
 	}
 
@@ -63,10 +68,21 @@ class Linguagem {
 		$class = "app\linguagem\\" . $idioma . "\blogcategoriainterior" . $idioma;
 		return new $class();
 	}
+	public static function getBlogCategoriaExterior() {
+		$idioma = Linguagem::getIdiomaSession();
+		$class = "app\linguagem\\" . $idioma . "\blogcategoriaexterior" . $idioma;
+		return new $class();
+	}
 
 	public static function getBlogInterior() {
 		$idioma = Linguagem::getIdiomaSession();
 		$class = "app\linguagem\\" . $idioma . "\bloginterior" . $idioma;
+		return new $class();
+	}
+
+	public static function getBlogExterior() {
+		$idioma = Linguagem::getIdiomaSession();
+		$class = "app\linguagem\\" . $idioma . "\blogexterior" . $idioma;
 		return new $class();
 	}
 
@@ -91,12 +107,6 @@ class Linguagem {
 	public static function getError() {
 		$idioma = Linguagem::getIdiomaSession();
 		$class = "app\linguagem\\" . $idioma . "\error" . $idioma;
-		return new $class();
-	}
-
-	public static function getGrupoCategorias() {
-		$idioma = Linguagem::getIdiomaSession();
-		$class = "app\linguagem\\" . $idioma . "\grupocategorias" . $idioma;
 		return new $class();
 	}
 
@@ -170,18 +180,6 @@ class Linguagem {
 	public static function getBlogArtigoExterior() {
 		$idioma = Linguagem::getIdiomaSession();
 		$class = "app\linguagem\\" . $idioma . "\blogartigoexterior" . $idioma;
-		return new $class();
-	}
-
-	public static function getBlogCategoriaExterior() {
-		$idioma = Linguagem::getIdiomaSession();
-		$class = "app\linguagem\\" . $idioma . "\blogcategoriaexterior" . $idioma;
-		return new $class();
-	}
-
-	public static function getBlogExterior() {
-		$idioma = Linguagem::getIdiomaSession();
-		$class = "app\linguagem\\" . $idioma . "\blogexterior" . $idioma;
 		return new $class();
 	}
 

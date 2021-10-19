@@ -2,6 +2,7 @@
 namespace app\controllers\grupo;
 
 use app\controllers\ContainerController;
+use app\linguagem\Linguagem;
 use app\session\Session;
 
 class ArtigoController extends ContainerController {

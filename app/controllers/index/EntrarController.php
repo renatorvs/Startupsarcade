@@ -11,7 +11,6 @@ class EntrarController extends ContainerController {
 
 	public function show() {
 		Session::sessionDestroy();
-
 		$lin = Linguagem::getIdiomaEntrar();
 		$this->view([
 			'navmenu_1' => $lin->navmenu_1,
@@ -29,6 +28,7 @@ class EntrarController extends ContainerController {
 			'card_alert_h4' => $lin->card_alert_h4,
 			'card_alert_p' => $lin->card_alert_p,
 			'button_entrar' => $lin->button_entrar,
+			'login_frash' => $lin->login_frash,
 
 		], 'index.entrar');
 	}
