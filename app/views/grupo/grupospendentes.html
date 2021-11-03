@@ -36,18 +36,10 @@
 			<hr class="m-1">  
 			<section class="row">
 				<section class="col-xl-12 col-md-12 mb-4">
-
-
-
-
-
-
-
-
 					<article class="card border-left-success shadow h-100 py-2">
 						<section class="card-body">
-							
-							<h2>{{h5_pendencia}}</h2>
+						              <h4 class="text-primary" align="center">{{h5_pendencia}}</h4>
+	
 							<hr>
 							{% for meusGrupo in meusGrupos %}
 							
@@ -65,7 +57,7 @@
 											<section class="media-body"> 
 												<h4 class="mt-0 mb-1"> {{meusGrupo.gr_nome}}</h4>
 												<h5 class="mt-0 mb-1 text-primary">{{meusGrupo.cg_nome}}</h5>
-												Membros(10) | {{meusGrupo.gr_cidade}}, {{meusGrupo.gr_estado}} {{meusGrupo.gr_pais}}<br>
+												{{membros}}({{meusGrupo.quantidade}}) | {{meusGrupo.gr_cidade}}, {{meusGrupo.gr_estado}} {{meusGrupo.gr_pais}}<br>
 												<a href="\meusgrupos\informacoes\{{meusGrupo.gr_id}}" class="text-primary">{{btn_grupo}}</a>
 											</a> 
 										</section>

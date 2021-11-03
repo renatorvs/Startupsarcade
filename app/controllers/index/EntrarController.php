@@ -13,6 +13,7 @@ class EntrarController extends ContainerController {
 		Session::sessionDestroy();
 		$lin = Linguagem::getIdiomaEntrar();
 		$this->view([
+			'title' => $lin->title,
 			'navmenu_1' => $lin->navmenu_1,
 			'navmenu_2' => $lin->navmenu_2,
 			'navmenu_3' => $lin->navmenu_3,

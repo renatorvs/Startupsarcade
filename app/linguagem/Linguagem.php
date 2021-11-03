@@ -40,7 +40,7 @@ class Linguagem {
 		return new $class();
 	}
 
-	public static function getIdiomaPerfil() {
+	public static function getPerfil() {
 		$idioma = Linguagem::getIdiomaSession();
 		$class = "app\linguagem\\" . $idioma . "\Perfil" . $idioma;
 		return new $class();
@@ -49,6 +49,11 @@ class Linguagem {
 	public static function getIdiomaCategoriaGrupo() {
 		$idioma = Linguagem::getIdiomaSession();
 		$class = "app\linguagem\\" . $idioma . "\CategoriaGrupo" . $idioma;
+		return new $class();
+	}
+	public static function grupoCategorias() {
+		$idioma = Linguagem::getIdiomaSession();
+		$class = "app\linguagem\\" . $idioma . "\grupocategorias" . $idioma;
 		return new $class();
 	}
 
@@ -74,37 +79,37 @@ class Linguagem {
 		return new $class();
 	}
 
-	public static function getBlogInterior() {
+	public static function getbloginterior() {
 		$idioma = Linguagem::getIdiomaSession();
 		$class = "app\linguagem\\" . $idioma . "\bloginterior" . $idioma;
 		return new $class();
 	}
 
-	public static function getBlogExterior() {
+	public static function getblogexterior() {
 		$idioma = Linguagem::getIdiomaSession();
 		$class = "app\linguagem\\" . $idioma . "\blogexterior" . $idioma;
 		return new $class();
 	}
 
-	public static function getChatGrupo() {
+	public static function getchatgrupo() {
 		$idioma = Linguagem::getIdiomaSession();
 		$class = "app\linguagem\\" . $idioma . "\chatgrupo" . $idioma;
 		return new $class();
 	}
 
-	public static function getDuvidasCategoria() {
+	public static function getduvidascategoria() {
 		$idioma = Linguagem::getIdiomaSession();
 		$class = "app\linguagem\\" . $idioma . "\duvidascategoria" . $idioma;
 		return new $class();
 	}
 
-	public static function getDuvidas() {
+	public static function getduvidas() {
 		$idioma = Linguagem::getIdiomaSession();
 		$class = "app\linguagem\\" . $idioma . "\duvidas" . $idioma;
 		return new $class();
 	}
 
-	public static function getError() {
+	public static function geterror() {
 		$idioma = Linguagem::getIdiomaSession();
 		$class = "app\linguagem\\" . $idioma . "\error" . $idioma;
 		return new $class();
@@ -116,13 +121,19 @@ class Linguagem {
 		return new $class();
 	}
 
+	public static function getmeusgrupoInformacoes() {
+		$idioma = Linguagem::getIdiomaSession();
+		$class = "app\linguagem\\" . $idioma . "\meusgrupoInformacoes" . $idioma;
+		return new $class();
+	}
+
 	public static function getGrupo() {
 		$idioma = Linguagem::getIdiomaSession();
 		$class = "app\linguagem\\" . $idioma . "\grupo" . $idioma;
 		return new $class();
 	}
 
-	public static function getGrupoconvites() {
+	public static function getgrupoconvites() {
 		$idioma = Linguagem::getIdiomaSession();
 		$class = "app\linguagem\\" . $idioma . "\gruposconvites" . $idioma;
 		return new $class();
@@ -134,14 +145,14 @@ class Linguagem {
 		return new $class();
 	}
 
-	public static function getGrupoUsuariosAdmin() {
+	public static function getgrupousuariosadmin() {
 		$idioma = Linguagem::getIdiomaSession();
-		$class = "app\linguagem\\" . $idioma . "\Grupousuariosadmin" . $idioma;
+		$class = "app\linguagem\\" . $idioma . "\grupousuariosadmin" . $idioma;
 		return new $class();
 
 	}
 
-	public static function getGrupoUsuarios() {
+	public static function getgrupousuarios() {
 		$idioma = Linguagem::getIdiomaSession();
 		$class = "app\linguagem\\" . $idioma . "\grupousuarios" . $idioma;
 		return new $class();
@@ -171,7 +182,7 @@ class Linguagem {
 		return new $class();
 	}
 
-	public static function getStatistics() {
+	public static function getstatistics() {
 		$idioma = Linguagem::getIdiomaSession();
 		$class = "app\linguagem\\" . $idioma . "\statistics" . $idioma;
 		return new $class();

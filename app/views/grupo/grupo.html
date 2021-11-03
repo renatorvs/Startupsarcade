@@ -72,7 +72,7 @@
                       {% if grupo.gr_private == 1 %}
                       {{grupo_privado}} |
                       {% endif %}
-                      {{grupo_membro}}(ajustar) | {{grupo.gr_cidade}}, {{grupo.gr_estado}} ({{grupo.gr_pais}})<br>
+                      {{grupo_membro}}({{grupo.quantidade}}) | {{grupo.gr_cidade}}, {{grupo.gr_estado}}<br>
 
                       <a href="\grupos\informacoes\{{grupo.gr_id}}" class="text-primary"> {{grupo_info}}</a>
 

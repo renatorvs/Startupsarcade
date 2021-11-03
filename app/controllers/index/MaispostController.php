@@ -12,11 +12,9 @@ class MaisPostController extends ContainerController {
 
 		], 'index.maispost');
 	}
-	
-	
+
 	public function store() {
 
-		
 	}
 
 }

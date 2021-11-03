@@ -85,24 +85,17 @@
                 <div class="card-body">
                  {{chart_pie_1_card_body}}
                  <div class="chart-pie pt-6">
-                  <canvas id="myPieChart1"></canvas>
+                  {% if pais_id == 1 %}
+                  <canvas id="myPieChart1BR"></canvas>
+                  {% else %}
+
+                  <canvas id="myPieChart1USA"></canvas>
+                                    {% endif %}
+
                 </div>
                 <hr>
               </div>
             </div>         
-            <div class="card shadow mb-4">
-
-              <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">{{chart_pie_2_h6}}</h6>
-              </div>
-              <div class="card-body">
-{{chart_pie_2_card_body}}
-                <div class="chart-pie pt-6">
-                  <canvas id="myPieChart2"></canvas>
-                </div>
-                <hr>
-              </div>
-            </div>
 
           </div>
 
@@ -124,3 +117,4 @@
 <script src="../assets/js/sb-admin-2.min.js"></script>
 </body>
 </html>
+

@@ -19,18 +19,12 @@ class PerfilController extends ContainerController {
 			redirecionar("/");
 		}
 		Usuario::getusuarioPerfil(Session::get('USUARIO_ID'));
-		$lin = Linguagem::getIdiomaPerfil();
+		$lin = Linguagem::getPerfil();
 
 		//debug($lin);
 		$this->view([
 
-			'navmenu_1' => $lin->navmenu_1,
-			'navmenu_2' => $lin->navmenu_2,
-			'navmenu_3' => $lin->navmenu_3,
-			'navmenu_4' => $lin->navmenu_4,
-			'navmenu_5' => $lin->navmenu_5,
-			'login_h4' => $lin->login_h4,
-			'login_p' => $lin->login_p,
+			'title' => $lin->title,
 			'login_tipo_user' => $lin->login_tipo_user,
 			'login_a_cadastra_se' => $lin->login_a_cadastra_se,
 			'login_nome_usuario' => $lin->login_nome_usuario,
@@ -42,6 +36,8 @@ class PerfilController extends ContainerController {
 			'pf' => $lin->pf,
 			'pj' => $lin->pj,
 			'senha_old' => $lin->senha_old,
+			'btn_senha' => $lin->btn_senha,
+			'btn_senha_editar' => $lin->btn_senha_editar,
 			'requered_termo' => $lin->requered_termo,
 			'required_foto' => $lin->required_foto,
 			'required_senha' => $lin->required_senha,
@@ -115,6 +111,8 @@ class PerfilController extends ContainerController {
 		$usuario->setUs_senha($validacao->us_senha);
 
 		$senha = $validacao->senha_old;
+
+		$lin = Linguagem::getPerfil();
 
 		$senhaVerify = Validate::getPasswordVerify($senha, $password_hash);
 		if ($senhaVerify) {

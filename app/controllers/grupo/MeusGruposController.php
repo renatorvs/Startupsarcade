@@ -1,8 +1,8 @@
-
 <?php
 namespace app\controllers\grupo;
 
 use app\controllers\ContainerController;
+use app\linguagem\Linguagem;
 use app\models\grupo\CategoriaGrupo;
 use app\models\grupo\Estado;
 use app\models\grupo\Grupo;
@@ -21,10 +21,38 @@ class MeusgruposController extends ContainerController {
 			redirecionar("/");
 		}
 
+		$lin = Linguagem::getMeusGrupos();
+
 		$grupoAll = CategoriaGrupo::CategoriaGrupoAll(Session::get('PAIS_ID'));
 		$meusGrupos = Grupo::meusGrupos(Session::get('USUARIO_ID'));
 		$this->view([
-			'title' => 'SA | Grupos startup',
+			'title' => $lin->title,
+			'titulo_h4' => $lin->titulo_h4,
+			'atencao_h5' => $lin->atencao_h5,
+			'projeto_statup' => $lin->projeto_statup,
+			'projeto_statup_requered' => $lin->projeto_statup_requered,
+			'plano_de_negocio' => $lin->plano_de_negocio,
+			'plano_de_negocio_requered' => $lin->plano_de_negocio_requered,
+			'label' => $lin->label,
+			'label_cidade' => $lin->label_cidade,
+			'label_cidade_requered' => $lin->label_cidade_requered,
+			'label_estado' => $lin->label_estado,
+			'label_grupo_foto' => $lin->label_grupo_foto,
+			'label_grupo_privado' => $lin->label_grupo_privado,
+			'option_privado_s' => $lin->option_privado_s,
+			'option_privado_n' => $lin->option_privado_n,
+			'label_grupo_starstup_categoria' => $lin->label_grupo_starstup_categoria,
+			'grupo_model_deseja_excluir' => $lin->grupo_model_deseja_excluir,
+			'grupo_privado' => $lin->grupo_privado,
+			'grupo_membros' => $lin->grupo_membros,
+			'grupo_info' => $lin->grupo_info,
+			'btn_grupo_visitar' => $lin->btn_grupo_visitar,
+			'btn_grupo_editar' => $lin->btn_grupo_editar,
+			'btn_grupo_excluir_sair' => $lin->btn_grupo_excluir_sair,
+			'btn_grupo_excluir' => $lin->btn_grupo_excluir,
+			'btn_grupo_sair' => $lin->btn_grupo_sair,
+			'btn_salvar' => $lin->btn_salvar,
+			'btn_grupo_criar' => $lin->btn_grupo_criar,
 			'meusGrupos' => $meusGrupos,
 			'listEstados' => Estado::listEstados(),
 			'grupoAll' => $grupoAll,
@@ -151,6 +179,9 @@ class MeusgruposController extends ContainerController {
 
 		$planoDeNegocios = PlanoDeNegocios::getPlanoDeNegocios($gr_id->parameter);
 		$haplanoDeNegocios = true;
+
+		$lin = Linguagem::getmeugrupoinformacoes();
+
 		if ($planoDeNegocios[0] == null) {
 			$haplanoDeNegocios = false;
 		}
@@ -167,6 +198,38 @@ class MeusgruposController extends ContainerController {
 		$grupo = new Grupo();
 
 		$this->view([
+			'html_lang' => $lin->html_lang,
+			'title' => $lin->title,
+			'meta_charset' => $lin->meta_charset,
+			'description' => $lin->description,
+			'plano_text_h4' => $lin->plano_text_h4,
+			'compreensao_de_mercado_text' => $lin->compreensao_de_mercado_text,
+			'acompanhamento_text' => $lin->acompanhamento_text,
+			'estrategias_text' => $lin->estrategias_text,
+			'projecao_financeira_text' => $lin->projecao_financeira_text,
+			'captacao_fundos_text' => $lin->captacao_fundos_text,
+			'Publico_alvo_text' => $lin->Publico_alvo_text,
+			'proposta_para_grupo' => $lin->proposta_para_grupo,
+			'categoria' => $lin->categoria,
+			'editar_h5' => $lin->editar_h5,
+			'plano_negocios_h4' => $lin->plano_negocios_h4,
+			'btn_usuarios' => $lin->btn_usuarios,
+			'info' => $lin->info,
+			'compreensao_de_mercado_required' => $lin->compreensao_de_mercado_required,
+			'acompanhamento_required' => $lin->acompanhamento_required,
+			'estrategias_required' => $lin->estrategias_required,
+			'projecao_financeira_required' => $lin->projecao_financeira_required,
+			'captacao_fundo_requireds' => $lin->captacao_fundo_requireds,
+			'publico_alvo_required' => $lin->Publico_alvo_required,
+			'compreensao_de_mercado' => $lin->compreensao_de_mercado,
+			'acompanhamento' => $lin->acompanhamento,
+			'estrategias' => $lin->estrategias,
+			'projecao_financeira' => $lin->projecao_financeira,
+			'captacao_fundos' => $lin->captacao_fundos,
+			'publico_alvo' => $lin->publico_alvo,
+			'btn_criar_proposta' => $lin->btn_criar_proposta,
+			'btn_editar_proposta' => $lin->btn_editar_proposta,
+
 			'session_id' => Session::get('USUARIO_ID'),
 			'title' => $dadosgrupo['gr_nome'],
 			'cg_nome' => $dadosgrupo[0]['cg_nome'],
@@ -201,6 +264,8 @@ class MeusgruposController extends ContainerController {
 			redirecionar("/");
 		}
 
+		$lin = Linguagem::getgrupousuarios();
+
 		$dadosgrupo = Usuario::getUsuariosgrupos($gr_id->parameter);
 		$gruponome = Usuario::getUsuariosgrupo($gr_id->parameter);
 		$hadadosgrupo = true;
@@ -210,7 +275,19 @@ class MeusgruposController extends ContainerController {
 		//debug($dadosgrupo);
 		$grupo = new Grupo();
 		$this->view([
-
+			'html_lang' => $lin->html_lang,
+			'meta_charset' => $lin->meta_charset,
+			'description' => $lin->description,
+			'keywords' => $lin->keywords,
+			'author' => $lin->author,
+			'title' => $lin->title,
+			'meus_grupos' => $lin->meus_grupos,
+			'btn_admin' => $lin->btn_admin,
+			'cod_grupo' => $lin->cod_grupo,
+			'btn_enviar' => $lin->btn_enviar,
+			'strong_danger' => $lin->strong_danger,
+			'adm_user' => $lin->adm_user,
+			'cod_usuario' => $lin->cod_usuario,
 			'gruponome' => $gruponome,
 			'getGrupoCategoria' => $getGrupoCategoria,
 			'listEstados' => Estado::listEstados(),
@@ -232,6 +309,7 @@ class MeusgruposController extends ContainerController {
 		} else {
 			redirecionar("/");
 		}
+		$lin = Linguagem::getgrupousuariosadmin();
 
 		$getAdmingrupos = Usuario::getAdmingrupos($gr_id->parameter, Session::get('USUARIO_ID'));
 
@@ -250,6 +328,25 @@ class MeusgruposController extends ContainerController {
 		//	debug($dadosgrupo);
 		$grupo = new Grupo();
 		$this->view([
+
+			'html_lang' => $lin->html_lang,
+			'meta_charset' => $lin->meta_charset,
+			'description' => $lin->description,
+			'keywords' => $lin->keywords,
+			'author' => $lin->author,
+			'title' => $lin->title,
+			'meus_grupos' => $lin->meus_grupos,
+			'btn_admin' => $lin->btn_admin,
+			'cod_grupo' => $lin->cod_grupo,
+			'btn_enviar' => $lin->btn_enviar,
+			'strong_danger' => $lin->strong_danger,
+			'adm_user' => $lin->adm_user,
+			'cod_usuario' => $lin->cod_usuario,
+			'btn_excluir' => $lin->btn_excluir,
+			'btn_bloquear' => $lin->btn_bloquear,
+			'btn_desbloquear' => $lin->btn_desbloquear,
+			'btn_perfil' => $lin->btn_perfil,
+			'btn_admin' => $lin->btn_admin,
 
 			'gruponome' => $gruponome,
 			'getGrupoCategoria' => $getGrupoCategoria,
@@ -345,11 +442,25 @@ class MeusgruposController extends ContainerController {
 		}
 		//$grupoAll = CategoriaGrupo::CategoriaGrupoAll();
 
+		$lin = Linguagem::getgrupoconvites();
+
 		$meusGruposConvites = Grupo::meusGruposConvites(Session::get('USUARIO_ID'));
 
 		// :debug($meusGruposConvites);
 		$this->view([
-			'title' => 'SA | Grupos startup',
+			'html_lang' => $lin->html_lang,
+			'meta_charset' => $lin->meta_charset,
+			'description' => $lin->description,
+			'keywords' => $lin->keywords,
+			'author' => $lin->author,
+			'title' => $lin->title,
+			'convite_convites_h4' => $lin->convite_convites_h4,
+			'convite_grupo_h4' => $lin->convite_grupo_h4,
+			'convite_categoria_h5' => $lin->convite_categoria_h5,
+			'nao_ha_convite_h3' => $lin->nao_ha_convite_h3,
+			'btn_cancelar' => $lin->btn_cancelar,
+			'btn_aceitar' => $lin->btn_aceitar,
+
 			'meusGruposConvite' => $meusGruposConvites,
 			'listEstados' => Estado::listEstados(),
 			'grupoAll' => $meusGruposConvites,

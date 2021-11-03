@@ -258,9 +258,7 @@ class Grupo {
 	public static function meusGrupos($gu_user_id) {
 		$banco = new Banco();
 
-// SELECT g.gr_id, g.gr_nome, g.gr_descricao, gr_cidade, g.gr_estado, g.gr_foto, g.grcat_id, g.gr_private, count(gu.gu_user_id) AS quantidade FROM grupo g LEFT JOIN grupo_usuario gu ON g.gr_id = gu.gu_grupo_id WHERE  grcat_id  = :grcat_id and   gr_pais = :gr_pais GROUP BY g.gr_id, g.gr_nome ORDER BY g.gr_id
-
-		return $banco->select("SELECT * FROM usuariogrupos WHERE gu_user_id = :gu_user_id and gu_accept = 2 GROUP BY gr_id ",
+		return $banco->select("SELECT * FROM `usuariogrupos` where gu_user_id = :gu_user_id and gu_accept = 2 GROUP BY gr_id, gr_nome ORDER BY gr_id ",
 			array(
 				":gu_user_id" => $gu_user_id,
 			));

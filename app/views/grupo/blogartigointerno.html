@@ -48,14 +48,16 @@
         <a href="/learning/show"class="btn btn-primary btn-sm">{{btn_voltar}}</a>
         {% endif %}
 
+
+
         <br><br>
         <section class="row">
           <article class="col-md-8 blog-main">
             <h3   class="pb-3 mb-4 font-italic border-bottom">
-             {{h3_categoria}}: {{blogcat_nome}}
+             {{blog_categoria}}: {{blogcat_nome}}
            </h3>
            <section class="blog-post">
-            <h2 class="blog-post-title">{{h2_artigo}}: {{post_titulo}}</h2>
+            <h2 class="blog-post-title">{{blog_artigo}}: {{post_titulo}}</h2>
             <h3>{{post_subtitulo}}</h3>
             <p class="blog-post-meta">Data post: {{blog_date}} </p>
             <hr>
@@ -71,9 +73,13 @@
   </main>
   {{ include('layout/nav-dashboard-end.html') }}
   {{ include('layout/footer.html') }}
+  <!-- Bootstrap core JavaScript--><script src="../../assets/vendor/chart.js/Chart.min.js"></script>
+  <script src="../../assets/js/demo/chart-area-demo.js"></script>
+  <script src="../../assets/js/demo/chart-pie-demo.js"></script>
   <script src="../../assets/vendor/jquery/jquery.min.js"></script>
   <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="../../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
   <script src="../../assets/js/sb-admin-2.min.js"></script>
+
 </body>
 </html>

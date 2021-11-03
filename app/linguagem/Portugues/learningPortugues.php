@@ -2,17 +2,17 @@
 
 namespace app\linguagem\portugues;
 
-class learningPortugues extends Portugues{
+class learningPortugues extends Portugues {
 
-public $title = "startup´s arcade | learning";
- public $html_lang = "pt-br";
- public $meta_charset = "UTF-8";
- public $description = "";
- public $keywords = "";
- public $author  "";
- public $btn_excluir = "excluir";
- public $btn_editar = "editar";
- public $btn_a_continue = "Continue lendo...";
- public $btn_a_destaque = "posts em destaque";
- public $btn_artigo = "ver artigo";
+	public $title = "startup´s arcade | learning  ";
+	public $description = "";
+	public $keywords = "";
+	public $author = "";
+	public $learning_h5 = "Artigos aprimorar suas habilidades";
+	public $learning_p = "compartilhe ideias, apenas comece ! ";
+	public $btn_excluir = "excluir";
+	public $btn_editar = "editar";
+	public $btn_a_continue = "continue lendo...";
+	public $btn_a_destaque = "posts em destaque";
+	public $btn_artigo = "ver artigo";
 }

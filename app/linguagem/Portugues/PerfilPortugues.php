@@ -2,8 +2,9 @@
 
 namespace app\linguagem\portugues;
 
-class PerfilPortugues extends Portugues{
+class PerfilPortugues extends Portugues {
 
+	public $title = "startup´s  arcade | perfil";
 	public $login_tipo_user = "Tipo Usuario";
 	public $login_a_cadastra_se = "Cadastra - se";
 	public $login_nome_usuario = "Nome e sobrenome";
@@ -11,11 +12,11 @@ class PerfilPortugues extends Portugues{
 	public $login_senha = "nova Senha";
 	public $pf = "Pessoa fisica (CPF)";
 	public $pj = "Pessoa juridica (CNPJ)";
-	public $email_foto = "Foto";
-	public $h4_Perfil = "Perfil"
-	public $login_frash = "Senha ou usuario incorretos";
+	public $email_foto = "foto";
+	public $h4_Perfil = "perfil";
+	public $login_frash = "senha ou usuario incorretos";
 	public $senha_old = "senha antiga";
-	public $button_inscrever = "Inscrever";
+	public $button_inscrever = "inscrever";
 	public $required_foto = "Por favor, insira uma foto.";
 	public $card_alert_h4 = "Faz o login, assim poder ultilizar nossa plataforma";
 	public $card_alert_p = "Publique e compartilhe ideias de um negocio";

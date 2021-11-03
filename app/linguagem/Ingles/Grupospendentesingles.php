@@ -13,6 +13,8 @@ class Grupospendentesingles extends Ingles{
   public $h5_n_pendencia = "there are no pending orders";
   public $btn_cancelar_pedido = "cancel order";
   public $btn_grupo = "group information";
+  public $membros = "members";
+
 
 
 }

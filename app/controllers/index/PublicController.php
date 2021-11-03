@@ -11,6 +11,7 @@ class PublicController extends ContainerController {
 
 		$lin = Linguagem::getIdiomaindex();
 		$this->view([
+			'title' => $lin->title,
 			'betas_version' => $lin->betas_version,
 			'navmenu_1' => $lin->navmenu_1,
 			'navmenu_2' => $lin->navmenu_2,

@@ -18,6 +18,8 @@ class DuvidasController extends ContainerController {
 		$lin = Linguagem::getDuvidas();
 
 		$this->view([
+			'title' => $lin->title,
+
 			'html_lang' => $lin->html_lang,
 			'meta_charset' => $lin->meta_charset,
 			'description' => $lin->description,

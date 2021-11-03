@@ -9,6 +9,7 @@ class EntrarPortugues extends Portugues {
 	public $navmenu_3 = "Increva-se";
 	public $navmenu_4 = "Entrar";
 	public $navmenu_5 = "Contato";
+	public $title = "entrar";
 
 	public $login_h4 = "Efetue o login";
 	public $login_a_strong = "Não tem cadastro ?";

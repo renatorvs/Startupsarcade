@@ -38,14 +38,6 @@
 				<section class="col-xl-12 col-md-12 mb-4">
 
 
-	 $label_grupo_starstup_categoria = "Grupo starstup categoria";
-	 $grupo_model_deseja_excluir = "Tem certeza que deseja excluir/sair";
-	 $grupo_privado = "Grupo Privado";
-	 $grupo_membros = "Membros";
-	 $grupo_info = "Grupo informaçoes";
-	 $btn_grupo_visitar = "visitar";
-	 $btn_grupo_editar = "editar";
-
 
 					<article class="card border-left-success shadow h-100 py-2">
 						<section class="card-body">
@@ -144,6 +136,7 @@
 							<h5 class ="text-dark" align="center">{{atencao_h5}} </h5>
 							<button  type="button" class="btn btn-primary" data-toggle="modal" data-target=".criargrupo-{{meusGrupo.gr_id}}-lg">{{btn_grupo_criar}}</button>             
 							<hr>
+
 							{% for meusGrupo in meusGrupos %}
 							<section class="modal fade bd-example-modal-{{meusGrupo.gr_id}}-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 								<section class="modal-dialog modal-lg">
@@ -283,7 +276,7 @@
 											{% if meusGrupo.gr_private == 1 %}
 											{{grupo_privado}} |
 											{% endif %}
-											{{grupo_membros}}(10) (ajustar)| {{meusGrupo.gr_cidade}}, {{meusGrupo.gr_estado}} {{meusGrupo.gr_pais}}<br>
+										 {{meusGrupo.gr_cidade}}, {{meusGrupo.gr_estado}}<br>
 											<a href="\meusgrupos\informacoes\{{meusGrupo.gr_id}}" class="text-primary">{{grupo_info}}</a>
 										</a> 
 									</section>
@@ -310,6 +303,7 @@
 						</section>
 					</section>
 					<br>
+
 					{% endfor %}
 				</section>
 			</article>

@@ -6,6 +6,7 @@ class IndexPortugues extends Portugues {
 	public $html_lang = "pt-br";
 	public $meta_charset = "UTF-8";
 	public $description = "";
+	public $title = "startup´s arcade";
 	public $keywords = "";
 	public $author = "";
 	public $betas_version = "Olá é um prazer. estamos em fase BETA";

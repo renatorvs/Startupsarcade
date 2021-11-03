@@ -28,6 +28,7 @@ class AdminloginController extends ContainerController {
 		$senha = $validacao->adm_senha;
 
 		$senhaVerify = Validate::getPasswordVerify($senha, $password_hash);
+		//debug($senhaVerify);
 
 		if ($senhaVerify) {
 			if ($respAdmin[0]['car_id'] == 1) {

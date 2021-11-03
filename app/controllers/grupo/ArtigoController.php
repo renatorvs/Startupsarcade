@@ -12,6 +12,8 @@ class ArtigoController extends ContainerController {
 		$lin = Linguagem::getIdiomaPerfil();
 
 		$this->view([
+			'title' => $lin->title,
+
 			'pref' => Session::get("USER_PREFERENCIAS"),
 			'pais_id' => Session::get("PAIS_ID"),
 			'NotsGrupo' => getNotificantionGrupo($sessionUsuario_id),

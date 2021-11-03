@@ -1,13 +1,13 @@
-
 <?php
 
 namespace app\linguagem\portugues;
 
-class meusgruposPortugues extends Portugues{
+class meusgruposPortugues extends Portugues {
+	public $title = "starstup´s arcade | meus grupos ";
 	public $titulo_h4 = "Meus grupos";
 	public $atencao_h5 = "Atenção, você que criou o grupo você é o unico capaz de exclui-lo (existe sem você) e você não pode ser bloqueado, você é admin  vitalicio";
-	public $projeto_statup  "nome do projeto";
-	public $projeto_statup_requered  = "Por favor, informe o nome do projeto";
+	public $projeto_statup = "nome do projeto";
+	public $projeto_statup_requered = "Por favor, informe o nome do projeto";
 	public $plano_de_negocio = "Descriçao do plano_de_negocio";
 	public $plano_de_negocio_requered = "Por favor, informe descriçao invalida !";
 	public $label = "Grupo foto";
@@ -30,6 +30,5 @@ class meusgruposPortugues extends Portugues{
 	public $btn_grupo_sair = "sair";
 	public $btn_salvar = "salvar";
 	public $btn_grupo_criar = "Criar grupo";
-
 
 }

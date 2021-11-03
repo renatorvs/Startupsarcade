@@ -124,7 +124,6 @@ class BlogController extends ContainerController {
 
 		$lin = Linguagem::getIdiomaBlogArtigoInterior();
 
-		$getcategorias = Blogcategoria::getblogCategoria();
 		$blogcat_id = $request->parameter;
 
 		$blogCategoria = Blog::getPostBlogCategoria($blogcat_id);

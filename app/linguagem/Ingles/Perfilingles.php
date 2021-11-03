@@ -6,6 +6,7 @@ class Perfilingles extends Ingles{
 	public $description = "";
 	public $keywords = "";
 	public $author = "";
+	public $title = "startup´s  arcade | profile";
 	public $login_tipo_user = "user type";
 	public $login_a_cadastra_se = "register";
 	public $login_nome_usuario = "name and last name";

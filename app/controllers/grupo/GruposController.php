@@ -22,7 +22,7 @@ class GruposController extends ContainerController {
 		}
 
 		$haNotsMessagem = false;
-		$lin = Linguagem::getGrupoCategorias();
+		$lin = Linguagem::grupoCategorias();
 
 		//debug(Session::get('PAIS_ID'));
 		$grupoAll = CategoriaGrupo::CategoriaGrupoAll(Session::get('PAIS_ID'));
@@ -87,6 +87,11 @@ class GruposController extends ContainerController {
 			'grupo_span' => $lin->grupo_span,
 			'grupo' => $lin->grupo,
 			'grupo_privado' => $lin->grupo_privado,
+
+			'checkgrupo' => $lin->checkgrupo,
+			'conviteenviado' => $lin->conviteenviado,
+			'checkbloqueado' => $lin->checkbloqueado,
+			'Pedidoaceito' => $lin->Pedidoaceito,
 
 			'pref' => Session::get("USER_PREFERENCIAS"),
 			'getGrupoCategoria' => $getGrupoCategoria,
@@ -187,19 +192,21 @@ class GruposController extends ContainerController {
 		$grupo->setGu_grupo_id($v->gu_grupo_id);
 		$grupo->setGu_accept($v->gu_accept);
 
+		$lin = Linguagem::getGrupo();
+
 		if ($checkuser[0]['gu_accept'] == 3) {
-			flash(['checkbloqueado' => "Você esta bloquado nesse grupo"]);
+			flash(['checkbloqueado' => $lin->checkbloqueado]);
 			redirecionar("/grupos/grupo/$v->catgr_id");
 		} else if ($v->gu_accept == 2) {
-			flash(['Pedidoaceito' => "Pedido aceito"]);
+			flash(['pedidoaceito' => $lin->pedidoaceito]);
 			$grupo->grupoadmin($v->adm_user_id, Session::get('USUARIO_ID'), $v->gu_grupo_id, 0);
 
 			$grupo->addgrupoMembro();
 		} else if ($checkuser[0] == 1) {
-			flash(['checkgrupo' => "Você já mandou convite para esse grupo"]);
+			flash(['checkgrupo' => $lin->checkgrupo]);
 		} else {
 			$grupo->addgrupoMembro();
-			flash(['conviteenviado' => "Pedido enviado "]);
+			flash(['conviteenviado' => $lin->conviteenviado]);
 
 		}
 
@@ -308,12 +315,25 @@ class GruposController extends ContainerController {
 		} else {
 			redirecionar("/");
 		}
+		$lin = Linguagem::getGrupoInformacoes();
 
 		$grupo = new Grupo();
 
 		$this->view([
-			'title' => 'Planos',
 
+			'html_lang' => $lin->html_lang,
+			'meta_charset' => $lin->meta_charset,
+			'description' => $lin->description,
+			'keywords' => $lin->keywords,
+			'author' => $lin->author,
+			'title' => $lin->title,
+			'meus_grupos' => $lin->meus_grupos,
+			'btn_admin' => $lin->btn_admin,
+			'cod_grupo' => $lin->cod_grupo,
+			'btn_enviar' => $lin->btn_enviar,
+			'strong_danger' => $lin->strong_danger,
+			'adm_user' => $lin->adm_user,
+			'cod_usuario' => $lin->cod_usuario,
 			'pref' => Session::get("USER_PREFERENCIAS"),
 			'getGrupoCategoria' => $getGrupoCategoria,
 			'listEstados' => Estado::listEstados(),
@@ -334,7 +354,7 @@ class GruposController extends ContainerController {
 			redirecionar("/");
 		}
 
-		$lin = Linguagem::getGruposPendentes();
+		$lin = Linguagem::getgrupospendentes();
 
 		$grupoAll = CategoriaGrupo::CategoriaGrupoAll(Session::get('PAIS_ID'));
 		$meusGrupos = Grupo::meusGruposPendentes(Session::get('USUARIO_ID'));
