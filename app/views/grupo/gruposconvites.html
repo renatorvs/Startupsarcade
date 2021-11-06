@@ -100,7 +100,12 @@
 </section>
 </main>
 {{ include('layout/nav-dashboard-end.html') }}
-{{ include('layout/footer.html') }}
+   {% if pais_id == 1 %}
+        {{ include('layout/footer-pt.html') }}
+ {% else %}
+  {{ include('layout/footer-en.html') }}
+ {% endif %}
+
 <script src="../../assets/vendor/chart.js/Chart.min.js"></script>
 <script src="../../assets/js/demo/chart-area-demo.js"></script>
 <script src="../../assets/js/demo/chart-pie-demo.js"></script>

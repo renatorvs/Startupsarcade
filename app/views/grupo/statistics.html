@@ -104,9 +104,14 @@
     </div>
   </div>
 </div>
-</body>
 
-</body>
+{{ include('layout/nav-dashboard-end.html') }}
+   {% if pais_id == 1 %}
+        {{ include('layout/footer-pt.html') }}
+ {% else %}
+  {{ include('layout/footer-en.html') }}
+ {% endif %}
+
 <script src="../assets/vendor/chart.js/Chart.min.js"></script>
 <script src="../assets/js/demo/chart-area-demo.js"></script>
 <script src="../assets/js/demo/chart-pie-demo.js"></script>

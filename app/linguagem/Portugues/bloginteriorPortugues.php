@@ -7,7 +7,7 @@ class bloginteriorPortugues extends Portugues{
   public $title = "startup´s arcade | blog ";
 
  public $html_lang = "pt-br";
- public $title = "starstup´s arcade | lerning";
+ public $title = "starstup´s arcade | blog";
  public $meta_charset = "UTF-8";
  public $description = "";
  public $keywords = "";

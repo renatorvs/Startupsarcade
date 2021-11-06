@@ -136,7 +136,11 @@
 		<hr>
 	</main>
 
-{{ include('layout/footer-index.html') }}
+ {% if pais_id == 1 %}
+        {{ include('layout/footer-pt-index.html') }}
+ {% else %}
+          {{ include('layout/footer-en-index.html') }}
+ {% endif %}
 
 	<script type="text/javascript" src="../assets/js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>

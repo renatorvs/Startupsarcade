@@ -4,13 +4,15 @@ namespace app\controllers\index;
 
 use app\controllers\ContainerController;
 use app\Linguagem\Linguagem;
+use app\session\Session;
 
 class PublicController extends ContainerController {
 
 	public function index() {
-
+		//debug(Session::get("PAIS_ID"));
 		$lin = Linguagem::getIdiomaindex();
 		$this->view([
+			'pais_id' => Session::get("PAIS_ID"),
 			'title' => $lin->title,
 			'betas_version' => $lin->betas_version,
 			'navmenu_1' => $lin->navmenu_1,

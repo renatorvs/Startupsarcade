@@ -78,7 +78,7 @@
         </section>
       </section>
       <figure class="col-lg-4 order-1 order-lg-2 hero-img" data-aos="fade-left">
-       <img src="../../../assets/index/img/hero-img.png" class="img-fluid" alt="">
+       <img src="../../../assets/img/negocios-index.jpg" class="img-fluid" alt="">
        <figcaption></figcaption>
      </figure>
 
@@ -241,24 +241,24 @@
     </section>
 
   </section>
-</section><!-- End Contact Section -->
+</section>
 
-</main><!-- End #main -->
+</main>
 
-<!-- ======= Footer ======= -->
-{{ include('layout/footer-index.html') }}
+ {% if pais_id == 1 %}
+        {{ include('layout/footer-pt-index.html') }}
+ {% else %}
+          {{ include('layout/footer-en-index.html') }}
+ {% endif %}
 
-<!-- Vendor JS Files -->
 <script src="../../../assets/index/vendor/jquery/jquery.min.js"></script>
 <script src="../../../assets/index/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="../../../assets/index/vendor/jquery.easing/jquery.easing.min.js"></script>
-<script src="../../../assets/index/vendor/php-email-form/validate.js"></script>
 <script src="../../../assets/index/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 <script src="../../../assets/index/vendor/venobox/venobox.min.js"></script>
 <script src="../../../assets/index/vendor/owl.carousel/owl.carousel.min.js"></script>
 <script src="../../../assets/index/vendor/aos/aos.js"></script>
 
-<!-- Template Main JS File -->
 <script src="../../../assets/index/js/main.js"></script>
 
 </body>

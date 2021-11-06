@@ -8,7 +8,6 @@ use app\models\admin\Blogcategoria;
 use app\session\Session;
 
 class BlogController extends ContainerController {
-
 	public function create() {
 
 		$getcategoria = Blogcategoria::getblogCategoria(Session::get('PAIS_ID'));
@@ -20,9 +19,11 @@ class BlogController extends ContainerController {
 			if (Session::get('ADMIN_SESSION')) {
 				$admin_session = true;
 			}
+
+			$lin = Linguagem::getbloginterior();
+
 			$this->view([
 
-				'title' => " Blog Startup´s arcade ",
 				'usuario_id' => Session::get('USUARIO_ID'),
 				'admin_session' => $admin_session,
 				'candidato_session' => $candidato_session,
@@ -35,7 +36,18 @@ class BlogController extends ContainerController {
 			], 'grupo.bloginterior');
 
 		} else {
+
+			$lin = Linguagem::getblogexterior();
+
 			$this->view([
+				'title' => $lin->title,
+				'betas_version' => $lin->betas_version,
+				'navmenu_1' => $lin->navmenu_1,
+				'navmenu_2' => $lin->navmenu_2,
+				'navmenu_3' => $lin->navmenu_3,
+				'navmenu_4' => $lin->navmenu_4,
+				'navmenu_5' => $lin->navmenu_5,
+
 				'title' => " Blog Startup´s arcade ",
 				'usuario_id' => Session::get('USUARIO_ID'),
 				'admin_session' => $admin_session,

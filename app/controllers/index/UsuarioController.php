@@ -14,6 +14,7 @@ class UsuarioController extends ContainerController {
 		$lin = Linguagem::getIdiomaInscrevase();
 
 		$this->view([
+			'pais_id' => Session::get("PAIS_ID"),
 			'navmenu_1' => $lin->navmenu_1,
 			'navmenu_2' => $lin->navmenu_2,
 			'navmenu_3' => $lin->navmenu_3,

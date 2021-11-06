@@ -65,7 +65,12 @@
 
       </main>
 
-      {{ include('layout/footer.html') }}
+{{ include('layout/nav-dashboard-end.html') }}
+   {% if pais_id == 1 %}
+        {{ include('layout/footer-pt.html') }}
+ {% else %}
+  {{ include('layout/footer-en.html') }}
+ {% endif %}
 
 
 

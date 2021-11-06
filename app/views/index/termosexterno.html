@@ -61,14 +61,17 @@
 
       </main>
 
-      {{ include('layout/footer.html') }}
+ {% if pais_id == 1 %}
+        {{ include('layout/footer-pt-index.html') }}
+ {% else %}
+          {{ include('layout/footer-en-index.html') }}
+ {% endif %}
 
 
 
 
 
       <script type="text/javascript" src="../assets/js/jquery-3.2.1.min.js"></script>
-      <script type="text/javascript" src="../assets/js/materialize.min.js"></script>
       <script type="text/javascript" src="../assets/js/animacao.js"></script>
 
 
