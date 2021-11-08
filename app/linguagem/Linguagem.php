@@ -57,12 +57,12 @@ class Linguagem {
 		return new $class();
 	}
 
-	public static function getIdiomaBlogArtigoInterior() {
+	public static function getartigointerior() {
 		$idioma = Linguagem::getIdiomaSession();
 		$class = "app\linguagem\\" . $idioma . "\blogartigointerno" . $idioma;
 		return new $class();
 	}
-	public static function getIdiomaBlogArtigoExterior() {
+	public static function getartigoexterior() {
 		$idioma = Linguagem::getIdiomaSession();
 		$class = "app\linguagem\\" . $idioma . "\blogartigoexterior" . $idioma;
 		return new $class();
@@ -88,6 +88,22 @@ class Linguagem {
 	public static function getblogexterior() {
 		$idioma = Linguagem::getIdiomaSession();
 		$class = "app\linguagem\\" . $idioma . "\blogexterior" . $idioma;
+		return new $class();
+	}
+
+	public static function getacademy() {
+		$idioma = Linguagem::getIdiomaSession();
+		$class = "app\linguagem\\" . $idioma . "\academy" . $idioma;
+		return new $class();
+	}
+	public static function getacademycategoria() {
+		$idioma = Linguagem::getIdiomaSession();
+		$class = "app\linguagem\\" . $idioma . "\academycategoria" . $idioma;
+		return new $class();
+	}
+	public static function getacademyartigo() {
+		$idioma = Linguagem::getIdiomaSession();
+		$class = "app\linguagem\\" . $idioma . "\academyartigo" . $idioma;
 		return new $class();
 	}
 

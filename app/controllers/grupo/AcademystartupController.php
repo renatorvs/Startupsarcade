@@ -7,7 +7,8 @@ use app\models\admin\Blog;
 use app\models\admin\Blogcategoria;
 use app\session\Session;
 
-class BlogController extends ContainerController {
+class AcademystartupController extends ContainerController {
+
 	public function create() {
 
 		$getcategoria = Blogcategoria::getblogCategoria(Session::get('PAIS_ID'));
@@ -20,10 +21,10 @@ class BlogController extends ContainerController {
 				$admin_session = true;
 			}
 
-			$lin = Linguagem::getbloginterior();
+			$lin = Linguagem::getacademy();
 
 			$this->view([
-
+				'title' => $lin->title,
 				'usuario_id' => Session::get('USUARIO_ID'),
 				'admin_session' => $admin_session,
 				'candidato_session' => $candidato_session,
@@ -33,34 +34,8 @@ class BlogController extends ContainerController {
 				'pais_id' => Session::get("PAIS_ID"),
 				'NotsGrupo' => getNotificantionGrupo(Session::get('USUARIO_ID')),
 				'NotsMessagem' => getNotificantionMessagem(Session::get('USUARIO_ID')),
-			], 'grupo.bloginterior');
+			], 'grupo.academy');
 
-		} else {
-
-			$lin = Linguagem::getblogexterior();
-
-			$this->view([
-				'title' => $lin->title,
-				'betas_version' => $lin->betas_version,
-				'navmenu_1' => $lin->navmenu_1,
-				'navmenu_2' => $lin->navmenu_2,
-				'navmenu_3' => $lin->navmenu_3,
-				'navmenu_4' => $lin->navmenu_4,
-				'navmenu_5' => $lin->navmenu_5,
-				'header_h1' => $lin->header_h1,
-				'header_h2' => $lin->header_h2,
-				'header_button' => $lin->header_button,
-
-				'title' => " Blog Startup´s arcade ",
-				'usuario_id' => Session::get('USUARIO_ID'),
-				'admin_session' => $admin_session,
-				'candidato_session' => $candidato_session,
-				'getblogcategorias' => $getcategoria,
-				'postBlog' => $postBlog,
-				'postBlogDestaque' => $postBlogDestaque,
-				'pais_id' => Session::get("PAIS_ID"),
-
-			], 'index.blogexterior');
 		}
 	}
 
@@ -77,7 +52,7 @@ class BlogController extends ContainerController {
 				$admin_session = true;
 			}
 
-			$lin = Linguagem::getartigointerior();
+			$lin = Linguagem::getacademyartigo();
 
 			$this->view([
 				'title' => " Artigo: " . $blogLoad_id[0]['post_titulo'],
@@ -105,48 +80,13 @@ class BlogController extends ContainerController {
 				'NotsMessagem' => getNotificantionMessagem(Session::get('USUARIO_ID')),
 				'getblogcategorias' => $getcategoria,
 
-			], 'grupo.blogartigointerno');
+			], 'grupo.academyartigo');
 
-		} else {
-			$lin = Linguagem::getartigoexterior();
-
-			$this->view([
-
-				'title' => " Article: " . $blogLoad_id[0]['post_titulo'],
-				'navmenu_1' => $lin->navmenu_1,
-				'navmenu_2' => $lin->navmenu_2,
-				'navmenu_3' => $lin->navmenu_3,
-				'navmenu_4' => $lin->navmenu_4,
-				'navmenu_5' => $lin->navmenu_5,
-				'html_lang' => $lin->html_lang,
-				'meta_charset' => $lin->meta_charset,
-				'description' => $lin->description,
-				'keywords' => $lin->keywords,
-				'author' => $lin->author,
-				'btn_voltar' => $lin->btn_voltar,
-				'blog_categoria' => $lin->blog_categoria,
-				'blog_artigo' => $lin->blog_artigo,
-				'blog_Data_post' => $lin->blog_Data_post,
-				'admin_session' => $admin_session,
-				'empresa_session' => $empresa_session,
-				'candidato_session' => $candidato_session,
-				'post_id' => $blogLoad_id[0]['post_id'],
-				'blogcat_nome' => $blogLoad_id[0]['blogcat_nome'],
-				'post_titulo' => $blogLoad_id[0]['post_titulo'],
-				'post_subtitulo' => $blogLoad_id[0]['post_subtitulo'],
-				'blog_text' => $blogLoad_id[0]['blog_text'],
-				'blog_date' => $blogLoad_id[0]['blog_date'],
-				'blog_img' => $blogLoad_id[0]['blog_img'],
-				'pais_id' => Session::get("PAIS_ID"),
-
-				'getcategoria' => $getcategoria,
-
-			], 'index.blogartigoexterno');
 		}
 
 	}
 
-	public function blogcategoria($request) {
+	public function academycategoria($request) {
 
 		$blogcat_id = $request->parameter;
 
@@ -157,6 +97,7 @@ class BlogController extends ContainerController {
 			$blogCategoria = FALSE;
 
 		}
+
 		$getcategoria = Blogcategoria::getblogCategoria(Session::get('PAIS_ID'));
 		//debug($getcategoria);
 		if (Session::get('USUARIO_ID') OR Session::get('ADMIN_SESSION')) {
@@ -164,7 +105,7 @@ class BlogController extends ContainerController {
 				$admin_session = true;
 			}
 
-			$lin = Linguagem::getbloginterior();
+			$lin = Linguagem::getacademycategoria();
 
 			$this->view([
 				'header_h1' => $lin->header_h1,
@@ -196,56 +137,13 @@ class BlogController extends ContainerController {
 				'pais_id' => Session::get("PAIS_ID"),
 				'NotsGrupo' => getNotificantionGrupo(Session::get('USUARIO_ID')),
 				'NotsMessagem' => getNotificantionMessagem(Session::get('USUARIO_ID')),
-			], 'grupo.blogcategoriainterior');
-
-		} else {
-
-			$lin = Linguagem::getblogexterior();
-			//debug($blogCategoria);
-
-			$this->view([
-				'pais_id' => Session::get("PAIS_ID"),
-				'betas_version' => $lin->betas_version,
-				'navmenu_1' => $lin->navmenu_1,
-				'navmenu_2' => $lin->navmenu_2,
-				'navmenu_3' => $lin->navmenu_3,
-				'navmenu_4' => $lin->navmenu_4,
-				'navmenu_5' => $lin->navmenu_5,
-				'title' => $lin->title . $blogCategoria_nome[0]['blogcat_nome'],
-				'html_lang' => $lin->html_lang,
-				'meta_charset' => $lin->meta_charset,
-				'description' => $lin->description,
-				'keywords' => $lin->keywords,
-				'author' => $lin->author,
-				'header_h1' => $lin->header_h1,
-				'header_h2' => $lin->header_h2,
-				'header_button' => $lin->header_button,
-
-				'btn_excluir' => $lin->btn_excluir,
-				'btn_editar' => $lin->btn_editar,
-				'btn_a_continue' => $lin->btn_a_continue,
-				'btn_a_destaque' => $lin->btn_a_destaque,
-				'btn_artigo' => $lin->btn_artigo,
-				'btn_a_ir_blog' => $lin->btn_a_ir_blog,
-				'categoria_artigo' => $lin->categoria_artigo,
-				'nao_ha_artigo' => $lin->nao_ha_artigo,
-				'continue_lendo' => $lin->continue_lendo,
-				'categoria_nome' => $blogCategoria_nome[0]['blogcat_nome'],
-				'haBlogCategoria' => $blogCategoria,
-				'admin_session' => $admin_session,
-				'empresa_session' => $empresa_session,
-				'candidato_session' => $candidato_session,
-				'blogCategoria' => $blogCategoria,
-				'getcategoria' => $getcategoria,
-				'pais_id' => Session::get("PAIS_ID"),
-
-			], 'index.blogcategoriaexterior');
+			], 'grupo.academycategoria');
 
 		}
 
 	}
 
-	public function blogdestaque() {
+	public function academydestaque() {
 
 		if (Session::get('USUARIO_ID') OR Session::get('ADMIN_SESSION')) {
 			redirecionar("/adminlogin/admin");
@@ -277,33 +175,8 @@ class BlogController extends ContainerController {
 				'NotsGrupo' => getNotificantionGrupo(Session::get('USUARIO_ID')),
 				'NotsMessagem' => getNotificantionMessagem(Session::get('USUARIO_ID')),
 
-			], 'grupo.blogdestaqueinterior');
+			], 'grupo.academydestaque');
 
-		} else {
-			$lin = Linguagem::getBlogExterior();
-
-			$this->view([
-				'header_h1' => $lin->header_h1,
-				'header_h2' => $lin->header_h2,
-				'header_button' => $lin->header_button,
-
-				'html_lang' => $lin->html_lang,
-				'meta_charset' => $lin->meta_charset,
-				'description' => $lin->description,
-				'keywords' => $lin->keywords,
-				'author' => $lin->author,
-				'btn_excluir' => $lin->btn_excluir,
-				'btn_editar' => $lin->btn_editar,
-				'btn_a_continue' => $lin->btn_a_continue,
-				'btn_a_destaque' => $lin->btn_a_destaque,
-				'btn_artigo' => $lin->btn_artigo,
-				'btn_a_add_artigo' => $lin->btn_a_add_artigo,
-
-				'admin_session' => $admin_session,
-				'getBlogDestaque' => $getBlogDestaque,
-				'pais_id' => Session::get("PAIS_ID"),
-
-			], 'index.blogdestaqueexterior');
 		}
 
 	}

@@ -2,7 +2,7 @@
     <!DOCTYPE html>
 <html lang="{{html_lang}}">
 <head>
-  <meta charset="{{meta_charse}}">
+  <meta charset="{{meta_charset}}">
   <meta name="description" content="{{description}}">
   <meta name="keywords" content="{{keywords}}">
   <meta name="author" content="{{author}}">
@@ -36,17 +36,6 @@
         </section>
         <nav class="nav-menu d-none d-lg-block">
           <ul>
-            <li class="drop-down"><a href="">sobre</a>
-              <ul>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
-                <li class="drop-down"><a href="#">Deep Drop Down</a>
-                  <ul>
-                    <li><a href="#">Deep Drop Down 5</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
            <li><a href="#services">{{navmenu_1}}</a></li>
 
               <li><a href="#portfolio">{{navmenu_2}}</a></li>
@@ -57,10 +46,6 @@
         </nav>
 
         <section class="header-social-links">
-          <a href="#" class="twitter"><i class="icofont-twitter"></i></a>
-          <a href="#" class="facebook"><i class="icofont-facebook"></i></a>
-          <a href="#" class="instagram"><i class="icofont-instagram"></i></a>
-          <a href="#" class="linkedin"><i class="icofont-linkedin"></i></i></a>
         </section>
 
       </section>
@@ -72,9 +57,9 @@
       <article class="row">
        <section class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="fade-up">
         <section>
-          <h1>Conheça nosso blog.</h1>
-          <h2> Dicas e testos para auxiliar a criar seu negocio ou acha um socio</h2>
-          <a href="#about" class="btn-get-started scrollto">inscreva- se </a>
+          <h1>{{header_h1}}</h1>
+          <h2> {{header_h2}}</h2>
+          <a href="#about" class="btn-get-started scrollto">{{header_button}} </a>
         </section>
       </section>
       <figure class="col-lg-4 order-1 order-lg-2 hero-img" data-aos="fade-left">
@@ -152,7 +137,7 @@
             </h3>
             <section class="mb-1 text-muted">{{post.blog_date | date("m/d/y")}}</section>
             <p class="card-text mb-auto">{{post.post_subtitulo}}.</p>
-              <a href="/blog/show/{{post.blogpost_id}} " class="btn btn-primary btn-sm"> ver artigo </a>
+              <a href="/blog/show/{{post.blogpost_id}}" class="btn btn-outline-secondary btn-sm"> ver artigo </a>
             {% if admin_session  %}
             <section class="card-body">
              <a href="/adminpostblog/destroy/{{post.blogpost_id}}" class="btn btn-danger btn-sm"> excluir </a>

@@ -1,86 +1,124 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="{{html_lang}}">
 <head>
-  <meta charset="{{meta_charse}}">
+  <meta charset="{{meta_charset}}">
   <meta name="description" content="{{description}}">
   <meta name="keywords" content="{{keywords}}">
   <meta name="author" content="{{author}}">
-    <link rel="icon" type="imagem/png" href="/imagens/meufavicon.png" />
 
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap-reboot.css">
-      <link rel="stylesheet" href="../../assets/css/layout/layout.css">
-      <link rel="stylesheet" href="../../assets/css/layout/footer.css">
-      <link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-      <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-      <title> {{title}} </title>
-      <link href="../../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
-    </head>
-    <body id="page-top">
-      <header>
-        {% if pais_id == 1 %}
+  <title>{{title}}</title>
+  <link rel="icon" type="imagem/png" href="/imagens/meufavicon.png" />
 
-        {{ include('layout/nav-header-portugues.html') }}
-        {% else %}
-        {{ include('layout/nav-header-ingles.html') }}
-        {% endif %}
+  <link href="../../assets/index/img/favicon.png" rel="icon">
+  <link href="../../assets/index/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="../../assets/index/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../assets/index/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="../../assets/index/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../../assets/index/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="../../assets/index/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="../../assets/index/vendor/aos/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/layout/footer.css">
+  <link href="../../../assets/index/css/style.css" rel="stylesheet">
+</head>
+<body>
 
 
-      </header>
-      <main>
-        {% if pais_id == 1 %}
-        {{ include('layout/nav-dashboard-portugues.html') }}
-        {% else %}
-        {{ include('layout/nav-dashboard-ingles.html') }}
-        {% endif %}
-
-
-        <section class="container">
-
-          <section  class="container">
-            
-            <a href="/blog/create"class="btn btn-primary btn-sm">{{a_ir_blog}}</a>
-            <br><br>
-            <section class="row">
-              <article class="col-md-8 blog-main">
-                <h3   class="pb-3 mb-4 font-italic border-bottom">
-                 {{h3_categoria}}: {{blogcat_nome}}
-               </h3>
-               <section class="blog-post">
-                <h2 class="blog-post-title">{{h2_artigo}}: {{post_titulo}}</h2>
-                <h3>{{post_subtitulo}}</h3>
-                <p class="blog-post-meta">Data post: {{blog_date}} </p>
-                <hr>
-                <p>{{blog_text}} <br></p>
-              </section>
-              <figure>
-
-                <img src="../../public/assets/user_images/{{blog_img}}">
-              </figure>
-              <br> <hr>
-            </article> 
-          </section>
+  <header id="header" class="fixed-top">
+   
+    <section class="container d-flex ">
+      <section class="logo mr-auto">
+        <figure>
+          <a href="/">
+            <img src="../../assets/Logotipo/logo.svg"  alt="onclickup logo" class="width=device-width" width="180vm"></a>
+          </figure>
         </section>
-      </section>
+        <nav class="nav-menu d-none d-lg-block">
+          <ul>
+           <li><a href="#services">{{navmenu_1}}</a></li>
+
+           <li><a href="#portfolio">{{navmenu_2}}</a></li>
+           <li><a href="/usuario/show">{{navmenu_3}}</a></li>
+           <li><a href="/entrar/show">{{navmenu_4}}</a></li>
+           <li><a href="#contact">{{navmenu_5}}</a></li>
+         </ul>
+       </nav>
+
+       <section class="header-social-links">
+       </section>
+
+     </section>
+
+   </header>
+
+   
+
+
+
+   <main id="main">
+    <section style="margin-bottom: 10%;">
+
     </section>
 
-  </main>
+
+    <section class="container">
+      <section class="nav-scroller py-1 mr-2">
+        <nav class="nav d-flex justify-content-between">  
+         {% for blogcategoria in  getcategoria %}           
+         <a class="p-2 text-muted" href="/blog/blogcategoria/{{blogcategoria.blogcat_id}}"> {{blogcategoria.blogcat_nome|e}}</a>
+
+         {% endfor %}
+       </nav>
+       <hr>
+       {% if admin_session  %}
+       <a href="/adminpostblog/create" class="btn btn-outline-secondary"> Adicionar novo artigo ao blog </a>
+
+       {% endif %}
+     </section>
+     
+     <a href="/blog/create"class="btn btn-primary btn-sm">{{btn_voltar}}</a>
+     <br><br>
+     <section class="row">
+      <article class="col-md-8 blog-main">
+        <h3   class="pb-3 mb-4 font-italic border-bottom">
+         {{blog_categoria}}: {{blogcat_nome}}
+         
+
+       </h3>
+       <section class="blog-post">
+        <h2 class="blog-post-title">{{blog_artigo}}: {{post_titulo}}</h2>
+        <h3>{{post_subtitulo}}</h3>
+        <p class="blog-post-meta">Data post: {{blog_date}} </p>
+        <hr>
+        <p>{{blog_text}} <br></p>
+      </section>
+      <figure>
+
+        <img src="../../public/assets/user_images/{{blog_img}}">
+      </figure>
+      <br> <hr>
+    </article> 
+  </section>
+</section>
+</section>
+
+</main>
 
 
 
- {% if pais_id == 1 %}
-        {{ include('layout/footer-pt-index.html') }}
- {% else %}
-          {{ include('layout/footer-en-index.html') }}
- {% endif %}
+{% if pais_id == 1 %}
+{{ include('layout/footer-pt-index.html') }}
+{% else %}
+{{ include('layout/footer-en-index.html') }}
+{% endif %}
 
-  <script src="../../assets/vendor/chart.js/Chart.min.js"></script>
-  <script src="../../assets/js/demo/chart-area-demo.js"></script>
-  <script src="../../assets/js/demo/chart-pie-demo.js"></script>
-  <script src="../../assets/vendor/jquery/jquery.min.js"></script>
-  <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
-  <script src="../../assets/js/sb-admin-2.min.js"></script>
+<script src="../../assets/vendor/chart.js/Chart.min.js"></script>
+<script src="../../assets/js/demo/chart-area-demo.js"></script>
+<script src="../../assets/js/demo/chart-pie-demo.js"></script>
+<script src="../../assets/vendor/jquery/jquery.min.js"></script>
+<script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="../../assets/js/sb-admin-2.min.js"></script>
 
 </body>
 
