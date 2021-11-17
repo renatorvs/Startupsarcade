@@ -18,7 +18,7 @@ public $btn_excluir = "Excluir";
 
  public $btn_a_ir_blog = "ir para o  blog";
  public $categoria_artigo = "Categoria artigo";
- public $nao_ha_artigo =  "Não_ha_artigo com essa categoria ainda";
- public $continue_lendo = "Continue_lendo";
+ public $nao_ha_artigo =  "Não ha artigo com essa categoria ainda";
+ public $continue_lendo = "Continue lendo";
 
 }

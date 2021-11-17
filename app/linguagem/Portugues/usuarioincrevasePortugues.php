@@ -2,12 +2,13 @@
 
 namespace app\linguagem\Portugues;
 
-class InscrevasePortugues extends Portugues {
+class usuarioincrevasePortugues extends Portugues {
 	public $html_lang = "pt-br";
 	public $meta_charset = "UTF-8";
 	public $description = "";
 	public $keywords = "";
 	public $author = "";
+	public $title = "startup´s arcade | increva-se";
 	public $navmenu_1 = "Sobre";
 	public $navmenu_2 = "Blog";
 	public $navmenu_3 = "Increva-se";
@@ -20,8 +21,6 @@ class InscrevasePortugues extends Portugues {
 	public $login_nome_usuario = "nome sobrenome";
 	public $login_nome__reploceholder = "nome e sobre nome";
 	public $login_senha = "senha";
-	public $pf = "Pessoa fisica (CPF)";
-	public $pj = "Pessoa juridica (CNPJ)";
 	public $email_foto = "Foto";
 	public $login_frash = "senha ou usuario incorretos";
 	public $button_inscrever = "inscrever";

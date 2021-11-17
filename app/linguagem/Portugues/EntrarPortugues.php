@@ -2,14 +2,14 @@
 
 namespace app\linguagem\Portugues;
 
-class EntrarPortugues extends Portugues {
+class entrarportugues extends Portugues {
 
 	public $navmenu_1 = "Sobre";
 	public $navmenu_2 = "Blog";
 	public $navmenu_3 = "Increva-se";
 	public $navmenu_4 = "Entrar";
 	public $navmenu_5 = "Contato";
-	public $title = "entrar";
+	public $title = "startup´s arcade | entrar";
 
 	public $login_h4 = "Efetue o login";
 	public $login_a_strong = "Não tem cadastro ?";

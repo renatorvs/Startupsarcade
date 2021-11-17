@@ -11,10 +11,12 @@ use app\validate\Validate;
 class UsuarioController extends ContainerController {
 
 	public function show() {
-		$lin = Linguagem::getIdiomaInscrevase();
+		$lin = Linguagem::getInscrevase();
 
 		$this->view([
 			'pais_id' => Session::get("PAIS_ID"),
+			'title' => $lin->title,
+
 			'navmenu_1' => $lin->navmenu_1,
 			'navmenu_2' => $lin->navmenu_2,
 			'navmenu_3' => $lin->navmenu_3,

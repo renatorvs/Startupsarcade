@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 22-Abr-2021 às 04:23
+-- Tempo de geração: 17-Nov-2021 às 05:28
 -- Versão do servidor: 10.4.10-MariaDB
 -- versão do PHP: 7.2.25
 
@@ -59,7 +59,14 @@ CREATE TABLE IF NOT EXISTS `adm` (
   `car_id` int(11) DEFAULT NULL,
   `admuser_id` int(11) NOT NULL,
   PRIMARY KEY (`adm_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `adm`
+--
+
+INSERT INTO `adm` (`adm_id`, `adm_nome`, `adm_email`, `adm_senha`, `car_id`, `admuser_id`) VALUES
+(1, 'Renato Vieira', 'nato.re.vieira@gmail.com', '$2y$12$6LnTXgn3kZAaxmbK62b96OfhqSiiGWeag47TDYioBmL6OGfrTdjZ.', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -77,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `blog` (
   `blog_categoria_id` int(11) NOT NULL,
   `blogpost_id` int(11) NOT NULL,
   PRIMARY KEY (`blog_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `blog`
@@ -85,7 +92,10 @@ CREATE TABLE IF NOT EXISTS `blog` (
 
 INSERT INTO `blog` (`blog_id`, `blogdestaque_id`, `blog_text`, `blog_date`, `blog_img`, `blog_categoria_id`, `blogpost_id`) VALUES
 (1, 2, ' \r\n                         TESTE\r\n                      \r\n                      ', '2021-03-25', 'logo02.svg1616713812', 1, 4),
-(3, 1, ' \r\n                         \r\n                         \r\n                         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\n quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\n consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\n cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\n proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n                         loremggg\r\n                      \r\n                      \r\n                      \r\n                      \r\n                      ', '2021-04-05', '1617663374undraw_posting_photo.svg', 8, 6);
+(3, 1, ' \r\n                         \r\n                         \r\n                         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\n quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\n consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\n cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\n proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n                         loremggg\r\n                      \r\n                      \r\n                      \r\n                      \r\n                      ', '2021-04-05', '1617663374undraw_posting_photo.svg', 8, 6),
+(4, 1, ' ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss\r\n                    ', '2021-11-02', '', 2, 1),
+(5, 2, ' \r\n     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.               ', '2021-11-02', '', 2, 2),
+(6, 4, ' \r\n                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.   ', '2021-11-02', '', 1, 3);
 
 -- --------------------------------------------------------
 
@@ -106,27 +116,14 @@ CREATE TABLE IF NOT EXISTS `blog_categoria` (
 --
 
 INSERT INTO `blog_categoria` (`blogcat_id`, `blogcat_nome`, `blogpais_id`) VALUES
-(1, 'Mundo', 1),
-(2, 'BR', 1),
-(3, 'Tecnologia', 1),
-(4, 'Design', 1),
-(5, 'Cultura', 1),
-(6, 'Para Empresa', 1),
-(7, 'boas praticas', 1),
-(8, 'Empreendedorismo', 1),
-(9, 'Politicas', 1),
-(10, 'Negocios', 1),
-(11, 'World', 2),
-(12, 'USA', 2),
-(13, 'Designer', 2),
-(14, 'Technology', 2),
-(15, 'Project', 2),
-(16, 'Culture', 2),
-(17, 'For Company', 2),
-(18, 'Good habits', 2),
-(19, 'Entrepreneurs', 2),
-(20, 'Policies', 2),
-(21, 'Business', 2);
+(1, 'Planejamento', 1),
+(2, 'Administração', 1),
+(3, 'Gestão IT', 1),
+(4, 'Negocios', 1),
+(5, 'Management', 2),
+(6, 'Planning', 2),
+(7, 'Good habits', 2),
+(8, 'Business', 2);
 
 -- --------------------------------------------------------
 
@@ -261,6 +258,69 @@ INSERT INTO `categoria_grupo` (`cg_id`, `cg_nome`, `cg_pais_id`) VALUES
 (61, 'Fashion', 2),
 (62, 'Architecture, Decoration, Design', 2),
 (63, 'Graphic design', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `categoria_publicidade`
+--
+
+DROP TABLE IF EXISTS `categoria_publicidade`;
+CREATE TABLE IF NOT EXISTS `categoria_publicidade` (
+  `catpu_id` int(11) NOT NULL AUTO_INCREMENT,
+  `catpu_nome` varchar(100) NOT NULL,
+  `catpu_commisao` varchar(100) NOT NULL,
+  PRIMARY KEY (`catpu_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=44 DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `categoria_publicidade`
+--
+
+INSERT INTO `categoria_publicidade` (`catpu_id`, `catpu_nome`, `catpu_commisao`) VALUES
+(1, 'Beleza', '15%'),
+(2, 'Dispositivos Amazon (Echo)', '14%'),
+(3, 'Bebês', '13%'),
+(4, 'Alimentos e Bebidas', '13%'),
+(5, 'Cuidados Pessoais', '13%'),
+(6, 'Pet Shop', '13%'),
+(7, 'Bebida Alcoólicas', '13%'),
+(8, 'Livros Digitais (eBooks)', '13%'),
+(9, 'Roupas', '13%'),
+(10, 'Dispositivos Amazon (Echo)', '14%'),
+(11, 'Bebês', '13%'),
+(12, 'Alimentos e Bebidas', '13%'),
+(13, 'Cuidados Pessoais', '13%'),
+(14, 'Pet Shop', '13%'),
+(15, 'Bebida Alcoólicas', '13%'),
+(16, 'Livros Digitais (eBooks)', '13%'),
+(17, 'Roupas', '13%'),
+(18, 'Calçados', '13%'),
+(19, 'Relógios', '13%'),
+(20, 'Bolsas, Malas e Mochilas', '13%'),
+(21, 'Livros físicos', '10%'),
+(22, 'Automotivo', '10%'),
+(23, 'Dispositivos Amazon (Kindle e Fire TV)', '9,5%'),
+(24, 'Brinquedos e Jogos', '9%'),
+(25, 'Ferramentas e Construção', '9%'),
+(26, 'Jardim e Piscina', '9%'),
+(27, 'Casa', '9%'),
+(28, 'Cozinha', '9%'),
+(29, 'Câmeras e Fotos', '8,5%'),
+(30, 'Eletrônicos', '8,5%'),
+(31, 'TV e Áudio', '8,5%'),
+(32, 'Papelaria e Escritório', '8,5%'),
+(33, 'Computadores e Informática', '8,5%'),
+(34, 'Instrumentos Musicais', '8,5%'),
+(35, 'Eletrodomésticos', '8%'),
+(36, 'Móveis', '8%'),
+(37, 'CD e Vinil', '8%'),
+(38, 'DVD e Blu-ray', '8%'),
+(39, 'Aventura e Lazer', '8%'),
+(40, 'Esportes', '8%'),
+(41, 'Games e Consoles', '8%'),
+(42, 'Outros', '8%'),
+(43, 'Celulares e Comunicação', '7%');
 
 -- --------------------------------------------------------
 
@@ -493,15 +553,17 @@ CREATE TABLE IF NOT EXISTS `grupo` (
   `gr_private` int(11) NOT NULL,
   `gr_pais` int(11) NOT NULL,
   PRIMARY KEY (`gr_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `grupo`
 --
 
 INSERT INTO `grupo` (`gr_id`, `gr_nome`, `gr_descricao`, `gr_cidade`, `gr_estado`, `gr_foto`, `grcat_id`, `gr_private`, `gr_pais`) VALUES
+(4, 'teste', 'testede quabtidade ', 'Mauá', 'sp', '', 11, 0, 1),
 (2, 'usuario1 -  2', 'descricao', 'Mauá', 'SP', 'starstup-logo.PNG', 11, 0, 1),
-(3, 'usuario -3', 'descricao', 'Aruja', 'SP', 'starstup-logo.PNG', 2, 1, 1);
+(3, 'usuario -3', 'descricao', 'Aruja', 'SP', 'starstup-logo.PNG', 2, 1, 1),
+(6, 'teste 2', 'teste 2', 'Santo andre', 'sp', '', 11, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -517,7 +579,7 @@ CREATE TABLE IF NOT EXISTS `grupoadmin` (
   `adm_grupo_id` int(11) NOT NULL,
   `adm_flag` int(11) NOT NULL,
   PRIMARY KEY (`admin_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=44 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `grupoadmin`
@@ -529,6 +591,7 @@ INSERT INTO `grupoadmin` (`admin_id`, `adm_user_id`, `adm_sub_user_id`, `adm_gru
 (35, 3, 1, 2, 1),
 (36, 3, 3, 3, 1),
 (39, 3, 1, 3, 1),
+(43, 3, 2, 2, 0),
 (42, 3, 2, 2, 0);
 
 -- --------------------------------------------------------
@@ -568,7 +631,14 @@ CREATE TABLE IF NOT EXISTS `grupo_mensagem_link` (
   `gmdl_id` int(11) NOT NULL,
   `gml_view` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`gml_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `grupo_mensagem_link`
+--
+
+INSERT INTO `grupo_mensagem_link` (`gml_id`, `gml_date`, `gml_grupo_id`, `gml_remetente_id`, `gml_msn_id`, `gmdl_id`, `gml_view`) VALUES
+(1, '2021-09-18 17:15:54', 2, 2, 1, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -588,9 +658,11 @@ CREATE TABLE IF NOT EXISTS `grupo_usuario` (
 --
 
 INSERT INTO `grupo_usuario` (`gu_accept`, `gu_user_id`, `gu_grupo_id`) VALUES
-(1, 2, 3),
+(2, 2, 2),
 (2, 3, 2),
+(2, 2, 4),
 (2, 3, 3),
+(2, 2, 6),
 (2, 1, 3),
 (2, 1, 2);
 
@@ -607,7 +679,14 @@ CREATE TABLE IF NOT EXISTS `mensagem` (
   `msn_date` timestamp NOT NULL DEFAULT current_timestamp(),
   `msn_type` int(11) NOT NULL,
   PRIMARY KEY (`msn_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `mensagem`
+--
+
+INSERT INTO `mensagem` (`msn_id`, `msn_nome`, `msn_date`, `msn_type`) VALUES
+(1, 'Ola sou novo no grupo ', '2021-09-18 17:15:54', 1);
 
 -- --------------------------------------------------------
 
@@ -622,7 +701,7 @@ CREATE TABLE IF NOT EXISTS `mensagem_dados_link` (
   `mdl_grupo_id` int(11) NOT NULL,
   `mdl_user_id` int(11) NOT NULL,
   PRIMARY KEY (`mdl_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `mensagem_dados_link`
@@ -630,7 +709,8 @@ CREATE TABLE IF NOT EXISTS `mensagem_dados_link` (
 
 INSERT INTO `mensagem_dados_link` (`mdl_id`, `mdl_nome`, `mdl_grupo_id`, `mdl_user_id`) VALUES
 (1, 'renato d', 1, 3),
-(2, 'Renato Vieira', 1, 1);
+(2, 'Renato Vieira', 1, 1),
+(3, 'Renato u', 2, 2);
 
 -- --------------------------------------------------------
 
@@ -674,7 +754,16 @@ CREATE TABLE IF NOT EXISTS `post` (
   `tipo_post_id` int(11) NOT NULL,
   `userpost_id` int(11) NOT NULL,
   PRIMARY KEY (`post_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `post`
+--
+
+INSERT INTO `post` (`post_id`, `post_titulo`, `post_subtitulo`, `post_description`, `postcat_id`, `tipo_post_id`, `userpost_id`) VALUES
+(1, 'titlolo_ administração ', 'subtitulo_no page blog', ' ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss\r\n                    ', 0, 5, 1),
+(2, 'Titulo_em desta', 'subtitulo e desataque', ' \r\n     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.               ', 0, 5, 1),
+(3, 'titulo artigo no learning', 'subtitulo', ' \r\n                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.   ', 0, 5, 1);
 
 -- --------------------------------------------------------
 

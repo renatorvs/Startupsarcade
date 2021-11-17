@@ -22,9 +22,9 @@ class Linguagem {
 
 	}
 
-	public static function getIdiomaEntrar() {
+	public static function getEntrar() {
 		$idioma = Linguagem::getIdiomaSession();
-		$class = "app\linguagem\\" . $idioma . "\Entrar" . $idioma;
+		$class = "app\linguagem\\" . $idioma . "\\entrar" . $idioma;
 		return new $class();
 	}
 
@@ -34,9 +34,9 @@ class Linguagem {
 		return new $class();
 	}
 
-	public static function getIdiomaInscrevase() {
+	public static function getInscrevase() {
 		$idioma = Linguagem::getIdiomaSession();
-		$class = "app\linguagem\\" . $idioma . "\Inscrevase" . $idioma;
+		$class = "app\linguagem\\" . $idioma . "\\usuarioincrevase" . $idioma;
 		return new $class();
 	}
 

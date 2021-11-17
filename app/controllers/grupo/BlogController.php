@@ -50,7 +50,8 @@ class BlogController extends ContainerController {
 				'header_h1' => $lin->header_h1,
 				'header_h2' => $lin->header_h2,
 				'header_button' => $lin->header_button,
-
+				'btn_a_continue' => $lin->btn_a_continue,
+				'continue_lendo' => $lin->continue_lendo,
 				'title' => " Blog Startup´s arcade ",
 				'usuario_id' => Session::get('USUARIO_ID'),
 				'admin_session' => $admin_session,

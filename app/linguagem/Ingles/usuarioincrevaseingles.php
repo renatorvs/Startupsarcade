@@ -2,7 +2,7 @@
 
 namespace app\linguagem\ingles;
 
-class Inscrevaseingles extends Ingles {
+class usuarioincrevaseingles extends Ingles {
 	public $description = "";
 	public $keywords = "";
 	public $author = "";
