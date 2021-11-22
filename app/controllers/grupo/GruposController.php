@@ -34,7 +34,7 @@ class GruposController extends ContainerController {
 		}
 		//debug($lin);
 
-		//debug(Session::get('USUARIO_ID'));
+		//debug(getNotificantionGrupo(Session::get('USUARIO_ID')));
 
 		$this->view([
 

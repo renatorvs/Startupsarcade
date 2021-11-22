@@ -4,6 +4,14 @@
 drop view usuariogrupos;
 CREATE VIEW usuariogrupos as SELECT * from categoria_grupo cg inner join grupo g on cg.cg_id = g.grcat_id inner join grupo_usuario gu on g.gr_id = gu.gu_grupo_id inner join usuario u on gu.gu_user_id = u.us_id inner join grupoadmin ga on ga.adm_sub_user_id =u.us_id
 
+
+drop view usuariogrupospendentes;
+CREATE VIEW usuariogrupospendentes as SELECT * from categoria_grupo cg 
+inner join grupo g on cg.cg_id = g.grcat_id 
+inner join grupo_usuario gu on g.gr_id = gu.gu_grupo_id 
+inner join usuario u on gu.gu_user_id = u.us_id left join grupoadmin ga on ga.adm_sub_user_id =u.us_id
+
+
 drop view dadosGrupo;
 CREATE VIew dadosGrupo as SELECT * from categoria_grupo cg inner join grupo g on cg.cg_id = g.grcat_id inner join grupoadmin ga on ga.adm_grupo_id = g.gr_id
 

@@ -20,7 +20,6 @@ class MeusgruposController extends ContainerController {
 		} else {
 			redirecionar("/");
 		}
-
 		$lin = Linguagem::getMeusGrupos();
 
 		$grupoAll = CategoriaGrupo::CategoriaGrupoAll(Session::get('PAIS_ID'));

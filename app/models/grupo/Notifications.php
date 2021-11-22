@@ -37,23 +37,18 @@ class Notifications {
 
 		));
 
-		$query_3 = $banco->select("SELECT us_id, us_nome,  gr_nome   FROM usuariogrupos WHERE adm_flag = 2  and gu_accept = 2", array(
-			":adm_sub_user_id" => $us_id,
+		$query_3 = $banco->select("SELECT * FROM usuariogrupos WHERE gu_accept = 1 and adm_flag = 1 group by gr_id", array(
+			":us_id" => $us_id,
 
 		));
 
-		return $result = array_merge($query_1, $query_2, $query_3);
+		//$query_4 = $banco->select("SELECT us_id, us_nome,  gr_nome   FROM usuariogrupos WHERE adm_flag = 2  and gu_accept = 2", array(
+		//	":adm_sub_user_id" => $us_id,
 
-	}
+		//));
 
-	//CANDIDATO
-	public static function getNotificantionEmpresaContacta($cand_usuario) {
-		$banco = new Banco();
+		return $result = array_merge($query_1);
 
-		return $banco->select("SELECT * FROM vaga_contactar_candidato  WHERE vcc_cand_usuario_id = :vcc_cand_usuario_id GROUP BY vcc_vaga_id DESC ", array(
-			":vcc_cand_usuario_id" => $cand_usuario,
-
-		));
 	}
 
 	public static function getNotificantionSeguir($us_seguindo_id_usuario) {
