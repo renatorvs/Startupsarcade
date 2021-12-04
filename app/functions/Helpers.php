@@ -91,16 +91,6 @@ function getNotificantionShere($sessionUsuario_id) {
 
 }
 
-function getNotificantionContratouServico($sessionUsuario_id) {
-	$get = Notifications::getNotificantionContratouServico($sessionUsuario_id);
-	if ($get) {
-		return $get;
-	} else {
-		return FALSE;
-	}
-
-}
-
 function getNotificantionMessagem($sessionUsuario_id) {
 	$get = Notifications::getNotificantionMessagem($sessionUsuario_id);
 	if ($get) {

@@ -32,7 +32,6 @@ class GruposController extends ContainerController {
 		if ($notsMessagem[0]) {
 			$haNotsMessagem = true;
 		}
-		//debug($lin);
 
 		//debug(getNotificantionGrupo(Session::get('USUARIO_ID')));
 
@@ -45,7 +44,6 @@ class GruposController extends ContainerController {
 			'explore_h4' => $lin->explore_h4,
 			'btn_a_ver_grupo' => $lin->btn_a_ver_grupo,
 			'grupos' => $lin->grupos,
-
 			'pref' => Session::get("USER_PREFERENCIAS"),
 			'grupoAll' => $grupoAll,
 			'pais_id' => Session::get("PAIS_ID"),
@@ -63,6 +61,11 @@ class GruposController extends ContainerController {
 			Session::get('US_NOME');
 		} else {
 			redirecionar("/");
+		}
+		$notsMessagem = getNotificantionMessagem(Session::get('USUARIO_ID'));
+
+		if ($notsMessagem[0]) {
+			$haNotsMessagem = true;
 		}
 
 		$getGruposAll = Grupo::getGruposAll($grcat_id->parameter, Session::get('PAIS_ID'));
@@ -222,6 +225,12 @@ class GruposController extends ContainerController {
 			redirecionar("/");
 		}
 
+		$notsMessagem = getNotificantionMessagem(Session::get('USUARIO_ID'));
+
+		if ($notsMessagem[0]) {
+			$haNotsMessagem = true;
+		}
+
 		$lin = Linguagem::getGrupoInformacoes();
 
 		$grupo = new Grupo();
@@ -280,7 +289,7 @@ class GruposController extends ContainerController {
 			'estrategias' => $lin->estrategias,
 			'projecao_financeira' => $lin->projecao_financeira,
 			'captacao_fundos' => $lin->captacao_fundos,
-			'publico_alvo' => $lin->Publico_alvo,
+			'publico_alvo' => $lin->publico_alvo,
 			'btn_criar_proposta' => $lin->btn_criar_proposta,
 			'btn_editar_proposta' => $lin->btn_editar_proposta,
 
@@ -315,6 +324,13 @@ class GruposController extends ContainerController {
 		} else {
 			redirecionar("/");
 		}
+
+		$notsMessagem = getNotificantionMessagem(Session::get('USUARIO_ID'));
+
+		if ($notsMessagem[0]) {
+			$haNotsMessagem = true;
+		}
+
 		$lin = Linguagem::getGrupoInformacoes();
 
 		$grupo = new Grupo();
@@ -352,6 +368,12 @@ class GruposController extends ContainerController {
 			Session::get('US_NOME');
 		} else {
 			redirecionar("/");
+		}
+
+		$notsMessagem = getNotificantionMessagem(Session::get('USUARIO_ID'));
+
+		if ($notsMessagem[0]) {
+			$haNotsMessagem = true;
 		}
 
 		$lin = Linguagem::getgrupospendentes();

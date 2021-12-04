@@ -296,7 +296,6 @@ class Grupo {
 
 	public static function meusGruposPendentes($gu_user_id) {
 		$banco = new Banco();
-// SELECT g.gr_id, g.gr_nome, g.gr_descricao, gr_cidade, g.gr_estado, g.gr_foto, g.grcat_id, g.gr_private, count(gu.gu_user_id) AS quantidade FROM grupo g LEFT JOIN grupo_usuario gu ON g.gr_id = gu.gu_grupo_id WHERE  grcat_id  = :grcat_id and   gr_pais = :gr_pais GROUP BY g.gr_id, g.gr_nome ORDER BY g.gr_id
 		return $banco->select("SELECT * FROM usuariogrupospendentes  WHERE gu_user_id = :gu_user_id  and gu_accept = 1",
 			array(
 				":gu_user_id" => $gu_user_id,
@@ -306,7 +305,7 @@ class Grupo {
 	public static function meusGruposConvites($gu_user_id) {
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM usuariogrupospendentes WHERE gr_id IN (SELECT gr_id FROM `usuariogrupospendentes` WHERE gu_user_id = :gu_user_id and adm_flag = 1) and gu_accept = 1 group by gr_id",
+		return $banco->select("SELECT * FROM usuariogrupospendentes WHERE gr_id IN (SELECT gr_id FROM `usuariogrupos` WHERE gu_user_id = :gu_user_id and adm_flag = 1) and gu_accept = 1 group by us_id",
 			array(
 				":gu_user_id" => $gu_user_id,
 			));

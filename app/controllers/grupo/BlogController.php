@@ -19,6 +19,11 @@ class BlogController extends ContainerController {
 			if (Session::get('ADMIN_SESSION')) {
 				$admin_session = true;
 			}
+			$notsMessagem = getNotificantionMessagem(Session::get('USUARIO_ID'));
+
+			if ($notsMessagem[0]) {
+				$haNotsMessagem = true;
+			}
 
 			$lin = Linguagem::getbloginterior();
 
@@ -77,6 +82,11 @@ class BlogController extends ContainerController {
 			if (Session::get('ADMIN_SESSION')) {
 				$admin_session = true;
 			}
+			$notsMessagem = getNotificantionMessagem(Session::get('USUARIO_ID'));
+
+			if ($notsMessagem[0]) {
+				$haNotsMessagem = true;
+			}
 
 			$lin = Linguagem::getartigointerior();
 
@@ -103,7 +113,7 @@ class BlogController extends ContainerController {
 				'blog_img' => $blogLoad_id[0]['blog_img'],
 				'pais_id' => Session::get("PAIS_ID"),
 				'NotsGrupo' => getNotificantionGrupo(Session::get('USUARIO_ID')),
-				'NotsMessagem' => getNotificantionMessagem(Session::get('USUARIO_ID')),
+				'notsMessagem' => getNotificantionMessagem(Session::get('USUARIO_ID')),
 				'getblogcategorias' => $getcategoria,
 
 			], 'grupo.blogartigointerno');
@@ -163,6 +173,11 @@ class BlogController extends ContainerController {
 		if (Session::get('USUARIO_ID') OR Session::get('ADMIN_SESSION')) {
 			if (Session::get('ADMIN_SESSION')) {
 				$admin_session = true;
+			}
+			$notsMessagem = getNotificantionMessagem(Session::get('USUARIO_ID'));
+
+			if ($notsMessagem[0]) {
+				$haNotsMessagem = true;
 			}
 
 			$lin = Linguagem::getbloginterior();

@@ -27,26 +27,41 @@
 				{% if  NotsGrupo %}
 
 				{% for grupo in  NotsGrupo %} 
-				<a class="dropdown-item d-flex align-items-center" href="/usuario/perfil/{{grupo.us_usuario_id}}">
+							
+
+				<a class="dropdown-item d-flex align-items-center" href="/meusgrupos/grupos/">
 					<div class="dropdown-list-image mr-3">
 						<img class="rounded-circle" src="../../assets/user_images/{{grupo.gr_foto}}" alt="">
-						<div class="status-indicator bg-success"></div> 
+						<div class="status-indicator bg-success">
+							
+						</div> 
 					</div>
 					<div class="font-weight-bold">
 
-						{% if  grupo.accept == 2 and grupo.adm_user_id != grupo.adm_sub_user_id  %}
+						{% if grupo.gu_accept == 1 %}
+						<div>
+							<span class="text-primary">
+						{{grupo.us_nome}} enviou convite para participar do grupo </span>{{grupo.gr_nome}}
+						</div>
+					
+						
+						{% elseif  grupo.gu_accept == 2 and grupo.gu_user_id == grupo.adm_user_id  %}
 
-						<div class="text-truncate"><span class="text-success"> Você foi aceito no  (1)</span>{{grupo.gr_nome}}</div>
-						{% elseif grupo.accept == 3 %}
+						<div> <span class="text-success"> chat disponivel no grupo </span>  {{grupo.gr_nome}} 
 
-						<div class="text-truncate"> <span class="text-danger"> Você foi bloqueado no grupo (2) </span> {{ grupo.gr_nome}}</div>
+						</div>
+						
+						{% elseif  grupo.gu_accept == 2 and grupo.gu_user_id != grupo.adm_user_id  %}
 
-						{% elseif  grupo.adm_flag == 1 and grupo.adm_user_id != grupo.adm_sub_user_id %}
-						<div class="text-truncate"><span class="text-primary">Você se tornou administrador do grupo (3)</span> {{ grupo.gr_nome}} </div>
+						<div> <span class="text-primary">  O {{grupo.us_nome}} foi aceito no grupo </span>
+						{{ grupo.gr_nome}} </div>
+
+
 						{% endif %}
 
 					</div>
 				</a>
+
 				{% endfor %}
 				{% else  %}
 

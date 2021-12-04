@@ -2,14 +2,19 @@
 
 
 drop view usuariogrupos;
-CREATE VIEW usuariogrupos as SELECT * from categoria_grupo cg inner join grupo g on cg.cg_id = g.grcat_id inner join grupo_usuario gu on g.gr_id = gu.gu_grupo_id inner join usuario u on gu.gu_user_id = u.us_id inner join grupoadmin ga on ga.adm_sub_user_id =u.us_id
+CREATE VIEW usuariogrupos as SELECT * from categoria_grupo cg 
+inner join grupo g on cg.cg_id = g.grcat_id 
+inner join grupo_usuario gu on g.gr_id = gu.gu_grupo_id 
+inner join usuario u on gu.gu_user_id = u.us_id 
+left join grupoadmin ga on ga.adm_sub_user_id =u.us_id
 
 
 drop view usuariogrupospendentes;
 CREATE VIEW usuariogrupospendentes as SELECT * from categoria_grupo cg 
 inner join grupo g on cg.cg_id = g.grcat_id 
 inner join grupo_usuario gu on g.gr_id = gu.gu_grupo_id 
-inner join usuario u on gu.gu_user_id = u.us_id left join grupoadmin ga on ga.adm_sub_user_id =u.us_id
+inner join usuario u on gu.gu_user_id = u.us_id 
+left join grupoadmin ga on ga.adm_sub_user_id =u.us_id
 
 
 drop view dadosGrupo;
@@ -32,17 +37,21 @@ CREATE VIEW blog_post_categoria AS SELECT* FROM post p inner join blog b on p.po
 
 CREATE VIEW usuario_notificantions_mensagem AS SELECT * FROM `grupo` g inner join grupo_mensagem_link gml on g.gr_id = gml.gml_grupo_id inner join mensagem m on gml.gml_msn_id = m.msn_id
 
-1
-nato.re.vieira@gmail.com
-
-2
-usuario@gmail.com
-
-3
-usuario1@gmail.com
 
 
-dadosgrupo
+QUERY PARA NOTIFICAÇÃO 
+	SELECT `us_id`, `us_nome`, `gr_id`,`gr_nome`,`gr_foto`,`gu_accept`,`gu_user_id`,`adm_flag` FROM usuariogrupospendentes
+	 WHERE gr_id IN (SELECT gr_id FROM `usuariogrupos` 
+	 	WHERE gu_user_id = 3 and adm_flag = 1) and gu_accept = 1 GROUP BY us_id 
+	 union all SELECT `us_id`, `us_nome`, `gr_id`,`gr_nome`,`gr_foto`,`gu_accept`,`gu_user_id`,`adm_flag` FROM usuariogrupospendentes 
+	 WHERE gr_id IN (SELECT gr_id FROM `usuariogrupos` 
+	 	WHERE gu_user_id = 3 ) and `gu_accept` = 2 GROUP BY us_id ORDER by gu_user_id, us_id DESC
 
+QUERY PARA NOTIFICAÇÃO  SERAPADA
+	SELECT * FROM usuariogrupospendentes 
+	WHERE gr_id IN (SELECT gr_id FROM `usuariogrupos` 
+		WHERE gu_user_id = 3 and adm_flag = 1) and gu_accept = 1;
 
-usuariogrupos
+	SELECT * FROM usuariogrupospendentes 
+	WHERE gr_id IN (SELECT gr_id FROM `usuariogrupos` 
+		WHERE gu_user_id = 3 ) and `gu_accept` = 2 GROUP BY us_id ORDER by gu_user_id, us_id DESC

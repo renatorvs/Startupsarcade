@@ -493,15 +493,8 @@ class MeusgruposController extends ContainerController {
 			redirecionar("/meusgrupos/grupousuariosadmin/$v->gu_grupo_id");
 		}
 
-		///debug($v);
-		if ($v->admin == 1) {
-			Grupo::updateAdmin(0, $v->adm_sub_user_id, $v->gu_grupo_id);
-			redirecionar("/meusgrupos/grupousuarios/$v->gu_grupo_id");
-
-		} else if ($v->admin == 0) {
-			Grupo::updateAdmin(1, $v->adm_sub_user_id, $v->gu_grupo_id);
-
-		}
+		Grupo::updateAdmin($v->admin, $v->adm_sub_user_id, $v->gu_grupo_id);
+		redirecionar("/meusgrupos/grupousuarios/$v->gu_grupo_id");
 
 		redirecionar("/meusgrupos/grupousuariosadmin/$v->gu_grupo_id");
 

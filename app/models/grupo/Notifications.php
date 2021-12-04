@@ -15,39 +15,21 @@ class Notifications {
 		));
 	}
 
-	// notificação responsavel por trazer os usarios que se cadastraram
-	// // SELECT us_id, us_nome,  gr_nome   FROM usuariogrupos WHERE adm_sub_user_id = :adm_sub_user_id  and adm_user_id != :adm_sub_user_id and and accept = 2
-
-	// notifica os Usuarios bloqueado
-	// // SELECT us_id, us_nome,  gr_nome   FROM usuariogrupos WHERE us_id=  :us_id  and accept = 3
-
-	// notifica que o usuario foi aprovado no grupo;
-	// //SELECT us_id, us_nome,  gr_id, gr_nome   FROM usuariogrupos WHERE us_id=  :us_id and us_id=  :us_id  and accept = 2
-
-	public static function getNotificantionGrupo($us_id) {
+	public static function getNotificantionGrupo($gu_user_id) {
 		$banco = new Banco();
 
-		$query_1 = $banco->select("SELECT us_id, us_nome,  gr_id, gr_nome   FROM usuariogrupos WHERE us_id =  :us_id  and gu_accept = 2", array(
-			":us_id" => $us_id,
+		$query_1 = $banco->select("SELECT `us_id`, `us_nome`, `gr_id`,`gr_nome`,`gr_foto`,`gu_accept`,`gu_user_id`,`adm_flag`, `adm_user_id` FROM usuariogrupospendentes
+			WHERE gr_id IN (SELECT gr_id FROM `usuariogrupos`
+	 		WHERE gu_user_id = :gu_user_id and adm_flag = 1) and gu_accept = 1 GROUP BY us_id
+	 		union all SELECT `us_id`, `us_nome`, `gr_id`,`gr_nome`,`gr_foto`,`gu_accept`,`gu_user_id`,`adm_flag`, `adm_user_id` FROM usuariogrupospendentes
+	 		WHERE gr_id IN (SELECT gr_id FROM `usuariogrupos`
+	 		WHERE gu_user_id = :gu_user_id ) and `gu_accept` = 2 GROUP BY us_id, gr_id ORDER by gu_user_id, gr_nome, us_id ASC", array(
+
+			":gu_user_id" => $gu_user_id,
 
 		));
 
-		$query_2 = $banco->select("SELECT us_id, us_nome,  gr_nome   FROM usuariogrupos WHERE us_id=  :us_id  and gu_accept = 3 group by gr_id DESC", array(
-			":us_id" => $us_id,
-
-		));
-
-		$query_3 = $banco->select("SELECT * FROM usuariogrupos WHERE gu_accept = 1 and adm_flag = 1 group by gr_id", array(
-			":us_id" => $us_id,
-
-		));
-
-		//$query_4 = $banco->select("SELECT us_id, us_nome,  gr_nome   FROM usuariogrupos WHERE adm_flag = 2  and gu_accept = 2", array(
-		//	":adm_sub_user_id" => $us_id,
-
-		//));
-
-		return $result = array_merge($query_1);
+		return $query_1;
 
 	}
 
