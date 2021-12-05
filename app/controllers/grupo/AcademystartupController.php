@@ -25,6 +25,7 @@ class AcademystartupController extends ContainerController {
 
 			$this->view([
 				'title' => $lin->title,
+				'continue_lendo' => $lin->continue_lendo,
 				'usuario_id' => Session::get('USUARIO_ID'),
 				'admin_session' => $admin_session,
 				'candidato_session' => $candidato_session,
@@ -111,6 +112,7 @@ class AcademystartupController extends ContainerController {
 				'header_h1' => $lin->header_h1,
 				'header_h2' => $lin->header_h2,
 				'header_button' => $lin->header_button,
+				'continue_lendo' => $lin->continue_lendo,
 
 				'title' => "Artigo categoria",
 				'html_lang' => $lin->html_lang,
@@ -120,7 +122,6 @@ class AcademystartupController extends ContainerController {
 				'author' => $lin->author,
 				'btn_excluir' => $lin->btn_excluir,
 				'btn_editar' => $lin->btn_editar,
-				'btn_a_continue' => $lin->btn_a_continue,
 				'btn_a_destaque' => $lin->btn_a_destaque,
 				'btn_artigo' => $lin->btn_artigo,
 				'btn_a_ir_blog' => $lin->btn_a_ir_blog,
@@ -165,7 +166,6 @@ class AcademystartupController extends ContainerController {
 				'author' => $lin->author,
 				'btn_excluir' => $lin->btn_excluir,
 				'btn_editar' => $lin->btn_editar,
-				'btn_a_continue' => $lin->btn_a_continue,
 				'btn_a_destaque' => $lin->btn_a_destaque,
 				'btn_artigo' => $lin->btn_artigo,
 				'btn_a_add_artigo' => $lin->btn_a_add_artigo,

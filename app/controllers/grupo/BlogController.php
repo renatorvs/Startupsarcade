@@ -29,6 +29,10 @@ class BlogController extends ContainerController {
 
 			$this->view([
 
+				'title' => " Blog Startup´s arcade ",
+				'header_button' => $lin->header_button,
+				'continue_lendo' => $lin->continue_lendo,
+
 				'usuario_id' => Session::get('USUARIO_ID'),
 				'admin_session' => $admin_session,
 				'candidato_session' => $candidato_session,
@@ -55,7 +59,7 @@ class BlogController extends ContainerController {
 				'header_h1' => $lin->header_h1,
 				'header_h2' => $lin->header_h2,
 				'header_button' => $lin->header_button,
-				'btn_a_continue' => $lin->btn_a_continue,
+				'continue_lendo' => $lin->continue_lendo,
 				'continue_lendo' => $lin->continue_lendo,
 				'title' => " Blog Startup´s arcade ",
 				'usuario_id' => Session::get('USUARIO_ID'),
@@ -180,7 +184,7 @@ class BlogController extends ContainerController {
 				$haNotsMessagem = true;
 			}
 
-			$lin = Linguagem::getbloginterior();
+			$lin = Linguagem::getBlogCategoriaInterior();
 
 			$this->view([
 				'header_h1' => $lin->header_h1,
@@ -195,9 +199,8 @@ class BlogController extends ContainerController {
 				'author' => $lin->author,
 				'btn_excluir' => $lin->btn_excluir,
 				'btn_editar' => $lin->btn_editar,
-				'btn_a_continue' => $lin->btn_a_continue,
+				'continue_lendo' => $lin->continue_lendo,
 				'btn_a_destaque' => $lin->btn_a_destaque,
-				'btn_artigo' => $lin->btn_artigo,
 				'btn_a_ir_blog' => $lin->btn_a_ir_blog,
 				'categoria_artigo' => $lin->categoria_artigo,
 				'nao_ha_artigo' => $lin->nao_ha_artigo,
@@ -216,7 +219,7 @@ class BlogController extends ContainerController {
 
 		} else {
 
-			$lin = Linguagem::getblogexterior();
+			$lin = Linguagem::getBlogCategoriaExterior();
 			//debug($blogCategoria);
 
 			$this->view([
@@ -239,9 +242,8 @@ class BlogController extends ContainerController {
 
 				'btn_excluir' => $lin->btn_excluir,
 				'btn_editar' => $lin->btn_editar,
-				'btn_a_continue' => $lin->btn_a_continue,
+				'continue_lendo' => $lin->continue_lendo,
 				'btn_a_destaque' => $lin->btn_a_destaque,
-				'btn_artigo' => $lin->btn_artigo,
 				'btn_a_ir_blog' => $lin->btn_a_ir_blog,
 				'categoria_artigo' => $lin->categoria_artigo,
 				'nao_ha_artigo' => $lin->nao_ha_artigo,
@@ -283,9 +285,8 @@ class BlogController extends ContainerController {
 				'author' => $lin->author,
 				'btn_excluir' => $lin->btn_excluir,
 				'btn_editar' => $lin->btn_editar,
-				'btn_a_continue' => $lin->btn_a_continue,
+				'continue_lendo' => $lin->continue_lendo,
 				'btn_a_destaque' => $lin->btn_a_destaque,
-				'btn_artigo' => $lin->btn_artigo,
 				'btn_a_add_artigo' => $lin->btn_a_add_artigo,
 				'admin_session' => $admin_session,
 				'getBlogDestaque' => $getBlogDestaque,
@@ -310,9 +311,8 @@ class BlogController extends ContainerController {
 				'author' => $lin->author,
 				'btn_excluir' => $lin->btn_excluir,
 				'btn_editar' => $lin->btn_editar,
-				'btn_a_continue' => $lin->btn_a_continue,
+				'continue_lendo' => $lin->continue_lendo,
 				'btn_a_destaque' => $lin->btn_a_destaque,
-				'btn_artigo' => $lin->btn_artigo,
 				'btn_a_add_artigo' => $lin->btn_a_add_artigo,
 
 				'admin_session' => $admin_session,
