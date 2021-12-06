@@ -30,7 +30,6 @@ class usuarioincrevaseingles extends Ingles {
 	public $card_alert_h4 = "login, so you can use our platform";
 	public $card_alert_p = "Post and share business ideas";
 	public $required_senha = "Please enter the password";
-	public $requered_nome = "Please your first and last name
-.";
+	public $requered_nome = "Please your first and last name.";
 
 }

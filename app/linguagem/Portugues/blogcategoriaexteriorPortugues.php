@@ -4,9 +4,7 @@ namespace app\linguagem\portugues;
 
 class blogcategoriaexteriorPortugues extends Portugues{
 
- public $html_lang = "pt-br";
  public $title = "starstup´s arcade | blog categoria";
- public $meta_charset = "UTF-8";
  public $description = "";
  public $keywords = "";
  public $author = "";
@@ -22,6 +20,11 @@ class blogcategoriaexteriorPortugues extends Portugues{
  public $nao_ha_artigo =  "Não ha artigo com essa categoria ainda";
  public $categoria_artigo = "Categoria artigo";
  public $nao_ha_artigo =  "Não ha artigo com essa categoria ainda";
+	public $navmenu_1 = "Sobre";
+	public $navmenu_2 = "Blog";
+	public $navmenu_3 = "Increva-se";
+	public $navmenu_4 = "Entrar";
+	public $navmenu_5 = "Contato";
 
 
 }

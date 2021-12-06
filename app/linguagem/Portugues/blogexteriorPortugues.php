@@ -5,8 +5,6 @@ namespace app\linguagem\portugues;
 class blogexteriorPortugues extends Portugues {
 
 	public $title = "startup´s arcade | blog ";
-	public $html_lang = "pt-br";
-	public $meta_charset = "UTF-8";
 	public $description = "";
 	public $keywords = "";
 	public $author = "";
@@ -25,6 +23,6 @@ class blogexteriorPortugues extends Portugues {
 	public $header_h1 = "Publique e compartilhe ideias de um negocio";
 	public $header_h2 = "Tudo começa uma ideia !";
 	public $entrer_contato = "Entre em  Contato";
-	public $header_button = "inscreva- se";
+	public $header_button = "inscreva-se";
 
 }

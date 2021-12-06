@@ -22,4 +22,6 @@ class Blogcategoriainterioringles extends Ingles {
 
 
 
+
+
 }
