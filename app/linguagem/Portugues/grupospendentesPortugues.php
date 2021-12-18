@@ -3,8 +3,6 @@ namespace app\linguagem\portugues;
 
 class grupospendentesPortugues extends Portugues {
 
-	public $html_lang = "pt-br";
-	public $meta_charset = "UTF-8";
 	public $description = "";
 	public $keywords = "";
 	public $author = "";

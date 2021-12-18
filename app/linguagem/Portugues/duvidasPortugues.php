@@ -4,8 +4,6 @@ namespace app\linguagem\portugues;
 class duvidasPortugues extends Portugues {
 
 	public $title = "startup´s arcade | duvidas ";
-	public $html_lang = "pt-br";
-	public $meta_charset = "UTF-8";
 	public $description = "";
 	public $keywords = "";
 	public $author = "";

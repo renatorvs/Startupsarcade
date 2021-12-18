@@ -2,9 +2,9 @@
 
 namespace app\linguagem\ingles;
 
-class Chatgrupoingles extends Ingles{
+class chatgrupoingles extends Ingles{
 
-  public $title = "startup´s arcade | chat grupo ";
+  public $title = "startup´s arcade | chat group ";
 
   public $description = "";
   public $keywords = "";

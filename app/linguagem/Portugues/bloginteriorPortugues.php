@@ -5,8 +5,6 @@ namespace app\linguagem\portugues;
 class bloginteriorPortugues extends Portugues {
 
 	public $title = "startup´s arcade | blog ";
-	public $html_lang = "pt-br";
-	public $meta_charset = "UTF-8";
 	public $description = "";
 	public $keywords = "";
 	public $author = "";

@@ -16,5 +16,7 @@ class Blogartigoexterioringles extends Ingles {
 	public $navmenu_3 = "sign up";
 	public $navmenu_4 = "login";
 	public $navmenu_5 = "contact";
+	public $conteudo_completo = "Complete content in menu/startup academy";
+	public $conteudo_completo_link = "log in";
 
 }

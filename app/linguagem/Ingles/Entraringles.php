@@ -9,7 +9,7 @@ class Entraringles extends Ingles {
 	public $navmenu_3 = "sign up";
 	public $navmenu_4 = "login";
 	public $navmenu_5 = "contact";
-
+	public $title = "startup´s arcade | log in";
 	public $login_h4 = "Login and connect";
 	public $login_a_strong = "No registration ? Enter here";
 	public $login_a_cadastra_se = "register";
@@ -20,7 +20,6 @@ class Entraringles extends Ingles {
 	public $entrar_com = "enter with";
 	public $button_entrar = "go in";
 	public $login_frash = "Incorrect password or username";
-
 	public $card_alert_h4 = "login, so you can use our platform, 100% free";
 	public $card_alert_p = "Post and share business ideas";
 }

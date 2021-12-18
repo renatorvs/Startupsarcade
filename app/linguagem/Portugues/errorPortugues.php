@@ -4,6 +4,7 @@
 
  class errorPortugues extends Portugues{
 
+public $title = "starstup´s arcade | error ";
 
   public $error_h1_ops = "Oops!";
   public $error_h2_404 = " 404 Não encontrado!";

@@ -16,5 +16,7 @@ class blogartigoexteriorPortugues extends Portugues {
 	public $navmenu_3 = "Increva-se";
 	public $navmenu_4 = "Entrar";
 	public $navmenu_5 = "Contato";
+	public $conteudo_completo = "Conteudo completo em menu/startup academy";
+	public $conteudo_completo_link = "log in";
 
 }

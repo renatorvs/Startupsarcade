@@ -4,7 +4,6 @@ namespace app\linguagem\ingles;
 
 class Learningartigoingles extends Ingles{
       public $title = "starstup´s arcade | article lerning";
-      public $meta_charset = "UTF-8";
       public $description = "";
       public $keywords = "";
       public $author  "";

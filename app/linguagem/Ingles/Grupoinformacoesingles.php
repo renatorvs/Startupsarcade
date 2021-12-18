@@ -4,7 +4,6 @@ namespace app\linguagem\ingles;
 
 class Grupoinformacoesingles extends Ingles{
 
-
   public $title = "starstup´s arcade | information";
   public $description = "";
   public $plano_text_h4 = "Business plan";

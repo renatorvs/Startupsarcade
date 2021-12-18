@@ -4,7 +4,6 @@ namespace app\linguagem\portugues;
 class duvidascategoriaPortugues extends Portugues {
 
 	public $title = "startup´s arcade | duvidas categorias ";
-
 	public $description = "";
 	public $keywords = "";
 	public $btn_a_addduvida = "Adicionar duvida";

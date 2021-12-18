@@ -15,7 +15,6 @@ class grupoPortugues extends Portugues {
 	public $grupo_info = "grupo informações";
 	public $grupo_btn_aderir = "aderir grupo";
 	public $grupo_span = "publicidade";
-
 	public $checkgrupo = "Você já mandou convite para esse grupo";
 	public $conviteenviado = "Pedido enviado";
 	public $checkbloqueado = "Você esta bloquado nesse grupo";

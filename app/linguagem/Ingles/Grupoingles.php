@@ -17,5 +17,12 @@ class Grupoingles extends Ingles{
   public $grupo_info = "group information";
   public $grupo_btn_aderir = "join group";
   public $grupo_span = "publicity";
+  public $checkgrupo = "Você já mandou convite para esse grupo";
+  public $conviteenviado = "Pedido enviado";
+  public $checkbloqueado = "Você esta bloquado nesse grupo";
+  public $pedidoaceito = "Pedido aceito";
+
+
+
 
 }

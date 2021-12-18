@@ -4,6 +4,7 @@
 
  class Erroringles extends Ingles{
 
+public $title = "starstup´s arcade | error ";
 
   public $error_h1_ops = "Oops!";
   public $error_h2_404 = " 404 not found!";

@@ -4,9 +4,7 @@ namespace app\linguagem\portugues;
 
 class grupoinformacoesPortugues extends Portugues {
 
-	public $html_lang = "pt-br";
 	public $title = "starstup´s arcade | informaçoes";
-	public $meta_charset = "UTF-8";
 	public $description = "";
 	public $plano_text_h4 = "Plano de negocios";
 	public $compreensao_de_mercado_text = "Proporciona uma visão clara e objetiva da empresa e do setor, identifica forças, oportunidades, fraquezas e ameaças para o empreendimento.​";

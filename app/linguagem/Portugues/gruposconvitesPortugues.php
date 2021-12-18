@@ -4,8 +4,6 @@ namespace app\linguagem\portugues;
 
 class gruposconvitesPortugues extends Portugues {
 
-	public $html_lang = "pt-br";
-	public $meta_charset = "UTF-8";
 	public $description = "";
 	public $keywords = "";
 	public $author = "";
@@ -16,4 +14,5 @@ class gruposconvitesPortugues extends Portugues {
 	public $nao_ha_convite_h3 = "Não há convites para entrar em seus grupos";
 	public $btn_cancelar = "cancelar";
 	public $btn_aceitar = "aceitar";
+
 }

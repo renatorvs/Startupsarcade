@@ -13,6 +13,6 @@ class Grupousuariosingles extends Ingles{
   public $btn_enviar = "to send";
   //public $btn_perfil = "perfil";
   public $strong_danger = "this user is blocked";
-  public $adm_user = "Administrator";
+  public $adm_user = "administrator";
   public $cod_usuario = "cod user";
 }

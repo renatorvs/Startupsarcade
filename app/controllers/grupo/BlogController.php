@@ -32,7 +32,7 @@ class BlogController extends ContainerController {
 				'title' => " Blog Startup´s arcade ",
 				'header_button' => $lin->header_button,
 				'continue_lendo' => $lin->continue_lendo,
-
+				'conteudo_completo' => $lin->conteudo_completo,
 				'usuario_id' => Session::get('USUARIO_ID'),
 				'admin_session' => $admin_session,
 				'candidato_session' => $candidato_session,
@@ -58,6 +58,8 @@ class BlogController extends ContainerController {
 				'navmenu_5' => $lin->navmenu_5,
 				'header_h1' => $lin->header_h1,
 				'header_h2' => $lin->header_h2,
+				'conteudo_completo' => $lin->conteudo_completo,
+
 				'header_button' => $lin->header_button,
 				'continue_lendo' => $lin->continue_lendo,
 				'continue_lendo' => $lin->continue_lendo,
@@ -95,12 +97,14 @@ class BlogController extends ContainerController {
 			$lin = Linguagem::getartigointerior();
 
 			$this->view([
-				'title' => " Artigo: " . $blogLoad_id[0]['post_titulo'],
+				'title' => " artigo: " . $blogLoad_id[0]['post_titulo'],
 				'html_lang' => $lin->html_lang,
 				'meta_charset' => $lin->meta_charset,
 				'description' => $lin->description,
 				'keywords' => $lin->keywords,
 				'author' => $lin->author,
+				'conteudo_completo' => $lin->conteudo_completo,
+
 				'btn_voltar' => $lin->btn_voltar,
 				'blog_categoria' => $lin->blog_categoria,
 				'blog_artigo' => $lin->blog_artigo,
@@ -135,6 +139,8 @@ class BlogController extends ContainerController {
 				'navmenu_5' => $lin->navmenu_5,
 				'html_lang' => $lin->html_lang,
 				'meta_charset' => $lin->meta_charset,
+				'conteudo_completo' => $lin->conteudo_completo,
+				'conteudo_completo_link' => $lin->conteudo_completo_link,
 				'description' => $lin->description,
 				'keywords' => $lin->keywords,
 				'author' => $lin->author,

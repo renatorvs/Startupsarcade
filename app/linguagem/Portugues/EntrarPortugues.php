@@ -10,7 +10,6 @@ class entrarportugues extends Portugues {
 	public $navmenu_4 = "Entrar";
 	public $navmenu_5 = "Contato";
 	public $title = "startup´s arcade | entrar";
-
 	public $login_h4 = "Efetue o login";
 	public $login_a_strong = "Não tem cadastro ?";
 	public $login_a_cadastra_se = "cadastra-se";
@@ -21,7 +20,6 @@ class entrarportugues extends Portugues {
 	public $entrar_com = "entrar com";
 	public $button_entrar = "entrar";
 	public $login_frash = "senha ou usuario incorretos";
-
 	public $card_alert_h4 = "faz o login, assim poder ultilizar nossa plataforma";
 	public $card_alert_p = "Publique e compartilhe ideias de um negocio";
 }
