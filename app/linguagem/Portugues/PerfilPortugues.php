@@ -4,9 +4,12 @@ namespace app\linguagem\portugues;
 
 class PerfilPortugues extends Portugues {
 
+	public $description = "";
+	public $keywords = "";
+	public $author = "";
 	public $title = "startup´s  arcade | perfil";
 	public $login_tipo_user = "Tipo Usuario";
-	public $login_a_cadastra_se = "Cadastra - se";
+	public $login_a_cadastra_se = "cadastra - se";
 	public $login_nome_usuario = "Nome e sobrenome";
 	public $login_nome_reploceholder = "Nome e sobrenome";
 	public $login_senha = "nova Senha";

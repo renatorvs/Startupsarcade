@@ -4,15 +4,16 @@ namespace app\linguagem\portugues;
 
 class meugrupoinformacoesPortugues extends Portugues {
 
-	public $title = "starstup´s arcade | meus grupos informacoes";
+	public $title = "starstup´s arcade |  grupo informacoes";
 	public $description = "";
-	public $plano_text_h4 = "O que  é plano de negocios ?";
+	public $plano_text_h4 = "O que  é um plano de negocios ?";
+	public $plano_text_resp = "Um plano de negócios é um documento que descreve por escrito os objetivos de um negócio e quais etapas devem ser tomadas para atingir esses objetivos";
 	public $compreensao_de_mercado_text = "Proporciona uma visão clara e objetiva da empresa e do setor, identifica forças, oportunidades, fraquezas e ameaças para o empreendimento.​";
 	public $acompanhamento_text = "Documento centrando todas as estratégias e estudos realizados, facilitando o acompanhamento e direcionamento da empresa";
 	public $estrategias_text = "Defini as melhoes estratégias de comunicação com o público alvo, identifica possíveis direções que a empresa deve seguir.​";
 	public $projecao_financeira_text = "Projecao financeira";
 	public $captacao_fundos_text = "Oferece respaldo de confiança, facilitando a captação de potenciais investidores e parceiros estratégicos";
-	public $Publico_alvo_text = "Publico alvo";
+	public $publico_alvo_text = "O público-alvo é um grupo específico de consumidores com características semelhantes e mais dispostos a adquirir os produtos que uma empresa oferece. É um perfil de pessoas com potencial para se tornarem clientes. Geralmente, um público-alvo é definido por meio de pesquisas e estudos.";
 	public $proposta_para_grupo = "Proposta para grupo";
 	public $categoria = "Categoria";
 	public $editar_h5 = "Edição";
@@ -33,4 +34,7 @@ class meugrupoinformacoesPortugues extends Portugues {
 	public $publico_alvo = "publico alvo";
 	public $btn_criar_proposta = "criar proposta";
 	public $btn_editar_proposta = "editar proposta";
+	public $captacao_fundo_required = "Por favor, informe o(a)  a captaçãode fundos";
+	public $h5_n_ha_propostas = "não há prpopstas";
+
 }

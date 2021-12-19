@@ -3,8 +3,6 @@
 namespace app\linguagem\Portugues;
 
 class usuarioincrevasePortugues extends Portugues {
-	public $html_lang = "pt-br";
-	public $meta_charset = "UTF-8";
 	public $description = "";
 	public $keywords = "";
 	public $author = "";
@@ -32,5 +30,7 @@ class usuarioincrevasePortugues extends Portugues {
 	public $card_alert_p = "Publique e compartilhe ideias de um negocio";
 	public $required_senha = "Por favor, informe a senha.";
 	public $requered_nome = "Por favor, seu nome e sobrenome.";
+	public $pf = "Pessoa fisica (CPF)";
+	public $pj = "Pessoa juridica (CNPJ)";
 
 }

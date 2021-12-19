@@ -4,9 +4,12 @@ namespace app\linguagem\ingles;
 
 class Grupoinformacoesingles extends Ingles{
 
-  public $title = "starstup´s arcade | information";
+ 
+public $title = "starstup´s arcade | information";
   public $description = "";
-  public $plano_text_h4 = "Business plan";
+  public $plano_text_h4 = "what is business plan ?";
+  public $plano_text_resp = "A business plan is a document that describes in writing the goals of a business and what steps must be taken to achieve those goals";
+
   public $compreensao_de_mercado_text - "Provides a clear and objective view of the company and the sector, identifies strengths, opportunities, weaknesses and threats to the enterprise.​";
   public $acompanhamento_text = "Document centering all the strategies and studies carried out, facilitating the monitoring and direction of the company";
   public $estrategias_text = "Defining the best communication strategies with the target audience, identifies possible directions that the company should follow.​";

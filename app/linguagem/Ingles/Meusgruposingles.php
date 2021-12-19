@@ -2,8 +2,8 @@
 <?php
 
 namespace app\linguagem\ingles;
-
 class Meusgruposingles extends Ingles{
+	public $title = "starstup´s arcade | my groups ";=
 	public $description = "";
 	public $keywords = "";
 	public $author = "";

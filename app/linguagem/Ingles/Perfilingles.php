@@ -3,6 +3,7 @@
 namespace app\linguagem\ingles;
 
 class Perfilingles extends Ingles{
+	
 	public $description = "";
 	public $keywords = "";
 	public $author = "";
@@ -20,14 +21,14 @@ class Perfilingles extends Ingles{
 	public $senha_old = "old password";
 	public $button_inscrever = "Inscrever";
 	public $required_foto = "Please insert a photo";
-	public $card_alert_h4 = "Log in so you can use our platform
-";
+	public $card_alert_h4 = "Log in so you can use our platform";
 	public $card_alert_p = "Post and share business ideas";
 	public $required_senha = "Please enter the password";
 	public $requered_nome = "Please your first and last name";
 	public $login_aceito = "Password changed successfully.";
 	public $btn_senha = "edit";
-	public $btn_senha_editar = "edit password
-";
+	public $btn_senha_editar = "edit password";
+
+
 
 }

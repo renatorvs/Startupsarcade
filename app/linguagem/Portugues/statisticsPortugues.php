@@ -3,9 +3,7 @@ namespace app\linguagem\Portugues;
 
 class statisticsPortugues extends Portugues {
 
-	public $html_lang = "pt-br";
 	public $title = "starstup´s arcade | dashboard";
-	public $meta_charset = "UTF-8";
 	public $description = "";
 	public $h1_empreendedores = "Empreendedores Brasileiros";
 	public $p_perfil = "perfis e percepções";

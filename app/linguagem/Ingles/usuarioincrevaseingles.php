@@ -6,14 +6,15 @@ class usuarioincrevaseingles extends Ingles {
 	public $description = "";
 	public $keywords = "";
 	public $author = "";
+	public $title = "startup´s arcade | increva-se";
 	public $navmenu_1 = "about";
 	public $navmenu_2 = "Blog";
 	public $navmenu_3 = "sign up";
 	public $navmenu_4 = "login";
 	public $navmenu_5 = "contact";
-
 	public $login_h4 = "Inscreva-se ! Para poder ultilizar nossa plataforma";
 	public $login_tipo_user = "Tipo Usuario";
+	public $login_p = "Você podera explorar a versão gratuita.";
 	public $login_a_cadastra_se = "register";
 	public $login_nome_usuario = "name and last name";
 	public $login_nome__reploceholder = "name and last name";

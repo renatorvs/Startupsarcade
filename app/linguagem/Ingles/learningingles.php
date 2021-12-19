@@ -8,8 +8,8 @@ class Learningingles extends Ingles {
 	public $description = "";
 	public $keywords = "";
 	public $author = "";
-	public $learning_h5 = "Artigos aprimorar suas habilidades";
-	public $learning_p = "";
+	public $learning_h5 = "Articles enhance your skills";
+	public $learning_p = "share ideas, just eat!";
 	public $btn_excluir = "delete";
 	public $btn_editar = "edit";
 	public $btn_a_continue = "Keep reading...";

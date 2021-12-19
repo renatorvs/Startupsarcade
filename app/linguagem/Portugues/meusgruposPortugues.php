@@ -4,6 +4,9 @@ namespace app\linguagem\portugues;
 
 class meusgruposPortugues extends Portugues {
 	public $title = "starstup´s arcade | meus grupos ";
+	public $description = "";
+	public $keywords = "";
+	public $author = "";
 	public $titulo_h4 = "Meus grupos";
 	public $atencao_h5 = "Atenção, você que criou o grupo você é o unico capaz de exclui-lo (existe sem você) e você não pode ser bloqueado, você é admin  vitalicio";
 	public $projeto_statup = "nome do projeto";
