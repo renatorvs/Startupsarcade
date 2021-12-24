@@ -142,11 +142,9 @@
             <h3 class="mb-0">
               {{post.post_titulo}}
             </h3>
-            <section class="mb-1 text-muted">
-              
-            {{post.blog_date | date("m/d/y")}}
-          </section>
-            <p class="card-text mb-auto">{{post.post_subtitulo}}.</p>
+            <section class="mb-1 text-muted">{{post.blog_date | date("m/d/y")}}</section>
+            <p class="card-text mb-auto"> <strong>{{post.post_subtitulo}}.</strong></p> <hr>
+            <p>{{post.post_description}} </p>
               <a href="/blog/show/{{post.blogpost_id}}" class="btn btn-outline-secondary btn-sm"> {{continue_lendo}} </a>
             {% if admin_session  %}
             <section class="card-body">

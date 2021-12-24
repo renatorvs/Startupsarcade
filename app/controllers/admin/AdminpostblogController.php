@@ -36,6 +36,7 @@ class AdminpostblogController extends ContainerController {
 			'blogdest_nome' => $getBlogLoad_id[0]['blogdest_nome'],
 			'blogcat_id' => $getBlogLoad_id[0]['blogcat_id'],
 			'blogcat_nome' => $getBlogLoad_id[0]['blogcat_nome'],
+			'post_paisid' => $getBlogLoad_id[0]['post_paisid'],
 			'pais_id' => Session::get("PAIS_ID"),
 
 		], 'admin.admineditpostblog');
@@ -68,14 +69,16 @@ class AdminpostblogController extends ContainerController {
 		$val = Validate::validate([
 			'post_titulo' => 'string',
 			'post_subtitulo' => 'string',
-			'blog_text' => 'string',
+			'post_description' => 'string',
 			'blog_text' => 'string',
 			'blog_date' => 'date',
 			'blogdestaque_id' => 'integer',
 			'blogcat_id' => 'integer',
+			'post_paisid' => 'integer',
 
 		]);
 
+		//debug($val);
 		if ($_FILES['blog_img']) {
 			$blog_img = Imagem::uploadImage($_FILES['blog_img']);
 		}
@@ -84,10 +87,11 @@ class AdminpostblogController extends ContainerController {
 		$blog = new Blog();
 		$blog->setPost_titulo($val->post_titulo);
 		$blog->setPost_subtitulo($val->post_subtitulo);
-		$blog->setPost_description($val->blog_text);
+		$blog->setPost_description($val->post_description);
 		$blog->setCat_id(0);
 		$blog->setTipo_post_id(5);
 		$blog->setUser_id($session_id);
+		$blog->setPost_paisid($val->post_paisid);
 
 		$blog->adicionaPost();
 
@@ -119,10 +123,13 @@ class AdminpostblogController extends ContainerController {
 			'blog_id' => 'integer',
 			'post_titulo' => 'string',
 			'post_subtitulo' => 'string',
+			'post_description' => 'string',
+			'post_paisid' => 'integer',
 			'blog_text' => 'string',
 			'blogdestaque_id' => 'integer',
 			'blog_date' => 'date',
 			'blogcat_id' => 'integer',
+			'post_paisid' => 'integer',
 
 		]);
 
@@ -138,6 +145,7 @@ class AdminpostblogController extends ContainerController {
 		$blog->setPost_titulo($val->post_titulo);
 		$blog->setPost_subtitulo($val->post_subtitulo);
 		$blog->setPost_description($val->blog_text);
+		$blog->setPost_paisid($val->post_paisid);
 
 		$blog->setCat_id(0);
 		$blog->setTipo_post_id(5);

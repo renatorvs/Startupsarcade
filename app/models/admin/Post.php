@@ -12,6 +12,15 @@ abstract class Post {
 	private $tipo_post_id;
 	private $user_id;
 	private $post_ender_id;
+	private $post_paisid;
+
+	public function getPost_paisid() {
+		return $this->post_paisid;
+	}
+
+	public function setPost_paisid($post_paisid) {
+		$this->post_paisid = $post_paisid;
+	}
 
 	public function getPost_ender_id() {
 		return $this->post_ender_id;

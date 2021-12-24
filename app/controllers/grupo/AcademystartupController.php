@@ -24,6 +24,8 @@ class AcademystartupController extends ContainerController {
 			$lin = Linguagem::getacademy();
 
 			$this->view([
+				'btn_excluir' => $lin->btn_excluir,
+				'btn_editar' => $lin->btn_editar,
 				'title' => $lin->title,
 				'continue_lendo' => $lin->continue_lendo,
 				'usuario_id' => Session::get('USUARIO_ID'),
@@ -54,7 +56,7 @@ class AcademystartupController extends ContainerController {
 			}
 
 			$lin = Linguagem::getacademyartigo();
-
+			//debug($blogLoad_id);
 			$this->view([
 				'title' => " Artigo: " . $blogLoad_id[0]['post_titulo'],
 				'html_lang' => $lin->html_lang,
@@ -73,7 +75,7 @@ class AcademystartupController extends ContainerController {
 				'blogcat_nome' => $blogLoad_id[0]['blogcat_nome'],
 				'post_titulo' => $blogLoad_id[0]['post_titulo'],
 				'post_subtitulo' => $blogLoad_id[0]['post_subtitulo'],
-				'blog_text' => $blogLoad_id[0]['blog_text'],
+				'post_description' => $blogLoad_id[0]['post_description'],
 				'blog_date' => $blogLoad_id[0]['blog_date'],
 				'blog_img' => $blogLoad_id[0]['blog_img'],
 				'pais_id' => Session::get("PAIS_ID"),

@@ -133,7 +133,7 @@ class Blog extends Post {
 	public function adicionaPost() {
 		$banco = new Banco();
 
-		$result = $banco->query(" INSERT INTO post (post_titulo, post_subtitulo, post_description, postcat_id, tipo_post_id, userpost_id) VALUES  (:post_titulo, :post_subtitulo, :post_description, :postcat_id, :tipo_post_id, :userpost_id) ", array(
+		$result = $banco->query(" INSERT INTO post (post_titulo, post_subtitulo, post_description, postcat_id, tipo_post_id, userpost_id, post_paisid) VALUES  (:post_titulo, :post_subtitulo, :post_description, :postcat_id, :tipo_post_id, :userpost_id: post_paisid) ", array(
 
 			":post_titulo" => $this->getPost_titulo(),
 			":post_subtitulo" => $this->getPost_subtitulo(),
@@ -141,6 +141,7 @@ class Blog extends Post {
 			":postcat_id" => $this->getCat_id(),
 			":tipo_post_id" => $this->getTipo_post_id(),
 			":userpost_id" => $this->getUser_id(),
+			":post_paisid" => $this->getPost_paisid(),
 
 		));
 	}
@@ -185,28 +186,35 @@ class Blog extends Post {
 
 	}
 
-	public static function getPostBlog() {
+	public static function getPostBlog($post_paisid) {
 
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM blog_post_categoria WHERE  blogdestaque_id  IN(1, 3)  ");
+		return $banco->select("SELECT * FROM blog_post_categoria WHERE  blogdestaque_id  IN(1, 3)
+			and post_paisid = :post_paisid"
+			, array(
+				':post_paisid' => $post_paisid,
+			));
 
 	}
 
-	public static function getDestaque() {
+	public static function getDestaque($post_paisid) {
 
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM blog_destaque");
-
+		return $banco->select("SELECT * FROM blog_destaque", array(
+			':post_paisid' => $post_paisid,
+		));
 	}
 
 	public static function getPostBlogCategoria($blog_categoria_id) {
 
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM blog_post_categoria   WHERE blog_categoria_id = :blog_categoria_id ", array(
+		return $banco->select("SELECT * FROM blog_post_categoria   WHERE blog_categoria_id = :blog_categoria_id
+			and post_paisid = :post_paisid  ", array(
 			':blog_categoria_id' => $blog_categoria_id,
+			':post_paisid' => $post_paisid,
 		));
 
 	}

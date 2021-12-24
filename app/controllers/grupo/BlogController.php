@@ -28,6 +28,8 @@ class BlogController extends ContainerController {
 			$lin = Linguagem::getbloginterior();
 
 			$this->view([
+				'btn_excluir' => $lin->btn_excluir,
+				'btn_editar' => $lin->btn_editar,
 
 				'title' => " Blog Startup´s arcade ",
 				'header_button' => $lin->header_button,
