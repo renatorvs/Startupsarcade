@@ -133,7 +133,7 @@ class Blog extends Post {
 	public function adicionaPost() {
 		$banco = new Banco();
 
-		$result = $banco->query(" INSERT INTO post (post_titulo, post_subtitulo, post_description, postcat_id, tipo_post_id, userpost_id, post_paisid) VALUES  (:post_titulo, :post_subtitulo, :post_description, :postcat_id, :tipo_post_id, :userpost_id: post_paisid) ", array(
+		$result = $banco->query(" INSERT INTO post (post_titulo, post_subtitulo, post_description, postcat_id, tipo_post_id, userpost_id, post_paisid) VALUES  (:post_titulo, :post_subtitulo, :post_description, :postcat_id, :tipo_post_id, :userpost_id: :post_paisid) ", array(
 
 			":post_titulo" => $this->getPost_titulo(),
 			":post_subtitulo" => $this->getPost_subtitulo(),
@@ -220,39 +220,50 @@ class Blog extends Post {
 	}
 
 	// exibe Para a pagina de artigos atras apneas um post destaque
-	public static function getPostBlogDestaque() {
+	public static function getPostBlogDestaque($post_paisid) {
 
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM blog_post_categoria  WHERE blogdestaque_id = 2 ORDER by blog_id DESC LIMIT 1  ");
+		return $banco->select("SELECT * FROM blog_post_categoria  WHERE blogdestaque_id = 2  and post_paisid = :post_paisid ORDER by blog_id DESC LIMIT 1  ", array(
+			':post_paisid' => $post_paisid,
+		));
 
 	}
 
 	///ver os que estão em destaque todos
-	public static function getBlogDestaque() {
+	public static function getBlogDestaque($post_paisid) {
 
 		$banco = new Banco();
 
-		return $banco->select(" SELECT * FROM blog_post_categoria  WHERE blogdestaque_id = 2  ORDER by blog_id DESC  ");
+		return $banco->select(" SELECT * FROM blog_post_categoria  WHERE blogdestaque_id = 2 and post_paisid = :post_paisid  ORDER by blog_id DESC  ", array(
+
+			':post_paisid' => $post_paisid,
+		));
 
 	}
 
 	///Exibe apenas dois post recentes limitando a duas linhas
 
-	public static function getPostBlogIndex() {
+	public static function getPostBlogIndex($post_paisid) {
 
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM blog_post_categoria  WHERE blogdestaque_id = 3  ORDER by blog_id DESC LIMIT 2  ");
+		return $banco->select("SELECT * FROM blog_post_categoria  WHERE blogdestaque_id = 3  and post_paisid = :post_paisid  ORDER by blog_id DESC LIMIT 2  ", array(
+
+			':post_paisid' => $post_paisid,
+
+		));
 
 	}
 
-	public static function getBlogLoad_id($post_id) {
+	public static function getBlogLoad_id($post_id, $post_paisid) {
 
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM blog_post_categoria  WHERE blogpost_id = :blogpost_id  LIMIT 1  ", array(
+		return $banco->select("SELECT * FROM blog_post_categoria  WHERE blogpost_id = :blogpost_id and post_paisid = :post_paisid LIMIT 1  ", array(
 			':blogpost_id' => $post_id,
+			':post_paisid' => $post_paisid,
+
 		));
 
 	}

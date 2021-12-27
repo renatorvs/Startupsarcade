@@ -83,10 +83,15 @@ class Publicidade {
 	public static function getPublicidade($pu_categoria_id, $pu_pais) {
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM publicidade where  pu_categoria_id = :pu_categoria_id and pu_categoria_id = 0 and pu_pais = :pu_pais ", array(
+		return $banco->select("SELECT * FROM publicidade where  pu_categoria_id = :pu_categoria_id  and pu_pais = :pu_pais ", array(
 			":pu_categoria_id" => $pu_categoria_id,
 			":pu_pais" => $pu_pais,
 		));
+	}
+	public static function getPublicidadeAdmin() {
+		$banco = new Banco();
+
+		return $banco->select("SELECT * FROM publicidade");
 	}
 
 	public static function getDuvidaCategoria() {

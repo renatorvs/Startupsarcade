@@ -3,7 +3,7 @@ namespace app\controllers\index;
 
 use app\controllers\ContainerController;
 
-class TermosController extends ContainerController {
+class TermosexternoController extends ContainerController {
 
 	public function show() {
 

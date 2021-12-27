@@ -1,0 +1,191 @@
+  <!DOCTYPE html>
+  <html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Adiciona duvidas">
+    <meta name="keywords" content="Adiciona duvidas">
+    <meta name="author" content="Adiciona duvidas">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> starstup´s arcade | Termos</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap/bootstrap-reboot.css">
+    <link rel="stylesheet" href="../assets/css/layout/adddica.css">
+    <link rel="stylesheet" href="../assets/css/layout/layout.css">
+    <link rel="stylesheet" href="../assets/css/layout/footer.css">
+    <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link rel="icon" type="imagem/png" href="/imagens/meufavicon.png" />
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
+  </head>
+  <body id="page-top">
+    <header>
+      {% if pais_id %}
+      {{ include('layout/nav-header-portugues.html') }}
+      {% else %}
+      {{ include('layout/nav-header-ingles.html') }}
+      {% endif %}
+
+    </header>
+    <main>
+      {% if pais_id %}
+      {{ include('layout/nav-dashboard-portugues.html') }}
+      {% else %}
+      {{ include('layout/nav-dashboard-ingles.html') }}
+      {% endif %}
+      <section class="main-experi">
+
+
+        {% if admin %}
+
+
+
+        <h4 class="text-dark" align="center"> Adiciona termos</h4>
+        
+        <section class="card border-success mb-4 mt-4" >
+          <section class="card-body">
+            <form action="/termos/addtermos" method="post">
+
+
+
+              <label id="term_titulo">Termo titulo</label>
+              <input type="text" class="form-control" name="term_titulo" id="term_titulo">
+              
+              <label id="term_subtitulo">Termo subtitulo</label>
+              <input type="text"class="form-control" name="term_subtitulo" id="term_subtitulo">
+
+              <section class="form-group">
+                <label for="termos">termos  </label>
+
+                <textarea name="term_text" class="form-control" id="termos" placeholder="termos "></textarea>
+              </section>
+              <section class="form-group">
+                <label for="exampleFormControlSelect1">Pais</label>
+                <select class="form-control" name="term_pais_id" id="exampleFormControlSelect1">
+                  <option value="1">BR</option> 
+                  <option value="2">USA</option> 
+                </select>
+              </section> 
+              <button class="btn btn-primary btn-sm"> criar termos</button>
+            </form>
+          </section>
+        </section>
+
+
+        {% endif %}
+
+
+        {% if pais_id == 1 %}
+
+        <h4 class="text-dark" align="center">  Termos de usuario </h4>
+
+        {% else %}
+        <h4 class="text-dark" align="center">  User Terms </h4>
+
+        {% endif %}
+
+
+
+
+        {% for gettermosLinha in  gettermos %}  
+        <section class="modal fade info-lg-{{gettermosLinha.term_id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+          <section class="modal-dialog modal-lg">
+            <section class="modal-content">
+              <section class="card-body">   
+
+               <h4 class="text-dark" align="center"> Adiciona termos</h4>
+
+               <form action="/termos/updatetermos" method="post">
+
+                <input type="hidden"  name="term_id" value="{{gettermosLinha.term_id}}" >
+
+
+                <label id="term_titulo">Termo titulo</label>
+                <input type="text" class="form-control" name="term_titulo" value="{{gettermosLinha.term_titulo}}" id="term_titulo">
+
+                <label id="term_subtitulo">Termo subtitulo</label>
+                <input type="text"class="form-control" name="term_subtitulo" value="{{gettermosLinha.term_subtitulo}}" id="term_subtitulo">
+
+                <section class="form-group">
+                  <label for="termos">termos  </label>
+
+                  <textarea name="term_text" class="form-control" id="termos" placeholder="termos ">
+                    {{gettermosLinha.term_titulo}}
+                  </textarea>
+                </section>
+                <section class="form-group">
+                  <label for="exampleFormControlSelect1">Pais</label>
+                  <select class="form-control" name="term_pais_id" id="exampleFormControlSelect1">
+                 {% if gettermosLinha.term_pais_id == 1 %}
+                    <option value="1"> (selecionado) BR</option> 
+                   <option value="2"> USA</option> 
+
+                 {% else %}
+                    <option value="1">BR</option> 
+                    <option value="2"> (selecionado) USA</option> 
+                  {% endif %}
+
+
+                  </select>
+                </section> 
+                <button class="btn btn-primary btn-sm"> criar termos</button>
+              </form>
+            </section>
+          </section>
+        </section>
+      </section>
+
+
+
+
+
+      <section class="card flex-md-row mb-4 box-shadow h-md-250">
+        <section class="card-body d-flex flex-column align-items-start">
+
+          <h3 class="mb-0"> {{gettermosLinha.term_titulo}} </h3>
+          <h4 class="mb-0"> {{gettermosLinha.term_subtitulo}} </h4>
+          <section class="mb-1 text-muted">
+            <p class="card-text mb-auto"> <strong>{{gettermosLinha.term_text}}.</strong></p>
+            date:{{gettermosLinha.term_date | date("m/d/y")}}
+                {% if gettermosLinha.term_pais_id == 1 %}
+                    <option value="1"> (selecionado) BR</option> 
+                 {% else %}
+                    <option value="2"> (selecionado) USA</option> 
+                  {% endif %}
+
+          </section>
+                  {% if admin %}
+
+            <button  type="button" class="btn btn-info" data-toggle="modal" data-target=".info-lg-{{gettermosLinha.term_id}}">editar</button>  
+
+                  {% endif %}
+        </section>
+      </section> 
+      {% endfor %}
+
+
+
+
+
+    </section>
+  </main>
+
+  {{ include('layout/nav-dashboard-end.html') }}
+  {{ include('layout/footer-pt.html') }}
+
+
+
+
+
+
+
+<script src="../../assets/vendor/chart.js/Chart.min.js"></script>
+<script src="../../assets/js/demo/chart-area-demo.js"></script>
+<script src="../../assets/js/demo/chart-pie-demo.js"></script>
+<script src="../../assets/vendor/jquery/jquery.min.js"></script>
+<script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="../../assets/js/sb-admin-2.min.js"></script>
+
+</body>
+
+</html>

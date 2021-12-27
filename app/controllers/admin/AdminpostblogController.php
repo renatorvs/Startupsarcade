@@ -19,7 +19,7 @@ class AdminpostblogController extends ContainerController {
 		$getBlogLoad_id = blog::getBlogLoad_id($request->parameter);
 
 		$getcategoria = Blogcategoria::getblogCategoria(Session::get("PAIS_ID"));
-		$getPostBlog = Blog::getDestaque();
+		$getPostBlog = Blog::getDestaque(Session::get('PAIS_ID'));
 
 		//	toJson($getPostBlog);
 
@@ -49,7 +49,7 @@ class AdminpostblogController extends ContainerController {
 		}
 
 		$getcategoria = Blogcategoria::getblogCategoria(Session::get("PAIS_ID"));
-		$getPostBlog = Blog::getDestaque();
+		$getPostBlog = Blog::getDestaque(Session::get('PAIS_ID'));
 		$this->view([
 			'title' => 'novo artigo',
 			'getblogcategoria' => $getcategoria,

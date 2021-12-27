@@ -24,7 +24,7 @@ class AdminpublicidadeController extends ContainerController {
 			redirecionar("/adminlogin/admin");
 		}
 
-		$getPublicidadeAll = Publicidade::getPublicidade();
+		$getPublicidadeAll = Publicidade::getPublicidadeAdmin();
 		$categoriaGrupoPublicidade = categoriaGrupo::categoriaGrupoPublicidade();
 		// debug()
 		$this->view([

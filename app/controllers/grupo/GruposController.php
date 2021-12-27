@@ -105,7 +105,7 @@ class GruposController extends ContainerController {
 			'checkgrupos' => $checkgrupos,
 			'USUARIO_ID' => Session::get('USUARIO_ID'),
 			'pais_id' => Session::get("PAIS_ID"),
-			'getPublicidadeAll' => $getPublicidadeAll,
+			'getPublicidadeAll' => $getPublicidadeAll . shitte,
 
 			'NotsGrupo' => getNotificantionGrupo(Session::get('USUARIO_ID')),
 			'NotsMessagem' => getNotificantionMessagem(Session::get('USUARIO_ID')),

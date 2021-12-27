@@ -13,8 +13,8 @@ class AcademystartupController extends ContainerController {
 
 		$getcategoria = Blogcategoria::getblogCategoria(Session::get('PAIS_ID'));
 
-		$postBlog = Blog::getPostBlog();
-		$postBlogDestaque = Blog::getPostBlogDestaque();
+		$postBlog = Blog::getPostBlog(Session::get('PAIS_ID'));
+		$postBlogDestaque = Blog::getPostBlogDestaque(Session::get('PAIS_ID'));
 
 		if (Session::get('USUARIO_ID') OR Session::get('ADMIN_SESSION')) {
 			if (Session::get('ADMIN_SESSION')) {

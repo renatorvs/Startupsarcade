@@ -32,5 +32,7 @@ class usuarioincrevasePortugues extends Portugues {
 	public $requered_nome = "Por favor, seu nome e sobrenome.";
 	public $pf = "Pessoa fisica (CPF)";
 	public $pj = "Pessoa juridica (CNPJ)";
+	public $h1_termo = "Termos da plataforma";
+	public $termo_p = "Leia e marque o check box, marcão obrigatoria para entra na plataforma";
 
 }
