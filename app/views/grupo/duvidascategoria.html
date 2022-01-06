@@ -36,7 +36,7 @@
 
    <section class="main-experi">
     <nav class="nav d-flex justify-content-between">  
-     {% for duvidaempresa in  getduvidacategoria %}           
+     {% for duvidaempresa in  getduvidaempresacategoria %}           
      <a class="p-2 text-muted" href="/duvidascategoria/show/{{duvidaempresa.duvcat_id}}"> {{duvidaempresa.duvcat_nome|e}}</a>
      {% endfor %}
    </nav>

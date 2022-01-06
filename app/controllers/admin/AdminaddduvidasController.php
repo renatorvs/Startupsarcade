@@ -17,7 +17,7 @@ class AdminaddduvidasController extends ContainerController {
 
 		$this->view([
 			'title' => 'Duvidas',
-			'getduvidascategoria' => Duvida_categoria::getduvidascategoria(),
+			'getduvidascategoria' => Duvida_categoria::getDuvidasCategoria(Session::get("PAIS_ID")),
 			'pais_id' => Session::get("PAIS_ID"),
 
 		], 'admin.adminaddduvidas');

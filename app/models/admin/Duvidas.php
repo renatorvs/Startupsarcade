@@ -1,8 +1,8 @@
 <?php
 
 namespace app\models\admin;
-
 use app\models\Banco;
+use app\session\Session;
 
 class Duvidas {
 
@@ -60,10 +60,17 @@ class Duvidas {
 		return $banco->select("SELECT * FROM duvidas ");
 	}
 
-	public static function getDuvidasEmpresa() {
+	public static function getDuvidas($pais_id) {
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM duvidas");
+		if ($pais_id == 1 && Session::get('ADMIN_SESSION')) {
+			return $banco->select("SELECT * FROM  duvidas ");
+		}if ($pais_id == 1) {
+			return $banco->select("SELECT * FROM  duvidas  WHere `duvcategoria_id` in(1,3)");
+		} else {
+			return $banco->select("SELECT * FROM  duvidas  WHere `duvcategoria_id` in(4,6)");
+
+		}
 	}
 
 	public function addDuvida() {

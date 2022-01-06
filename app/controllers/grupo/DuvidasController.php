@@ -12,8 +12,8 @@ class DuvidasController extends ContainerController {
 		if (Session::get('ADMIN_SESSION')) {
 			$admin_session = TRUE;
 		}
-		$getduvidasempresa = Duvidas::getDuvidasEmpresa();
-		$getDuvidasempresacategoria = Duvida_categoria::getDuvidasEmpresaCategoria();
+		$getduvidasempresa = Duvidas::getDuvidas(Session::get("PAIS_ID"));
+		$getDuvidasCategoria = Duvida_categoria::getDuvidasCategoria(Session::get("PAIS_ID"));
 
 		$lin = Linguagem::getDuvidas();
 
@@ -33,7 +33,7 @@ class DuvidasController extends ContainerController {
 			'empresa_session' => $empresa_session,
 			'admin_session' => $admin_session,
 			'getduvidasempresa' => $getduvidasempresa,
-			'getduvidaempresacategoria' => $getDuvidasempresacategoria,
+			'getduvidaempresacategoria' => $getDuvidasCategoria,
 			'pais_id' => Session::get("PAIS_ID"),
 
 			'NotsGrupo' => getNotificantionGrupo($sessionUsuario_id),

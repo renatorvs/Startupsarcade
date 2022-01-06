@@ -22,6 +22,7 @@ class DuvidascategoriaController extends ContainerController {
 
 		$duvcat = new Duvida_categoria();
 		$loadByDuvidaCategoria = $duvcat->loadByDuvidaCategoria($request->parameter);
+		$getDuvidasCategoria = Duvida_categoria::getDuvidasCategoria(Session::get("PAIS_ID"));
 
 		$this->view([
 			'description' => $lin->description,
@@ -38,6 +39,8 @@ class DuvidascategoriaController extends ContainerController {
 			'admin_session' => $admin_session,
 			'getduvidas' => $loadByDuvidaCategoria,
 			'getduvidacategoria' => $getduvidacategoria,
+			'getduvidaempresacategoria' => $getDuvidasCategoria,
+
 			'pais_id' => Session::get('PAIS_ID'),
 			'NotsGrupo' => getNotificantionGrupo(Session::get('USUARIO_ID')),
 			'NotsMessagem' => getNotificantionMessagem(Session::get('USUARIO_ID')),

@@ -41,24 +41,15 @@ class Duvida_categoria {
 		));
 	}
 
-	public static function getduvidascategoria() {
+	public static function getDuvidasCategoria($pais_id) {
 
 		$banco = new Banco();
+		if ($pais_id == 1) {
+			return $banco->select("SELECT * FROM `duvidas_categoria` WHere `duvpais_id` = 1");
+		} else {
+			return $banco->select("SELECT * FROM `duvidas_categoria` WHere `duvpais_id` = 2");
+		}
 
-		return $banco->select("SELECT * FROM duvidas_categoria");
-	}
-	public static function getDuvidasCandidatoCategoria() {
-
-		$banco = new Banco();
-
-		return $banco->select("SELECT * FROM duvidas_categoria");
-	}
-
-	public static function getDuvidasEmpresaCategoria() {
-
-		$banco = new Banco();
-
-		return $banco->select("SELECT * FROM duvidas_categoria");
 	}
 
 	public static function loadByDuvidaCategoria($duvcat_id) {
