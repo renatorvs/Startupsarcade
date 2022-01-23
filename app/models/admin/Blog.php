@@ -207,7 +207,7 @@ class Blog extends Post {
 		));
 	}
 
-	public static function getPostBlogCategoria($blog_categoria_id) {
+	public static function getPostBlogCategoria($blog_categoria_id, $post_paisid) {
 
 		$banco = new Banco();
 
@@ -256,13 +256,12 @@ class Blog extends Post {
 
 	}
 
-	public static function getBlogLoad_id($post_id, $post_paisid) {
+	public static function getBlogLoad_id($post_id) {
 
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM blog_post_categoria  WHERE blogpost_id = :blogpost_id and post_paisid = :post_paisid LIMIT 1  ", array(
+		return $banco->select("SELECT * FROM blog_post_categoria  WHERE blogpost_id = :blogpost_id LIMIT 1  ", array(
 			':blogpost_id' => $post_id,
-			':post_paisid' => $post_paisid,
 
 		));
 

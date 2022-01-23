@@ -36,6 +36,7 @@ class Blogcategoria {
 
 		return $banco->select("SELECT * FROM blog_categoria WHERE blogcat_id = :blogcat_id ", array(
 			":blogcat_id" => $blogcat_id,
+
 		));
 	}
 

@@ -93,7 +93,7 @@ class AcademystartupController extends ContainerController {
 
 		$blogcat_id = $request->parameter;
 
-		$blogCategoria = Blog::getPostBlogCategoria($blogcat_id);
+		$blogCategoria = Blog::getPostBlogCategoria($blogcat_id, Session::get('PAIS_ID'));
 		$blogCategoria_nome = Blogcategoria::getblogCategoria_nome($blogcat_id);
 
 		if (!$blogCategoria) {
@@ -102,7 +102,7 @@ class AcademystartupController extends ContainerController {
 		}
 
 		$getcategoria = Blogcategoria::getblogCategoria(Session::get('PAIS_ID'));
-		//debug($getcategoria);
+		//	debug($getcategoria);
 		if (Session::get('USUARIO_ID') OR Session::get('ADMIN_SESSION')) {
 			if (Session::get('ADMIN_SESSION')) {
 				$admin_session = true;

@@ -30,6 +30,7 @@ class AdminpostblogController extends ContainerController {
 			'blog_id' => $getBlogLoad_id[0]['blog_id'],
 			'post_titulo' => $getBlogLoad_id[0]['post_titulo'],
 			'post_subtitulo' => $getBlogLoad_id[0]['post_subtitulo'],
+			'post_description' => $getBlogLoad_id[0]['post_description'],
 			'blog_text' => $getBlogLoad_id[0]['blog_text'],
 			'getBlogDestaques' => $getPostBlog,
 			'blogdest_id' => $getBlogLoad_id[0]['blogdest_id'],
