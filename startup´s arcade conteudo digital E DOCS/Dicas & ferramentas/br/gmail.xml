@@ -1,0 +1,75 @@
+
+<post_titulo> <post_titulo/>
+<post_subtitulo> <post_subtitulo/>
+<post_description> <post_description/>
+<blog_text> <blog_text/>
+<blog_img>  <blog_img/>
+
+
+
+
+O Gmail é um serviço gratuito de webmail criado pela Google em 2004. Por padrão, o Gmail está configurado para usar o HTTPS, um protocolo seguro que fornece comunicações autenticadas e criptografadas. Atualmente novos cadastros estão abertos ao público e podem ser feitos diretamente no site. Wikipédia
+
+
+Criação de conta
+
+Os usuários ao criarem uma conta no Gmail também criam uma Conta Google. É opcional que esta Conta Google use um domínio @gmail.com. O criador pode escolher se quer criar um novonomedeusuário@gmail.com ou usar um e-mail já existente de outro provedor de e-mail para sua nova Conta Google, mas se o utilizador desejar usar Gmail, ou seja, o Gmail em si e todas as suas funções, é obrigatório @gmail.com.
+
+Todo usuário com um endereço de e-mail Gmail tem uma conta do Google, mas nem todos que criam uma conta do Google têm um endereço com o domínio Gmail. O Serviço também não diferencia letras maiúsculas de minúsculas nem pontos no nome de usuário do endereço de e-mail.[9]
+
+
+Publicidade e privacidade
+
+Gmail na versão móvel
+Da mesma forma que os congêneres, o financiamento do Gmail é feito por publicidade: pequenos anúncios de texto pagos por empresas ou pessoas interessadas em anunciar os seus produtos. Os links de publicidade são mostrados de forma relevante, ou seja, apenas os que contém algum assunto relacionado com o que está escrito no e-mail é mostrado. Muitas vezes esses links publicitários também não aparecem, por não parecerem relevantes a nenhum anúncio registrado.
+
+Isso tem sido fruto de muita discussão e polémica desde antes de ser lançado. O Google garante privacidade pela sua Política de Privacidade, mas, como o sistema analisa o conteúdo automaticamente das mensagens para exibir publicidade de acordo com os assuntos mencionados na correspondência electrónica existe o receio de tais informações serem armazenadas num banco de dados para posterior envio de spam, ou mesmo com fins de espionagem.
+
+O utilizador interessado em manter a ligação permanentemente criptografada só precisa aceder ao Gmail pelo endereço https://mail.google.com.
+
+Funções especiais:
+O Gmail apresenta uma série de funções especiais para facilitar a vida de quem usa webmail.
+
+Visualização de conversas
+A principal inovação desse serviço, frente aos outros, é o método com o qual os e-mails recebidos são organizados, denominado pelo Google de "Visualização de Conversas". Esse método consiste em mostrar todas as mensagens relacionadas com um assunto específico em uma única janela, de uma maneira escalonada, isso é, fica uma mensagem "acima" da outra, conforme a ordem cronológica de envio.
+
+Marcadores (labels)
+Com o conceito de "pesquise, não classifique". No Gmail você não precisa criar pastas para organizar as suas mensagens. Basta "colar" um marcador na mensagem. Este conceito permite uma organização mais elaborada, uma vez que uma determinada mensagem pode ter vários marcadores. Isso só seria possível com pastas se mantivéssemos uma cópia da mensagem em cada pasta. Cada mensagem pode receber mais de um marcador.
+
+Principais abas:
+Principal - Essa aba reúne todos os e-mails da caixa de entrada, ou seja o visualização das mensagens equivale ao Gmail da maneira que já era conhecida antes da atualização.
+
+Social - Nessa aba são agrupados todos os e-mails relacionados às mídias sociais. É uma maneira mais eficiente de se visualizar as mensagens relacionadas às notificações do Twitter, Facebook, Linkedin, Google+. Se o usuário já havia criado marcadores, ela irá preservá-los e exibi-los como a identificação personalizada.
+
+Promoções - É uma aba que pode ser útil aos usuários que recebem inúmeras mensagens relacionadas a promoções, sites de compras coletivas e ofertas.
+
+Atualizações - É a aba destinada a qualquer tipo de mensagem de notificação automática, muito útil para quem assina newsletters ou os 'Alertas do Google'.
+
+Fóruns - Essa é a aba para os usuários que participam de fóruns de internet ou listas de discussão - essa categoria é recomendada para quem participa de comunidades virtuais.
+
+E se por acaso o leitor não tiver interesse ou mesmo não participar de uma ou mais categorias pré-definidas pelo Gmail, pode desmarcá-la e, assim, as mensagens serão exibidas apenas na aba principal. Mas se a decisão for mais radical, de que é melhor não haver nenhuma aba na caixa de entrada, basta desmarcar todas as opções disponíveis.
+
+
+
+Curiosicades extras:
+
+Disco virtual
+Dado o grande espaço de armazenamento, e o espaço permitido para anexos (25 MB por mensagem), existem ferramentas (como o GMail Drive para Windows, o gmailfs para Linux, ou o GDisk, para Mac OS X) que possibilitam utilizar a conta do serviço como se fosse um disco virtual. Tais recursos, por se tratarem de um serviço "alternativo", podem deixar de funcionar inesperadamente.
+
+Há também uma extensão para o navegador Mozilla Firefox que permite gerenciar o Gmail como um disco virtual (inclusive no Linux). Ela pode ser encontrada no seguinte endereço: http://addons.mozilla.org/firefox/1593/ Para usar tal extensão leia a página de instruções.
+
+Esta prática é porém quebra de contrato, visto que a Google não permite que seja armazenado qualquer ficheiro em seus servidores, e o programa armazena o ficheiro como um anexo dentro de mensagens. Diversas contas foram já bloqueadas devido a esta prática (falta citação a respeito).
+
+RSS integrado
+Já disponível no idioma português, além do inglês. Os RSS são mostrados em forma de "WebClips", ordenados numa lista de arquivos do tipo XML a qual já vem com alguns arquivos por padrão, porém, por ser definida pelo usuário à seu gosto, além de contar com um sistema de busca específico para isso.[10]
+
+Grupos
+O Gmail facilita e muito a separação de grupos de e-mails. Inicialmente, são criados dois grupos que não podem ser apagados: "Todos os e-mails" e "E-mails utilizados frequentemente". Existe também a possibilidade de criar grupos personalizados, que agora estão disponíveis no idioma português, anteriormente os usuários que gostariam de usar este serviço teriam que mudar o idioma para "English (US)". O objetivo desses grupos personalizados é criar seus próprios grupos para facilitar o envio específico para determinadas pessoas. Por exemplo, no grupo "Faculdade", você coloca todos os e-mails dos colegas de faculdade e quando precisar se comunicar com eles, não precisa ficar selecionando quem é ou não dessa seleção.
+
+Google Chat - um Google Talk integrado
+Funciona basicamente como o software Google Talk, porém integrado ao Gmail, ou seja, não é necessário instalar no computador. Dessa forma, nas redes onde o acesso a esses programas forem bloqueados, você poderá usar o seu Instant Messaging de qualquer lugar. O Google chat inclui ainda uma função que salva os históricos das conversações de chat automaticamente numa pasta chamada "Chat".
+
+
+<blogcat_id> <blogcat_id/>
+<post_paisid> <post_paisid/>
+<blogdestaque_id>  <blogdestaque_id/>

@@ -14,4 +14,12 @@ closedir($dir);
 // 	print 'Tamanho: ' . $file->getSize() . '<br>' . PHP_EOL;
 // 	print '<br>' . PHP_EOL;
 // }
-php refresh.phpsss
+
+<?xml version="1.0" encoding="UTF-8"?>
+<pais>
+	<nome> Brasil </nome>
+	<idioma> Português </idioma>
+	<capital> Brasília </capital>
+	<moeda> Real (R$) </moeda>
+	<prefixo> +55 </prefixo>
+</pais>

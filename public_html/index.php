@@ -1,37 +1,29 @@
 <?php
+//require_once 'a.php';
 
-require '../bootstrap.php';
+foreach (new DirectoryIterator("C:\wamp64\www\Projeto-startup-arcade\app\controllers\admin") as $file) {
+	print (string) $file . '<br>' . PHP_EOL;
+	print 'Nome: ' . $file->getFileName() . '<br>' . PHP_EOL;
+	print 'Extensão: ' . $file->getExtension() . '<br>' . PHP_EOL;
+	print '<br>' . PHP_EOL;
 
-use app\classes\Bind;
-use app\session\Session;
-use core\Controller;
-use core\Method;
-use core\Parameters;
-
-Session::start();
-
-error_report();
-
-$debug = null;
-
-try {
-
-	$controller = new Controller;
-
-	$controller = $controller->load();
-
-	$method = new Method;
-
-	$method = $method->load($controller);
-
-	$parameters = new Parameters;
-
-	$parameters = $parameters->load();
-
-	$controller->$method($parameters);
-
-} catch (\Exception $e) {
-	$debug = (object) Bind::get('config')->debug;
-	echo $e->getTraceAsString();
-	echo $e->getMessage();
 }
+
+// foreach (new DirectoryIterator('/tmp') as $file) {
+// 	print (string) $file . '<br>' . PHP_EOL;
+// 	print 'Nome: ' . $file->getFileName() . '<br>' . PHP_EOL;
+// 	print 'Extensão: ' . $file->getExtension() . '<br>' . PHP_EOL;
+// 	print 'Tamanho: ' . $file->getSize() . '<br>' . PHP_EOL;
+// 	print '<br>' . PHP_EOL;
+// }
+
+// <?php
+// // interpreta o documento XML
+// $xml = simplexml_load_file('paises.xml');
+
+// // exibe os atributos do objeto criado
+// echo 'Nome : '     . $xml->nome      . "<br>\n";
+// echo 'Idioma : '   . $xml->idioma    . "<br>\n";
+// echo 'Capital : '  . $xml->capital   . "<br>\n";
+// echo 'Moeda : '    . $xml->moeda     . "<br>\n";
+// echo 'Prefixo : '  . $xml->prefixo   . "<br>\n";
