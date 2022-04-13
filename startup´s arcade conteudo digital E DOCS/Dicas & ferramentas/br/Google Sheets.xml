@@ -1,14 +1,54 @@
 
-Google Sheets
+<post_titulo>  Google  Planilhas
+ <post_titulo/>
+<post_subtitulo>Internet para leigos | Ferramenta Google Planilhas
+ <post_subtitulo/>
+
+<post_description>
+O Planilhas Google é um programa de planilhas incluído como parte do pacote gratuito de Editores de Documentos Google baseado na Web oferecido pelo Google . O serviço também inclui Google Docs , Google Slides , Google Drawings , Google Forms , Google Sites e Google Keep . O Planilhas Google está disponível como aplicativo da Web , aplicativo móvel para Android , iOS , Windows , BlackBerry e como aplicativo de desktop no Chrome OS do Google. O aplicativo é compatível com os formatos de arquivo do Microsoft Excel . [2] O aplicativo permite que os usuários criem e editem arquivos online enquanto colaboram com outros usuários em tempo real. As edições são rastreadas pelo usuário com um histórico de revisões apresentando as alterações. A posição de um editor é destacada com uma cor e um cursor específicos do editor e um sistema de permissões regula o que os usuários podem fazer. As atualizações introduziram recursos usando aprendizado de máquina , incluindo "Explorar", oferecendo respostas com base em perguntas de linguagem natural em uma planilha.
+ <post_description/>
+<blog_text> 
+História 
+O Google Sheets originou-se do XL2Web, um aplicativo de planilha baseado na Web desenvolvido pela 2Web Technologies, fundada por Jonathan Rochelle e Farzad “Fuzzy” Khosrowshahi.  O XL2Web foi adquirido pelo Google em 2006  e transformado em Planilhas do Google Labs . Ele foi lançado como um teste para um número limitado de usuários, por ordem de chegada em 6 de junho de 2006.  O teste limitado foi posteriormente substituído por uma versão beta disponível para todas as Contas do Google titulares, na mesma altura em que foi emitido um comunicado de imprensa oficial. Em março de 2010, o Google adquiriu a empresa de colaboração de documentos online DocVerse. DocVerse permitiu colaboração online de vários usuários no Excelcompatível com outros formatos do Microsoft Office , como Word e PowerPoint . Melhorias baseadas no DocVerse foram anunciadas e implantadas em abril de 2010.  Em junho de 2012, o Google adquiriu o Quickoffice , um pacote de produtividade proprietário de freeware para dispositivos móveis. Em outubro de 2012, o Google Spreadsheets foi renomeado como Google Sheets e foi lançado um aplicativo do Chrome que fornecia atalhos para o Planilhas na nova guia do Chrome. 
+
+Plataformas 
+O Planilhas Google está disponível como um aplicativo da Web compatível com os navegadores Google Chrome , Microsoft Edge , Mozilla Firefox , Internet Explorer e Apple Safari . Os usuários podem acessar todas as planilhas, entre outros arquivos, coletivamente pelo site do Google Drive . Em junho de 2014, o Google lançou uma página inicial de site dedicada para o Planilhas que contém apenas arquivos criados com o Planilhas.  Em 2014, o Google lançou um aplicativo móvel dedicado para o Planilhas nos sistemas operacionais móveis Android e iOS.Em 2015, o site móvel do Planilhas foi atualizado com uma interface "mais simples e uniforme" e, embora os usuários possam ler planilhas nos sites móveis, os usuários que tentarem editar serão redirecionados para o aplicativo móvel para eliminar a edição na Web móvel.
 
 
-<post_titulo> <post_titulo/>
-<post_subtitulo> <post_subtitulo/>
-<post_description> <post_description/>
-<blog_text> <blog_text/>
+Características 
+ 
+Histórico de colaboração e revisão 
+O Planilhas Google serve como uma ferramenta colaborativa para edição cooperativa de planilhas em tempo real. Os documentos podem ser compartilhados, abertos e editados por vários usuários simultaneamente e os usuários podem ver as alterações de caractere por caractere à medida que outros colaboradores fazem edições. As alterações são salvas automaticamente nos servidores do Google, e um histórico de revisões é mantido automaticamente para que as edições anteriores possam ser visualizadas e revertidas. A posição atual de um editor é representada com uma cor/cursor específica do editor, portanto, se outro editor estiver visualizando essa parte do documento, ele poderá ver as edições à medida que ocorrem. Uma funcionalidade de bate-papo na barra lateral permite que os colaboradores discutam as edições. O histórico de revisões permite que os usuários vejam as adições feitas a um documento, com cada autor distinguido por cor. Apenas revisões adjacentes podem ser comparadas e os usuários não podem controlar a frequência com que as revisões são salvas. Os arquivos podem ser exportados para o computador local de um usuário em vários formatos, como PDF e Office Open XML .  O Sheets oferece suporte à marcação para fins de arquivamento e organização.
+
+Explorar 
+Lançado para todo o pacote Drive em setembro de 2016, o "Explore" permite funcionalidades adicionais por meio do aprendizado de máquina. No Planilhas Google, o Explore permite que os usuários façam perguntas, como "Quantas unidades foram vendidas na Black Friday?", e o Explore retornará a resposta, sem exigir o conhecimento da fórmula do usuário. Em junho de 2017, o Google expandiu o recurso Explorar no Planilhas Google para criar gráficos e visualizar dados automaticamente, e o expandiu novamente em dezembro para apresentar aprendizado de máquina capaz de criar tabelas dinâmicas automaticamente. Em outubro de 2016, o Google anunciou a adição de "Itens de ação" ao Planilhas. Se um usuário atribuir uma tarefa em uma planilha, o serviço atribuirá essa ação de forma inteligente ao usuário designado. O Google afirma que isso tornará mais fácil para outros colaboradores visualizarem quem é responsável por uma tarefa. Quando um usuário visita o Google Drive ou o Planilhas, todos os arquivos com tarefas atribuídas a ele serão destacados com um selo. Em março de 2014, o Google introduziu complementos; novas ferramentas de desenvolvedores de terceiros que adicionam mais recursos para o Planilhas Google. 
+
+Edição offline 
+Para visualizar e editar planilhas off-line em um computador, os usuários precisam usar o navegador da Web Google Chrome. Uma extensão do Chrome , Google Docs Offline , permite que os usuários ativem o suporte offline para Planilhas e outros arquivos do conjunto do Drive no site do Google Drive. Os aplicativos Android e iOS suportam nativamente a edição offline. 
+
+Arquivos 
+Formatos e limites de arquivo suportados 
+Arquivos nos formatos a seguir podem ser exibidos e convertidos para o formato Planilhas: .xls (se for mais recente que o Microsoft Office 95), .xlsx, .xlsm, .xlt, .xltx, .xltm .ods, .csv, .tsv, . txt, .tab  O tamanho geral do documento é limitado a 5 milhões de células.
+
+Espaço de trabalho do Google 
+O aplicativo Planilhas e o restante do pacote Google Docs Editors são gratuitos para uso individual, mas o Planilhas também está disponível como parte do serviço Google Workspace (antigo G Suite) centrado nos negócios do Google, que é uma assinatura mensal que permite funcionalidade focada nos negócios. 
+
+Integração com gráficos e Wikipedia 
+O Sheets pode produzir Google Charts e tem um plugin de terceiros que permite a integração com a Wikipedia.
+
+Script de aplicativos
+Desenvolvedor(es)	Google
+lançamento inicial	19 de agosto de 2009 ; 12 anos atrás 
+Escrito em	JavaScript
+Tipo	Estrutura de aplicativo da Web , linguagem de script
+Local na rede Internet	script.google.com
+fonte:blog Google/wikipedia
+
+<blog_text/>
 <blog_img>  <blog_img/>
 
 
 <blogcat_id> <blogcat_id/>
-<post_paisid> <post_paisid/>
-<blogdestaque_id>  <blogdestaque_id/>
+<post_paisid>1<post_paisid/>
+<blogdestaque_id>2  <blogdestaque_id/>
+s

@@ -1,0 +1,88 @@
+
+<startuparcade>	
+
+<post_titulo>  Google Ads </post_titulo>
+<post_subtitulo>Internet para leigos | Ferramenta Google Ads </post_subtitulo>
+<post_description> 
+
+#Antes de falarmos de Google ads vale resaltar a diferença entre o Google AdSense e o Google Ads, A comparação entre os produtos de anunciantes e os de editores.##
+
+
+#Google AdSense##
+É para editores. Se você possui ou gerencia sites, blogs ou fóruns e quer gerar receita com eles, o programa Google AdSense pode ser a opção certa.Os anúncios são exibidos na sua propriedade digital, e você pode gerar receita com base no número de pessoas que visualizam ou interagem com esses anúncios. Outras plataformas para editores incluem o Google Ad Manager e a AdMob. Saiba mais em Comparação entre o Ad Manager, o Google AdSense e a AdMob.
+
+#Google Ads##
+É destinado a anunciantes. Se você quer anunciar produtos ou serviços em sites ou apps, com o objetivo de expandir seus negócios ou vendas, o Google Ads é a escolha ideal. Seus anúncios são exibidos nos resultados da pesquisa do Google e na nossa rede de sites de editores. Saiba mais sobre o Google Ads e comece a anunciar acessando www.ads.google.com.
+</post_description>
+
+
+<blog_text>
+
+Google Ads, antes conhecido como Google AdWords, o serviço usa o sistema de publicidade por Custo por Clique (CPC) e Custo por mil impressões (CPM) que consiste em anúncios em forma de links encontrados, principalmente, nos mecanismos de pesquisa relacionados às palavras-chave que o internauta está pesquisando. É um modo de adquirir publicidade altamente segmentada independentemente de qual seja o orçamento do anunciante, no entanto, não oferece tantos recursos e facilidades nas políticas como o BingAds, seu maior concorrente. Os anúncios do Ads são exibidos juntamente com os resultados de pesquisa no Google, assim como em sites de pesquisa e de conteúdo, chamado de rede de Display, da crescente rede de anúncios do Google.
+
+#Classificação dos anúncios##
+A posição do anúncio na página de resultados é definida pela fórmula:
+
+Classificação do anúncio = CPC máximo X Índice de qualidade
+
+O Índice de qualidade é determinado pelo histórico de desempenho no Google: sua taxa de cliques (CTR), a relevância do texto do anúncio, o histórico de desempenho da palavra-chave, a qualidade da página de destino e outros fatores de relevância.
+
+Em resumo, o Google valoriza anúncios cujo conteúdo tem uma relação mais estreita com a busca realizada, e com isso, dificulta que empresas exibam anúncios nos resultados de pesquisa em setores não relacionados ao seu ramo de atividade.
+
+CPM - Custo por mil impressões
+Consiste num sistema no qual o anunciante paga um valor acordado pela quantidade de vezes que o anúncio é visto pelo consumidor, independentemente da sua ação posterior. Este acordo, normalmente, é estipulado o valor por cada mil impressões.
+
+CPC - Custo por Clique
+Consiste num sistema no qual o anunciante paga um valor acordado pela quantidade de vezes que o anúncio é clicado e não apenas visualizado, permitindo assim ao anunciante pagar um determinado valor somente quando o usuário clica em determinada coisa. É considerado por muitos a forma mais justa de publicidade visto que o usuário que realizou a pesquisa apenas clica no anúncio que já está inclinado à compra.
+
+#Rede de Display##
+Os anúncios são exibidos em sites parceiros do Google (como o próprio Gmail), site e blogs que se inscreveram no programa de afiliados Google, conhecido como Adsense. Muitos blogs e inclusive portais de notícias disponibilizam blocos de anúncios Google em suas respectivas páginas.[2]
+
+Estrutura de conta e campanha no Google Ads
+Estrutura conta e campanha Adwords
+
+#Exemplo de estrutura de conta Adwords##
+
+Conta: Qualquer conta Google, como Gmail, por exemplo.
+Campanhas: leve em consideração criar uma campanha para cada linha de produtos ou serviços do seu site. Campanhas diferentes para dispositivos, entre desktop e mobile. Exemplo prático: se você trabalha com vendas de produtos para bebês, crie uma campanha para vestuários e outra para acessórios.
+Grupos de anúncios: Divida cada tipo de produto e coloque em grupos respectivos. Crie um grupo para sapatinhos de bebês, outro para macacões, e por aí vai.
+Palavras-chave: adicione as palavras-chave correspondentes para cada grupo de anúncio.
+Anúncios: configure títulos, descrições e páginas de destinos.
+Tipos de Anúncios no Google Ads:
+Anúncios nos motores de pesquisa (SEA/SEM)
+Anúncios na Rede de Pesquisa Google (Search Ads)
+Anúncios na Rede de Pesquisa Google de Chamada (Call Only)
+Anúncios na Rede de Pesquisa Google Dinâmico (Dynamic Search Ads – DSA)
+Anúncios na Rede de Pesquisa Google para Instalações de Aplicações para dispositivos móveis
+Anúncios na Rede de Pesquisa Google e Rede de Parceiros
+Anúncios na rede de Display (GDN)
+Anúncios de texto na Rede Display Google
+Anúncios Gráficos na Rede Display Google
+Anúncios Dinâmicos na Rede Display Google
+Anúncios de Engajamento na Rede Display Google (Light Box)
+Anúncios de Engajamento na Rede Display Google (Rich Media)
+Anúncios de Banners na Rede Display de Aplicações (Admob)
+Anúncios Gmail Sponsored Promotions (GSP Ad Gallery)
+Anúncios Gmail Sponsored Promotions (GSP HTML/Formulário)
+Anúncios vídeo (Rede Youtube)
+Anúncios de Visualização (Youtube In-Display)
+Anúncios Vídeo em Pesquisa Youtube (Youtube In-Search)
+Anúncios de Sobreposição (Youtube Overlay)
+Anúncios de Vídeo Ignoráveis (Youtube Trueview)
+Anúncios de Vídeo não ignoráveis.
+
+
+Nomes anteriores:	Google AdWords
+Proprietário(s)	Google
+Requer pagamento?	Sim
+Gênero	Programa de publicidade
+Lançamento	23 de outubro de 2000; há 21 anos
+Endereço eletrônico	ads.google.com
+Fonte: wikipedia;
+ </blog_text>
+
+<blog_img>  </blog_img>
+<blogcat_id> </blogcat_id>
+<post_paisid>1</post_paisid>
+<blogdestaque_id>2  </blogdestaque_id>
+</startuparcade>

@@ -173,7 +173,7 @@ class BlogController extends ContainerController {
 
 		$blogcat_id = $request->parameter;
 
-		$blogCategoria = Blog::getPostBlogCategoria($blogcat_id);
+		$blogCategoria = Blog::getPostBlogCategoria($blogcat_id, Session::get('PAIS_ID'));
 		$blogCategoria_nome = Blogcategoria::getblogCategoria_nome($blogcat_id);
 
 		if (!$blogCategoria) {

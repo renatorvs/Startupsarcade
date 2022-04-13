@@ -1,12 +1,50 @@
+
+<startuparcade>
+
 Google PageSpeed Insights
 
-<post_titulo> <post_titulo/>
+<post_titulo>  Google PageSpeed Insights
+<post_titulo/>
 <post_subtitulo> <post_subtitulo/>
-<post_description> <post_description/>
-<blog_text> <blog_text/>
+<post_description>
+O Google PageSpeed ​​é uma família de ferramentas da Google Inc , projetada para ajudar a otimizar o desempenho de um site .  Foi apresentado na Developer Conference em 2010.   Existem quatro componentes principais das ferramentas da família PageSpeed: PageSpeed ​​Module , consistindo em mod_pagespeed  para o Apache HTTP Server e ngx_pagespeed para o Nginx ,  PageSpeed ​​Insights , PageSpeed ​​Service e PageSpeed ​​Chrome DevToolsextensão. Todos esses componentes são criados para identificar falhas na conformidade de um site com as práticas recomendadas de desempenho da Web do Google,  bem como automatizar o processo de ajuste.
+ <post_description/>
+<blog_text>
+Módulos PageSpeed: 
+Os Módulos PageSpeed ​​são os módulos de servidor web Apache HTTP ou Nginx de código aberto , que aplicam automaticamente filtros escolhidos a páginas e ativos associados, como folhas de estilo , JavaScript e arquivos HTML , bem como a imagens e requisitos de cache do site . A maior vantagem desses módulos é que eles não exigem modificações no conteúdo ou fluxo de trabalho existente,  o que significa que todas as otimizações internas e alterações nos arquivos são feitas no lado do servidor, apresentando os arquivos modificados diretamente ao usuário. Cada um dos mais de 40 filtros corresponde a uma das regras de práticas recomendadas de desempenho na web do Google.
+
+Como o módulo PageSpeed ​​é uma biblioteca de código aberto, ele é atualizado com frequência por vários desenvolvedores de todo o mundo e pode ser implantado por qualquer site individual, provedor de hospedagem ou CDN.
+
+Impacto de velocidade: 
+O módulo PageSpeed ​​mostrou o impacto mais significativo na redução dos tempos de carregamento de páginas da Web, tamanho da carga útil e número de solicitações quando comparado a outras opções do setor. De acordo com vários pesquisadores, o mod_pagespeed pode reduzir os tempos de carregamento em até 80%, a quantidade de bytes em um fio pode ser reduzida em 30% e o número total de solicitações pode cair em mais de 20%. Como muitos mecanismos de pesquisa, incluindo o Google, empregam um algoritmo de classificação que é afetado pela velocidade de carregamento de uma página, essas otimizações podem afetar o posicionamento de um site nos resultados de pesquisa. Em fevereiro de 2015, o Google começou a testar rótulos “Lento” em dispositivos móveis  para sites que excedem um certo tempo de carregamento, levando os desenvolvedores a examinar maneiras de aumentar a velocidade de carregamento de uma página.
+
+Insights do PageSpeed:
+PageSpeed ​​Insights é uma ferramenta online que ajuda a identificar as melhores práticas de desempenho em qualquer site, fornece sugestões sobre otimizações de uma página da Web e sugere ideias gerais de como tornar um site mais rápido.  Esta ferramenta pode ser acessada diretamente em qualquer navegador. Por solicitação de URL, ele classifica o desempenho da página da Web em uma escala de 1 a 100 e fornece um relatório sobre as otimizações sugeridas, divididas em categorias de prioridade alta, média e baixa.
+
+Extensão do Chrome PageSpeed: 
+A extensão Pagespeed é uma extensão do navegador Chrome e faz parte das Ferramentas do desenvolvedor do Google Chrome . Os visitantes que usam o PageSpeed ​​regularmente podem visualizar todas as métricas fornecidas pelo PageSpeed ​​Insights diretamente em um navegador e baixar os recursos da página da Web, otimizados de acordo com as práticas recomendadas de desempenho da Web. Ele agora está obsoleto  e o Google recomenda que a versão online seja usada.
+
+Serviço de velocidade de página: 
+O serviço PageSpeed ​​era um produto comercial, fornecido pela Google Inc. O serviço era oferecido gratuitamente, pois ainda estava oficialmente em versão beta. O serviço incluiu todas as otimizações do Módulo Pagespeed e uso da infraestrutura dos servidores do Google.  O Google anunciou a suspensão do serviço PageSpeed ​​em 5 de maio de 2015 e o desativou em 3 de agosto de 2015. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <blog_text/>
 <blog_img>  <blog_img/>
 
 
 <blogcat_id> <blogcat_id/>
 <post_paisid> <post_paisid/>
 <blogdestaque_id>  <blogdestaque_id/>
+
+</startuparcade>

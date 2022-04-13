@@ -166,11 +166,11 @@ class Grupo {
 
 	}
 
-	public function grupoadmin($adm_user_id, $adm_sub_user_id, $adm_grupo_id, $adm_flag) {
+	public function grupo_admin($adm_user_id, $adm_sub_user_id, $adm_grupo_id, $adm_flag) {
 
 		$banco = new Banco();
 
-		$banco->query("INSERT INTO grupoadmin( adm_user_id, adm_sub_user_id, adm_grupo_id, adm_flag) VALUES(:adm_user_id, :adm_sub_user_id, :adm_grupo_id, :adm_flag)",
+		$banco->query("INSERT INTO grupo_admin( adm_user_id, adm_sub_user_id, adm_grupo_id, adm_flag) VALUES(:adm_user_id, :adm_sub_user_id, :adm_grupo_id, :adm_flag)",
 			array(
 				":adm_user_id" => $adm_user_id,
 				":adm_sub_user_id" => $adm_sub_user_id,
@@ -207,7 +207,7 @@ class Grupo {
 
 		$banco = new Banco();
 
-		$banco->query("INSERT INTO grupoadmin( adm_user_id, adm_sub_user_id, adm_grupo_id) VALUES ( :adm_user_id, :adm_sub_user_id, :adm_grupo_id)",
+		$banco->query("INSERT INTO grupo_admin( adm_user_id, adm_sub_user_id, adm_grupo_id) VALUES ( :adm_user_id, :adm_sub_user_id, :adm_grupo_id)",
 			array(
 				":adm_user_id" => $adm_user_id,
 				":adm_sub_user_id" => $adm_sub_user_id,
@@ -220,7 +220,7 @@ class Grupo {
 
 		$banco = new Banco();
 
-		$banco->query("UPDATE grupoadmin SET adm_flag = :adm_flag  WHERE adm_sub_user_id = :adm_sub_user_id AND adm_grupo_id = :adm_grupo_id",
+		$banco->query("UPDATE grupo_admin SET adm_flag = :adm_flag  WHERE adm_sub_user_id = :adm_sub_user_id AND adm_grupo_id = :adm_grupo_id",
 			array(
 				":adm_flag" => $adm_flag,
 				":adm_sub_user_id" => $adm_sub_user_id,
@@ -233,7 +233,7 @@ class Grupo {
 
 		$banco = new Banco();
 
-		$banco->query(" DELETE FROM grupoadmin WHERE  adm_grupo_id = :adm_grupo_id AND adm_user_id = :adm_user_id or adm_sub_user_id = :adm_sub_user_id  ",
+		$banco->query(" DELETE FROM grupo_admin WHERE  adm_grupo_id = :adm_grupo_id AND adm_user_id = :adm_user_id or adm_sub_user_id = :adm_sub_user_id  ",
 			array(
 				":adm_user_id" => $adm_user_id,
 				":adm_sub_user_id" => $adm_sub_user_id,

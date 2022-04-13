@@ -6,7 +6,7 @@ CREATE VIEW usuariogrupos as SELECT * from categoria_grupo cg
 inner join grupo g on cg.cg_id = g.grcat_id 
 inner join grupo_usuario gu on g.gr_id = gu.gu_grupo_id 
 inner join usuario u on gu.gu_user_id = u.us_id 
-left join grupoadmin ga on ga.adm_sub_user_id =u.us_id
+left join grupo_admin ga on ga.adm_sub_user_id =u.us_id;
 
 
 drop view usuariogrupospendentes;
@@ -14,11 +14,11 @@ CREATE VIEW usuariogrupospendentes as SELECT * from categoria_grupo cg
 inner join grupo g on cg.cg_id = g.grcat_id 
 inner join grupo_usuario gu on g.gr_id = gu.gu_grupo_id 
 inner join usuario u on gu.gu_user_id = u.us_id 
-left join grupoadmin ga on ga.adm_sub_user_id =u.us_id
+left join grupo_admin ga on ga.adm_sub_user_id =u.us_id;
 
 
 drop view dadosGrupo;
-CREATE VIew dadosGrupo as SELECT * from categoria_grupo cg inner join grupo g on cg.cg_id = g.grcat_id inner join grupoadmin ga on ga.adm_grupo_id = g.gr_id
+CREATE VIew dadosGrupo as SELECT * from categoria_grupo cg inner join grupo g on cg.cg_id = g.grcat_id inner join grupo_admin ga on ga.adm_grupo_id = g.gr_id
 
 drop VIEW grupocategorias;
 CREATE VIEW grupocategorias   AS select * from categoria_grupo cg inner join grupo g on( cg.cg_id = g.grcat_id);
@@ -31,12 +31,17 @@ create view chatprivadomensagem as  select * from mensagem m left join privado_m
 
 DROP VIEW propostagrupo; 
 
-CREATE VIEW propostagrupo AS select * from ((`startuparcade`.`categoria_grupo` `cg` join `startuparcade`.`grupo` `g` on(`cg`.`cg_id` = `g`.`grcat_id`)) left join `startuparcade`.`plano_de_negocios` `pn` on(`g`.`gr_id` = `pn`.`pn_grupo_id`))
-CREATE VIEW blog_post_categoria AS SELECT* FROM post p inner join blog b on p.post_id = b.blogpost_id INNER JOIN blog_categoria cat on b.blog_categoria_id = cat.blogcat_id INNER JOIN blog_destaque bd on b.blogdestaque_id = bd.blogdest_id
+CREATE VIEW propostagrupo AS select * from categoria_grupo cg inner join grupo g on cg.cg_id = g.grcat_id left join plano_de_negocios pn on g.gr_id = pn.pn_grupo_id;
 
+DROP VIEW blog_post_categoria; 
+CREATE VIEW blog_post_categoria AS SELECT* FROM post p inner join blog b on p.post_id = b.blogpost_id INNER JOIN blog_categoria cat on b.blog_categoria_id = cat.blogcat_id INNER JOIN blog_destaque bd on b.blogdestaque_id = bd.blogdest_id;
 
-CREATE VIEW usuario_notificantions_mensagem AS SELECT * FROM `grupo` g inner join grupo_mensagem_link gml on g.gr_id = gml.gml_grupo_id inner join mensagem m on gml.gml_msn_id = m.msn_id
+DROP VIEW usuario_notificantions_mensagem; 
+CREATE VIEW usuario_notificantions_mensagem AS SELECT * FROM `grupo` g inner join grupo_mensagem_link gml on g.gr_id = gml.gml_grupo_id inner join mensagem m on gml.gml_msn_id = m.msn_id;
 
+DROP VIEW exploregrupos; 
+
+CREATE VIEW exploregrupos AS select * from categoria_grupo cg inner join grupo g  on cg.cg_id = g.grcat_id left join grupo_usuario gu on g.gr_id = gu.gu_grupo_id;
 
 
 QUERY PARA NOTIFICAÇÃO 
@@ -55,3 +60,5 @@ QUERY PARA NOTIFICAÇÃO  SERAPADA
 	SELECT * FROM usuariogrupospendentes 
 	WHERE gr_id IN (SELECT gr_id FROM `usuariogrupos` 
 		WHERE gu_user_id = 3 ) and `gu_accept` = 2 GROUP BY us_id ORDER by gu_user_id, us_id DESC
+
+

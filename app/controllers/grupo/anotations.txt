@@ -1,0 +1,15 @@
+
+
+== blog e  academy startup tem mesmo base de post e blog (corta conteudo de blog para usuarios externos) = pendente
+-- colocar imagem nas fotos relacionado a cada assunto.
+-- CRIAR TERMOS BASEADO EM CADA PAIS.....(PENDENTE)
+
+
+
+
+OBSERVAÇÕES:
+blog extende de post
+(parametros sem uso) ao criar view um produção excluir ou deixar pode ser usando futuramente em customizações
+// post e blog tem categoria
+// post = postcat_id
+// blog  = blog_categoria_id

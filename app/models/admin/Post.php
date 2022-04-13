@@ -136,7 +136,7 @@ abstract class Post {
 	public function adicionaPost() {
 		$banco = new Banco();
 
-		$result = $banco->query(" INSERT INTO post (post_titulo, post_subtitulo, post_description, postcat_id, tipo_post_id, userpost_id) VALUES  (:post_titulo, :post_subtitulo, :post_description, :postcat_id, :tipo_post_id, :userpost_id) ", array(
+		$result = $banco->query(" INSERT INTO post (post_titulo, post_subtitulo, post_description, postcat_id, tipo_post_id, userpost_id, post_paisid) VALUES  (:post_titulo, :post_subtitulo, :post_description, :postcat_id, :tipo_post_id, :userpost_id, :post_paisid) ", array(
 
 			":post_titulo" => $this->getPost_titulo(),
 			":post_subtitulo" => $this->getPost_subtitulo(),
@@ -144,6 +144,7 @@ abstract class Post {
 			":postcat_id" => $this->getCat_id(),
 			":tipo_post_id" => $this->getTipo_post_id(),
 			":userpost_id" => $this->getUser_id(),
+			":post_paisid" => $this->getPost_paisid(),
 
 		));
 	}

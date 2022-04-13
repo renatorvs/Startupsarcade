@@ -89,18 +89,22 @@ class AdminpostblogController extends ContainerController {
 		$blog->setPost_titulo($val->post_titulo);
 		$blog->setPost_subtitulo($val->post_subtitulo);
 		$blog->setPost_description($val->post_description);
-		$blog->setCat_id(0);
-		$blog->setTipo_post_id(5);
+		$blog->setTipo_post_id(1);
 		$blog->setUser_id($session_id);
 		$blog->setPost_paisid($val->post_paisid);
 
+		//post e blog tem categoria
+		$blog->setCat_id($val->blogcat_id);
+
+		//debug($blog);
 		$blog->adicionaPost();
 
 		$blogpost_id = Blog::getLastPost_id();
+		//post e blog tem categoria
 
+		$blog->setBlog_categoria_id($val->blogcat_id);
 		$blog->setBlogdestaque_id($val->blogdestaque_id);
 		$blog->setBlog_text($val->blog_text);
-		$blog->setBlog_categoria_id($val->blogcat_id);
 		$blog->setBlog_date($val->blog_date);
 		$blog->setBlogpost_id($blogpost_id[0]['post_id']);
 
