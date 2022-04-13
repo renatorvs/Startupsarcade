@@ -1,8 +1,8 @@
 <?php
 
-namespace app\linguagem\Ingles;
+namespace app\linguagem\ingles;
 
-class Grupocategoriaingles extends Ingles {
+class grupocategoriaingles extends Ingles {
 
 	public $description = "";
 	public $keywords = "";

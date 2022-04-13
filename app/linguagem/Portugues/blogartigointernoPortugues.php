@@ -2,7 +2,7 @@
 
 namespace app\linguagem\portugues;
 
-class blogartigointernoPortugues extends Portugues {
+class blogartigointernoportugues extends Portugues {
 	public $title = "starstup´s arcade | artigo";
 	public $meta_charset = "UTF-8";
 	public $description = "";

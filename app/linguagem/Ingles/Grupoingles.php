@@ -2,7 +2,7 @@
 
 namespace app\linguagem\ingles;
 
-class Grupoingles extends Ingles{
+class grupoingles extends Ingles{
 
 
 

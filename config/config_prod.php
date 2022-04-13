@@ -3,20 +3,12 @@
 return [
 	"database" => [
 		'host' => 'localhost',
-		'dbname' => 'startuparcade',
-		'username' => 'root',
-		'password' => '',
-	<?php
-
-return [
-	"database" => [
-		'host' => 'localhost',
-		'dbname' => 'startuparcade',
-		'username' => 'root',
-		'password' => '',
-		// 'dbname' => 'start277_startupsarcade',
-		// 'username' => 'start277',
-		// 'password' => 'mx52QVl06z',
+		//'dbname' => 'startuparcade',
+	///	'username' => 'root',
+	///	'password' => '',
+		 'dbname' => 'start277_startupsarcade',
+		 'username' => 'start277',
+		 'password' => 'mx52QVl06z',
 
 		'charset' => 'utf8',
 		'options' => [

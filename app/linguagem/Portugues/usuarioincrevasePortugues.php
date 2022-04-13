@@ -1,8 +1,8 @@
 <?php
 
-namespace app\linguagem\Portugues;
+namespace app\linguagem\portugues;
 
-class usuarioincrevasePortugues extends Portugues {
+class usuarioincrevaseportugues extends Portugues {
 	public $description = "";
 	public $keywords = "";
 	public $author = "";

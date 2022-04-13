@@ -2,7 +2,7 @@
 
 namespace app\linguagem\ingles;
 
-class inglesIndex extends ingles  {
+class inglesindex extends Ingles  {
       public $description = "";
       public $keywords = "";
       public $author  "";

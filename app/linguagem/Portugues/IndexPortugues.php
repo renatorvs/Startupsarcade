@@ -2,7 +2,7 @@
 
 namespace app\linguagem\portugues;
 
-class IndexPortugues extends Portugues {
+class indexportugues extends Portugues {
 	public $html_lang = "pt-br";
 	public $meta_charset = "UTF-8";
 	public $description = "";

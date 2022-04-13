@@ -2,7 +2,7 @@
 
 namespace app\linguagem\ingles;
 
-class Gruposconvitesingles extends Ingles{
+class gruposconvitesingles extends Ingles{
 
 
   public $description = "";

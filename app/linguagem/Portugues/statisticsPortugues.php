@@ -1,7 +1,7 @@
 <?php
 namespace app\linguagem\Portugues;
 
-class statisticsPortugues extends Portugues {
+class statisticsportugues extends Portugues {
 
 	public $title = "starstup´s arcade | dashboard";
 	public $description = "";

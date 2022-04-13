@@ -2,7 +2,7 @@
 
 namespace app\linguagem\ingles;
 
-class Statisticsingles extends ingles {
+class statisticsingles extends Ingles {
 	public $title = "starstup´s arcade | Entrepreneurs";
 	public $description = "";
 	public $h1_empreendedores = "Entrepreneurs in the world";

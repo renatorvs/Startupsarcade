@@ -2,7 +2,7 @@
 
 namespace app\linguagem\portugues;
 
-class LearningartigoPortugues extends Portugues{
+class learningartigoportugues extends Portugues{
       public $title = "starstup´s arcade | artigo lerning";
       public $description = "";
       public $keywords = "";

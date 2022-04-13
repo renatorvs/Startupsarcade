@@ -8,11 +8,13 @@ class Linguagem {
 		unset($_SESSION['PAIS_ID']);
 
 		if (getLanguage() == 1) {
+			//session_destroy();
 			Session::set("PAIS_ID", 1);
-			return "Portugues";
+			return "portugues";
 		} else if (getLanguage() == 2) {
+			//session_destroy();
 			Session::set("PAIS_ID", 2);
-			return "Ingles";
+			return "ingles";
 		} else {
 			Session::set("PAIS_ID", 0);
 			return "Não esta pegando nenhum idioma ";
@@ -30,7 +32,7 @@ class Linguagem {
 
 	public static function getIdiomaindex() {
 		$idioma = Linguagem::getIdiomaSession();
-		$class = "app\linguagem\\" . $idioma . "\Index" . $idioma;
+		$class = "app\linguagem\\" . $idioma . "\index" . $idioma;
 		return new $class();
 	}
 
@@ -42,13 +44,13 @@ class Linguagem {
 
 	public static function getPerfil() {
 		$idioma = Linguagem::getIdiomaSession();
-		$class = "app\linguagem\\" . $idioma . "\Perfil" . $idioma;
+		$class = "app\linguagem\\" . $idioma . "\perfil" . $idioma;
 		return new $class();
 	}
 
 	public static function getIdiomaCategoriaGrupo() {
 		$idioma = Linguagem::getIdiomaSession();
-		$class = "app\linguagem\\" . $idioma . "\CategoriaGrupo" . $idioma;
+		$class = "app\linguagem\\" . $idioma . "\categoriaGrupo" . $idioma;
 		return new $class();
 	}
 	public static function grupoCategorias() {
@@ -157,7 +159,7 @@ class Linguagem {
 
 	public static function getGruposPendentes() {
 		$idioma = Linguagem::getIdiomaSession();
-		$class = "app\linguagem\\" . $idioma . "\GruposPendentes" . $idioma;
+		$class = "app\linguagem\\" . $idioma . "\gruposPendentes" . $idioma;
 		return new $class();
 	}
 

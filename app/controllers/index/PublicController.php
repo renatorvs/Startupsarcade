@@ -3,7 +3,7 @@
 namespace app\controllers\index;
 
 use app\controllers\ContainerController;
-use app\Linguagem\Linguagem;
+use app\linguagem\Linguagem;
 use app\session\Session;
 
 class PublicController extends ContainerController {

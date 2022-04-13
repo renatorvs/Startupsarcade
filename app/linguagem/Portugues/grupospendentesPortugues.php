@@ -1,7 +1,7 @@
 <?php
 namespace app\linguagem\portugues;
 
-class grupospendentesPortugues extends Portugues {
+class grupospendentesportugues extends Portugues {
 
 	public $description = "";
 	public $keywords = "";

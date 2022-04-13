@@ -1,7 +1,7 @@
 <?php
 namespace app\linguagem\ingles;
 
-class Duvidasingles extends Ingles {
+class duvidasingles extends Ingles {
 
 	public $title = "startup´s arcade | Questions ";
 	public $description = "";

@@ -2,7 +2,7 @@
 
 namespace app\linguagem\ingles;
 
-class Entraringles extends Ingles {
+class entraringles extends Ingles {
 
 	public $navmenu_1 = "about";
 	public $navmenu_2 = "Blog";

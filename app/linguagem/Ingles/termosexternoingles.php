@@ -3,7 +3,7 @@
 
 namespace app\linguagem\ingles;
 
-class Termosexternoingles extends Ingles {
+class termosexternoingles extends Ingles {
   
 
   public $title = "starstup´s arcade | user terms";

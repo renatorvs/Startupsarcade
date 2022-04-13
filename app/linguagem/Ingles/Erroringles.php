@@ -2,7 +2,7 @@
 
  namespace app\linguagem\ingles;
 
- class Erroringles extends Ingles{
+ class erroringles extends Ingles{
 
 public $title = "starstup´s arcade | error ";
 

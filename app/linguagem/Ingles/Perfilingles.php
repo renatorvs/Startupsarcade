@@ -2,7 +2,7 @@
 
 namespace app\linguagem\ingles;
 
-class Perfilingles extends Ingles{
+class perfilingles extends Ingles{
 	
 	public $description = "";
 	public $keywords = "";

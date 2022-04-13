@@ -1,8 +1,8 @@
 <?php
 
-namespace app\linguagem\Ingles;
+namespace app\linguagem\ingles;
 
-class IndexIngles extends Ingles {
+class indexingles extends Ingles {
 	public $description = "";
 	public $keywords = "";
 	public $author = "";

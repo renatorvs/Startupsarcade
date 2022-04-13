@@ -1,8 +1,8 @@
  <?php
 
- namespace app\linguagem\Portugues;
+namespace app\linguagem\portugues;
 
- class errorPortugues extends Portugues{
+ class errorportugues extends Portugues{
 
 public $title = "starstup´s arcade | error ";
 

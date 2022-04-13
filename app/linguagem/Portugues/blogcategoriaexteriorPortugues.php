@@ -2,7 +2,7 @@
 
 namespace app\linguagem\portugues;
 
-class blogcategoriaexteriorPortugues extends Portugues{
+class blogcategoriaexteriorportugues extends Portugues{
 
  public $title = "starstup´s arcade | blog categoria";
  public $description = "";

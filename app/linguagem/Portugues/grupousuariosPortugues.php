@@ -2,7 +2,7 @@
 
 namespace app\linguagem\portugues;
 
-class grupousuariosPortugues extends Portugues {
+class grupousuariosportugues extends Portugues {
 	public $description = "";
 	public $keywords = "";
 	public $author = "";
