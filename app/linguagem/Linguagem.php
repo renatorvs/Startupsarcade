@@ -159,7 +159,7 @@ class Linguagem {
 
 	public static function getGruposPendentes() {
 		$idioma = Linguagem::getIdiomaSession();
-		$class = "app\linguagem\\" . $idioma . "\gruposPendentes" . $idioma;
+		$class = "app\linguagem\\" . $idioma . "\grupospendentes" . $idioma;
 		return new $class();
 	}
 

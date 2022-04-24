@@ -171,14 +171,15 @@ class Blog extends Post {
 
 	}
 
-	public static function getPostBlog($post_paisid) {
+	public static function getPostBlog($blogpais_id) {
 
 		$banco = new Banco();
-
-		return $banco->select("SELECT * FROM blog_post_categoria WHERE  blogdestaque_id  IN(1, 3)
-			and post_paisid = :post_paisid"
+// blogpais_id =  post_paisid
+		return $banco->select("SELECT * FROM blog_post_categoria
+			WHERE  blogdestaque_id  IN(1, 3)
+			and blogpais_id = :blogpais_id"
 			, array(
-				':post_paisid' => $post_paisid,
+				':blogpais_id' => $blogpais_id,
 			));
 
 	}

@@ -16,6 +16,7 @@ class AcademystartupController extends ContainerController {
 		$postBlog = Blog::getPostBlog(Session::get('PAIS_ID'));
 		$postBlogDestaque = Blog::getPostBlogDestaque(Session::get('PAIS_ID'));
 
+		debug($postBlog);
 		if (Session::get('USUARIO_ID') OR Session::get('ADMIN_SESSION')) {
 			if (Session::get('ADMIN_SESSION')) {
 				$admin_session = true;

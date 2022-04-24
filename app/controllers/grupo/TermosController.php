@@ -17,7 +17,7 @@ class TermosController extends ContainerController {
 
 			$gettermos = Termos::gettermos(Session::get("PAIS_ID"));
 		}
-		$lin = Linguagem::getInscrevase();
+		$lin = Linguagem::getTermos();
 
 		if (Session::get("ADMIN_SESSION") OR Session::get("USUARIO_ID")) {
 

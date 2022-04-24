@@ -2,7 +2,7 @@
 
 namespace app\linguagem\portugues;
 
-class grupoPortugues extends portugues {
+class grupoportugues extends portugues {
 
 	public $title = "starstup´s arcade | grupo ";
 	public $description = "";

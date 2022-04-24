@@ -59,7 +59,7 @@ class MeusgruposController extends ContainerController {
 			'pais_id' => Session::get("PAIS_ID"),
 			'NotsGrupo' => getNotificantionGrupo(Session::get('USUARIO_ID')),
 			'NotsMessagem' => getNotificantionMessagem(Session::get('USUARIO_ID')),
-		], 'grupo.meusGrupos');
+		], 'grupo.meusgrupos');
 	}
 
 	public function grupoUsuarioUpdate() {
@@ -110,7 +110,7 @@ class MeusgruposController extends ContainerController {
 
 		$grupo->grupoUpdate();
 
-		redirecionar('\meusGrupos\grupos');
+		redirecionar('\meusgrupos\grupos');
 
 	}
 
@@ -142,7 +142,7 @@ class MeusgruposController extends ContainerController {
 
 		Grupo::grupoUsuarioSair($gr_id->parameter, Session::get('USUARIO_ID'));
 
-		redirecionar('\meusGrupos\grupos');
+		redirecionar('\meusgrupos\grupos');
 
 	}
 	public function grupoDeleteUsuarioSair($gr_id) {
@@ -290,7 +290,7 @@ class MeusgruposController extends ContainerController {
 			'gruponome' => $gruponome,
 			'getGrupoCategoria' => $getGrupoCategoria,
 			'listEstados' => Estado::listEstados(),
-			'meusGrupos' => $dadosgrupo,
+			'meusgrupos' => $dadosgrupo,
 			'grupo_id' => $gr_id->parameter,
 			'usuario_id' => Session::get('USUARIO_ID'),
 			'pais_id' => Session::get("PAIS_ID"),
@@ -350,7 +350,7 @@ class MeusgruposController extends ContainerController {
 			'gruponome' => $gruponome,
 			'getGrupoCategoria' => $getGrupoCategoria,
 			'listEstados' => Estado::listEstados(),
-			'meusGrupos' => $dadosgrupo,
+			'meusgrupos' => $dadosgrupo,
 			'grupo_id' => $gr_id->parameter,
 			'usuario_id' => Session::get('USUARIO_ID'),
 			'pais_id' => Session::get('PAIS_ID'),
@@ -392,7 +392,7 @@ class MeusgruposController extends ContainerController {
 		$pn->setPn_grupo_id($v->pn_grupo_id);
 		$pn->addPlanoDeNegocios();
 
-		redirecionar("/meusGrupos/informacoes/$v->pn_grupo_id");
+		redirecionar("/meusgrupos/informacoes/$v->pn_grupo_id");
 
 	}
 
@@ -428,7 +428,7 @@ class MeusgruposController extends ContainerController {
 		$pn->setPn_id($v->pn_id);
 		$pn->updateplanoDeNegocios();
 
-		redirecionar("/meusGrupos/informacoes/$v->pn_grupo_id");
+		redirecionar("/meusgrupos/informacoes/$v->pn_grupo_id");
 
 	}
 
@@ -443,7 +443,7 @@ class MeusgruposController extends ContainerController {
 
 		$lin = Linguagem::getgrupoconvites();
 
-		$meusGruposConvites = Grupo::meusGruposConvites(Session::get('USUARIO_ID'));
+		$meusgruposConvites = Grupo::meusGruposConvites(Session::get('USUARIO_ID'));
 
 		// :debug($meusGruposConvites);
 		$this->view([

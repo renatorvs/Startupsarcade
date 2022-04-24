@@ -24,7 +24,7 @@ class TermosexternoController extends ContainerController {
 				$haNotsMessagem = true;
 			}
 
-			$lin = Linguagem::getbloginterior();
+			$lin = Linguagem::getTermos();
 
 			$this->view([
 
@@ -38,7 +38,7 @@ class TermosexternoController extends ContainerController {
 
 		} else {
 
-			$lin = Linguagem::getblogexterior();
+			$lin = Linguagem::getTermos();
 
 			$this->view([
 				'title' => $lin->title,

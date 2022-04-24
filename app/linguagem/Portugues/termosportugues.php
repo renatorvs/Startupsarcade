@@ -3,7 +3,7 @@
 
 namespace app\linguagem\portugues;
 
-class termosinternoportugues extends Portugues{
+class termosportugues extends Portugues{
   
 
   public $title = "starstup´s arcade | termos do usuario ";
