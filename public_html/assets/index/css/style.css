@@ -50,7 +50,7 @@ h6 {
     transition: all .5s;
     z-index: 997;
     transition: all .5s;
-    padding: 15px 0;
+    padding: 5px 0;
     background: #fff
 }
 #header.header-scrolled {
