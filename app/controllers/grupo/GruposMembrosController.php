@@ -23,8 +23,10 @@ class GruposMembrosController extends ContainerController {
 		$meusGrupos = Grupo::meusGrupos(Session::get('USUARIO_ID'));
 
 		$this->view([
-			'title' => 'SA | Grupos startup',
+			'admin_id' => Session::get("ADMIN_SESSION"),
+			'title' => 'startup´s arcade | grupos startup',
 			'meusGrupos' => $meusGrupos,
+			'admin_id' => Session::get("ADMIN_SESSION"),
 			'listEstados' => Estado::listEstados(),
 			'grupoAll' => $grupoAll,
 			'pais_id' => Session::get("PAIS_ID"),
@@ -46,7 +48,8 @@ class GruposMembrosController extends ContainerController {
 		$grupoAll = CategoriaGrupo::CategoriaGrupoAll();
 
 		$this->view([
-			'title' => 'Planos',
+			'title' => 'startup´s arcade | grupos ',
+			'admin_id' => Session::get("ADMIN_SESSION"),
 			'session' => Session::get('EMPRESA_SESSION'),
 			'pref' => Session::get("USER_PREFERENCIAS"),
 			'grupoAll' => $grupoAll,

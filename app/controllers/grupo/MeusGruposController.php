@@ -25,6 +25,7 @@ class MeusgruposController extends ContainerController {
 		$grupoAll = CategoriaGrupo::CategoriaGrupoAll(Session::get('PAIS_ID'));
 		$meusGrupos = Grupo::meusGrupos(Session::get('USUARIO_ID'));
 		$this->view([
+			'admin_id' => Session::get("ADMIN_SESSION"),
 			'title' => $lin->title,
 			'titulo_h4' => $lin->titulo_h4,
 			'atencao_h5' => $lin->atencao_h5,
@@ -197,6 +198,7 @@ class MeusgruposController extends ContainerController {
 		$grupo = new Grupo();
 
 		$this->view([
+			'admin_id' => Session::get("ADMIN_SESSION"),
 			'html_lang' => $lin->html_lang,
 			'title' => $lin->title,
 			'meta_charset' => $lin->meta_charset,

@@ -1,5 +1,5 @@
     <!DOCTYPE html>
-    <html lang="en">
+<html lang="pt">
 
     <head>
       <meta charset="UTF-8">
@@ -27,16 +27,23 @@
     </head>
 
     <body id="page-top">
-      <header>
+<header>
+      {% if pais_id == 1 %}
 
-       {{ include('layout/nav-header-admin.html') }}
+        {{ include('layout/nav-header-portugues.html') }}
+                        {% else %}
+        {{ include('layout/nav-header-ingles.html') }}
+                     {% endif %}
 
 
-     </header>
-     <main >
-
-       {{ include('layout/nav-dashboard-admin.html') }}  
-
+  </header>
+  <main>
+      {% if pais_id == 1 %}
+      
+        {{ include('layout/nav-dashboard-portugues.html') }}
+      {% else %}
+          {{ include('layout/nav-dashboard-ingles.html') }}
+      {% endif %}
 
 
        <div class="container">
@@ -130,6 +137,16 @@
                     {{blog_text}}
                   </textarea>
                 </div>
+                          <section class="col-md-12 mb-3">
+                            <section class="form-group">
+                              <label for="exampleFormControlSelect1">Post :</label>
+                              <select name="post_id" class="form-control" id="exampleFormControlSelect1" required>
+                                {% for post in getpost  %}
+                                <option value="{{post.post_id}}">{{post_id.post_titulo}} | {{post.post_subtitulo}} </option>
+                                {% endfor %}
+                              </select>
+                            </section>
+                          </section>
 
                 <button type="submit" class="btn btn-primary btn-sm"> Adicionar artigo</button>
 

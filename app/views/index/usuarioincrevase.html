@@ -6,10 +6,8 @@
   <meta name="keywords" content="{{keywords}}">
   <meta name="author" content="{{author}}">
   <title>{{title}}</title>
-  <link href="../../assets/index/img/favicon.png" rel="icon">
-  <link href="../../assets/index/img/apple-touch-icon.png" rel="apple-touch-icon">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-      <link rel="icon" type="imagem/png" href="/imagens/meufavicon.png" />
+    <link rel="icon" type="image/x-icon" href="../../../assets/Logotipo/faviconstartuparcade.svg" />
 
   <link href="../../assets/index/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="../../assets/index/vendor/icofont/icofont.min.css" rel="stylesheet">
@@ -26,7 +24,7 @@
       <section class="logo mr-auto">
         <figure>
           <a href="/">
-            <img src="../assets/Logotipo/logo.svg"  alt="onclickup logo" class="width=device-width" width="180vm"></a>
+            <img src="../assets/Logotipo/logo-index.svg"  alt="startups arcade " class="width=device-width" width="180vm"></a>
           </figure>
         </section>
         <nav class="nav-menu d-none d-lg-block">
@@ -70,9 +68,24 @@
 
 				{{  messagem('emailCadastrado') | raw }}
 				<form  enctype="multipart/form-data"  class="needs-validation" action="/usuario/store" method ="post">
-						<section class="form-row">
+			
 						
-						<section class="col-md-6 mb-6">
+						<section class="col-md-12 mb-3">
+							<label for="validationCustom03">email</label>
+							<input type="text" class="form-control" name="us_email" id="validationCustom03" placeholder="email" required>
+							<section class="invalid-feedback">
+								{{required_email}} 
+							</section>
+						</section> 
+						<section class="col-md-12 mb-3">
+							<label for="validationCustom03">{{login_senha}}</label>
+							<input type="password" class="form-control" name="us_senha" id="validationCustom03" placeholder="{{login_senha}}" required>
+							<section class="invalid-feedback"> 
+								{{required_senha}}
+							</section>
+						</section>
+						
+						<section class="col-md-12 mb-6">
 							<label for="validationCustomUsname">{{login_nome_usuario}}</label>
 							<section class="input-group">
 								
@@ -82,26 +95,6 @@
 								</section>
 							</section>
 						</section>
-					</section>
-					<section class="form-row">
-					</section>
-			
-					<section class="form-row">
-						
-						<section class="col-md-5 mb-3">
-							<label for="validationCustom03">email</label>
-							<input type="text" class="form-control" name="us_email" id="validationCustom03" placeholder="email" required>
-							<section class="invalid-feedback">
-								{{required_email}} 
-							</section>
-						</section> 
-						<section class="col-md-4 mb-3">
-							<label for="validationCustom03">{{login_senha}}</label>
-							<input type="password" class="form-control" name="us_senha" id="validationCustom03" placeholder="{{login_senha}}" required>
-							<section class="invalid-feedback"> 
-								{{required_senha}}
-							</section>
-						</section>
 							<section class="col-md-6 mb-3">
 							<label for="validationCustom04">{{email_foto}}</label>
 							<input type="file" name="us_foto" class="form-control" id="us_foto" placeholder="insira uma foto" required>
@@ -109,7 +102,6 @@
 								{{required_foto}} 
 							</section>  
 						</section>
-					</section>
 					<section class="form-group">
 						<section class="form-check">
 							<input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>

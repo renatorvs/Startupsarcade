@@ -24,6 +24,7 @@ class PerfilController extends ContainerController {
 		//debug($lin);
 		$this->view([
 
+			'admin_id' => Session::get("ADMIN_SESSION"),
 			'title' => $lin->title,
 			'login_tipo_user' => $lin->login_tipo_user,
 			'login_a_cadastra_se' => $lin->login_a_cadastra_se,

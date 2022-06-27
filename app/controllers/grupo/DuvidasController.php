@@ -20,6 +20,7 @@ class DuvidasController extends ContainerController {
 		$this->view([
 			'title' => $lin->title,
 
+			'admin_id' => Session::get("ADMIN_SESSION"),
 			'html_lang' => $lin->html_lang,
 			'meta_charset' => $lin->meta_charset,
 			'description' => $lin->description,

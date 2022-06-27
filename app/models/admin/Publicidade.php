@@ -94,10 +94,6 @@ class Publicidade {
 		return $banco->select("SELECT * FROM publicidade");
 	}
 
-	public static function getDuvidaCategoria() {
-
-	}
-
 	public function add() {
 
 		$banco = new Banco();
@@ -113,12 +109,11 @@ class Publicidade {
 
 		));
 	}
-
-	public function deleteDuvida() {
+	public static function deletePublicidade($pu_id) {
 		$banco = new Banco();
 
-		$result = $banco->query("DELETE FROM  duvidas  WHERE  duv_id =:duv_id", array(
-			":duv_id" => $this->getDuv_id(),
+		$result = $banco->query("DELETE FROM  publicidade  WHERE  pu_id =:pu_id", array(
+			":pu_id" => $pu_id,
 
 		));
 	}

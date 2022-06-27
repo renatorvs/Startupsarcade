@@ -17,10 +17,9 @@ class indexingles extends Ingles {
 	public $nav_redesocial_2;
 	public $nav_redesocial_3;
 	public $nav_redesocial_4;
-	public $app = "o app";
-	public $notificaçoes = "notifications";
-	public $active = "all";
-	public $perfil = "profile";
+	public $app = "App";
+	public $notificaçoes = "Notifications";
+	public $active = "All";
 	public $header_h1 = "Post and share ideas from a business";
 	public $header_h2 = "It all starts with an idea";
 	public $header_button = "subscribe";
@@ -33,7 +32,7 @@ class indexingles extends Ingles {
 	public $main_features_3_h4 = "Look for possible partners or investors";
 	public $main_features_3_p = "create a group";
 	public $main_features_4_h4 = "Blog";
-	public $main_features_4_p = "articles by category";
+	public $main_features_4_p = "Articles by category";
 
 	public $main_services_h2 = "For businesses";
 	public $main_services_P = "Post vacancies for free, look for candidates compatible with the published vacancy";
@@ -46,19 +45,21 @@ class indexingles extends Ingles {
 	public $main_portifolio_h1 = "Discover our platforms";
 	public $main_portifolio_p = "Create group, fill proposal";
 
-	public $main_questions_h2 = "Perguntas frequentes";
-	public $main_question_1 = "Non consectetur a erat nam at lectus urna duis?";
-	public $main_question_resp_1 = "Crie grupo, preeeche a proposta.";
-	public $main_question_2 = "Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque";
-	public $main_question_resp_2 = "Crie grupo, preeeche a proposta.";
-	public $main_question_3 = "Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi?";
-	public $main_question_resp_3 = "Crie grupo, preeeche a proposta.";
-	public $main_question_4 = "Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla?";
-	public $main_question_resp_4 = "Crie grupo, preeeche a proposta.";
-	public $main_question_5 = "Tempus quam pellentesque nec nam aliquam sem et tortor consequat?";
-	public $main_question_resp_5 = "posso criar quantos grupos ?o, preeeche a proposta.";
-	public $main_question_6 = "Tortor vitae purus faucibus ornare. Varius vel pharetra vel turpis nunc eget lorem ";
-	public $main_question_resp_6 = "Crie grupo, preeeche a proposta.";
+	public $main_questions_h2 = "Frequently asked questions";
+	public $main_question_1 = "How many groups can I create?";
+	public $main_question_resp_1 = "As many as you want";
+
+	public $main_question_2 = "What about groups ?";
+	public $main_question_resp_2 = " These are groups created by someone who has a business idea and is looking for a partner to add";
+
+	public $main_question_3 = "Does the business plan have a limit?";
+	public $main_question_resp_3 = "There are fields that you fill";
+	public $main_question_4 = "Are there group notifications?";
+	public $main_question_resp_4 = "Yes !";
+	public $main_question_5 = "Will I know when someone joins my group?";
+	public $main_question_resp_5 = "Yes, there is notification for this .";
+	public $main_question_6 = "Can I block someone ?";
+	public $main_question_resp_6 = "Yes, unwanted users";
 
 	public $main_contato_h2 = "MY Contact";
 	public $main_contato_fone = "55 11 976238147 (BRAZIL)";

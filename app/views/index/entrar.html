@@ -5,7 +5,7 @@
   <meta name="description" content="{{description}}">
   <meta name="keywords" content="{{keywords}}">
   <meta name="author" content="{{author}}">
-    <link rel="icon" type="imagem/png" href="/imagens/meufavicon.png" />
+    <link rel="icon" type="image/x-icon" href="../../../assets/Logotipo/faviconstartuparcade.svg" />
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style type="text/css">
@@ -31,7 +31,7 @@
 			<section class="logo mr-auto">
 				<figure>
 					<a href="/">
-						<img src="../assets/Logotipo/logo.svg"  alt="onclickup logo" class="width=device-width" width="180vm"></a>
+            <img src="../assets/Logotipo/logo-index.svg"  alt="startups arcade " class="width=device-width" width="180vm"></a>
 
 					</figure>
 				</section>
@@ -61,17 +61,17 @@
 					<section class="card-body" >
 						<h4>{{login_h4}}</h4>
 
-						<strong>	{{login_a_strong}}  ? <a href="/cadastrocandidato/show"> {{login_a_cadastra_se}}</a></strong>
+						<strong>	{{login_a_strong}}  ? <a href="/usuario/show"> {{login_a_cadastra_se}}</a></strong>
 						<hr>
 
 						{{  messagem('login') | raw }}
 
 						<form action="/entrar/store" method="post" >
 							<section class="form-group">
-								usuario1@gmail.com <br>
+<!-- 								usuario1@gmail.com <br>
 								usuario@gmail.com <br>
 								nato.re.vieira@gmail. <br>
-							<label for="exampleInputEmail1">{{login_email}}:</label>
+ -->							<label for="exampleInputEmail1">{{login_email}}:</label>
 								<input type="email" name="user_email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="{{login_email_reploceholder}} ">
 								<small id="emailHelp" class="form-text text-muted">{{email_texto}}</small>
 							</section>

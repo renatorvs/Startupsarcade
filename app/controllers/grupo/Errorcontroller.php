@@ -16,6 +16,7 @@ class ErrorController extends ContainerController {
 			'errordetalhe' => $lin->errordetalhe,
 			'btn_erro_grupos' => $lin->btn_erro_grupos,
 			'pais_id' => Session::get("PAIS_ID"),
+			'admin_id' => Session::get("ADMIN_SESSION"),
 
 			'NotsGrupo' => getNotificantionGrupo($sessionUsuario_id),
 			'NotsMessagem' => getNotificantionMessagem($sessionUsuario_id),

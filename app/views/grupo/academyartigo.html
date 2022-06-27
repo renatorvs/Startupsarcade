@@ -37,8 +37,12 @@
     <main>
       {% if pais_id == 1 %}
       {{ include('layout/nav-dashboard-portugues.html') }}
-      {% else %}
+     {% endif %}
+      {% if  pais_id == 2 %}
       {{ include('layout/nav-dashboard-ingles.html') }}
+      {% else %}  
+                {{ include('layout/nav-dashboard-admin.html') }}
+
       {% endif %}
       
       <section  class="container">
@@ -62,6 +66,26 @@
           </figure>
           <br> <hr>
         </article> 
+        <h5>adsense associate:</h5>
+                 {% for publicidade in getPublicidadeAll %}
+          <section class="card"> 
+            <span class="text-dark mt-1" align="center">{{grupo_span}}</span> 
+            <hr>   
+            <section class="card-body" align="center">
+              <ul class="list-unstyled" class="mr-1">
+                <li class="media my-4">
+                  <a href="{{publicidade.pu_link}}" target="_blank">
+                    <img border="0" src="{{publicidade.pu_src}}" >{{publicidade.pu_produto}}  |<span class="text-success">{{publicidade.pu_preco}} |</span>
+                    <strong>{{publicidade.pu_parcela}}</strong>
+                  </a>
+
+                </li>
+              </ul>
+
+
+            </section>
+          </section>
+          {% endfor %}
       </section>
     </section>
   </main>

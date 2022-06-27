@@ -176,8 +176,33 @@ class Blog extends Post {
 		$banco = new Banco();
 // blogpais_id =  post_paisid
 		return $banco->select("SELECT * FROM blog_post_categoria
-			WHERE  blogdestaque_id  IN(1, 3)
+			WHERE  blogdestaque_id  = 1  AND blog_categoria_id != 5
 			and blogpais_id = :blogpais_id"
+			, array(
+				':blogpais_id' => $blogpais_id,
+			));
+
+	}
+	public static function getPostPublicidade($blogpais_id) {
+
+		$banco = new Banco();
+// blogpais_id =  post_paisid
+		return $banco->select("SELECT * FROM blog_post_categoria
+			WHERE  blogdestaque_id  != 3  AND blog_categoria_id != 5
+			and blogpais_id = :blogpais_id"
+			, array(
+				':blogpais_id' => $blogpais_id,
+			));
+
+	}
+
+	public static function getPostBlogTermo($blogpais_id) {
+
+		$banco = new Banco();
+// blogpais_id =  post_paisid
+		return $banco->select("SELECT * FROM blog_post_categoria
+			WHERE  blogdestaque_id  = 3  AND blog_categoria_id = 5
+			AND blogpais_id = :blogpais_id"
 			, array(
 				':blogpais_id' => $blogpais_id,
 			));

@@ -38,6 +38,7 @@ class GruposController extends ContainerController {
 		$this->view([
 
 			'description' => $lin->description,
+			'admin_id' => Session::get("ADMIN_SESSION"),
 			'keywords' => $lin->keywords,
 			'author' => $lin->author,
 			'title' => $lin->title,

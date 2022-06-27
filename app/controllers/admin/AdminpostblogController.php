@@ -24,6 +24,7 @@ class AdminpostblogController extends ContainerController {
 		//	toJson($getPostBlog);
 
 		$this->view([
+			'admin_id' => Session::get("ADMIN_SESSION"),
 			'title' => 'editar artigo',
 			'getcategorias' => $getcategoria,
 			'post_id' => $getBlogLoad_id[0]['post_id'],
@@ -91,7 +92,7 @@ class AdminpostblogController extends ContainerController {
 		$blog->setPost_description($val->post_description);
 		$blog->setTipo_post_id(1);
 		$blog->setUser_id($session_id);
-		$blog->setPost_paisid($val->blogcat_id);
+		$blog->setPost_paisid($val->post_paisid);
 
 		//post e blog tem categoria
 		$blog->setCat_id($val->blogcat_id);

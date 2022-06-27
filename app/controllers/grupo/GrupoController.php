@@ -25,6 +25,7 @@ class GrupoController extends ContainerController {
 		$this->view([
 			'title' => $lin->title,
 			'description' => $lin->description,
+			'admin_id' => Session::get("ADMIN_SESSION"),
 			'keywords' => $lin->keywords,
 			'p_strong' => $lin->p_strong,
 			'meusGrupos' => $categoriaGrupoLoad[0]['gr_nome'],

@@ -27,6 +27,7 @@ class DuvidascategoriaController extends ContainerController {
 		$this->view([
 			'description' => $lin->description,
 			'keywords' => $lin->keywords,
+			'admin_id' => Session::get("ADMIN_SESSION"),
 			'btn_a_addduvida' => $lin->btn_a_addduvida,
 			'author' => $lin->author,
 			'h5_duvidas_frequentes' => $lin->h5_duvidas_frequentes,

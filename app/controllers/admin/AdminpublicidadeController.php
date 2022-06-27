@@ -2,6 +2,7 @@
 namespace app\controllers\admin;
 
 use app\controllers\ContainerController;
+use app\models\admin\Blog;
 use app\models\admin\Publicidade;
 use app\models\grupo\categoriaGrupo;
 use app\session\Session;
@@ -11,6 +12,7 @@ class AdminpublicidadeController extends ContainerController {
 
 	public function show() {
 		$this->view([
+			'admin_id' => Session::get("ADMIN_SESSION"),
 			'title' => 'Competencias',
 			'getcompetenciasCategorias' => Competencias::getcompetenciasCategorias(),
 
@@ -26,12 +28,26 @@ class AdminpublicidadeController extends ContainerController {
 
 		$getPublicidadeAll = Publicidade::getPublicidadeAdmin();
 		$categoriaGrupoPublicidade = categoriaGrupo::categoriaGrupoPublicidade();
-		// debug()
+		//debug($getPublicidadeAll);
+		$getpost = Blog::getPostPublicidade(Session::get('PAIS_ID'));
+
 		$this->view([
 			'pais_id' => Session::get("PAIS_ID"),
+			'getpost' => $getpost,
 			'getPublicidadeAll' => $getPublicidadeAll,
 			'categoriaGrupoPublicidade' => $categoriaGrupoPublicidade,
 		], 'admin.adminpublicidade');
+	}
+	public function delete($request) {
+
+		if (!Session::get("ADMIN_SESSION")) {
+			redirecionar("/adminlogin/admin");
+		}
+
+		Publicidade::deletePublicidade($request->parameter);
+
+		redirecionar("/Adminpublicidade/create");
+
 	}
 
 	public function addcompetencia() {

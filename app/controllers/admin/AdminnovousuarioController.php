@@ -17,6 +17,7 @@ class AdminnovousuarioController extends ContainerController {
 
 		$this->view([
 			"estado" => Estado::listEstados(),
+			'admin_id' => Session::get("ADMIN_SESSION"),
 			"getcargos" => Cargo::getcargos(),
 			'pais_id' => Session::get("PAIS_ID"),
 

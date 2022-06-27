@@ -13,6 +13,7 @@ class AdminsolicitacoesController extends ContainerController {
 		}
 
 		$this->view([
+			'admin_id' => Session::get("ADMIN_SESSION"),
 
 		], 'admin.adminsolicitacoes');
 	}

@@ -16,7 +16,7 @@ class AcademystartupController extends ContainerController {
 		$postBlog = Blog::getPostBlog(Session::get('PAIS_ID'));
 		$postBlogDestaque = Blog::getPostBlogDestaque(Session::get('PAIS_ID'));
 
-		debug($postBlog);
+		//debug($postBlog);
 		if (Session::get('USUARIO_ID') OR Session::get('ADMIN_SESSION')) {
 			if (Session::get('ADMIN_SESSION')) {
 				$admin_session = true;
@@ -36,6 +36,7 @@ class AcademystartupController extends ContainerController {
 				'postBlog' => $postBlog,
 				'postBlogDestaque' => $postBlogDestaque,
 				'pais_id' => Session::get("PAIS_ID"),
+				'admin_id' => Session::get("ADMIN_SESSION"),
 				'NotsGrupo' => getNotificantionGrupo(Session::get('USUARIO_ID')),
 				'NotsMessagem' => getNotificantionMessagem(Session::get('USUARIO_ID')),
 			], 'grupo.academy');
@@ -66,6 +67,7 @@ class AcademystartupController extends ContainerController {
 				'keywords' => $lin->keywords,
 				'author' => $lin->author,
 				'btn_voltar' => $lin->btn_voltar,
+				'admin_id' => Session::get("ADMIN_SESSION"),
 				'blog_categoria' => $lin->blog_categoria,
 				'blog_artigo' => $lin->blog_artigo,
 				'blog_Data_post' => $lin->blog_Data_post,
@@ -119,6 +121,7 @@ class AcademystartupController extends ContainerController {
 
 				'title' => "Artigo categoria",
 				'html_lang' => $lin->html_lang,
+				'admin_id' => Session::get("ADMIN_SESSION"),
 				'meta_charset' => $lin->meta_charset,
 				'description' => $lin->description,
 				'keywords' => $lin->keywords,
@@ -167,6 +170,7 @@ class AcademystartupController extends ContainerController {
 				'description' => $lin->description,
 				'keywords' => $lin->keywords,
 				'author' => $lin->author,
+				'admin_id' => Session::get("ADMIN_SESSION"),
 				'btn_excluir' => $lin->btn_excluir,
 				'btn_editar' => $lin->btn_editar,
 				'btn_a_destaque' => $lin->btn_a_destaque,

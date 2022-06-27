@@ -69,7 +69,13 @@ class EntrarController extends ContainerController {
 
 	public function destroy() {
 		Session::sessionDestroy();
-		redirecionar("/entrar/show");
+		if (Session::get("ADMIN_SESSION")) {
+
+			redirecionar("/adminlogin/admin");
+		} else {
+
+			redirecionar("/entrar/show");
+		}
 
 	}
 

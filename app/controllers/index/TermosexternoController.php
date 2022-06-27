@@ -13,12 +13,13 @@ class TermosexternoController extends ContainerController {
 		], 'index.termos');
 	}
 	public function termos() {
+		$postBlog = getPostBlogTermo(Session::get('PAIS_ID'));
 
+		debug($postBlog);
 		if (Session::get('USUARIO_ID') OR Session::get('ADMIN_SESSION')) {
 			if (Session::get('ADMIN_SESSION')) {
 				$admin_session = true;
 			}
-			$getUsuarioTermos = getUsuarioTermos(Session::get('USUARIO_ID'));
 
 			if ($getUsuarioTermos[0]) {
 				$haNotsMessagem = true;
@@ -30,11 +31,12 @@ class TermosexternoController extends ContainerController {
 
 				'title' => $lin->title,
 				'header_button' => $lin->header_button,
+				'postBlog' => $postBlog,
 
 				'pais_id' => Session::get("PAIS_ID"),
 				'NotsGrupo' => getNotificantionGrupo(Session::get('USUARIO_ID')),
 				'NotsMessagem' => getNotificantionMessagem(Session::get('USUARIO_ID')),
-			], 'grupo.termosinterno');
+			], 'grupo.termos');
 
 		} else {
 
@@ -51,6 +53,7 @@ class TermosexternoController extends ContainerController {
 				'header_h1' => $lin->header_h1,
 				'header_h2' => $lin->header_h2,
 				'conteudo_completo' => $lin->conteudo_completo,
+				'postBlog' => $postBlog,
 
 				'header_button' => $lin->header_button,
 				'continue_lendo' => $lin->continue_lendo,

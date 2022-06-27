@@ -1,5 +1,5 @@
     <!DOCTYPE html>
-    <html lang="en">
+    <html lang="pt-br">
 
     <head>
       <meta charset="UTF-8">
@@ -22,22 +22,23 @@
     </head>
 
     <body id="page-top">
-      <header>
-        {% if pais_id == 1 %}
+<header>
+      {% if pais_id == 1 %}
 
         {{ include('layout/nav-header-portugues.html') }}
-        {% else %}
+                        {% else %}
         {{ include('layout/nav-header-ingles.html') }}
-        {% endif %}
+                     {% endif %}
 
 
-      </header>
-      <main>
-        {% if pais_id == 1 %}
+  </header>
+  <main>
+      {% if pais_id == 1 %}
+      
         {{ include('layout/nav-dashboard-portugues.html') }}
-        {% else %}
-        {{ include('layout/nav-dashboard-ingles.html') }}
-        {% endif %}
+      {% else %}
+          {{ include('layout/nav-dashboard-ingles.html') }}
+      {% endif %}
 
 
 
@@ -61,6 +62,8 @@
                       {% for blogcategoria in getblogcategoria %}
                       <option  value="{{ blogcategoria.blogcat_id}}">{{ blogcategoria.blogcat_nome|e }}</option>
                       {% endfor %}
+                       <option >Termos e serviços</option>
+
                     </select>
                   </div>
 
@@ -115,7 +118,7 @@
                     <option  value="2">Ingles</option>
                   </select>
 
-
+<br>  
                   <button type="submit" class="btn btn-primary btn-sm"> Adicionar artigo</button>
                   
                 </div>

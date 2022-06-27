@@ -13,6 +13,7 @@ class AdmindashboardController extends ContainerController {
 		}
 
 		$this->view([
+			'admin_id' => Session::get("ADMIN_SESSION"),
 			'title' => 'Curso',
 			'pais_id' => Session::get("PAIS_ID"),
 

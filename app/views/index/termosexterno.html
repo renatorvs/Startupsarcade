@@ -6,9 +6,7 @@
   <meta name="keywords" content="{{keywords}}">
   <meta name="author" content="{{author}}">
   <title>{{title}}</title>
-  <link href="../../assets/index/img/favicon.png" rel="icon">
-  <link href="../../assets/index/img/apple-touch-icon.png" rel="apple-touch-icon">
-      <link rel="icon" type="imagem/png" href="/imagens/meufavicon.png" />
+    <link rel="icon" type="image/x-icon" href="../../../assets/Logotipo/faviconstartuparcade.svg" />
 
   <link href="../../assets/index/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="../../assets/index/vendor/icofont/icofont.min.css" rel="stylesheet">
@@ -25,7 +23,7 @@
       <section class="logo mr-auto">
         <figure>
           <a href="/">
-            <img src="../assets/Logotipo/logo.svg"  alt="onclickup logo" class="width=device-width" width="180vm"></a>
+            <img src="../assets/Logotipo/logo-index.svg"  alt="startups arcade " class="width=device-width" width="180vm"></a>
           </figure>
         </section>
         <nav class="nav-menu d-none d-lg-block">
@@ -59,50 +57,21 @@
 
     <main>
       <section class="container">
-        <section class="card-body mt-5">
+ 
 
-          <section class="alert alert-success  mt-5" role="alert">
-            <h4 class="alert-heading">{{h1_termo}}</h4>
-            <p>{{termo_p}} </p>
-          
-        </section>
+       <section class="blog-post">
+      {% for post in postBlog %}  
 
-        {% for gettermosLinha in  gettermos %}  
-
-
-      <section class="card flex-md-row mb-4 box-shadow h-md-250">
-        <section class="card-body d-flex flex-column align-items-start">
-
-          <h3 class="mb-0"> {{gettermosLinha.term_titulo}} </h3>
-          <h4 class="mb-0"> {{gettermosLinha.term_subtitulo}} </h4>
-          <section class="mb-1 text-muted">
-            <p class="card-text mb-auto"> <strong>{{gettermosLinha.term_text}}.</strong></p>
-            date:{{gettermosLinha.term_date | date("m/d/y")}}
-                {% if gettermosLinha.term_pais_id == 1 %}
-                    <option value="1"> (selecionado) BR</option> 
-                 {% else %}
-                    <option value="2"> (selecionado) USA</option> 
-                  {% endif %}
+            <h5 class="blog-post-title">{{post.blog_artigo}}: {{post.post_titulo}}</h5>
+            <h5>{{post.post_subtitulo}}</h5>
+            <p class="blog-post-meta">Data post: {{post.blog_date}} </p>
+            <hr>
+            <p>{{post.post_description}} <br></p>
+            <p>{{post.blog_text}} <br></p>
+              {% endfor %}
 
           </section>
-                  {% if admin %}
-
-            <button  type="button" class="btn btn-info" data-toggle="modal" data-target=".info-lg-{{gettermosLinha.term_id}}">editar</button>  
-
-                  {% endif %}
-        </section>
-      </section> 
-      {% endfor %}
-
-
-
-
-      </section>
-    </section>
-    <hr>
-
-
-
+          </section>
 
   </main>
 

@@ -49,20 +49,23 @@
         </li>
       </li>
       <li class="header-menu">
-      </li>
-<!--       <li>
-        <a href="/blog/create">
-          <img src="/../../assets/img/library-nav.svg" >
-          <span class="text-black">Blog starstup arcade</span>
-        </a>
-      </li>
- -->     
-  <li>
+      </li>  <li>
         <a href="/duvidas/create">
          <img src="../../../assets/img/outline-help-nav.svg">
          <span class="text-black">Duvidas</span>
        </a>
      </li>
+           {% if admin_id %}
+        
+
+           <li> 
+        <a href="/Adminpublicidade/create">
+          <img src="/../../assets/img/library-nav.svg" >
+          <span class="text-black">Publicidade</span>
+        </a>
+      </li>
+      {% endif %}
+
      <li>
         <a href="/termos/create">
          <img src="../../../assets/img/outline-help-nav.svg">

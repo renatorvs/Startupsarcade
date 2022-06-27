@@ -10,10 +10,9 @@
   <link rel="stylesheet" href="../../assets/css/layout/layout.css">
   <link rel="stylesheet" href="../../assets/css/layout/footer.css">
   <link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-      <link rel="icon" type="imagem/png" href="/imagens/meufavicon.png" />
 
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-  <title>starstup arcade | Meus grupos
+  <title>starstup´s arcade | publicidade
 </title>
   <link href="../../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
 </head>
@@ -52,13 +51,13 @@ All In One Positivo Union C464A-21 |Por: R$2.319,10| Em até 10x R$ 231,91 sem j
 													
 													<section class="col-md-12 mb-3">
 														<label for="validationCustom081">Nome do produto</label>
-														<input type="text" name="pu_produto" class="form-control" id="validationCustom81" placeholder="Nome do projeto (starstup)" required>
+														<input type="text" name="pu_produto" class="form-control" id="validationCustom81" placeholder="Nome do produto" required>
 														<section class="invalid-feedback">
 															produto invalido !
 														</section>  
 													</section>													<section class="col-md-6 mb-3">
-														<label for="validationCustom051">Nome do preco</label>
-														<input type="text" name="pu_preco" class="form-control" id="validationCustom051" placeholder="Nome do projeto (starstup)" required>
+														<label for="validationCustom051">preco do produto</label>
+														<input type="text" name="pu_preco" class="form-control" id="validationCustom051" placeholder=" preco do produto" required>
 														<section class="invalid-feedback">
 															preco invalido !
 														</section>  
@@ -66,14 +65,14 @@ All In One Positivo Union C464A-21 |Por: R$2.319,10| Em até 10x R$ 231,91 sem j
 
 													<section class="col-md-6 mb-3">
 														<label for="validationCustom085"> parcela</label>
-														<input type="text" name="pu_parcela" class="form-control" id="validationCustom085" placeholder="Nome do projeto (starstup)" required>
+														<input type="text" name="pu_parcela" class="form-control" id="validationCustom085" placeholder="parcela" required>
 														<section class="invalid-feedback">
 															parcela invalido !
 														</section>  
 													</section>													
 													<section class="col-md-6 mb-3">
 														<label for="validationCustom085"> src</label>
-														<input type="text" name="pu_src" class="form-control" id="validationCustom085" placeholder="Nome do projeto (starstup)" required>
+														<input type="text" name="pu_src" class="form-control" id="validationCustom085" placeholder="src link produto " required>
 														<section class="invalid-feedback">
 															parcela invalido !
 														</section>  
@@ -100,8 +99,19 @@ All In One Positivo Union C464A-21 |Por: R$2.319,10| Em até 10x R$ 231,91 sem j
 														</section>
 													</section>
 													<section class="col-md-12 mb-3">
+														<section class="form-group">
+															<label for="exampleFormControlSelect1">Post :</label>
+															<select name="post_id" class="form-control" id="exampleFormControlSelect1" required>
+																{% for post in getpost  %}
+																<option value="{{post.post_id}}">{{post_id.post_titulo}} | {{post.post_subtitulo}} </option>
+																{% endfor %}
+															</select>
+														</section>
+													</section>
+													<section class="col-md-12 mb-3">
 														
-														<label for="validationCustom01">link de filiado</label>
+														
+														<label for="validationCustom01">link de Afiliado</label>
 														<textarea name="pu_link" class="form-control" id="validationCustom01" placeholder="Descriçao do plano de negocio" required></textarea>
 														<section class="invalid-feedback">
 															contato invalido !
@@ -122,7 +132,7 @@ All In One Positivo Union C464A-21 |Por: R$2.319,10| Em até 10x R$ 231,91 sem j
 
 							<hr>
 							{% for getPublicidade in getPublicidadeAll %}
-							<section class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+							<section class="modal fade bd-example{{grupo.gr_id}}-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 								<section class="modal-dialog modal-lg">
 									<section class="modal-content">
 										<section class="card-body">   
@@ -186,58 +196,39 @@ All In One Positivo Union C464A-21 |Por: R$2.319,10| Em até 10x R$ 231,91 sem j
 				
 
 
-											<button class="btn btn-primary" type="submit">Criar grupo</button>
+											<button class="btn btn-primary" type="submit">Criar piblic</button>
 										</form>
 									</section>
 								</section>
 							</section>
 						</section>
-						<section class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-							<section class="modal-dialog" role="document">
-								<section class="modal-content">
-									<section class="modal-header">
-										<h5 class="modal-title" id="exampleModalLabel">Tem certeza que deseja excluir </h5>
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</section>
-									<section class="modal-body">
-										<a  class="btn btn-primary btn-lg btn-block"  href="/grupos/grupoDelete/{{grupo.gr_id}}">excluir</a>
-
-									</section>
-									
-								</section>
-							</section>
 						</section>
+			
 						<section class="card"> 
 							<section class="card-body">
   
-								<ul class="list-unstyled" class="mr-1">
-									<li class="media my-4">
-										<figure>
-											<img src="../../assets/img/outline-ballot-24px.svg" class="mr-1" >
-										</figure>
-										<section class="media-body"> 
-											<h4 class="mt-0 mb-1"> Produto:{{getPublicidade.pu_produto}}</h4>
-											<h6 class="mt-0 mb-1 text-primary">Preco:{{getPublicidade.pu_preco}}</h6>
-											<h6 class="mt-0 mb-1 text-primary">Parcela:{{getPublicidade.pu_parcela}}</h6>
-											<h6 class="mt-0 mb-1 text-primary">link:{{getPublicidade.pu_link}}</h6>
-											<h6 class="mt-0 mb-1 text-primary">src:{{getPublicidade.pu_src}}</h6>
-										</a> 
-									</section>
-								</li>
-							</ul>
+			
+              <ul class="list-unstyled" class="mr-1">
+                <li class="media my-4">
+                  <a href="{{getPublicidade.pu_link}}" target="_blank">
+                    <img border="0" src="{{publicidade.pu_src}}" >{{getPublicidade.pu_produto}}  |<span class="text-success">{{getPublicidade.pu_preco}} |</span>
+                    <strong>{{getPublicidade.pu_parcela}}</strong>
+                  </a>
+
+                </li>
+              </ul>
 
 
 
-								<button class="btn btn-primary" role="button" data-toggle="modal" data-target=".bd-example-modal-lg">editar</button>
-								<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+
+								<button class="btn btn-primary" role="button" data-toggle="modal" data-target=".bd-example{{getPublicidade.pu_id}}-modal-lg">editar</button>
+								<a type="button" class="btn btn-danger" href="
+								/adminpublicidade/delete/{{getPublicidade.pu_id}}">
 									excluir
-								</button>
-
+								</a>
 							</section>
 						</section>
-					</section>
+			
 					<br>
 					{% endfor %}
 				</section>

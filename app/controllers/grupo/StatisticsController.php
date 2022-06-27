@@ -13,6 +13,7 @@ class StatisticsController extends ContainerController {
 
 		$this->view([
 
+			'admin_id' => Session::get("ADMIN_SESSION"),
 			'title' => $lin->title,
 			'html_lang' => $lin->html_lang,
 			'meta_charset' => $lin->meta_charset,

@@ -32,6 +32,7 @@ class BlogController extends ContainerController {
 				'btn_editar' => $lin->btn_editar,
 
 				'title' => " Blog Startup´s arcade ",
+				'admin_id' => Session::get("ADMIN_SESSION"),
 				'header_button' => $lin->header_button,
 				'continue_lendo' => $lin->continue_lendo,
 				'conteudo_completo' => $lin->conteudo_completo,

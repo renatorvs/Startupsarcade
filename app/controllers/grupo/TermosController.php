@@ -3,6 +3,7 @@ namespace app\controllers\grupo;
 
 use app\controllers\ContainerController;
 use app\Linguagem\Linguagem;
+use app\models\admin\Blog;
 use app\models\admin\Termos;
 use app\session\Session;
 use app\validate\Validate;
@@ -10,28 +11,35 @@ use app\validate\Validate;
 class TermosController extends ContainerController {
 
 	public function create() {
-		if (Session::get("ADMIN_SESSION") != null) {
-			$admin = true;
-			$gettermos = Termos::gettermosAdmin();
-		} else {
+		$postBlog = Blog::getPostBlogTermo(Session::get('PAIS_ID'));
 
-			$gettermos = Termos::gettermos(Session::get("PAIS_ID"));
-		}
-		$lin = Linguagem::getTermos();
+		//debug($postBlog);
+		if (Session::get('USUARIO_ID') OR Session::get('ADMIN_SESSION')) {
+			if (Session::get('ADMIN_SESSION')) {
+				$admin_session = true;
+			}
 
-		if (Session::get("ADMIN_SESSION") OR Session::get("USUARIO_ID")) {
+			if ($getUsuarioTermos[0]) {
+				$haNotsMessagem = true;
+			}
+
+			$lin = Linguagem::getTermos();
 
 			$this->view([
-				'title' => 'usuarios termos ',
-				'h1_termo' => $lin->h1_termo,
-				'termo_p' => $lin->termo_p,
+
+				'title' => $lin->title,
+				'header_button' => $lin->header_button,
+				'postBlog' => $postBlog,
 
 				'pais_id' => Session::get("PAIS_ID"),
-				'admin' => $admin,
-				'gettermos' => $gettermos,
+				'NotsGrupo' => getNotificantionGrupo(Session::get('USUARIO_ID')),
+				'NotsMessagem' => getNotificantionMessagem(Session::get('USUARIO_ID')),
 			], 'grupo.termos');
 
 		} else {
+
+			$lin = Linguagem::getTermos();
+
 			$this->view([
 				'title' => $lin->title,
 				'betas_version' => $lin->betas_version,
@@ -42,8 +50,9 @@ class TermosController extends ContainerController {
 				'navmenu_5' => $lin->navmenu_5,
 				'header_h1' => $lin->header_h1,
 				'header_h2' => $lin->header_h2,
-				'h1_termo' => $lin->h1_termo,
-				'termo_p' => $lin->termo_p,
+				'conteudo_completo' => $lin->conteudo_completo,
+				'postBlog' => $postBlog,
+
 				'header_button' => $lin->header_button,
 				'continue_lendo' => $lin->continue_lendo,
 				'continue_lendo' => $lin->continue_lendo,
@@ -55,10 +64,10 @@ class TermosController extends ContainerController {
 				'postBlog' => $postBlog,
 				'postBlogDestaque' => $postBlogDestaque,
 				'pais_id' => Session::get("PAIS_ID"),
-				'admin' => $admin,
-				'gettermos' => $gettermos,
-			], 'index.termosexterno');
+
+			], 'index.termosexterior');
 		}
+
 	}
 
 	public function addtermos() {

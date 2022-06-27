@@ -7,7 +7,7 @@
     <meta name="keywords" content="Adiciona duvidas">
     <meta name="author" content="Adiciona duvidas">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Onclickup | Adiciona duvidas</title>
+    <title> startup´s arcade | adiciona duvidas</title>
     <link rel="stylesheet" href="../assets/css/bootstrap/bootstrap-reboot.css">
     <link rel="stylesheet" href="../assets/css/layout/adddica.css">
     <link rel="stylesheet" href="../assets/css/layout/layout.css">
@@ -17,20 +17,24 @@
     <link href="../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
 </head>
 <body id="page-top">
-  <header>
-    {% if pais_id %}
-    {{ include('layout/nav-header-portugues.html') }}
-    {% else %}
-    {{ include('layout/nav-header-ingles.html') }}
-    {% endif %}
+<header>
+      {% if pais_id == 1 %}
+
+        {{ include('layout/nav-header-portugues.html') }}
+                        {% else %}
+        {{ include('layout/nav-header-ingles.html') }}
+                     {% endif %}
+
 
   </header>
   <main>
-    {% if pais_id %}
-    {{ include('layout/nav-dashboard-admin.html') }}
-    {% else %}
-    {{ include('layout/nav-dashboard-ingles.html') }}
-    {% endif %}
+      {% if pais_id == 1 %}
+      
+        {{ include('layout/nav-dashboard-portugues.html') }}
+      {% else %}
+          {{ include('layout/nav-dashboard-ingles.html') }}
+      {% endif %}
+   
         <section class="main-experi">
                   <h4 class="text-dark" align="center"> Adiciona duvidas frequentes</h4>
         

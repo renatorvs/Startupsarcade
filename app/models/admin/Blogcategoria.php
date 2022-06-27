@@ -25,7 +25,7 @@ class Blogcategoria {
 
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM blog_categoria WHERE blogpais_id = :blogpais_id", array(
+		return $banco->select("SELECT * FROM blog_categoria WHERE   blogcat_id != 5 and   blogcat_id != 10  AND blogpais_id = :blogpais_id", array(
 			":blogpais_id" => $blogpais_id,
 		));
 	}

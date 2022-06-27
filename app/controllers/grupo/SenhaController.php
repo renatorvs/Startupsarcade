@@ -17,7 +17,7 @@ class SenhaController extends ContainerController {
 		}
 
 		$this->view([
-			'title' => 'SA | Grupos startup',
+			'title' => 'startup´s arcade | senhas',
 			'meusGrupos' => $meusGrupos,
 			'listEstados' => Estado::listEstados(),
 			'grupoAll' => $grupoAll,
