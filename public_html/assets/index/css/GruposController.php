@@ -33,6 +33,8 @@ class GruposController extends ContainerController {
 			$haNotsMessagem = true;
 		}
 
+		//debug(getNotificantionGrupo(Session::get('USUARIO_ID')));
+
 		$this->view([
 
 			'description' => $lin->description,
@@ -71,9 +73,7 @@ class GruposController extends ContainerController {
 		$getPublicidadeAll = Publicidade::getPublicidade($grcat_id->parameter, Session::get('PAIS_ID'));
 
 		$lin = Linguagem::getGrupo();
-		//debug($lin);
-		$idioma = Linguagem::getIdiomaSession();
-		//	debug($idioma);
+
 		$this->view([
 			'title' => 'Planos',
 
@@ -106,7 +106,7 @@ class GruposController extends ContainerController {
 			'checkgrupos' => $checkgrupos,
 			'USUARIO_ID' => Session::get('USUARIO_ID'),
 			'pais_id' => Session::get("PAIS_ID"),
-			'getPublicidadeAll' => $getPublicidadeAll,
+			'getPublicidadeAll' => $getPublicidadeAll . shitte,
 
 			'NotsGrupo' => getNotificantionGrupo(Session::get('USUARIO_ID')),
 			'NotsMessagem' => getNotificantionMessagem(Session::get('USUARIO_ID')),

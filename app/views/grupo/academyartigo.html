@@ -14,7 +14,7 @@
       <link rel="stylesheet" href="../../assets/css/layout/layout.css">
       <link rel="stylesheet" href="../../assets/css/layout/pedidos.css">
       <link rel="stylesheet" href="../../assets/css/layout/footer.css">
-          <link rel="icon" type="imagem/png" href="/imagens/meufavicon.png" />
+    <link rel="icon" type="image/x-icon" href="../../../assets/Logotipo/faviconstartuparcade.svg" />
 
       <!-- Custom fonts for this template-->
       <link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -27,7 +27,6 @@
      <header>
       {% if pais_id == 1 %}
 
-
       {{ include('layout/nav-header-portugues.html') }}
       {% else %}
       {{ include('layout/nav-header-ingles.html') }}
@@ -35,10 +34,12 @@
 
     </header>
     <main>
+
+
+
       {% if pais_id == 1 %}
       {{ include('layout/nav-dashboard-portugues.html') }}
-     {% endif %}
-      {% if  pais_id == 2 %}
+     {% elseif  pais_id == 2 %}
       {{ include('layout/nav-dashboard-ingles.html') }}
       {% else %}  
                 {{ include('layout/nav-dashboard-admin.html') }}
@@ -66,6 +67,7 @@
           </figure>
           <br> <hr>
         </article> 
+           </section>
         <h5>adsense associate:</h5>
                  {% for publicidade in getPublicidadeAll %}
           <section class="card"> 
@@ -86,7 +88,7 @@
             </section>
           </section>
           {% endfor %}
-      </section>
+   
     </section>
   </main>
   {{ include('layout/nav-dashboard-end.html') }}

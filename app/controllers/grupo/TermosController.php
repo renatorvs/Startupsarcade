@@ -2,7 +2,7 @@
 namespace app\controllers\grupo;
 
 use app\controllers\ContainerController;
-use app\Linguagem\Linguagem;
+use app\linguagem\Linguagem;
 use app\models\admin\Blog;
 use app\models\admin\Termos;
 use app\session\Session;

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\linguagem\Portugues;
+namespace app\linguagem\portugues;
 
 class grupocategoriasPortugues extends Portugues {
 

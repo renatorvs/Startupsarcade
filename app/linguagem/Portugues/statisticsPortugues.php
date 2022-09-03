@@ -1,5 +1,6 @@
 <?php
-namespace app\linguagem\Portugues;
+
+namespace app\linguagem\portugues;
 
 class statisticsportugues extends Portugues {
 

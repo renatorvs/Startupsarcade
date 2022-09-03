@@ -90,7 +90,7 @@ class AdminpostblogController extends ContainerController {
 		$blog->setPost_titulo($val->post_titulo);
 		$blog->setPost_subtitulo($val->post_subtitulo);
 		$blog->setPost_description($val->post_description);
-		$blog->setTipo_post_id(1);
+		$blog->setTipo_post_id($val->blogdestaque_id);
 		$blog->setUser_id($session_id);
 		$blog->setPost_paisid($val->post_paisid);
 

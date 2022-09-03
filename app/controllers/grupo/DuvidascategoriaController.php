@@ -3,7 +3,7 @@ namespace app\controllers\grupo;
 
 use app\controllers\ContainerController;
 use app\linguagem\Linguagem;
-use app\models\Admin\Duvida_categoria;
+use app\models\admin\Duvida_categoria;
 use app\session\Session;
 
 class DuvidascategoriaController extends ContainerController {
