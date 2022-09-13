@@ -77,14 +77,41 @@ class AdminpostblogController extends ContainerController {
 			'blogdestaque_id' => 'integer',
 			'blogcat_id' => 'integer',
 			'post_paisid' => 'integer',
+			//'post_img' => 'string',
+			'post_img_alt' => 'string',
+
+			'blog_subtitulo' => 'string',
+			'blog_video_src' => 'string',
+
+			'blog_fonte' => 'string',
+
+			//'blog_img' => 'string',
+
+			'blog_img_alt' => 'string',
+
+			'blog_autor' => 'string',
 
 		]);
+/// post_img
+		// post_img_alt
+		// blog_subtitulo
+		// blog_video_src
+		// blog_img
+		// blog_img_alt
+		// blog_fonte
+		// blog_autor
 
 		//debug($val);
 		if ($_FILES['blog_img']) {
 			$blog_img = Imagem::uploadImage($_FILES['blog_img']);
+		} else {
+			$blog_img = null;
 		}
-		$blog_img = "";
+		if ($_FILES['post_img']) {
+			$post_img = Imagem::uploadImage($_FILES['post_img']);
+		} else {
+			$post_img = null;
+		}
 
 		$blog = new Blog();
 		$blog->setPost_titulo($val->post_titulo);
@@ -93,6 +120,10 @@ class AdminpostblogController extends ContainerController {
 		$blog->setTipo_post_id($val->blogdestaque_id);
 		$blog->setUser_id($session_id);
 		$blog->setPost_paisid($val->post_paisid);
+//$blog->setPost_img($val->);
+		$blog->setPost_img_alt($val->post_img_alt);
+
+		$blog->setPost_img($post_img);
 
 		//post e blog tem categoria
 		$blog->setCat_id($val->blogcat_id);
@@ -108,6 +139,11 @@ class AdminpostblogController extends ContainerController {
 		$blog->setBlog_text($val->blog_text);
 		$blog->setBlog_date($val->blog_date);
 		$blog->setBlogpost_id($blogpost_id[0]['post_id']);
+		$blog->setBlog_subtitulo($val->blog_subtitulo);
+		$blog->setBlog_video_src($val->blog_video_src);
+		$blog->setBlog_img_alt($val->blog_img_alt);
+		$blog->setBlog_fonte($val->blog_fonte);
+		$blog->setBlog_autor($val->blog_autor);
 
 		$blog->setBlog_img($blog_img);
 
@@ -132,10 +168,18 @@ class AdminpostblogController extends ContainerController {
 			'post_description' => 'string',
 			'post_paisid' => 'integer',
 			'blog_text' => 'string',
+			//'post_img' => 'string',
+			'blog_subtitulo' => 'string',
+			'blog_fonte' => 'string',
 			'blogdestaque_id' => 'integer',
 			'blog_date' => 'date',
 			'blogcat_id' => 'integer',
 			'post_paisid' => 'integer',
+			//'blog_img' => 'string',
+			'blog_img_alt' => 'string',
+			'post_img_alt' => 'string',
+			'blog_autor' => 'string',
+			'blog_video_src' => 'string',
 
 		]);
 
@@ -143,6 +187,11 @@ class AdminpostblogController extends ContainerController {
 			$blog_img = Imagem::uploadImage($_FILES['blog_img']);
 		} else {
 			$blog_img = null;
+		}
+		if ($_FILES['post_img']) {
+			$post_img = Imagem::uploadImage($_FILES['post_img']);
+		} else {
+			$post_img = null;
 		}
 
 		$blog = new Blog();
@@ -152,17 +201,25 @@ class AdminpostblogController extends ContainerController {
 		$blog->setPost_subtitulo($val->post_subtitulo);
 		$blog->setPost_description($val->blog_text);
 		$blog->setPost_paisid($val->post_paisid);
-
+		$blog->setPost_img_alt($val->post_img_alt);
+		$blog->setPost_img($post_img);
 		$blog->setCat_id(0);
 		$blog->setTipo_post_id(5);
 		$blog->setPost_ender_id(0);
-
 		$blog->updatePost();
 
 		$blog->setBlogdestaque_id($val->blogdestaque_id);
-		$blog->setBlog_text($val->blog_text);
 		$blog->setBlog_categoria_id($val->blogcat_id);
 		$blog->setBlog_id($val->blog_id);
+		$blog->setBlog_text($val->blog_text);
+		$blog->setBlog_date($val->blog_date);
+		$blog->setBlogpost_id($blogpost_id[0]['post_id']);
+		$blog->setBlog_subtitulo($val->blog_subtitulo);
+		$blog->setBlog_video_src($val->blog_video_src);
+		$blog->setBlog_img_alt($val->blog_img_alt);
+		$blog->setBlog_fonte($val->blog_fonte);
+		$blog->setBlog_autor($val->blog_autor);
+
 		$blog->setBlog_img($blog_img);
 
 		$blog->editarpostBlog();

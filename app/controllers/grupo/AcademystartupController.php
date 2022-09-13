@@ -45,7 +45,7 @@ class AcademystartupController extends ContainerController {
 	}
 
 	public function show($request) {
-
+//mudar para while e colocar mais um button pra adiconar maism texto e imagens no artigo
 		$post_id = $request->parameter;
 
 		$blogLoad_id = Blog::getBlogLoad_id($post_id);

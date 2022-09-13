@@ -5,6 +5,8 @@ use app\models\Banco;
 abstract class Post {
 
 	private $post_id;
+	private $post_img;
+	private $post_img_alt;
 	private $post_titulo;
 	private $post_subtitulo;
 	private $post_description;
@@ -13,6 +15,13 @@ abstract class Post {
 	private $user_id;
 	private $post_ender_id;
 	private $post_paisid;
+	public function getPost_img() {
+		return $this->post_img;
+	}
+
+	public function setPost_img($post_img) {
+		$this->post_img = $post_img;
+	}
 
 	public function getPost_paisid() {
 		return $this->post_paisid;
@@ -83,6 +92,14 @@ abstract class Post {
 		$this->user_id = $user_id;
 	}
 
+	public function getPost_img_alt() {
+		return $this->post_img_alt;
+	}
+
+	public function setPost_img_alt($post_img_alt) {
+		$this->post_img_alt = $post_img_alt;
+	}
+
 	public static function getEmpresaSherepointPost($us_usuario_id) {
 		$banco = new Banco();
 
@@ -136,7 +153,7 @@ abstract class Post {
 	public function adicionaPost() {
 		$banco = new Banco();
 
-		$result = $banco->query(" INSERT INTO post (post_titulo, post_subtitulo, post_description, postcat_id, tipo_post_id, userpost_id, post_paisid) VALUES  (:post_titulo, :post_subtitulo, :post_description, :postcat_id, :tipo_post_id, :userpost_id, :post_paisid) ", array(
+		$result = $banco->query(" INSERT INTO post (post_titulo, post_subtitulo, post_description, post_img, post_img_alt, postcat_id, tipo_post_id, userpost_id, post_paisid) VALUES  (:post_titulo, :post_subtitulo, :post_description, :post_img, :post_img_alt, :postcat_id, :tipo_post_id, :userpost_id, :post_paisid) ", array(
 
 			":post_titulo" => $this->getPost_titulo(),
 			":post_subtitulo" => $this->getPost_subtitulo(),
@@ -145,6 +162,8 @@ abstract class Post {
 			":tipo_post_id" => $this->getTipo_post_id(),
 			":userpost_id" => $this->getUser_id(),
 			":post_paisid" => $this->getPost_paisid(),
+			":post_img" => $this->getPost_img(),
+			":post_img_alt" => $this->getPost_img_alt(),
 
 		));
 	}
@@ -152,13 +171,14 @@ abstract class Post {
 	public function updatePost() {
 		$banco = new Banco();
 
-		$result = $banco->query(" UPDATE post SET post_titulo = :post_titulo, post_subtitulo = :post_subtitulo, post_description = :post_description, postcat_id = :postcat_id WHERE post_id = :post_id ", array(
+		$result = $banco->query(" UPDATE post SET post_titulo = :post_titulo, post_img = :post_img, post_subtitulo = :post_subtitulo, post_description = :post_description, postcat_id = :postcat_id WHERE post_id = :post_id ", array(
 
 			":post_id" => $this->getPost_id(),
 			":post_titulo" => $this->getPost_titulo(),
 			":post_subtitulo" => $this->getPost_subtitulo(),
 			":post_description" => $this->getPost_description(),
 			":postcat_id" => $this->getCat_id(),
+			":post_img" => $this->getPost_img(),
 
 		));
 	}

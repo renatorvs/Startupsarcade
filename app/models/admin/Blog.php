@@ -20,7 +20,57 @@ class Blog extends Post {
 	private $tipo_post_id;
 	private $post_ender_id;
 	private $user_id;
+	private $blog_subtitulo;
+	private $blog_img_alt;
+	private $blog_fonte;
+	private $blog_autor;
+	private $blog_video_src;
 
+/// post_img
+	// post_img_alt
+	// blog_subtitulo
+	// blog_video_src
+	// blog_img
+	// blog_img_alt
+	// blog_fonte
+	// blog_autor
+
+	public function getBlog_autor() {
+		return $this->blog_autor;
+	}
+
+	public function setBlog_autor($blog_autor) {
+		$this->blog_autor = $blog_autor;
+	}
+	public function getBlog_video_src() {
+		return $this->blog_video_src;
+	}
+
+	public function setBlog_video_src($blog_video_src) {
+		$this->blog_video_src = $blog_video_src;
+	}
+	public function getBlog_img_alt() {
+		return $this->blog_img_alt;
+	}
+
+	public function setBlog_img_alt($blog_img_alt) {
+		$this->blog_img_alt = $blog_img_alt;
+	}
+
+	public function getBlog_subtitulo() {
+		return $this->blog_subtitulo;
+	}
+
+	public function setBlog_subtitulo($blog_subtitulo) {
+		$this->blog_subtitulo = $blog_subtitulo;
+	}
+	public function getBlog_fonte() {
+		return $this->blog_fonte;
+	}
+
+	public function setBlog_fonte($blog_fonte) {
+		$this->blog_fonte = $blog_fonte;
+	}
 	public function getUser_id() {
 		return $this->user_id;
 	}
@@ -134,13 +184,19 @@ class Blog extends Post {
 
 		$banco = new Banco();
 
-		$result = $banco->query("INSERT INTO blog (blogdestaque_id, blog_text, blog_date, blog_img, blog_categoria_id, blogpost_id) VALUES (:blogdestaque_id, :blog_text, now(), :blog_img, :blog_categoria_id, :blogpost_id)",
+		$result = $banco->query("INSERT INTO blog (blogdestaque_id, blog_subtitulo, blog_text, blog_date, blog_img, blog_img_alt, blog_video_src, blog_autor, blog_categoria_id, blogpost_id, blog_fonte) VALUES (:blogdestaque_id, :blog_subtitulo, :blog_text, now(), :blog_img, :blog_img_alt, :blog_video_src, :blog_autor, :blog_categoria_id, :blogpost_id, :blog_fonte)",
 			array(
 				":blogdestaque_id" => $this->getBlogdestaque_id(),
 				":blog_text" => $this->getBlog_text(),
 				":blog_img" => $this->getBlog_img(),
 				":blog_categoria_id" => $this->getBlog_categoria_id(),
 				":blogpost_id" => $this->getBlogpost_id(),
+				":blog_fonte" => $this->getBlog_fonte(),
+				":blog_subtitulo" => $this->getBlog_subtitulo(),
+				":blog_video_src" => $this->getBlog_video_src(),
+				":blog_img_alt" => $this->getBlog_img_alt(),
+				":blog_autor" => $this->getBlog_autor(),
+
 			));
 
 	}
@@ -148,14 +204,19 @@ class Blog extends Post {
 	public function editarpostBlog() {
 
 		$banco = new Banco();
-
-		return $banco->query("UPDATE  blog  SET blogdestaque_id = :blogdestaque_id,  blog_text = :blog_text, blog_date = now(), blog_img = :blog_img, blog_categoria_id = :blog_categoria_id WHERE blog_id = :blog_id ", array(
+		return $banco->query("UPDATE  blog  SET blogdestaque_id = :blogdestaque_id, blog_subtitulo= :blog_subtitulo,  blog_text = :blog_text, blog_date = now(), blog_img = :blog_img, blog_img_alt = :blog_img_alt, blog_video_src = :blog_video_src, blog_categoria_id = :blog_categoria_id, blog_autor = :blog_autor, blog_fonte = :blog_fonte WHERE blog_id = :blog_id ", array(
 
 			":blogdestaque_id" => $this->getBlogdestaque_id(),
 			":blog_text" => $this->getBlog_text(),
 			":blog_img" => $this->getBlog_img(),
 			":blog_categoria_id" => $this->getBlog_categoria_id(),
 			":blog_id" => $this->getBlog_id(),
+			":blog_subtitulo" => $this->getBlog_subtitulo(),
+			":blog_fonte" => $this->getBlog_fonte(),
+			":blog_subtitulo" => $this->getBlog_subtitulo(),
+			":blog_video_src" => $this->getBlog_video_src(),
+			":blog_img_alt" => $this->getBlog_img_alt(),
+			":blog_autor" => $this->getBlog_autor(),
 		));
 	}
 
@@ -177,7 +238,7 @@ class Blog extends Post {
 // blogpais_id =  post_paisid
 		return $banco->select("SELECT * FROM blog_post_categoria
 			WHERE  blogdestaque_id  = 1  AND blog_categoria_id != 5
-			and blogpais_id = :blogpais_id"
+			AND blogpais_id = :blogpais_id GROUP BY post_id"
 			, array(
 				':blogpais_id' => $blogpais_id,
 			));
