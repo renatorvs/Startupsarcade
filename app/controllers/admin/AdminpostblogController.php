@@ -137,7 +137,6 @@ class AdminpostblogController extends ContainerController {
 		$blog->setBlog_categoria_id($val->blogcat_id);
 		$blog->setBlogdestaque_id($val->blogdestaque_id);
 		$blog->setBlog_text($val->blog_text);
-		$blog->setBlog_date($val->blog_date);
 		$blog->setBlogpost_id($blogpost_id[0]['post_id']);
 		$blog->setBlog_subtitulo($val->blog_subtitulo);
 		$blog->setBlog_video_src($val->blog_video_src);
@@ -212,8 +211,6 @@ class AdminpostblogController extends ContainerController {
 		$blog->setBlog_categoria_id($val->blogcat_id);
 		$blog->setBlog_id($val->blog_id);
 		$blog->setBlog_text($val->blog_text);
-		$blog->setBlog_date($val->blog_date);
-		$blog->setBlogpost_id($blogpost_id[0]['post_id']);
 		$blog->setBlog_subtitulo($val->blog_subtitulo);
 		$blog->setBlog_video_src($val->blog_video_src);
 		$blog->setBlog_img_alt($val->blog_img_alt);
