@@ -332,7 +332,7 @@ class Blog extends Post {
 
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM blog_post_categoria  WHERE blogpost_id = :blogpost_id LIMIT 1  ", array(
+		return $banco->select("SELECT * FROM blog_post_categoria  WHERE blogpost_id = :blogpost_id ", array(
 			':blogpost_id' => $post_id,
 
 		));

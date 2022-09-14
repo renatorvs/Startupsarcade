@@ -49,7 +49,8 @@ class AcademystartupController extends ContainerController {
 		$post_id = $request->parameter;
 
 		$blogLoad_id = Blog::getBlogLoad_id($post_id);
-		///debug($blogLoad_id);
+		$getPostAndArtigos = Blog::getBlogLoad_id($post_id);
+		//debug($getPostAndArtigos);
 		$getcategoria = Blogcategoria::getblogCategoria(Session::get('PAIS_ID'));
 
 		if (Session::get('USUARIO_ID') OR Session::get('ADMIN_SESSION')) {
@@ -60,7 +61,7 @@ class AcademystartupController extends ContainerController {
 			$lin = Linguagem::getacademyartigo();
 			//debug($blogLoad_id);
 			$this->view([
-				'title' => " Artigo: " . $blogLoad_id[0]['post_titulo'],
+				'title' => $blogLoad_id[0]['post_titulo'],
 				'html_lang' => $lin->html_lang,
 				'meta_charset' => $lin->meta_charset,
 				'description' => $lin->description,
@@ -72,15 +73,10 @@ class AcademystartupController extends ContainerController {
 				'blog_artigo' => $lin->blog_artigo,
 				'blog_Data_post' => $lin->blog_Data_post,
 				'admin_session' => $admin_session,
-				'empresa_session' => $empresa_session,
-				'candidato_session' => $candidato_session,
-				'post_id' => $blogLoad_id[0]['post_id'],
+				'getPostAndArtigos' => $getPostAndArtigos,
 				'blogcat_nome' => $blogLoad_id[0]['blogcat_nome'],
-				'post_titulo' => $blogLoad_id[0]['post_titulo'],
-				'post_subtitulo' => $blogLoad_id[0]['post_subtitulo'],
-				'post_description' => $blogLoad_id[0]['post_description'],
-				'blog_date' => $blogLoad_id[0]['blog_date'],
-				'blog_img' => $blogLoad_id[0]['blog_img'],
+
+				'candidato_session' => $candidato_session,
 				'pais_id' => Session::get("PAIS_ID"),
 				'NotsGrupo' => getNotificantionGrupo(Session::get('USUARIO_ID')),
 				'NotsMessagem' => getNotificantionMessagem(Session::get('USUARIO_ID')),
@@ -105,7 +101,7 @@ class AcademystartupController extends ContainerController {
 		}
 
 		$getcategoria = Blogcategoria::getblogCategoria(Session::get('PAIS_ID'));
-		//	debug($getcategoria);
+		//debug($getcategoria);
 		if (Session::get('USUARIO_ID') OR Session::get('ADMIN_SESSION')) {
 			if (Session::get('ADMIN_SESSION')) {
 				$admin_session = true;
