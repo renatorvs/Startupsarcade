@@ -28,19 +28,22 @@ class indexportugues extends Portugues {
 	public $header_h2 = "Tudo começa com uma ideia";
 	public $header_button = "Inscreva-se";
 	public $main_about_h3 = "Aprenda mais sobre nós";
-	public $main_about_P = "Uma empresa que nasceu um um propósito explorar as habilidades das pessoas e assim fazer elas acreditar em seu potencial empreendedor";
+	public $main_about_P =
+		'Uma startup em fase inicial que nasceu com um propósito bem claro, fazer as pessoas acreditarem em seu potencial de empreender e assim explorar as ideias que acreditam  para inciar um negocio, mas tudo começa com uma ideia.
+		 	Nossa proposta é ajudar as pessoas a expor sua melhores ideias de negocio, nos auxiliamos a criar seu plano de negocio, modelagem baseada em canva e seu MPV(minimo produto viavel) e achar um socio criando um grupo apartir da sua idea. Procurar um artigo em nossa startup academy que o ajude  em sua jornada de empreendedor. Nossos metodos são baseado em Silicon Valley metodo de compartilhar ideias, assim criando conexões para sua ideia de negocio com pessoas  referencia na area em que se atua em seu fututo negocio.
+	';
 
 	public $main_features_1_h4 = "Artigo por área de negocio";
-	public $main_features_1_p = "  Ideias importantes para alcançar objetivos  para conseguir  criar  seu negocio";
+	public $main_features_1_p = "  Ideias importantes para alcançar objetivos  para conseguir criar seu negocio";
 	public $main_features_2_h4 = "Material auxiliar";
 	public $main_features_2_p = "Chat para mais fácil interação com o grupo e sócios";
-	public $main_features_3_h4 = "Procure possíveis sócios e investidores";
-	public $main_features_3_p = "Crie um grupo ";
-	public $main_features_4_h4 = "Blog";
-	public $main_features_4_p = "Artigos por categoria";
+	public $main_features_3_h4 = "Procure possíveis sócios e investidores compartilhando ideias";
+	public $main_features_3_p = "Crie seu modelo de negocio ";
+	public $main_features_4_h4 = "startup academy";
+	public $main_features_4_p = "Artigos sobre ferramentas, gestão planejamento...  por categoria";
 
 	public $main_services_h2 = "Para você !";
-	public $main_services_P = "Publique ideias  gratuitamente, procure sócios compatíveis com as sua ideias";
+	public $main_services_P = "Cria seu MPV, canvas model e publique ideias de um fututro negocio gratuitamente, procure sócios compatíveis com as suas ideias de negocio";
 	public $main_services_card_1_h4 = "Propostas de negocio";
 	public $main_services_card_1_p = "compartilhe ideias";
 	public $main_services_card_2_h4 = "Dashboard com curiosidades";

@@ -1,0 +1,40 @@
+Segue a ordem recomendada para preencher e pensar sobre os blocos:
+
+Proposta do MVP – Qual é a proposta deste MVP?
+Personas segmentadas – Para quem é esse MVP? Podemos segmentar e testar este MVP em um grupo menor?
+Jornadas – Quais jornadas são atendidas ou melhoradas com este MVP?
+Funcionalidades – O que vamos construir neste MVP? Que ações serão simplificadas ou melhoradas neste MVP?
+Resultado esperado – Que aprendizado ou resultado estamos buscando neste MVP?
+Métricas para validar as hipóteses do negócio – Como podemos medir os resultados deste MVP?
+Custo & Cronograma – Qual é o custo e a data prevista para a entrega deste MVP? Depois de entregue, quanto tempo precisamos coletar os dados para decidir se pivotamos ou prosseguimos?
+----------------------------------------------------------------
+
+Canvas: como estruturar seu modelo de negócio
+Saiba como utilizar esta poderosa ferramenta:
+
+Você já deve ter se perguntado se a sua ideia de negócio é viável, certo? Logo em seguida, começam a surgir dezenas de dúvidas a respeito de quais cuidados você deve ter ao abrir uma empresa. Mas afinal, o que é preciso pensar na hora de planejar o seu negócio?
+
+O Business Model Canvas, mais conhecido como Canvas, é uma ferramenta de planejamento estratégico, que permite desenvolver e esboçar modelos de negócio novos ou existentes.
+
+É um mapa visual pré-formatado contendo nove blocos, são eles:
+
+Proposta de valor: o que sua empresa vai oferecer para o mercado que realmente terá valor para os clientes.
+
+Segmento de clientes: quais segmentos de clientes serão foco da sua empresa.
+
+Os canais: como o cliente compra e recebe seu produto e serviço.
+
+Relacionamento com clientes: como a sua empresa se relacionará com cada segmento de cliente.
+
+Atividade-chave: quais são as atividades essenciais para que seja possível entregar a Proposta de Valor.
+
+Recursos principais: são os recursos necessários para realizar as atividades-chave.
+
+Parcerias principais: são as atividades-chave realizadas de maneira terceirizada e os recursos principais adquiridos fora da empresa;
+
+Fontes de receita: são as formas de obter receita por meio de propostas de valor.
+
+Estrutura de custos: São os custos relevantes necessários para que a estrutura proposta possa funcionar.
+
+As ideias representadas nos nove blocos formam a conceitualização do seu negócio, ou seja, a forma como você irá operar e gerar valor ao mercado, definindo seus principais fluxos e processos, permitindo uma análise e visualização do seu modelo de atuação no mercado.
+

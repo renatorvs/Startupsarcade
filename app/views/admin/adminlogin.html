@@ -1,6 +1,6 @@
 
 
-			<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt">
 <head>
   <meta charset="utf-8">
@@ -8,25 +8,19 @@
   <title>Startup arcade</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
-    <link rel="icon" type="image/x-icon" href="../../../assets/Logotipo/faviconstartuparcade.svg" />
+  <link rel="icon" type="image/x-icon" href="../../../assets/Logotipo/faviconstartuparcade.svg" />
 
   <link href="../../assets/index/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="../../assets/index/vendor/venobox/venobox.css" rel="stylesheet">
-  <link rel="stylesheet" href="../../assets/css/layout/footer.css">
   <link href="../../../assets/index/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/layout/footer.css">
 
-  <style type="text/css">
-  	footer{
-  		position: absolute;
-  		bottom: 0;
-  	}
-  </style>
 
 
 </head>
 <body>
   <header id="header" class="fixed-top">
-    <div class="container d-flex">
+    <section class="container d-flex">
       <section class="logo mr-auto">
         <figure>
           <a href="/">
@@ -49,63 +43,47 @@
       </section>
     </section>
   </header>
-  
-
 </section>
-</div>
-
+</section>
 <main id="main">
 
-  <!-- ======= About Section ======= -->
-    <section class="container">
 
-	<div class="row">
+     <section class="container" >
+      <br><br><br>
+      <h4>Efetue o login| admin</h4>
+      <hr>
+      <br> <hr> 
+      {{  messagem('login') | raw }}
+   <section class="card  box-shadow h-md-300" >
+                  <section class="card-body align-items-start">  
+      <form action="/adminlogin/store" method="post" >
+       <section class="form-group">
+        <label for="exampleInputEmail1">Endereço de email </label>
+        <input type="email" name="adm_email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Seu email ou user name">
 
-		<div class=" offset-3 col-sm-6 ">
-			<div class="container" >
-<br><br><br>
-				<h4>Efetue o login| admin</h4>
-				<hr>
-<br> <hr> 
-				{{  messagem('login') | raw }}
-	
-				<form action="/adminlogin/store" method="post" >
-					<div class="form-group">
-						<label for="exampleInputEmail1">Endereço de email </label>
-						<input type="email" name="adm_email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Seu email ou user name">
-			
-					</div>
-					<div class="form-group">
-						<label for="exampleInputPassword1">Senha</label>
-						<input type="password" name="adm_senha" class="form-control" id="exampleInputPassword1" placeholder="Senha">
-					</div>
-					<button type="submit" class="btn btn-primary">Entrar</button><br>
-				
-				</form>
-			</div>
-		</div>
-		
+      </section>
+      <section class="form-group">
+        <label for="exampleInputPassword1">Senha</label>
+        <input type="password" name="adm_senha" class="form-control" id="exampleInputPassword1" placeholder="Senha">
+      </section>
+      <button type="submit" class="btn btn-primary">Entrar</button><br>
 
-			
-			</div>
+    </form>
+</section>
+</section>
+  </section>
 
-    </section>
 
-  
+
+
+
+<hr>
 
 </main>
 
-    {{ include('layout/footer-pt.html') }}
+{{ include('layout/footer-pt.html') }}
 
-<!-- <script src="../../../assets/index/vendor/jquery/jquery.min.js"></script>
-<script src="../../../assets/index/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="../../../assets/index/vendor/jquery.easing/jquery.easing.min.js"></script>
-<script src="../../../assets/index/vendor/php-email-form/validate.js"></script>
-<script src="../../../assets/index/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-<script src="../../../assets/index/vendor/venobox/venobox.min.js"></script>
-<script src="../../../assets/index/vendor/owl.carousel/owl.carousel.min.js"></script>
-<script src="../../../assets/index/vendor/aos/aos.js"></script>
- -->
+
 <script src="../../../assets/index/js/main.js"></script>
 
 </body>

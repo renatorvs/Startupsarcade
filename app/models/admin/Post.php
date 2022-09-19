@@ -171,7 +171,7 @@ abstract class Post {
 	public function updatePost() {
 		$banco = new Banco();
 
-		$result = $banco->query(" UPDATE post SET post_titulo = :post_titulo, post_img = :post_img, post_subtitulo = :post_subtitulo, post_description = :post_description, postcat_id = :postcat_id WHERE post_id = :post_id ", array(
+		$result = $banco->query(" UPDATE post SET post_titulo = :post_titulo, post_img = :post_img,  post_img_alt = :post_img_alt,   post_subtitulo = :post_subtitulo, post_description = :post_description, postcat_id = :postcat_id WHERE post_id = :post_id ", array(
 
 			":post_id" => $this->getPost_id(),
 			":post_titulo" => $this->getPost_titulo(),
@@ -179,6 +179,7 @@ abstract class Post {
 			":post_description" => $this->getPost_description(),
 			":postcat_id" => $this->getCat_id(),
 			":post_img" => $this->getPost_img(),
+			":post_img_alt" => $this->getPost_img_alt(),
 
 		));
 	}

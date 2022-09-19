@@ -132,9 +132,9 @@ class AdminpostblogController extends ContainerController {
 		$blog->adicionaPost();
 
 		$blogpost_id = Blog::getLastPost_id();
-		//post e blog tem categoria
-
+		//post e blog tem categoria, excluindo de blog apenas  post do artigo tem categoria
 		$blog->setBlog_categoria_id($val->blogcat_id);
+
 		$blog->setBlogdestaque_id($val->blogdestaque_id);
 		$blog->setBlog_text($val->blog_text);
 		$blog->setBlogpost_id($blogpost_id[0]['post_id']);
@@ -152,7 +152,55 @@ class AdminpostblogController extends ContainerController {
 
 	}
 
-	public function edit() {
+	public function destroy($request) {
+		Blog::deletePostBlog($request->parameter);
+		redirecionar("/blog/create");
+
+	}
+
+	public function editpoststore() {
+
+		if (!Session::get("ADMIN_SESSION")) {
+			redirecionar("/adminlogin/admin");
+		}
+
+		$val = Validate::validate([
+
+			'operation' => 'integer',
+			'post_id' => 'integer',
+			'blog_id' => 'integer',
+			'post_titulo' => 'string',
+			'post_subtitulo' => 'string',
+			'post_description' => 'string',
+			'post_paisid' => 'integer',
+			'post_img_alt' => 'string',
+
+		]);
+
+		if ($_FILES['post_img']) {
+			$post_img = Imagem::uploadImage($_FILES['post_img']);
+		} else {
+			$post_img = null;
+		}
+
+		$blog = new Blog();
+
+		$blog->setPost_id($val->post_id);
+		$blog->setPost_titulo($val->post_titulo);
+		$blog->setPost_subtitulo($val->post_subtitulo);
+		$blog->setPost_description($val->blog_text);
+		$blog->setPost_paisid($val->post_paisid);
+		$blog->setPost_img_alt($val->post_img_alt);
+		$blog->setPost_img($post_img);
+		$blog->setCat_id(0);
+		$blog->setTipo_post_id(5);
+		$blog->setPost_ender_id(0);
+		$blog->updatePost();
+
+		redirecionar("/academystartup/show/$val->post_id");
+	}
+
+	public function addblogStore() {
 
 		if (!Session::get("ADMIN_SESSION")) {
 			redirecionar("/adminlogin/admin");
@@ -187,47 +235,26 @@ class AdminpostblogController extends ContainerController {
 		} else {
 			$blog_img = null;
 		}
-		if ($_FILES['post_img']) {
-			$post_img = Imagem::uploadImage($_FILES['post_img']);
-		} else {
-			$post_img = null;
-		}
 
 		$blog = new Blog();
 
-		$blog->setPost_id($val->post_id);
-		$blog->setPost_titulo($val->post_titulo);
-		$blog->setPost_subtitulo($val->post_subtitulo);
-		$blog->setPost_description($val->blog_text);
-		$blog->setPost_paisid($val->post_paisid);
-		$blog->setPost_img_alt($val->post_img_alt);
-		$blog->setPost_img($post_img);
-		$blog->setCat_id(0);
-		$blog->setTipo_post_id(5);
-		$blog->setPost_ender_id(0);
-		$blog->updatePost();
-
+		$blog->setBlog_id($val->blog_id);
+		$blog->setBlog_id($val->blog_id);
 		$blog->setBlogdestaque_id($val->blogdestaque_id);
 		$blog->setBlog_categoria_id($val->blogcat_id);
-		$blog->setBlog_id($val->blog_id);
 		$blog->setBlog_text($val->blog_text);
 		$blog->setBlog_subtitulo($val->blog_subtitulo);
 		$blog->setBlog_video_src($val->blog_video_src);
 		$blog->setBlog_img_alt($val->blog_img_alt);
+		$blog->setBlog_img($blog_img);
 		$blog->setBlog_fonte($val->blog_fonte);
 		$blog->setBlog_autor($val->blog_autor);
 
-		$blog->setBlog_img($blog_img);
+		# code...
 
-		$blog->editarpostBlog();
+		$blog->editarBlogStore();
 
 		redirecionar("/blog/create");
-	}
-
-	public function destroy($request) {
-		Blog::deletePostBlog($request->parameter);
-		redirecionar("/blog/create");
-
 	}
 
 }

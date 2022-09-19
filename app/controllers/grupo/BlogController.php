@@ -229,7 +229,7 @@ class BlogController extends ContainerController {
 		} else {
 
 			$lin = Linguagem::getBlogCategoriaExterior();
-			//debug($blogCategoria);
+			//debug($continue_lendo);
 
 			$this->view([
 				'pais_id' => Session::get("PAIS_ID"),
@@ -251,7 +251,7 @@ class BlogController extends ContainerController {
 
 				'btn_excluir' => $lin->btn_excluir,
 				'btn_editar' => $lin->btn_editar,
-				'continue_lendo' => $lin->continue_lendo,
+				'continue_lendovvvv' => $lin->btn_a_continue,
 				'btn_a_destaque' => $lin->btn_a_destaque,
 				'btn_a_ir_blog' => $lin->btn_a_ir_blog,
 				'categoria_artigo' => $lin->categoria_artigo,
