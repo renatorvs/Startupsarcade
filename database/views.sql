@@ -17,6 +17,8 @@ inner join usuario u on gu.gu_user_id = u.us_id
 left join grupo_admin ga on ga.adm_sub_user_id =u.us_id;
 
 
+blog_categoria
+
 drop view dadosGrupo;
 CREATE VIew dadosGrupo as SELECT * from categoria_grupo cg inner join grupo g on cg.cg_id = g.grcat_id inner join grupo_admin ga on ga.adm_grupo_id = g.gr_id
 
@@ -33,6 +35,8 @@ DROP VIEW propostagrupo;
 
 CREATE VIEW propostagrupo AS select * from categoria_grupo cg inner join grupo g on cg.cg_id = g.grcat_id left join plano_de_negocios pn on g.gr_id = pn.pn_grupo_id;
 
+DROP VIEW blog_categoria_post; 
+CREATE VIEW blog_categoria_post AS SELECT * FROM blog_categoria bc inner join post p on bc.blogcat_id = p.postcat_id
 
 DROP VIEW blog_post_categoria; 
 CREATE VIEW blog_post_categoria AS SELECT* FROM blog b inner join post p on b.blogpost_id = p.post_id INNER JOIN blog_categoria cat on p.postcat_id = cat.blogcat_id INNER JOIN blog_destaque bd on b.blogdestaque_id = bd.blogdest_id

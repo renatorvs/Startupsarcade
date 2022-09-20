@@ -50,10 +50,13 @@ class AcademystartupController extends ContainerController {
 
 		$getPost = Blog::getPostByid($post_id);
 		$getPostAndArtigos = Blog::getBlogLoad_id($post_id);
-		//	debug($getPost);
+		//debug($getPost);
 
 		$getcategoria = Blogcategoria::getblogCategoria(Session::get('PAIS_ID'));
+		$getPostDestaqueAll = Blog::getBlogDestaqueAll();
 
+		//debug($getPost);
+		//blogcat_id
 		if (Session::get('USUARIO_ID') OR Session::get('ADMIN_SESSION')) {
 			if (Session::get('ADMIN_SESSION')) {
 				$admin_session = true;
@@ -70,6 +73,8 @@ class AcademystartupController extends ContainerController {
 				'author' => $lin->author,
 				'btn_voltar' => $lin->btn_voltar,
 				'admin_id' => Session::get("ADMIN_SESSION"),
+				'getcategorias' => $getcategoria,
+				'getPostDestaqueAll' => $getPostDestaqueAll,
 				'blog_categoria' => $lin->blog_categoria,
 				'blog_artigo' => $lin->blog_artigo,
 				'blog_Data_post' => $lin->blog_Data_post,
@@ -79,12 +84,14 @@ class AcademystartupController extends ContainerController {
 				'post_subtitulo' => $getPost[0]['post_subtitulo'],
 				'post_description' => $getPost[0]['post_description'],
 				'post_img' => $getPost[0]['post_img'],
+				'post_img_old' => $getPost[0]['post_img'],
 				'post_img_alt' => $getPost[0]['post_img_alt'],
 				'postcat_id' => $getPost[0]['postcat_id'],
 				'tipo_post_id' => $getPost[0]['tipo_post_id'],
+				'postdestaque_id' => $getPost[0]['postdestaque_id'],
 				'userpost_id' => $getPost[0]['userpost_id'],
 				'getPostAndArtigos' => $getPostAndArtigos,
-				'blogcat_nome' => $blogLoad_id[0]['blogcat_nome'],
+				'blogcat_nome' => $getPost[0]['blogcat_nome'],
 
 				'candidato_session' => $candidato_session,
 				'pais_id' => Session::get("PAIS_ID"),
@@ -146,7 +153,7 @@ class AcademystartupController extends ContainerController {
 				'empresa_session' => $empresa_session,
 				'candidato_session' => $candidato_session,
 				'blogCategoria' => $blogCategoria,
-				'getcategorias' => $getcategoria,
+				'getcategorias' => $getcategoriAll,
 				'pais_id' => Session::get("PAIS_ID"),
 				'NotsGrupo' => getNotificantionGrupo(Session::get('USUARIO_ID')),
 				'NotsMessagem' => getNotificantionMessagem(Session::get('USUARIO_ID')),

@@ -73,62 +73,78 @@
             <section class="modal-content">
 
               <form action="/adminpostblog/editpoststore" enctype="multipart/form-data" method="POST" >
-
-                <div class="card  box-shadow h-md-300" >
-                  <div class="card-body align-items-start">
+<input type="hidden" name="post_id" value="{{post_id}}">
+<input type="hidden" name="post_img_old" value="{{post_img}}">
+                <section class="card  box-shadow h-md-300" >
+                  <section class="card-body align-items-start">
                 <h5> Edit post</h5>
-                   <div class="form-group">
+                   <section class="form-group">
                     <label for="categoria">Categoria post</label>
                     <select class="form-control" name="blogcat_id" id="categoria">
-                      {% for blogcategoria in getblogcategoria %}
+                      {% for blogcategoria in getcategorias %}
+
+                      {% if blogcategoria.blogcat_id == postcat_id %}
+                 <option  value="{{ blogcategoria.blogcat_id}}">{{ blogcategoria.blogcat_nome|e }} (Selecionado)</option>
+
+                                         {% else %}
                       <option  value="{{ blogcategoria.blogcat_id}}">{{ blogcategoria.blogcat_nome|e }}</option>
+                                         {% endif %}
+
+                  
                       {% endfor %}
-                      <option >Termos e serviços</option>
 
                     </select>
-                  </div>
+                  </section>
 
                   <input type="hidden" name="blog_date">
 
                   <label for="destaque">local do artigo :</label>
-                  <select class="form-control" name="blogdestaque_id" id="destaque">
+                  <select class="form-control" name="postestaque_id" id="destaque">
 
+                                     {% for getdestaques in getPostDestaqueAll %}
+                    {% if getdestaques.blogdest_id == postdestaque_id %}
+                    <option  value="{{getdestaques.blogdest_id}}">{{getdestaques.blogdest_nome}} selecionado</option>
 
-                    {% for getdestaques in getBlogDestaques %}
+                                         {% else %}
                     <option  value="{{getdestaques.blogdest_id}}">{{getdestaques.blogdest_nome}}</option>
+                                         {% endif %}
+
+                   
                     {% endfor %}
 
                   </select>
-                  <div class="form-group">
+                  <section class="form-group">
 
                     <label class="text-dark">Titulo artigo (post):</label>
 
 
                     <input class="form-control" type="text" name="post_titulo" value="{{post_titulo}}"> 
-                  </div>
-                  <div class="form-group">
+                  </section>
+                  <section class="form-group">
 
                     <label class="text-dark">Subtitulo artigo (post):</label>
 
                     <input class="form-control" type="text" name="post_subtitulo" value="{{post_subtitulo}}"> 
-                  </div> 
-                  <div class="form-group">
+                  </section> 
+                  <section class="form-group">
 
                     <label class="text-dark">Description (post):</label>
 
                     <input class="form-control" type="text" name="post_description" value="{{post_description}}"> 
-                  </div> 
+                  </section> 
                   
 
-                  <div class="form-group">
+                  <section class="form-group">
                     <label>Imagem para o artigo (post)</label>
                     <input class="form-control" type="file" name="post_img" value="{{post_img_alt}}">
                     <label>Descrição imagem para o artigo (post)</label>
                     <input class="form-control" type="text" name="post_img_alt">
-                  </div> 
-                </div>
+                  </section> 
+                                  <button type="submit" class="btn btn-primary btn-sm"> edit post</button>
 
-              </div>
+                </section>
+
+              </section>
             </form>
 
 
@@ -136,48 +152,48 @@
         </section>
       </section>
 
-      <section class="modal fade addblog-{{theArtigo.blog_id}}-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <section class="modal fade addblog-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <section class="modal-dialog modal-lg">
           <section class="modal-content">
-            <form action="/adminpostblog/operationblogStore" enctype="multipart/form-data" method="POST" >
-             <div class="card  box-shadow h-md-300" >
-              <div class="card-body align-items-start">
+            <form action="/adminpostblog/addblogstore" enctype="multipart/form-data" method="POST" >
+             <section class="card  box-shadow h-md-300" >
+              <section class="card-body align-items-start">
 
                 <h5> add Blog</h5>
 
-                <div class="form-group">
+                <section class="form-group">
                   <label class="text-dark">Subtitulo artigo (blog):</label>
                   <textarea class="form-control" type="text" name="blog_subtitulo"> 
                   </textarea>
-                </div>
-                <div class="form-group">
+                </section>
+                <section class="form-group">
                   <label class="text-dark"> Texto para o artigo (blog):</label>
                   <textarea class="form-control" type="text" name="blog_text"> 
                   </textarea>
-                </div>
-                <div class="form-group">
+                </section>
+                <section class="form-group">
                   <label class="text-dark"> link para video artigo (blog):</label>
                   <textarea class="form-control" type="text" name="blog_video_src"> 
                   </textarea>
-                </div>
+                </section>
 
-                <div class="form-group">
+                <section class="form-group">
                   <label>Imagem para o artigo (blog)</label>
                   <input class="form-control" type="file" name="blog_img">
                   <label>Descrição imagem para o artigo (blog)</label>
                   <input class="form-control" type="text" name="blog_img_alt">
-                </div> 
+                </section> 
 
-                <div class="form-group">
+                <section class="form-group">
                   <label class="text-dark">Fontes:</label>
                   <input class="form-control" type="text" name="blog_fonte"> 
-                </div> 
-                <div class="form-group">
+                </section> 
+                <section class="form-group">
                   <label class="text-dark">Autor:</label>
                   <input class="form-control" type="text" name="blog_autor"> 
-                </div> 
+                </section> 
 
-                <div class="form-group">
+                <section class="form-group">
                   <label for="post_paisid">Artigo pais:</label>
                   <select class="form-control" name="post_paisid" id="post_paisid">
 
@@ -188,12 +204,12 @@
                   </select>
 
                   <br>  
-                </div>
+                </section>
                 <button type="submit" class="btn btn-primary btn-sm"> Adicionar artigo</button>
 
-              </div>
+              </section>
 
-            </div>
+            </section>
           </form>
 
         </section>
@@ -205,46 +221,50 @@
       <section class="modal fade editblog-{{theArtigo.blog_id}}-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <section class="modal-dialog modal-lg">
           <section class="modal-content">
-            <form action="/adminpostblog/operationblogStore" enctype="multipart/form-data" method="POST" >
-             <div class="card  box-shadow h-md-300" >
-              <div class="card-body align-items-start">
+            <form action="/adminpostblog/editblogstore" enctype="multipart/form-data" method="POST" >
+             <section class="card  box-shadow h-md-300" >
+              <section class="card-body align-items-start">
 
                 <h5>Edit Blog </h5>
                 <hr>
  
-                <div class="form-group">
+                <section class="form-group">ddd
                   <label class="text-dark">Subtitulo artigo (blog):</label>
-                  <textarea class="form-control" type="text" name="blog_subtitulo"> 
+                  <textarea class="form-control" type="text" name="blog_subtitulo">
+                  {{theArtigo.blog_subtitulo}} 
                   </textarea>
-                </div>
-                <div class="form-group">
+                </section>
+                <section class="form-group">
                   <label class="text-dark"> Texto para o artigo (blog):</label>
-                  <textarea class="form-control" type="text" name="blog_text"> 
+                  <textarea class="form-control" type="text" name="blog_text"> {{theArtigo.blog_text}}
                   </textarea>
-                </div>
-                <div class="form-group">
+                </section>
+                <section class="form-group">
                   <label class="text-dark"> link para video artigo (blog):</label>
-                  <textarea class="form-control" type="text" name="blog_video_src"> 
-                  </textarea>
-                </div>
+                  <textarea class="form-control" type="text" name="blog_video_src" > 
+                  {{theArtigo.blog_video_src}}
 
-                <div class="form-group">
+                  </textarea>
+                </section>
+
+                <section class="form-group">
                   <label>Imagem para o artigo (blog)</label>
                   <input class="form-control" type="file" name="blog_img">
                   <label>Descrição imagem para o artigo (blog)</label>
-                  <input class="form-control" type="text" name="blog_img_alt">
-                </div> 
+                  <input class="form-control" type="text" name="blog_img_alt" 
+                  value="{{theArtigo.blog_img_alt}}" >
+                </section> 
 
-                <div class="form-group">
+                <section class="form-group">
                   <label class="text-dark">Fontes:</label>
-                  <input class="form-control" type="text" name="blog_fonte"> 
-                </div> 
-                <div class="form-group">
+                  <input class="form-control" type="text" name="blog_fonte" value="{{theArtigo.blog_fonte}}"> 
+                </section> 
+                <section class="form-group">
                   <label class="text-dark">Autor:</label>
-                  <input class="form-control" type="text" name="blog_autor"> 
-                </div> 
+                  <input class="form-control" type="text" name="blog_autor" value="{{theArtigo.blog_autor}}"> 
+                </section> 
 
-                <div class="form-group">
+                <section class="form-group">
                   <label for="post_paisid">Artigo pais:</label>
                   <select class="form-control" name="post_paisid" id="post_paisid">
 
@@ -255,12 +275,12 @@
                   </select>
 
                   <br>  
-                </div>
-                <button type="submit" class="btn btn-primary btn-sm"> Adicionar artigo</button>
+                </section>
+                <button type="submit" class="btn btn-primary btn-sm"> salvar artigo</button>
 
-              </div>
+              </section>
 
-            </div>
+            </section>
           </form>
 
         </section>
@@ -292,7 +312,7 @@
   {% if admin_session %}
   <hr>
 
-        <button  type="button" class="btn btn-primary" data-toggle="modal" data-target=".addblog-{{theArtigo.post_id}}-lg"> add blog </button>             
+        <button  type="button" class="btn btn-primary" data-toggle="modal" data-target=".addblog-lg"> add blog </button>             
 
   {% endif %} 
 
@@ -321,7 +341,7 @@
   {% endif %}
 
 
-
+<br>
   {% if theArtigo.blog_autor != null %}
   Autor: {{theArtigo.blog_autor}} <br>
 

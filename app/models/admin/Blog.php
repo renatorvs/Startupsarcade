@@ -6,7 +6,7 @@ use app\models\Banco;
 class Blog extends Post {
 
 	private $blog_id;
-	private $blogdestaque_id;
+	private $postdestaque_id;
 	private $blog_categoria_id;
 	private $blog_text;
 	private $postcat_id;
@@ -180,13 +180,12 @@ class Blog extends Post {
 		$this->blog_categoria_id = $blog_categoria_id;
 	}
 
-	public function adicionaPostBlog() {
+	public function adicionaBlog() {
 
 		$banco = new Banco();
 
-		$result = $banco->query("INSERT INTO blog (blogdestaque_id, blog_subtitulo, blog_text, blog_date, blog_img, blog_img_alt, blog_video_src, blog_autor, blogpost_id, blog_fonte) VALUES (:blogdestaque_id, :blog_subtitulo, :blog_text, now(), :blog_img, :blog_img_alt, :blog_video_src, :blog_autor, :blogpost_id, :blog_fonte)",
+		$result = $banco->query("INSERT INTO blog (blog_subtitulo, blog_text, blog_date, blog_img, blog_img_alt, blog_video_src, blog_autor, blogpost_id, blog_fonte) VALUES (:blog_subtitulo, :blog_text, now(), :blog_img, :blog_img_alt, :blog_video_src, :blog_autor, :blogpost_id, :blog_fonte)",
 			array(
-				":blogdestaque_id" => $this->getBlogdestaque_id(),
 				":blog_text" => $this->getBlog_text(),
 				":blog_img" => $this->getBlog_img(),
 				//":blog_categoria_id" => $this->getBlog_categoria_id(),
@@ -204,10 +203,9 @@ class Blog extends Post {
 	public function editarBlogStore() {
 
 		$banco = new Banco();
-		return $banco->query("UPDATE  blog  SET blogdestaque_id = :blogdestaque_id, blog_subtitulo= :blog_subtitulo,  blog_text = :blog_text, blog_img = :blog_img, blog_img_alt = :blog_img_alt, blog_video_src = :blog_video_src, blog_autor = :blog_autor, blog_fonte = :blog_fonte WHERE blog_id = :blog_id ", array(
+		return $banco->query("UPDATE  blog  SET blog_subtitulo= :blog_subtitulo,  blog_text = :blog_text, blog_img = :blog_img, blog_img_alt = :blog_img_alt, blog_video_src = :blog_video_src, blog_autor = :blog_autor, blog_fonte = :blog_fonte WHERE blog_id = :blog_id ", array(
 
 			":blog_id" => $this->getBlog_id(),
-			":blogdestaque_id" => $this->getBlogdestaque_id(),
 			//	":blog_categoria_id" => $this->getBlog_categoria_id(),
 			":blog_text" => $this->getBlog_text(),
 			":blog_subtitulo" => $this->getBlog_subtitulo(),
@@ -236,7 +234,7 @@ class Blog extends Post {
 		$banco = new Banco();
 // blogpais_id =  post_paisid
 		return $banco->select("SELECT * FROM blog_post_categoria
-			WHERE  blogdestaque_id  = 1  AND postcat_id != 5
+			WHERE  postdestaque_id  = 1  AND postcat_id != 5
 			AND blogpais_id = :blogpais_id GROUP BY post_id"
 			, array(
 				':blogpais_id' => $blogpais_id,
@@ -248,7 +246,7 @@ class Blog extends Post {
 		$banco = new Banco();
 // blogpais_id =  post_paisid
 		return $banco->select("SELECT * FROM blog_post_categoria
-			WHERE  blogdestaque_id  != 3  AND postcat_id != 5
+			WHERE  postdestaque_id  != 3  AND postcat_id != 5
 			and blogpais_id = :blogpais_id"
 			, array(
 				':blogpais_id' => $blogpais_id,
@@ -261,7 +259,7 @@ class Blog extends Post {
 		$banco = new Banco();
 // blogpais_id =  post_paisid
 		return $banco->select("SELECT * FROM blog_post_categoria
-			WHERE  blogdestaque_id  = 3  AND postcat_id = 5
+			WHERE  postdestaque_id  = 3  AND postcat_id = 5
 			AND blogpais_id = 1 ");
 
 	}
@@ -270,7 +268,7 @@ class Blog extends Post {
 		$banco = new Banco();
 // blogpais_id =  post_paisid
 		return $banco->select("SELECT * FROM blog_post_categoria
-			WHERE  blogdestaque_id  = 3  AND postcat_id = 10
+			WHERE  postdestaque_id  = 3  AND postcat_id = 10
 			AND blogpais_id = 2 ");
 
 	}
@@ -301,7 +299,7 @@ class Blog extends Post {
 
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM blog_post_categoria  WHERE blogdestaque_id = 2  and post_paisid = :post_paisid ORDER by blog_id DESC LIMIT 1  ", array(
+		return $banco->select("SELECT * FROM blog_post_categoria  WHERE postdestaque_id = 2  and post_paisid = :post_paisid ORDER by blog_id DESC LIMIT 1  ", array(
 			':post_paisid' => $post_paisid,
 		));
 
@@ -312,7 +310,7 @@ class Blog extends Post {
 
 		$banco = new Banco();
 
-		return $banco->select(" SELECT * FROM blog_post_categoria  WHERE blogdestaque_id = 2 and post_paisid = :post_paisid  ORDER by blog_id DESC  ", array(
+		return $banco->select(" SELECT * FROM blog_post_categoria  WHERE postdestaque_id = 2 and post_paisid = :post_paisid  ORDER by blog_id DESC  ", array(
 
 			':post_paisid' => $post_paisid,
 		));
@@ -325,7 +323,7 @@ class Blog extends Post {
 
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM blog_post_categoria  WHERE blogdestaque_id = 3  and post_paisid = :post_paisid  ORDER by blog_id DESC LIMIT 2  ", array(
+		return $banco->select("SELECT * FROM blog_post_categoria  WHERE postdestaque_id = 3  and post_paisid = :post_paisid  ORDER by blog_id DESC LIMIT 2  ", array(
 
 			':post_paisid' => $post_paisid,
 
@@ -354,11 +352,18 @@ class Blog extends Post {
 		));
 
 	}
+	public static function getBlogDestaqueAll() {
+
+		$banco = new Banco();
+
+		return $banco->select("SELECT * FROM blog_destaque");
+
+	}
 	public static function getPostByid($post_id) {
 
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM post  WHERE post_id = :post_id ", array(
+		return $banco->select("SELECT * FROM blog_categoria_post  WHERE post_id = :post_id ", array(
 			':post_id' => $post_id,
 
 		));

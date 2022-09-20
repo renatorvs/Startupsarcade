@@ -8,6 +8,7 @@ abstract class Post {
 	private $post_img;
 	private $post_img_alt;
 	private $post_titulo;
+	private $postdestaque_id;
 	private $post_subtitulo;
 	private $post_description;
 	private $cat_id;
@@ -15,6 +16,15 @@ abstract class Post {
 	private $user_id;
 	private $post_ender_id;
 	private $post_paisid;
+
+	public function getPostdestaque_id() {
+		return $this->postdestaque_id;
+	}
+
+	public function setPostdestaque_id($postdestaque_id) {
+		$this->postdestaque_id = $postdestaque_id;
+	}
+
 	public function getPost_img() {
 		return $this->post_img;
 	}
@@ -153,7 +163,7 @@ abstract class Post {
 	public function adicionaPost() {
 		$banco = new Banco();
 
-		$result = $banco->query(" INSERT INTO post (post_titulo, post_subtitulo, post_description, post_img, post_img_alt, postcat_id, tipo_post_id, userpost_id, post_paisid) VALUES  (:post_titulo, :post_subtitulo, :post_description, :post_img, :post_img_alt, :postcat_id, :tipo_post_id, :userpost_id, :post_paisid) ", array(
+		$result = $banco->query(" INSERT INTO post (post_titulo, post_subtitulo, post_description, post_img, post_img_alt, postcat_id, tipo_post_id, userpost_id, post_paisid, postdestaque_id) VALUES  (:post_titulo, :post_subtitulo, :post_description, :post_img, :post_img_alt, :postcat_id, :tipo_post_id, :userpost_id, :post_paisid, :postdestaque_id) ", array(
 
 			":post_titulo" => $this->getPost_titulo(),
 			":post_subtitulo" => $this->getPost_subtitulo(),
@@ -171,7 +181,7 @@ abstract class Post {
 	public function updatePost() {
 		$banco = new Banco();
 
-		$result = $banco->query(" UPDATE post SET post_titulo = :post_titulo, post_img = :post_img,  post_img_alt = :post_img_alt,   post_subtitulo = :post_subtitulo, post_description = :post_description, postcat_id = :postcat_id WHERE post_id = :post_id ", array(
+		$result = $banco->query(" UPDATE post SET post_titulo = :post_titulo, post_img = :post_img,  post_img_alt = :post_img_alt,   post_subtitulo = :post_subtitulo, post_description = :post_description, postcat_id = :postcat_id, postdestaque_id = :postdestaque_id WHERE post_id = :post_id ", array(
 
 			":post_id" => $this->getPost_id(),
 			":post_titulo" => $this->getPost_titulo(),

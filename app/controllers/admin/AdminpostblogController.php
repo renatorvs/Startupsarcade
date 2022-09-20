@@ -28,6 +28,7 @@ class AdminpostblogController extends ContainerController {
 			'title' => 'editar artigo',
 			'getcategorias' => $getcategoria,
 			'post_id' => $getBlogLoad_id[0]['post_id'],
+			'post_img_old' => $getBlogLoad_id[0]['post_img'],
 			'blog_id' => $getBlogLoad_id[0]['blog_id'],
 			'post_titulo' => $getBlogLoad_id[0]['post_titulo'],
 			'post_subtitulo' => $getBlogLoad_id[0]['post_subtitulo'],
@@ -74,10 +75,10 @@ class AdminpostblogController extends ContainerController {
 			'post_description' => 'string',
 			'blog_text' => 'string',
 			'blog_date' => 'date',
-			'blogdestaque_id' => 'integer',
+			'postdestaque_id' => 'integer',
 			'blogcat_id' => 'integer',
 			'post_paisid' => 'integer',
-			//'post_img' => 'string',
+			'post_img_old' => 'string',
 			'post_img_alt' => 'string',
 
 			'blog_subtitulo' => 'string',
@@ -117,17 +118,14 @@ class AdminpostblogController extends ContainerController {
 		$blog->setPost_titulo($val->post_titulo);
 		$blog->setPost_subtitulo($val->post_subtitulo);
 		$blog->setPost_description($val->post_description);
-		$blog->setTipo_post_id($val->blogdestaque_id);
+		$blog->setTipo_post_id($val->postdestaque_id);
 		$blog->setUser_id($session_id);
 		$blog->setPost_paisid($val->post_paisid);
-//$blog->setPost_img($val->);
+		$blog->setPostdestaque_id($val->postdestaque_id);
 		$blog->setPost_img_alt($val->post_img_alt);
-
 		$blog->setPost_img($post_img);
-
 		//post e blog tem categoria
 		$blog->setCat_id($val->blogcat_id);
-
 		//debug($blog);
 		$blog->adicionaPost();
 
@@ -135,7 +133,7 @@ class AdminpostblogController extends ContainerController {
 		//post e blog tem categoria, excluindo de blog apenas  post do artigo tem categoria
 		$blog->setBlog_categoria_id($val->blogcat_id);
 
-		$blog->setBlogdestaque_id($val->blogdestaque_id);
+		$blog->setPostdestaque_id($val->postdestaque_id);
 		$blog->setBlog_text($val->blog_text);
 		$blog->setBlogpost_id($blogpost_id[0]['post_id']);
 		$blog->setBlog_subtitulo($val->blog_subtitulo);
@@ -148,7 +146,7 @@ class AdminpostblogController extends ContainerController {
 
 		$blog->adicionaPostBlog();
 
-		redirecionar("/blog/create");
+		redirecionar("/academystartup/show/" . $blogpost_id[0]['post_id']);
 
 	}
 
@@ -166,21 +164,26 @@ class AdminpostblogController extends ContainerController {
 
 		$val = Validate::validate([
 
-			'operation' => 'integer',
+			'postdestaque_id' => 'integer',
 			'post_id' => 'integer',
-			'blog_id' => 'integer',
 			'post_titulo' => 'string',
 			'post_subtitulo' => 'string',
 			'post_description' => 'string',
 			'post_paisid' => 'integer',
 			'post_img_alt' => 'string',
+			'post_img_old' => 'string',
 
 		]);
 
-		if ($_FILES['post_img']) {
+
+// TESTAR ESSA PARTE
+		if ($_FILES['post_img']['name'] != $post_img_old) {
 			$post_img = Imagem::uploadImage($_FILES['post_img']);
+		} else if ($_FILES['post_img']['name'] == $post_img_old) { {
+			$post_img = $_FILES['post_img']['name'];
 		} else {
 			$post_img = null;
+
 		}
 
 		$blog = new Blog();
@@ -195,12 +198,14 @@ class AdminpostblogController extends ContainerController {
 		$blog->setCat_id(0);
 		$blog->setTipo_post_id(5);
 		$blog->setPost_ender_id(0);
-		$blog->updatePost();
+		$blog->setPostdestaque_id($val->postdestaque_id);
 
-		redirecionar("/academystartup/show/$val->post_id");
+		//	$blog->updatePost();
+
+		redirecionar("/academystartup/show/" . $val->post_id);
 	}
 
-	public function addblogStore() {
+	public function addblogstore() {
 
 		if (!Session::get("ADMIN_SESSION")) {
 			redirecionar("/adminlogin/admin");
@@ -218,7 +223,6 @@ class AdminpostblogController extends ContainerController {
 			//'post_img' => 'string',
 			'blog_subtitulo' => 'string',
 			'blog_fonte' => 'string',
-			'blogdestaque_id' => 'integer',
 			'blog_date' => 'date',
 			'blogcat_id' => 'integer',
 			'post_paisid' => 'integer',
@@ -230,17 +234,20 @@ class AdminpostblogController extends ContainerController {
 
 		]);
 
-		if ($_FILES['blog_img']) {
-			$blog_img = Imagem::uploadImage($_FILES['blog_img']);
+
+		if ($_FILES['blog_img']['name'] != $blog_img_old) {
+			$blog_img = Imagem::uploadImage($_FILES['post_img']);
+		} else if ($_FILES['blog_img']['name'] == $blog_img_old) { {
+			$blog_img = $_FILES['blog_img']['name'];
 		} else {
 			$blog_img = null;
+
 		}
 
 		$blog = new Blog();
 
 		$blog->setBlog_id($val->blog_id);
-		$blog->setBlog_id($val->blog_id);
-		$blog->setBlogdestaque_id($val->blogdestaque_id);
+		$blog->setPost_id($val->post_id);
 		$blog->setBlog_categoria_id($val->blogcat_id);
 		$blog->setBlog_text($val->blog_text);
 		$blog->setBlog_subtitulo($val->blog_subtitulo);
@@ -252,9 +259,67 @@ class AdminpostblogController extends ContainerController {
 
 		# code...
 
-		$blog->editarBlogStore();
+		$blog->adicionaBlog();
 
-		redirecionar("/blog/create");
+		redirecionar("/academystartup/show/" . $val->post_id);
+	}
+	public function editblogstore() {
+
+		if (!Session::get("ADMIN_SESSION")) {
+			redirecionar("/adminlogin/admin");
+		}
+
+		$val = Validate::validate([
+
+			'post_id' => 'integer',
+			'blog_id' => 'integer',
+			'post_titulo' => 'string',
+			'post_subtitulo' => 'string',
+			'post_description' => 'string',
+			'post_paisid' => 'integer',
+			'blog_text' => 'string',
+			//'post_img' => 'string',
+			'blog_subtitulo' => 'string',
+			'blog_fonte' => 'string',
+			'blog_date' => 'date',
+			'blogcat_id' => 'integer',
+			'post_paisid' => 'integer',
+			//'blog_img' => 'string',
+			'blog_img_alt' => 'string',
+			'post_img_alt' => 'string',
+			'blog_autor' => 'string',
+			'blog_video_src' => 'string',
+
+		]);
+
+
+		if ($_FILES['blog_img']['name'] != $blog_img_old) {
+			$blog_img = Imagem::uploadImage($_FILES['post_img']);
+		} else if ($_FILES['blog_img']['name'] == $blog_img_old) { {
+			$blog_img = $_FILES['blog_img']['name'];
+		} else {
+			$blog_img = null;
+
+		}
+
+		$blog = new Blog();
+
+		$blog->setBlog_id($val->blog_id);
+		$blog->setPost_id($val->post_id);
+		$blog->setBlog_categoria_id($val->blogcat_id);
+		$blog->setBlog_text($val->blog_text);
+		$blog->setBlog_subtitulo($val->blog_subtitulo);
+		$blog->setBlog_video_src($val->blog_video_src);
+		$blog->setBlog_img_alt($val->blog_img_alt);
+		$blog->setBlog_img($blog_img);
+		$blog->setBlog_fonte($val->blog_fonte);
+		$blog->setBlog_autor($val->blog_autor);
+
+		# code...
+
+		$blog->adicionaBlog();
+
+		redirecionar("/academystartup/show/" . $val->post_id);
 	}
 
 }
