@@ -14,6 +14,80 @@ class PlanoDeNegocios {
 	private $pn_grupo_id;
 	private $pn_publico_alvo;
 
+	private $pn_cv_proposta_valor;
+	private $pn_cv_segmentacao;
+	private $pn_cv_canais;
+	private $pn_cv_relacionamento;
+	private $pn_cv_receitas;
+	private $pn_cv_recursos;
+	private $pn_cv_atividades;
+	private $pn_cv_parcerias;
+	private $pn_cv_estrutura_de_custos;
+
+	public function getPn_cv_proposta_valor() {
+		return $this->pn_cv_proposta_valor;
+	}
+
+	public function setPn_cv_proposta_valor($pn_cv_proposta_valor) {
+		$this->pn_cv_proposta_valor = $pn_cv_proposta_valor;
+	}
+	public function getPn_cv_segmentacao() {
+		return $this->pn_cv_segmentacao;
+	}
+
+	public function setPn_cv_segmentacao($pn_cv_segmentacao) {
+		$this->pn_cv_segmentacao = $pn_cv_segmentacao;
+	}
+	public function getPn_cv_canais() {
+		return $this->pn_cv_canais;
+	}
+
+	public function setPn_cv_canais($pn_cv_canais) {
+		$this->pn_cv_canais = $pn_cv_canais;
+	}
+	public function getPn_cv_relacionamento() {
+		return $this->pn_cv_relacionamento;
+	}
+
+	public function setPn_cv_relacionamento($pn_cv_relacionamento) {
+		$this->pn_cv_relacionamento = $pn_cv_relacionamento;
+	}
+	public function getPn_cv_receitas() {
+		return $this->pn_cv_receitas;
+	}
+
+	public function setPn_cv_receitas($pn_cv_receitas) {
+		$this->pn_cv_receitas = $pn_cv_receitas;
+	}
+	public function getPn_cv_recursos() {
+		return $this->pn_cv_recursos;
+	}
+
+	public function setPn_cv_recursos($pn_cv_recursos) {
+		$this->pn_cv_recursos = $pn_cv_recursos;
+	}
+	public function getPn_cv_atividades() {
+		return $this->pn_cv_atividades;
+	}
+
+	public function setPn_cv_atividades($pn_cv_atividades) {
+		$this->pn_cv_atividades = $pn_cv_atividades;
+	}
+	public function getPn_cv_parcerias() {
+		return $this->pn_cv_parcerias;
+	}
+
+	public function setPn_cv_parcerias($pn_cv_parcerias) {
+		$this->pn_cv_parcerias = $pn_cv_parcerias;
+	}
+	public function getPn_cv_estrutura_de_custos() {
+		return $this->pn_cv_estrutura_de_custos;
+	}
+
+	public function setPn_cv_estrutura_de_custos($pn_cv_estrutura_de_custos) {
+		$this->pn_cv_estrutura_de_custos = $pn_cv_estrutura_de_custos;
+	}
+
 	public function getpn_Publico_alvo() {
 		return $this->pn_publico_alvo;
 	}
@@ -83,50 +157,62 @@ class PlanoDeNegocios {
 	public function addPlanoDeNegocios() {
 		$banco = new Banco();
 
-		return $banco->query("INSERT INTO plano_de_negocios(pn_compreensao_de_mercado, pn_acompanhamento,pn_estrategias_de_venda,pn_projecao_financeira, pn_captacao_fundos_investimento, pn_grupo_id, pn_publico_alvo) VALUES  ( :pn_compreensao_de_mercado, :pn_acompanhamento, :pn_estrategias_de_venda, :pn_projecao_financeira, :pn_captacao_fundos_investimento, :pn_grupo_id, :pn_publico_alvo) ", array(
+		return $banco->query("INSERT INTO plano_de_negocios(pn_cv_proposta_valor, pn_cv_segmentacao, pn_cv_canais, pn_cv_relacionamento, pn_cv_receitas, pn_cv_recursos, pn_cv_atividades, pn_cv_parcerias, pn_cv_estrutura_de_custos, pn_grupo_id) VALUES (:pn_cv_proposta_valor, :pn_cv_segmentacao, :pn_cv_canais, :pn_cv_relacionamento, :pn_cv_receitas, :pn_cv_recursos, :pn_cv_atividades, :pn_cv_parcerias, :pn_cv_estrutura_de_custos, :pn_grupo_id) ", array(
+
+			":pn_cv_proposta_valor" => $this->getPn_cv_proposta_valor(),
+			":pn_cv_segmentacao" => $this->getPn_cv_segmentacao(),
+			":pn_cv_canais" => $this->getPn_cv_canais(),
+			":pn_cv_relacionamento" => $this->getPn_cv_relacionamento(),
+			":pn_cv_receitas" => $this->getPn_cv_receitas(),
+			":pn_cv_recursos" => $this->getPn_cv_recursos(),
+			":pn_cv_atividades" => $this->getPn_cv_atividades(),
+			":pn_cv_parcerias" => $this->getPn_cv_parcerias(),
+			":pn_cv_estrutura_de_custos" => $this->getPn_cv_estrutura_de_custos(),
 			":pn_grupo_id" => $this->getPn_grupo_id(),
-			":pn_compreensao_de_mercado" => $this->getPn_compreensao_de_mercado(),
-			":pn_acompanhamento" => $this->getPn_acompanhamento(),
-			":pn_estrategias_de_venda" => $this->getPn_estrategias_de_venda(),
-			":pn_projecao_financeira" => $this->getPn_projecao_financeira(),
-			":pn_captacao_fundos_investimento" => $this->getPn_captacao_fundos_investimento(),
-			":pn_publico_alvo" => $this->getPn_publico_alvo(),
 		));
 
 	}
+
 
 	public function updateplanoDeNegocios() {
 		$banco = new Banco();
 
-		return $banco->query("UPDATE plano_de_negocios  SET  pn_compreensao_de_mercado = :pn_compreensao_de_mercado, pn_acompanhamento = :pn_acompanhamento, pn_estrategias_de_venda = :pn_estrategias_de_venda, pn_projecao_financeira = :pn_projecao_financeira, pn_captacao_fundos_investimento = :pn_captacao_fundos_investimento, pn_grupo_id = :pn_grupo_id, pn_publico_alvo = :pn_publico_alvo WHERE pn_id = :pn_id ", array(
-			":pn_id" => $this->getPn_id(),
+		return $banco->query("UPDATE plano_de_negocios SET pn_cv_proposta_valor = :pn_cv_proposta_valor,pn_cv_segmentacao = :pn_cv_segmentacao,pn_cv_canais = :pn_cv_canais,pn_cv_relacionamento = :pn_cv_relacionamento,pn_cv_receitas = :pn_cv_receitas,pn_cv_recursos = :pn_cv_recursos,pn_cv_atividades = :pn_cv_atividades,pn_cv_parcerias = :pn_cv_parcerias,pn_cv_estrutura_de_custos = :pn_cv_estrutura_de_custos WHERE pn_id = :pn_id ", array(
+
+			":pn_cv_proposta_valor" => $this->getPn_cv_proposta_valor(),
+			":pn_cv_segmentacao" => $this->getPn_cv_segmentacao(),
+			":pn_cv_canais" => $this->getPn_cv_canais(),
+			":pn_cv_relacionamento" => $this->getPn_cv_relacionamento(),
+			":pn_cv_receitas" => $this->getPn_cv_receitas(),
+			":pn_cv_recursos" => $this->getPn_cv_recursos(),
+			":pn_cv_atividades" => $this->getPn_cv_atividades(),
+			":pn_cv_parcerias" => $this->getPn_cv_parcerias(),
+			":pn_cv_estrutura_de_custos" => $this->getPn_cv_estrutura_de_custos(),
 			":pn_grupo_id" => $this->getPn_grupo_id(),
-			":pn_compreensao_de_mercado" => $this->getPn_compreensao_de_mercado(),
-			":pn_acompanhamento" => $this->getPn_acompanhamento(),
-			":pn_estrategias_de_venda" => $this->getPn_estrategias_de_venda(),
-			":pn_projecao_financeira" => $this->getPn_projecao_financeira(),
-			":pn_captacao_fundos_investimento" => $this->getPn_captacao_fundos_investimento(),
-			":pn_publico_alvo" => $this->getPn_publico_alvo(),
+			":pn_id" => $this->getPn_id(),
 		));
 
 	}
+));
 
-	public static function getpropostaGrupo($gr_id) {
-		$banco = new Banco();
+}
 
-		return $banco->select("SELECT * from  plano_de_negocios WHERE pn_grupo_id = :pn_grupo_id", array(
-			":pn_grupo_id" => $gr_id,
-		));
+public static function getpropostaGrupo($gr_id) {
+	$banco = new Banco();
 
-	}
+	return $banco->select("SELECT * from  plano_de_negocios WHERE pn_grupo_id = :pn_grupo_id", array(
+		":pn_grupo_id" => $gr_id,
+	));
 
-	public static function getPlanoDeNegocios($pn_grupo_id) {
-		$banco = new Banco();
+}
 
-		return $banco->select("SELECT * from  plano_de_negocios  WHERE pn_grupo_id = :pn_grupo_id ", array(
-			":pn_grupo_id" => $pn_grupo_id,
-		));
+public static function getPlanoDeNegocios($pn_grupo_id) {
+	$banco = new Banco();
 
-	}
+	return $banco->select("SELECT * from  plano_de_negocios  WHERE pn_grupo_id = :pn_grupo_id ", array(
+		":pn_grupo_id" => $pn_grupo_id,
+	));
+
+}
 
 }

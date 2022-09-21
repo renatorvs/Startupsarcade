@@ -20,21 +20,41 @@ class meugrupoinformacoesportugues extends Portugues {
 	public $plano_negocios_h4 = " Plano de negocios ";
 	public $btn_usuarios = "usuarios";
 	public $info = "info";
-	public $compreensao_de_mercado_required = "Por favor, informe o(a)  Compreensão de mercado";
-	public $acompanhamento_required = "Por favor, informe o(a)  Acompanhamento";
-	public $estrategias_required = "Por favor, informe o(a)  Estrategias de venda";
-	public $projecao_financeira_required = "Por favor, informe o(a)  Projecao financeira";
-	public $captacao_fundo_requireds = "Por favor, informe o(a)  Captação de fundos de investimento";
-	public $publico_alvo_required = "Por favor, informe o(a)  Publico alvo";
-	public $compreensao_de_mercado = "Compreensão de mercado";
-	public $acompanhamento = "acompanhamento";
-	public $estrategias = "estrategias de venda";
-	public $projecao_financeira = "projecao financeira";
-	public $captacao_fundos = "captação de fundos de investimento";
-	public $publico_alvo = "publico alvo";
+	// public $compreensao_de_mercado_required = "Por favor, informe o(a)  Compreensão de mercado";
+	// public $acompanhamento_required = "Por favor, informe o(a)  Acompanhamento";
+	// public $estrategias_required = "Por favor, informe o(a)  Estrategias de venda";
+	// public $projecao_financeira_required = "Por favor, informe o(a)  Projecao financeira";
+	// public $captacao_fundo_requireds = "Por favor, informe o(a)  Captação de fundos de investimento";
+	// public $publico_alvo_required = "Por favor, informe o(a)  Publico alvo";
+	// public $compreensao_de_mercado = "Compreensão de mercado";
+	// public $acompanhamento = "acompanhamento";
+	// public $estrategias = "estrategias de venda";
+	// public $projecao_financeira = "projecao financeira";
+	// public $captacao_fundos = "captação de fundos de investimento";
+	// public $publico_alvo = "publico alvo";
 	public $btn_criar_proposta = "criar proposta";
 	public $btn_editar_proposta = "editar proposta";
 	public $captacao_fundo_required = "Por favor, informe o(a)  a captaçãode fundos";
 	public $h5_n_ha_propostas = "não há prpopstas";
+
+	public $pn_cv_proposta_valor_required = "Por favor, informe o(a) Proposta valor:";
+	public $pn_cv_segmentacao_required = "Por favor, informe o(a) Segmentção de clientes (publico alvo):";
+	public $pn_cv_canais_required = "Por favor, informe o(a) Canais de venda/divulgação (comunicacao):";
+	public $pn_cv_relacionamento_required = "Por favor, informe o(a) Relacionamentos:";
+	public $pn_cv_receitas_required = "Por favor, informe o(a) Receitas:";
+	public $pn_cv_recursos_required = "Por favor, informe o(a) Recursos:";
+	public $pn_cv_atividades_required = "Por favor, informe o(a) Atividades:";
+	public $pn_cv_parcerias_required = "Por favor, informe o(a) Parcerias:";
+	public $pn_cv_estrutura_de_custos_required = "Por favor, informe o(a) Estrutura de custos:";
+
+	public $pn_cv_proposta_valor = "Proposta valor:";
+	public $pn_cv_segmentacao = "Segmentção de clientes (publico alvo):";
+	public $pn_cv_canais = "Canais de venda/divulgação (comunicacao):";
+	public $pn_cv_relacionamento = "Relacionamentos:";
+	public $pn_cv_receitas = "Receitas:";
+	public $pn_cv_recursos = "Recursos:";
+	public $pn_cv_atividades = "Atividades:";
+	public $pn_cv_parcerias = "Parcerias:";
+	public $pn_cv_estrutura_de_custos = "Estrutura de custos:";
 
 }

@@ -7,7 +7,7 @@ use app\models\admin\Blog;
 use app\models\admin\Blogcategoria;
 use app\session\Session;
 
-class AcademystartupController extends ContainerController {
+class StartupelearningController extends ContainerController {
 
 	public function create() {
 
@@ -39,7 +39,7 @@ class AcademystartupController extends ContainerController {
 				'admin_id' => Session::get("ADMIN_SESSION"),
 				'NotsGrupo' => getNotificantionGrupo(Session::get('USUARIO_ID')),
 				'NotsMessagem' => getNotificantionMessagem(Session::get('USUARIO_ID')),
-			], 'grupo.academy');
+			], 'grupo.elearning');
 
 		}
 	}
@@ -99,13 +99,13 @@ class AcademystartupController extends ContainerController {
 				'NotsMessagem' => getNotificantionMessagem(Session::get('USUARIO_ID')),
 				'getblogcategorias' => $getcategoria,
 
-			], 'grupo.academyartigo');
+			], 'grupo.elearningartigo');
 
 		}
 
 	}
 
-	public function academycategoria($request) {
+	public function elearningcategoria($request) {
 
 		$blogcat_id = $request->parameter;
 
@@ -157,13 +157,13 @@ class AcademystartupController extends ContainerController {
 				'pais_id' => Session::get("PAIS_ID"),
 				'NotsGrupo' => getNotificantionGrupo(Session::get('USUARIO_ID')),
 				'NotsMessagem' => getNotificantionMessagem(Session::get('USUARIO_ID')),
-			], 'grupo.academycategoria');
+			], 'grupo.elearningcategoria');
 
 		}
 
 	}
 
-	public function academydestaque() {
+	public function elearningdestaque() {
 
 		if (Session::get('USUARIO_ID') OR Session::get('ADMIN_SESSION')) {
 			redirecionar("/adminlogin/admin");
@@ -195,7 +195,7 @@ class AcademystartupController extends ContainerController {
 				'NotsGrupo' => getNotificantionGrupo(Session::get('USUARIO_ID')),
 				'NotsMessagem' => getNotificantionMessagem(Session::get('USUARIO_ID')),
 
-			], 'grupo.academydestaque');
+			], 'grupo.elearningdestaque');
 
 		}
 

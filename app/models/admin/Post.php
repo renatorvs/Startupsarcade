@@ -174,6 +174,7 @@ abstract class Post {
 			":post_paisid" => $this->getPost_paisid(),
 			":post_img" => $this->getPost_img(),
 			":post_img_alt" => $this->getPost_img_alt(),
+			":postdestaque_id" => $this->getPostdestaque_id(),
 
 		));
 	}
@@ -190,6 +191,7 @@ abstract class Post {
 			":postcat_id" => $this->getCat_id(),
 			":post_img" => $this->getPost_img(),
 			":post_img_alt" => $this->getPost_img_alt(),
+			":postdestaque_id" => $this->getPostdestaque_id(),
 
 		));
 	}

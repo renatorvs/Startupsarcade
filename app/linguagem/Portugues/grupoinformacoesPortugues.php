@@ -4,7 +4,19 @@ namespace app\linguagem\portugues;
 
 class grupoinformacoesportugues extends Portugues {
 
-	public $title = "starstup´s arcade | informaçoes";
+
+				'pn_cv_proposta_valor' => $planoDeNegocios[0]['pn_cv_proposta_valor'],
+			'pn_cv_segmentacao' => $planoDeNegocios[0]['pn_cv_segmentacao'],
+			'pn_cv_canais' => $planoDeNegocios[0]['pn_cv_canais'],
+			'pn_cv_relacionamento' => $planoDeNegocios[0]['pn_cv_relacionamento'],
+			'pn_cv_receitas' => $planoDeNegocios[0]['pn_cv_receitas'],
+			'pn_cv_recursos' => $planoDeNegocios[0]['pn_cv_recursos'],
+			'pn_cv_atividades' => $planoDeNegocios[0]['pn_cv_atividades'],
+			'pn_cv_parcerias' => $planoDeNegocios[0]['pn_cv_parcerias'],
+			'pn_cv_estrutura_de_custos' => $planoDeNegocios[0]['pn_cv_estrutura_de_custos'],
+
+
+	public $title = "starstup e-learning | informaçoes";
 	public $description = "";
 	public $plano_text_h4 = "Plano de negocios";
 	public $compreensao_de_mercado_text = "Proporciona uma visão clara e objetiva da empresa e do setor, identifica forças, oportunidades, fraquezas e ameaças para o empreendimento.​";
@@ -19,18 +31,29 @@ class grupoinformacoesportugues extends Portugues {
 	public $plano_negocios_h4 = " Plano de negocios ";
 	public $btn_usuarios = "usuarios";
 	public $info = "info";
-	public $compreensao_de_mercado_required = "Por favor, informe o(a)  Compreensão de mercado";
-	public $acompanhamento_required = "Por favor, informe o(a)  Acompanhamento";
-	public $estrategias_required = "Por favor, informe o(a)  Estrategias de venda";
-	public $projecao_financeira_required = "Por favor, informe o(a)  Projecao financeira";
-	public $captacao_fundo_required = "Por favor, informe o(a)  Captação de fundos de investimento";
-	public $Publico_alvo_required = "Por favor, informe o(a)  Publico alvo";
-	public $compreensao_de_mercado = "Compreensão de mercado";
-	public $acompanhamento = "Acompanhamento";
-	public $estrategias = "Estrategias de venda";
-	public $projecao_financeira = "Projecao financeira";
-	public $captacao_fundos = "Captação de fundos de investimento";
-	public $publico_alvo = "publico alvo";
+	
+
+	public $cv_proposta_valor_required = "Por favor, informe o(a) Proposta valor:";
+	public $cv_segmentacao_required = "Por favor, informe o(a) Segmentção de clientes (publico alvo):";
+	public $cv_canais_required = "Por favor, informe o(a) Canais de venda/divulgação (comunicacao):";
+	public $cv_relacionamento_required = "Por favor, informe o(a) Relacionamentos:";
+	public $cv_receitas_required = "Por favor, informe o(a) Receitas:";
+	public $cv_recursos_required = "Por favor, informe o(a) Recursos:";
+	public $cv_atividades_required = "Por favor, informe o(a) Atividades:";
+	public $cv_parcerias_required = "Por favor, informe o(a) Parcerias:";
+	public $cv_estrutura_de_custos_required = "Por favor, informe o(a) Estrutura de custos:";
+	
+	public $cv_proposta_valor = "Proposta valor:";
+	public $cv_segmentacao = "Segmentção de clientes (publico alvo):";
+	public $cv_canais = "Canais de venda/divulgação (comunicacao):";
+	public $cv_relacionamento = "Relacionamentos:";
+	public $cv_receitas = "Receitas:";
+	public $cv_recursos = "Recursos:";
+	public $cv_atividades = "Atividades:";
+	public $cv_parcerias = "Parcerias:";
+	public $cv_estrutura_de_custos = "Estrutura de custos:";
+
+
 	public $btn_criar_proposta = "criar proposta";
 	public $btn_editar_proposta = "editar proposta";
 	public $h5_n_ha_propostas = "Não há propostas";

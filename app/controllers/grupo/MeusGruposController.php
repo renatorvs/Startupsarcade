@@ -373,25 +373,34 @@ class MeusgruposController extends ContainerController {
 
 		$v = Validate::validate([
 			'pn_id' => 'integer',
-			'pn_compreensao_de_mercado' => 'string',
-			'pn_acompanhamento' => 'string',
-			'pn_estrategias_de_venda' => 'string',
-			'pn_projecao_financeira' => 'string',
-			'pn_captacao_fundos_investimento' => 'string',
 			'pn_grupo_id' => 'integer',
-			'pn_publico_alvo' => 'string',
+			'pn_cv_proposta_valor' => 'string',
+			'pn_cv_segmentacao' => 'string',
+			'pn_cv_canais' => 'string',
+			'pn_cv_relacionamento' => 'string',
+			'pn_cv_receitas' => 'string',
+			'pn_cv_recursos' => 'string',
+			'pn_cv_atividades' => 'string',
+			'pn_cv_parcerias' => 'string',
+			'pn_cv_estrutura_de_custos' => 'string',
 
 		]);
 
 		$grupo = new Grupo();
 		$pn = new PlanoDeNegocios();
-		$pn->setPn_compreensao_de_mercado($v->pn_compreensao_de_mercado);
-		$pn->setPn_estrategias_de_venda($v->pn_estrategias_de_venda);
-		$pn->setPn_captacao_fundos_investimento($v->pn_captacao_fundos_investimento);
-		$pn->setPn_acompanhamento($v->pn_acompanhamento);
-		$pn->setPn_projecao_financeira($v->pn_projecao_financeira);
-		$pn->setPn_publico_alvo($v->pn_publico_alvo);
-		$pn->setPn_grupo_id($v->pn_grupo_id);
+
+		$pn->getPn_grupo_id($v->pn_grupo_id);
+		$pn->getPn_id($v->pn_id);
+		$pn->getPn_cv_proposta_valor($v->pn_cv_proposta_valor);
+		$pn->getPn_cv_segmentacao($v->pn_cv_segmentacao);
+		$pn->getPn_cv_canais($v->pn_cv_canais);
+		$pn->getPn_cv_relacionamento($v->pn_cv_relacionamento);
+		$pn->getPn_cv_receitas($v->pn_cv_receitas);
+		$pn->getPn_cv_recursos($v->pn_cv_recursos);
+		$pn->getPn_cv_atividades($v->pn_cv_atividades);
+		$pn->getPn_cv_parcerias($v->pn_cv_parcerias);
+		$pn->getPn_cv_estrutura_de_custos($v->pn_cv_estrutura_de_custos);
+
 		$pn->addPlanoDeNegocios();
 
 		redirecionar("/meusgrupos/informacoes/$v->pn_grupo_id");
@@ -408,29 +417,36 @@ class MeusgruposController extends ContainerController {
 
 		$v = Validate::validate([
 			'pn_id' => 'integer',
-			'pn_compreensao_de_mercado' => 'string',
-			'pn_acompanhamento' => 'string',
-			'pn_estrategias_de_venda' => 'string',
-			'pn_projecao_financeira' => 'string',
-			'pn_captacao_fundos_investimento' => 'string',
 			'pn_grupo_id' => 'integer',
-			'pn_publico_alvo' => 'string',
+			'pn_cv_proposta_valor' => 'string',
+			'pn_cv_segmentacao' => 'string',
+			'pn_cv_canais' => 'string',
+			'pn_cv_relacionamento' => 'string',
+			'pn_cv_receitas' => 'string',
+			'pn_cv_recursos' => 'string',
+			'pn_cv_atividades' => 'string',
+			'pn_cv_parcerias' => 'string',
+			'pn_cv_estrutura_de_custos' => 'string',
 
 		]);
 
 		$grupo = new Grupo();
 		$pn = new PlanoDeNegocios();
-		$pn->setPn_compreensao_de_mercado($v->pn_compreensao_de_mercado);
-		$pn->setPn_estrategias_de_venda($v->pn_estrategias_de_venda);
-		$pn->setPn_captacao_fundos_investimento($v->pn_captacao_fundos_investimento);
-		$pn->setPn_acompanhamento($v->pn_acompanhamento);
-		$pn->setPn_projecao_financeira($v->pn_projecao_financeira);
-		$pn->setPn_publico_alvo($v->pn_publico_alvo);
-		$pn->setPn_grupo_id($v->pn_grupo_id);
-		$pn->setPn_id($v->pn_id);
+		$pn->getPn_grupo_id($v->pn_grupo_id);
+		$pn->getPn_id($v->pn_id);
+		$pn->getPn_cv_proposta_valor($v->pn_cv_proposta_valor);
+		$pn->getPn_cv_segmentacao($v->pn_cv_segmentacao);
+		$pn->getPn_cv_canais($v->pn_cv_canais);
+		$pn->getPn_cv_relacionamento($v->pn_cv_relacionamento);
+		$pn->getPn_cv_receitas($v->pn_cv_receitas);
+		$pn->getPn_cv_recursos($v->pn_cv_recursos);
+		$pn->getPn_cv_atividades($v->pn_cv_atividades);
+		$pn->getPn_cv_parcerias($v->pn_cv_parcerias);
+		$pn->getPn_cv_estrutura_de_custos($v->pn_cv_estrutura_de_custos);
+
 		$pn->updateplanoDeNegocios();
 
-		redirecionar("/meusgrupos/informacoes/$v->pn_grupo_id");
+		redirecionar("/meusgrupos/informacoes/" . $v->pn_grupo_id);
 
 	}
 

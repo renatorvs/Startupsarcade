@@ -244,14 +244,6 @@ class GruposController extends ContainerController {
 		if ($planoDeNegocios[0] == null) {
 			$haplanoDeNegocios = false;
 		}
-		$planoDeNegocios[0]['pn_id'];
-		$planoDeNegocios[0]['pn_compreensao_de_mercado'];
-		$planoDeNegocios[0]['pn_acompanhamento'];
-		$planoDeNegocios[0]['pn_estrategias_de_venda'];
-		$planoDeNegocios[0]['pn_projecao_financeira'];
-		$planoDeNegocios[0]['pn_captacao_fundos_investimento'];
-		$planoDeNegocios[0]['pn_grupo_id'];
-		$planoDeNegocios[0]['pn_publico_alvo'];
 
 		$grupo = new Grupo();
 
