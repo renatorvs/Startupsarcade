@@ -4,7 +4,7 @@ namespace app\linguagem\portugues;
 
 class academyartigoportugues extends Portugues {
 	public $html_lang = "pt-br";
-	public $title = "starstup´s arcade | artigo";
+	public $title = "starstup e-learning | artigo";
 	public $meta_charset = "UTF-8";
 	public $description = "";
 	public $keywords = "";

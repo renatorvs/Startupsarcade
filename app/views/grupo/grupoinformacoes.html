@@ -5,69 +5,87 @@
   <meta name="description" content="{{description}}">
   <meta name="keywords" content="{{keywords}}">
   <meta name="author" content="{{author}}">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap-reboot.css">
-<link rel="stylesheet" href="../../assets/css/layout/layout.css">
-<link rel="stylesheet" href="../../assets/css/layout/footer.css">
-<link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link rel="icon" type="image/x-icon" href="../../../assets/Logotipo/faviconstartuparcade.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap-reboot.css">
+  <link rel="stylesheet" href="../../assets/css/layout/layout.css">
+  <link rel="stylesheet" href="../../assets/css/layout/footer.css">
+  <link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/x-icon" href="../../../assets/Logotipo/faviconstartuparcade.svg" />
 
-<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link href="https//fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
   <title> {{title}}</title>
-<link href="../../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
+  <link href="../../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
 </head>
 <body id="page-top"> 
   <header>
-                {% if pais_id %}
-                      {{ include('layout/nav-header-portugues.html') }}
-                {% else %}
-                    {{ include('layout/nav-header-ingles.html') }}
-                {% endif %}
+    {% if pais_id %}
+    {{ include('layout/nav-header-portugues.html') }}
+    {% else %}
+    {{ include('layout/nav-header-ingles.html') }}
+    {% endif %}
 
   </header>
   <main>
-     {% if pais_id %}
-        {{ include('layout/nav-dashboard-portugues.html') }}
-      {% else %}
-          {{ include('layout/nav-dashboard-ingles.html') }}
-      {% endif %}
-  <section class="main-experi" >
+   {% if pais_id %}
+   {{ include('layout/nav-dashboard-portugues.html') }}
+   {% else %}
+   {{ include('layout/nav-dashboard-ingles.html') }}
+   {% endif %}
+   <section class="main-experi" >
     <hr class="m-1">  
     <section class="row">
       <section class="col-xl-12 col-md-12 mb-4">
-       
+
 
 
         <article class="card border-left-success shadow h-100 py-2">
-          
+
           <section class="card-body">
             <section class="modal fade info-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
               <section class="modal-dialog modal-lg">
                 <section class="modal-content">
                   <section class="card-body">   
-                    <h4 align="center"  class="text-primary">{{plano_text_h4}} </h4>
-              <br>    
-              <hr>
+                    <h4 align="center"  class="text-primary">{{plano_text_h4_info}} </h4>
+                    <h5 align="center"  class="text-primary">{{plano_text_h5_info}} </h5>
+                    <br>    
+                    <hr>
 
-                                  {{acompanhamento}}:<br>
-                    {{acompanhamento_text}}<br>
-                    <br>
+                    
+                    <h5>  {{cv_proposta_valor}}</h5>
+                    {{cv_proposta_valor_text}}<hr>
 
-                    {{estrategias}}:<br>
-                      {{estrategias_text}}
-                    <br> <br>
+                    <h5>  {{cv_segmentacao}}</h5>
+                    {{cv_segmentacao_text}}<hr>
+                    
+                    <h5>  {{cv_canais}}</h5>
+                    {{cv_canais_text}}<hr>
+                    
+                    <h5>  {{cv_relacionamento}}</h5>
+                    {{cv_relacionamento_text}}<hr>
+                    
+                    <h5>  {{cv_receitas}}</h5>
+                    {{cv_receitas_text}}<hr>
+                    
 
-                    {{projecao_financeira}}: <br>
-                    {{projecao_financeira_text}}
-                    <br><br>
+                    <h5>    {{cv_recursos}}</h5>
+                    {{cv_recursos_text}}
+                    <hr> 
 
 
-                    {{Publico_alvo}}:<br>
-                    {{Publico_alvo_text}}. <br><br>
+                    <h5>    {{cv_atividades}}</h5>
+                    {{cv_atividades_text}}
+                    <hr>
 
 
-                    {{captacao_fundos}}: <br>
-                    {{captacao_fundos_text}}
+                    <h5>   {{cv_parcerias}}</h5>
+                    {{cv_parcerias_text}} <hr>
+
+
+
+                    <h5>     {{cv_estrutura_de_custos}} </h5>
+                    {{cv_estrutura_de_custos_text}}<hr>
+
+
 
 
                   </section>
@@ -80,78 +98,88 @@
 
 
             <h4 class ="text-dark" align="center">  {{plano_negocios_h4}} </h4>
-           
-             <button  type="button" class="btn btn-info" data-toggle="modal" data-target=".info-lg">{{info}}</button>  
-             <a  href="/meusgrupos/grupousuarios/{{grupo_id}}" class="btn btn-primary" style="display: inline;" >{{btn_usuarios}}</a>  
+
+            <button  type="button" class="btn btn-info" data-toggle="modal" data-target=".info-lg">{{info}}</button>  
+            <a  href="/meusgrupos/grupousuarios/{{grupo_id}}" class="btn btn-primary" style="display: inline;" >{{btn_usuarios}}</a>  
             <hr>
 
-           
-       
-          <section class="card"> 
-            <section class="card-body">
 
-              <ul class="list-unstyled" class="mr-1">
-                <li class="media my-4">
-                 
-                  <section class="media-body"> 
 
-                             
+            <section class="card"> 
+              <section class="card-body">
+
+                <ul class="list-unstyled" class="mr-1">
+                  <li class="media my-4">
+
+                    <section class="media-body"> 
+
+
                       {% if haplanoDeNegocios %}
 
 
-{{compreensao_de_mercado}}:<br>
-R: {{pn_compreensao_de_mercado}}
-<br>
+                    <h5>  {{cv_proposta_valor}}</h5>
+                    {{pn_cv_proposta_valor}}<hr>
 
-{{acompanhamento}}:<br>
-R: {{pn_acompanhamento}}
-<br>
+                    <h5>  {{cv_segmentacao}}</h5>
+                    {{pn_cv_segmentacao}}<hr>
+                    
+                    <h5>  {{cv_canais}}</h5>
+                    {{pn_cv_canais}}<hr>
+                    
+                    <h5>  {{cv_relacionamento}}</h5>
+                    {{pn_cv_relacionamento}}<hr>
+                    
+                    <h5>  {{cv_receitas}}</h5>
+                    {{pn_cv_receitas}}<hr>
+                    
 
-{{estrategias}}:<br>
-R: {{pn_estrategias_de_venda}}
-<br>
-
-{{projecao_financeira}}:<br>
-R: {{pn_projecao_financeira}} 
-<br>
-
-{{captacao_fundos}}:<br>
-R: {{pn_captacao_fundos_investimento}}
-<br>
-
-{{publico_alvo}}:<br>
-R: {{pn_publico_alvo}}
-<br>
-                                           
-
-                                </section>
-                      {% else %}
-    <h5 class="center"> {{h5_n_ha_propostas}}</h5>
-
-                      {% endif %}
+                    <h5>    {{cv_recursos}}</h5>
+                    {{pn_cv_recursos}}
+                    <hr> 
 
 
-                </section>
-              </li>
-            </ul>
-         
+                    <h5>    {{cv_atividades}}</h5>
+                    {{pn_cv_atividades}}
+                    <hr>
+
+
+                    <h5>   {{cv_parcerias}}</h5>
+                    {{pn_cv_parcerias}} <hr>
+
+
+
+                    <h5>     {{cv_estrutura_de_custos}} </h5>
+                    {{pn_cv_estrutura_de_custos}}<hr>
+
+
+                    </section>
+                    {% else %}
+                    <h5 class="center"> {{h5_n_ha_propostas}}</h5>
+
+                    {% endif %}
+
+
+                  </section>
+                </li>
+              </ul>
+
+            </section>
           </section>
+          <br>
         </section>
-        <br>
-      </section>
-    </article>
-  </section>
-</section> 
+      </article>
+    </section>
+  </section> 
 
 </section>
 </main>
 
 {{ include('layout/nav-dashboard-end.html') }}
-   {% if pais_id == 1 %}
-        {{ include('layout/footer-pt.html') }}
- {% else %}
-  {{ include('layout/footer-en.html') }}
- {% endif %}
+{% if pais_id == 1 %}
+{{ include('layout/footer-pt.html') }}
+{% else %}
+{{ include('layout/footer-en.html') }}
+{% endif %}
 
 <script src="../../assets/vendor/chart.js/Chart.min.js"></script>
 <script src="../../assets/js/demo/chart-area-demo.js"></script>

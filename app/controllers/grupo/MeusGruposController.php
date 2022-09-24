@@ -179,21 +179,14 @@ class MeusgruposController extends ContainerController {
 
 		$planoDeNegocios = PlanoDeNegocios::getPlanoDeNegocios($gr_id->parameter);
 		$haplanoDeNegocios = true;
+		//debug($planoDeNegocios);
 
-		$lin = Linguagem::getmeugrupoinformacoes();
+		$lin = Linguagem::getMeuGrupoInformacoes();
 
+		//	debug($lin);
 		if ($planoDeNegocios[0] == null) {
 			$haplanoDeNegocios = false;
 		}
-
-		$planoDeNegocios[0]['pn_id'];
-		$planoDeNegocios[0]['pn_compreensao_de_mercado'];
-		$planoDeNegocios[0]['pn_acompanhamento'];
-		$planoDeNegocios[0]['pn_estrategias_de_venda'];
-		$planoDeNegocios[0]['pn_projecao_financeira'];
-		$planoDeNegocios[0]['pn_captacao_fundos_investimento'];
-		$planoDeNegocios[0]['pn_grupo_id'];
-		$planoDeNegocios[0]['pn_publico_alvo'];
 
 		$grupo = new Grupo();
 
@@ -203,36 +196,53 @@ class MeusgruposController extends ContainerController {
 			'title' => $lin->title,
 			'meta_charset' => $lin->meta_charset,
 			'description' => $lin->description,
+
+			'plano_text_h4_info' => $lin->plano_text_h4_info,
+			'plano_text_h6_info' => $lin->plano_text_h6_info,
 			'plano_text_h4' => $lin->plano_text_h4,
-			'compreensao_de_mercado_text' => $lin->compreensao_de_mercado_text,
-			'acompanhamento_text' => $lin->acompanhamento_text,
-			'estrategias_text' => $lin->estrategias_text,
-			'projecao_financeira_text' => $lin->projecao_financeira_text,
-			'captacao_fundos_text' => $lin->captacao_fundos_text,
-			'Publico_alvo_text' => $lin->Publico_alvo_text,
+			'plano_text_h5' => $lin->plano_text_h5,
+
+			'cv_proposta_valor_text' => $lin->cv_proposta_valor_text,
+			'cv_segmentacao_text' => $lin->cv_segmentacao_text,
+			'cv_canais_text' => $lin->cv_canais_text,
+			'cv_relacionamento_text' => $lin->cv_relacionamento_text,
+			'cv_atividades_text' => $lin->cv_atividades_text,
+			'cv_parcerias_text' => $lin->cv_parcerias_text,
+			'cv_recursos_text' => $lin->cv_recursos_text,
+			'cv_receitas_text' => $lin->cv_receitas_text,
+			'cv_estrutura_de_custos_text' => $lin->cv_estrutura_de_custos_text,
+
 			'proposta_para_grupo' => $lin->proposta_para_grupo,
 			'categoria' => $lin->categoria,
 			'editar_h5' => $lin->editar_h5,
 			'plano_negocios_h4' => $lin->plano_negocios_h4,
 			'btn_usuarios' => $lin->btn_usuarios,
 			'info' => $lin->info,
-			'compreensao_de_mercado_required' => $lin->compreensao_de_mercado_required,
-			'acompanhamento_required' => $lin->acompanhamento_required,
-			'estrategias_required' => $lin->estrategias_required,
-			'projecao_financeira_required' => $lin->projecao_financeira_required,
-			'captacao_fundo_requireds' => $lin->captacao_fundo_requireds,
-			'publico_alvo_required' => $lin->Publico_alvo_required,
-			'compreensao_de_mercado' => $lin->compreensao_de_mercado,
-			'acompanhamento' => $lin->acompanhamento,
-			'estrategias' => $lin->estrategias,
-			'projecao_financeira' => $lin->projecao_financeira,
-			'captacao_fundos' => $lin->captacao_fundos,
+			'cv_proposta_valor' => $lin->cv_proposta_valor,
+			'cv_segmentacao' => $lin->cv_segmentacao,
+			'cv_canais' => $lin->cv_canais,
+			'cv_relacionamento' => $lin->cv_relacionamento,
+			'cv_receitas' => $lin->cv_receitas,
+			'cv_recursos' => $lin->cv_recursos,
+			'cv_atividades' => $lin->cv_atividades,
+			'cv_parcerias' => $lin->cv_parcerias,
+			'cv_estrutura_de_custos' => $lin->cv_estrutura_de_custos,
+
+			'pn_cv_proposta_valor_required' => $lin->pn_cv_proposta_valor_required,
+			'pn_cv_segmentacao_required' => $lin->pn_cv_segmentacao_required,
+			'pn_cv_canais_required' => $lin->pn_cv_canais_required,
+			'pn_cv_relacionamento_required' => $lin->pn_cv_relacionamento_required,
+			'pn_cv_receitas_required' => $lin->pn_cv_receitas_required,
+			'pn_cv_recursos_required' => $lin->pn_cv_recursos_required,
+			'pn_cv_atividades_required' => $lin->pn_cv_atividades_required,
+			'pn_cv_parcerias_required' => $lin->pn_cv_parcerias_required,
+			'pn_cv_estrutura_de_custos_required' => $lin->pn_cv_estrutura_de_custos_required,
+
 			'publico_alvo' => $lin->publico_alvo,
 			'btn_criar_proposta' => $lin->btn_criar_proposta,
 			'btn_editar_proposta' => $lin->btn_editar_proposta,
 
 			'session_id' => Session::get('USUARIO_ID'),
-			'title' => $dadosgrupo['gr_nome'],
 			'cg_nome' => $dadosgrupo[0]['cg_nome'],
 			'grupo_nome' => $dadosgrupo[0]['gr_nome'],
 			'getGrupoCategoria' => $getGrupoCategoria,
@@ -241,13 +251,15 @@ class MeusgruposController extends ContainerController {
 			'catgr_id' => $grcat_id->parameter,
 			'haplanoDeNegocios' => $haplanoDeNegocios,
 			'pn_id' => $planoDeNegocios[0]['pn_id'],
-			'pn_compreensao_de_mercado' => $planoDeNegocios[0]['pn_compreensao_de_mercado'],
-			'pn_acompanhamento' => $planoDeNegocios[0]['pn_acompanhamento'],
-			'pn_estrategias_de_venda' => $planoDeNegocios[0]['pn_estrategias_de_venda'],
-			'pn_projecao_financeira' => $planoDeNegocios[0]['pn_projecao_financeira'],
-			'pn_captacao_fundos_investimento' => $planoDeNegocios[0]['pn_captacao_fundos_investimento'],
-			'pn_grupo_id' => $planoDeNegocios[0]['pn_grupo_id'],
-			'pn_publico_alvo' => $planoDeNegocios[0]['pn_publico_alvo'],
+			'pn_cv_proposta_valor' => $planoDeNegocios[0]['pn_cv_proposta_valor'],
+			'pn_cv_segmentacao' => $planoDeNegocios[0]['pn_cv_segmentacao'],
+			'pn_cv_canais' => $planoDeNegocios[0]['pn_cv_canais'],
+			'pn_cv_relacionamento' => $planoDeNegocios[0]['pn_cv_relacionamento'],
+			'pn_cv_receitas' => $planoDeNegocios[0]['pn_cv_receitas'],
+			'pn_cv_recursos' => $planoDeNegocios[0]['pn_cv_recursos'],
+			'pn_cv_atividades' => $planoDeNegocios[0]['pn_cv_atividades'],
+			'pn_cv_parcerias' => $planoDeNegocios[0]['pn_cv_parcerias'],
+			'pn_cv_estrutura_de_custos' => $planoDeNegocios[0]['pn_cv_estrutura_de_custos'],
 			'grupo_id' => $gr_id->parameter,
 			'pais_id' => Session::get("PAIS_ID"),
 			'NotsGrupo' => getNotificantionGrupo(Session::get('USUARIO_ID')),

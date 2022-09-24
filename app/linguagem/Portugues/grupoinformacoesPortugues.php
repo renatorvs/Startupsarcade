@@ -4,17 +4,15 @@ namespace app\linguagem\portugues;
 
 class grupoinformacoesportugues extends Portugues {
 
-
-				'pn_cv_proposta_valor' => $planoDeNegocios[0]['pn_cv_proposta_valor'],
-			'pn_cv_segmentacao' => $planoDeNegocios[0]['pn_cv_segmentacao'],
-			'pn_cv_canais' => $planoDeNegocios[0]['pn_cv_canais'],
-			'pn_cv_relacionamento' => $planoDeNegocios[0]['pn_cv_relacionamento'],
-			'pn_cv_receitas' => $planoDeNegocios[0]['pn_cv_receitas'],
-			'pn_cv_recursos' => $planoDeNegocios[0]['pn_cv_recursos'],
-			'pn_cv_atividades' => $planoDeNegocios[0]['pn_cv_atividades'],
-			'pn_cv_parcerias' => $planoDeNegocios[0]['pn_cv_parcerias'],
-			'pn_cv_estrutura_de_custos' => $planoDeNegocios[0]['pn_cv_estrutura_de_custos'],
-
+	// 	'pn_cv_proposta_valor' => $planoDeNegocios[0]['pn_cv_proposta_valor'],
+	// 'pn_cv_segmentacao' => $planoDeNegocios[0]['pn_cv_segmentacao'],
+	// 'pn_cv_canais' => $planoDeNegocios[0]['pn_cv_canais'],
+	// 'pn_cv_relacionamento' => $planoDeNegocios[0]['pn_cv_relacionamento'],
+	// 'pn_cv_receitas' => $planoDeNegocios[0]['pn_cv_receitas'],
+	// 'pn_cv_recursos' => $planoDeNegocios[0]['pn_cv_recursos'],
+	// 'pn_cv_atividades' => $planoDeNegocios[0]['pn_cv_atividades'],
+	// 'pn_cv_parcerias' => $planoDeNegocios[0]['pn_cv_parcerias'],
+	// 'pn_cv_estrutura_de_custos' => $planoDeNegocios[0]['pn_cv_estrutura_de_custos'],
 
 	public $title = "starstup e-learning | informaçoes";
 	public $description = "";
@@ -31,7 +29,6 @@ class grupoinformacoesportugues extends Portugues {
 	public $plano_negocios_h4 = " Plano de negocios ";
 	public $btn_usuarios = "usuarios";
 	public $info = "info";
-	
 
 	public $cv_proposta_valor_required = "Por favor, informe o(a) Proposta valor:";
 	public $cv_segmentacao_required = "Por favor, informe o(a) Segmentção de clientes (publico alvo):";
@@ -42,7 +39,7 @@ class grupoinformacoesportugues extends Portugues {
 	public $cv_atividades_required = "Por favor, informe o(a) Atividades:";
 	public $cv_parcerias_required = "Por favor, informe o(a) Parcerias:";
 	public $cv_estrutura_de_custos_required = "Por favor, informe o(a) Estrutura de custos:";
-	
+
 	public $cv_proposta_valor = "Proposta valor:";
 	public $cv_segmentacao = "Segmentção de clientes (publico alvo):";
 	public $cv_canais = "Canais de venda/divulgação (comunicacao):";
@@ -52,7 +49,6 @@ class grupoinformacoesportugues extends Portugues {
 	public $cv_atividades = "Atividades:";
 	public $cv_parcerias = "Parcerias:";
 	public $cv_estrutura_de_custos = "Estrutura de custos:";
-
 
 	public $btn_criar_proposta = "criar proposta";
 	public $btn_editar_proposta = "editar proposta";

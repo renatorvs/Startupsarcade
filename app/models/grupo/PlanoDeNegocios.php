@@ -173,7 +173,6 @@ class PlanoDeNegocios {
 
 	}
 
-
 	public function updateplanoDeNegocios() {
 		$banco = new Banco();
 
@@ -193,26 +192,23 @@ class PlanoDeNegocios {
 		));
 
 	}
-));
 
-}
+	public static function getpropostaGrupo($gr_id) {
+		$banco = new Banco();
 
-public static function getpropostaGrupo($gr_id) {
-	$banco = new Banco();
+		return $banco->select("SELECT * from  plano_de_negocios WHERE pn_grupo_id = :pn_grupo_id", array(
+			":pn_grupo_id" => $gr_id,
+		));
 
-	return $banco->select("SELECT * from  plano_de_negocios WHERE pn_grupo_id = :pn_grupo_id", array(
-		":pn_grupo_id" => $gr_id,
-	));
+	}
 
-}
+	public static function getPlanoDeNegocios($pn_grupo_id) {
+		$banco = new Banco();
 
-public static function getPlanoDeNegocios($pn_grupo_id) {
-	$banco = new Banco();
+		return $banco->select("SELECT * from  plano_de_negocios  WHERE pn_grupo_id = :pn_grupo_id ", array(
+			":pn_grupo_id" => $pn_grupo_id,
+		));
 
-	return $banco->select("SELECT * from  plano_de_negocios  WHERE pn_grupo_id = :pn_grupo_id ", array(
-		":pn_grupo_id" => $pn_grupo_id,
-	));
-
-}
+	}
 
 }

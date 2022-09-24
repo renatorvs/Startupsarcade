@@ -1,145 +1,125 @@
 
-    <!DOCTYPE html>
-<html lang="{{html_lang}}">
-<head>
-  <meta charset="{{meta_charset}}">
-  <meta name="description" content="{{description}}">
-  <meta name="keywords" content="{{keywords}}">
-  <meta name="author" content="{{author}}">
+  <!DOCTYPE html>
+  <html lang="{{html_lang}}">
+  <head>
+    <meta charset="{{meta_charset}}">
+    <meta name="description" content="{{description}}">
+    <meta name="keywords" content="{{keywords}}">
+    <meta name="author" content="{{author}}">
 
     <link rel="icon" type="image/x-icon" href="../../../assets/Logotipo/faviconstartuparcade.svg" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap-reboot.css">
-  <link rel="stylesheet" href="../../assets/css/layout/layout.css">
-  <link rel="stylesheet" href="../../assets/css/layout/footer.css">
-  <link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-  <title> {{title}}</title>
-  <link href="../../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
-</head>
-<body id="page-top"> 
-  <header>
-    {% if pais_id %}
-    {{ include('layout/nav-header-portugues.html') }}
-    {% else %}
-    {{ include('layout/nav-header-ingles.html') }}
-    {% endif %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap-reboot.css">
+    <link rel="stylesheet" href="../../assets/css/layout/layout.css">
+    <link rel="stylesheet" href="../../assets/css/layout/footer.css">
+    <link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <title>{{title}}</title>
+    <link href="../../assets/css/layout/nav-dashbord.min.css" rel="stylesheet">
+  </head>
+  <body id="page-top"> 
+    <header>
+      {% if pais_id %}
+      {{ include('layout/nav-header-portugues.html') }}
+      {% else %}
+      {{ include('layout/nav-header-ingles.html') }}
+      {% endif %}
 
-  </header>
-  <main>
-   {% if pais_id %}
-   {{ include('layout/nav-dashboard-portugues.html') }}
-   {% else %}
-   {{ include('layout/nav-dashboard-ingles.html') }}
-   {% endif %}
-   <section class="main-experi" >
-    <hr class="m-1">  
-    <section class="row">
-      <section class="col-xl-12 col-md-12 mb-4">
-
-
-        <article class="card border-left-success shadow h-100 py-2">
-          <section class="card-body">
-            <section class="modal fade info-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-              <section class="modal-dialog modal-lg">
-                <section class="modal-content">
-                  <section class="card-body">   
-                    <h4 align="center"  class="text-primary">{{plano_text_h4}} </h4>
-                    <br>    
-                    <hr>
-                     :<br>
-
-                    <br><br>
-                    {{acompanhamento}}:<br>
-                    {{acompanhamento_text}}<br>
-                    <br>
-
-                    {{estrategias}}:<br>
-                    {{estrategias_text}}
-                    <br> <br>
-
-                    {{projecao_financeira}}: <br>
-                    {{projecao_financeira_text}}
-                    <br><br>
+    </header>
+    <main>
+     {% if pais_id %}
+     {{ include('layout/nav-dashboard-portugues.html') }}
+     {% else %}
+     {{ include('layout/nav-dashboard-ingles.html') }}
+     {% endif %}
+     <section class="main-experi" >
+      <hr class="m-1">  
+      <section class="row">
+        <section class="col-xl-12 col-md-12 mb-4">
 
 
-                    {{Publico_alvo}}:<br>
-                    {{Publico_alvo_text}}. <br><br>
+          <article class="card border-left-success shadow h-100 py-2">
+            <section class="card-body">
+              <section class="modal fade info-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <section class="modal-dialog modal-lg">
+                  <section class="modal-content">
+                    <section class="card-body">   
+
+                      <h4 align="center"  class="text-primary">{{plano_text_h4_info}} </h4>
+                      <h6 align="center"  class="text-primary">{{plano_text_h6_info}} </h6>
+                      <hr>
+                      <h5>  {{cv_proposta_valor}}</h5>
+                      {{cv_proposta_valor_text}}<hr>
+
+                      <h5>  {{cv_segmentacao}}</h5>
+                      {{cv_segmentacao_text}}<hr>
+                      
+                      <h5>  {{cv_canais}}</h5>
+                      {{cv_canais_text}}<hr>
+                      
+                      <h5>  {{cv_relacionamento}}</h5>
+                      {{cv_relacionamento_text}}<hr>
+                      
+                      <h5>  {{cv_receitas}}</h5>
+                      {{cv_receitas_text}}<hr>
+                      
+
+                      <h5>    {{cv_recursos}}</h5>
+                      {{cv_recursos_text}}
+                      <hr> 
 
 
-                    {{captacao_fundos}}: <br>
-                    {{captacao_fundos_text}}
+                      <h5>    {{cv_atividades}}</h5>
+                      {{cv_atividades_text}}
+                      <hr>
 
 
-                    {{compreensao_de_mercado}}: <br>
-                    {{compreensao_de_mercado_text}}
-                    <br><br>
+                      <h5>   {{cv_parcerias}}</h5>
+                      {{cv_parcerias_text}} <hr>
+
+
+
+                      <h5>     {{cv_estrutura_de_custos}} </h5>
+                      {{cv_estrutura_de_custos_text}}<hr>
+
+
+                    </section>
                   </section>
                 </section>
               </section>
-            </section>
 
-            <section class="modal fade proposta-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-              <section class="modal-dialog modal-lg">
-                <section class="modal-content">
-                  <section class="card-body">   
-                    <form class="needs-validation" action="/MeusGrupos/meusgruposinfostore" enctype="multipart/form-data" method ="post">
-                      <h5>{{proposta_para_grupo}}: {{grupo_nome}}</h5>
-                      <h5>{{categoria}}:  {{cg_nome}}</h6>
-                        <hr>
+              <section class="modal fade proposta-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <section class="modal-dialog modal-lg">
+                  <section class="modal-content">
+                    <section class="card-body">   
+                      <form class="needs-validation" action="/MeusGrupos/meusgruposinfostore" enctype="multipart/form-data" method ="post">
+                        <h5>{{proposta_para_grupo}}: {{grupo_nome}}</h5>
+                        <h5>{{categoria}}:  {{cg_nome}}</h6>
+                          <hr>
 
 
-cv_proposta_valor
-cv_segmentacao
-cv_canais
-cv_relacionamento
-cv_receitas
-cv_recursos
-cv_atividades
-cv_parcerias
-cv_estrutura_de_custos
+                          <section class="form-row">
+                          </h4>
+                          <section class="col-md-6 mb-3">
+                            <label for="validationCustom01">{{cv_proposta_valor}}</label>
+                            <input type="text" name="pn_cv_proposta_valor" class="form-control" id="validationCustom01" placeholder="{{cv_proposta_valor}}" required>
+                            <section class="invalid-feedback">
+                             {{cv_proposta_valor_required}} !
+                           </section>  
+                         </section>
 
-                        <section class="form-row">
-                        </h4>
-                        <section class="col-md-6 mb-3">
-                          <label for="validationCustom01">{{cv_proposta_valor}}</label>
-                          <input type="text" name="pn_cv_proposta_valor" class="form-control" id="validationCustom01" placeholder="{{cv_proposta_valor}}" required>
-                          <section class="invalid-feedback">
-                         {{cv_proposta_valor_required}} !
-                          </section>  
-                        </section>
+                         <section class="col-md-6 mb-3">
 
-cv_proposta_valor_required ok
-cv_segmentacao_required ok
-cv_canais_required
-cv_relacionamento_required
-cv_receitas_required
-cv_recursos_required
-cv_atividades_required
-cv_parcerias_required
-cv_estrutura_de_custos_required
-
-pn_cv_proposta_valor ok 
-pn_cv_segmentacao ok
-pn_cv_canais ok
-pn_cv_relacionamento ok
-pn_cv_receitas
-pn_cv_recursos
-pn_cv_atividades
-pn_cv_parcerias
-pn_cv_estrutura_de_custos
-                        <section class="col-md-6 mb-3">
-
-                          <label for="pn_acompanhamento">{{cv_segmentacao}} </label>
-                          <input type="text" name="pn_cv_segmentacao"  class="form-control" id="acompanhamento" placeholder="{{acompanhamento}}" required>
+                          <label for="cv_segmentacao">{{cv_segmentacao}} </label>
+                          <input type="text" name="pn_cv_segmentacao"  class="form-control" id="cv_segmentacao" placeholder="{{cv_segmentacao}}" required>
                           <section class="invalid-feedback">
                             {{cv_segmentacao_required}} !
                           </section>  
                         </section>
                         <section class="col-md-6 mb-3">
-                          <label for="pn_estrategias_de_venda"> {{cv_canais}}</label>
-                          <input type="text" name="pn_cv_canais"   class="form-control" id="pn_estrategias_de_venda" placeholder="{{cv_canais}}"  required>
+                          <label for="cv_canais"> {{cv_canais}}</label>
+                          <input type="text" name="pn_cv_canais"   class="form-control" id="cv_canais" placeholder="{{cv_canais}}"  required>
                           <section class="invalid-feedback">
                           </section>
                           {{cv_canais_required}}
@@ -147,25 +127,56 @@ pn_cv_estrutura_de_custos
 
 
                         <section class="col-md-6 mb-3">
-                          <label for="pn_projecao_financeira"> {{cv_relacionamento}}</label>
-                          <input type="text" name="pn_cv_relacionamento"   class="form-control" id="pn_projecao_financeira" placeholder="{[cv_relacionamento]}"  required>
+                          <label for="cv_relacionamento"> {{cv_relacionamento}}</label>
+                          <input type="text" name="pn_cv_relacionamento"   class="form-control" id="cv_relacionamento" placeholder="{[cv_relacionamento]}"  required>
                           <section class="invalid-feedback">
-{{cv_relacionamento_required}}
+                            {{cv_relacionamento_required}}
                           </section>
                         </section> 
+
+
+
                         <section class="col-md-6 mb-3">
-                          <label for="pn_captacao_fundos_investimento">  {{captacao_fundos}}  </label>
-                          <input type="text" name="pn_captacao_fundos_investimento"   class="form-control" id="pn_captacao_fundos_investimento" placeholder="{{captacao_fundos}}"  required>
+                          <label for="cv_receitas">  {{cv_receitas}}  </label>
+                          <input type="text" name="pn_cv_receitas"   class="form-control" id="cv_receitas" placeholder="{{cv_receitas}}"  required>
                           <section class="invalid-feedback">
 
-{{captacao_fundo_required}}                          </section>
+                          {{cv_receitas__required}}     
+                        </section>
+                        </section>
+
+                      <section class="col-md-6 mb-3">
+                          <label for="cv_recursos">  {{cv_recursos}}  </label>
+                          <input type="text" name="pn_cv_recursos"   class="form-control" id="cv_recursos" placeholder="{{cv_recursos}}"  required>
+                          <section class="invalid-feedback">
+
+                          {{cv_recursos_required}}     
+                        </section>
+                        </section>
+                      
+                        <section class="col-md-6 mb-3">
+                          <label for="cv_atividades">  {{cv_atividades}}  </label>
+                          <input type="text" name="pn_cv_atividades"   class="form-control" id="cv_atividades" placeholder="{{cv_atividades}}"  required>
+                          <section class="invalid-feedback">
+
+                          {{cv_atividades_required}}     
+                        </section>
                         </section>
 
                         <section class="col-md-6 mb-3">
-                          <label for=" Publico alvo">  {{Publico_alvo}} </label>
-                          <input type="text" name="pn_publico_alvo"   class="form-control" id=" Publico alvo" placeholder=" {{Publico_alvo}} "  required>
-                          <section class="invalid-feedback">
-{{Publico_alvo_required}}                          </section>
+                          <label for="cv_parcerias">  {{cv_parcerias}} </label>
+                          <input type="text" name="pn_cv_parcerias"   class="form-control" id="cv_parcerias" placeholder=" {{cv_parcerias}} "  required>
+                          <section class="invalid-feedback">                        
+                            {{cv_parcerias_required}}                         
+                           </section>
+                        </section>
+  
+                  <section class="col-md-6 mb-3">
+                          <label for="cv_estrutura_de_custos">  {{cv_estrutura_de_custos}} </label>
+                          <input type="text" name="pn_cv_estrutura_de_custos"   class="form-control" id="cv_estrutura_de_custos" placeholder=" {{cv_estrutura_de_custos}} "  required>
+                          <section class="invalid-feedback">                        
+                            {{cv_estrutura_de_custos_required}}                         
+                           </section>
                         </section>
 
                         <input type="hidden" name="pn_grupo_id" value="{{grupo_id}}">
@@ -189,168 +200,208 @@ pn_cv_estrutura_de_custos
                   <section class="card-body">   
                     <form class="needs-validation" action="/MeusGrupos/meusgruposinfoupdate" enctype="multipart/form-data" method ="post">                                            
                       <h5 align="center">{{editar_h5}}</h5>
-                        <hr>
+                      <hr>
 
 
 
 
+                      <section class="form-row">
+                      </h4>
+                          <section class="col-md-6 mb-3">
+                            <label for="validationCustom01">{{cv_proposta_valor}}</label>
+                            <input type="text" name="pn_cv_proposta_valor" value="{{pn_cv_proposta_valor}}" class="form-control" id="validationCustom01" placeholder="{{cv_proposta_valor}}" required>
+                            <section class="invalid-feedback">
+                             {{cv_proposta_valor_required}} 
+                           </section>  
+                         </section>
 
-                        <section class="form-row">
-                        </h4>
-                        <section class="col-md-6 mb-3">
-                          <label for="validationCustom01"> {{compreensao_de_mercado}}</label>
-                          <input type="text" name="pn_compreensao_de_mercado" class="form-control" id="validationCustom01" placeholder="compreensao de mercado" value="{{pn_compreensao_de_mercado}}" required>
+                         <section class="col-md-6 mb-3">
+
+                          <label for="cv_segmentacao">{{cv_segmentacao}} </label>
+                          <input type="text" name="pn_cv_segmentacao" value="{{pn_cv_segmentacao}}"  class="form-control" id="cv_segmentacao" placeholder="{{cv_segmentacao}}" required>
                           <section class="invalid-feedback">
-                              {{compreensao_de_mercado_required}}
+                            {{cv_segmentacao_required}} 
                           </section>  
                         </section>
                         <section class="col-md-6 mb-3">
-                          <label for="acompanhamento"> {{acompanhamento}} </label>
-                          <input type="text" name="pn_acompanhamento"  value="{{pn_acompanhamento}}"  class="form-control" id="acompanhamento" placeholder="acompanhamento" required>
+                          <label for="cv_canais"> {{cv_canais}}</label>
+                          <input type="text" name="pn_cv_canais" value="{{pn_cv_canais}}"   class="form-control" id="cv_canais" placeholder="{{cv_canais}}"  required>
                           <section class="invalid-feedback">
-                     {{acompanhamento_required}}
-                          </section>  
-                        </section>
-                        <section class="col-md-6 mb-3">
-                          <label for="pn_estrategias_de_venda">{{estrategias}} </label>
-                          <input type="text" name="pn_estrategias_de_venda"  VALUE="{{pn_estrategias_de_venda}}" class="form-control" id="pn_estrategias_de_venda" placeholder="{{estrategias}}"  required>
-                          <section class="invalid-feedback">
-                        {{estrategias_required}}
                           </section>
+                          {{cv_canais_required}}
                         </section>
 
 
                         <section class="col-md-6 mb-3">
-                          <label for="pn_projecao_financeira"> {{projecao_financeira}} </label>
-                          <input type="text" name="pn_projecao_financeira"  value="{{pn_projecao_financeira}}"   class="form-control" id="pn_projecao_financeira" placeholder="{{projecao_financeira}}"  required>
+                          <label for="cv_relacionamento"> {{cv_relacionamento}}</label>
+                          <input type="text" name="pn_cv_relacionamento" value="{{pn_cv_relacionamento}}"   class="form-control" id="cv_relacionamento" placeholder="{{cv_relacionamento}}"  required>
                           <section class="invalid-feedback">
- {{projecao_financeira_required}}
+                            {{cv_relacionamento_required}}
                           </section>
                         </section> 
+
+
+
                         <section class="col-md-6 mb-3">
-                          <label for="pn_captacao_fundos_investimento">{{captacao_fundos}}
- </label>
-                          <input type="text" name="pn_captacao_fundos_investimento"  value="{{pn_captacao_fundos_investimento}}" class="form-control" id="pn_captacao_fundos_investimento" placeholder="{{captacao_fundos}}"  required>
+                          <label for="cv_receitas">  {{cv_receitas}}  </label>
+                          <input type="text" name="pn_cv_receitas"  value="{{pn_cv_receitas}}"  class="form-control" id="cv_receitas" placeholder="{{cv_receitas}}"  required>
                           <section class="invalid-feedback">
- {{captacao_fundo_required}}
-                          </section>
-                        </section> 
+
+                          {{cv_receitas__required}}     
+                        </section>
+                        </section>
+
+                      <section class="col-md-6 mb-3">
+                          <label for="cv_recursos">  {{cv_recursos}}  </label>
+                          <input type="text" name="pn_cv_recursos" value="{{pn_cv_recursos}}"   class="form-control" id="cv_recursos" placeholder="{{cv_recursos}}"  required>
+                          <section class="invalid-feedback">
+
+                          {{cv_recursos_required}}     
+                        </section>
+                        </section>
+                      
                         <section class="col-md-6 mb-3">
-                          <label for=" Publico alvo"> {{Publico_alvo}}</label>
-                          <input type="text" name="pn_publico alvo"  value="{{pn_publico_alvo}}" class="form-control" id=" Publico alvo" placeholder="{{Publico_alvo}}"  required>
+                          <label for="cv_atividades">  {{cv_atividades}}  </label>
+                          <input type="text" name="pn_cv_atividades" value="{{pn_cv_atividades}}"   class="form-control" id="cv_atividades" placeholder="{{cv_atividades}}"  required>
                           <section class="invalid-feedback">
-                            {{publico_alvo_required}}
-                          </section>
+
+                          {{cv_atividades_required}}     
+                        </section>
+                        </section>
+
+                        <section class="col-md-6 mb-3">
+                          <label for="cv_parcerias">  {{cv_parcerias}} </label>
+                          <input type="text" name="pn_cv_parcerias" value="{{pn_cv_parcerias}}"   class="form-control" id="cv_parcerias" placeholder=" {{cv_parcerias}} "  required>
+                          <section class="invalid-feedback">                        
+                            {{cv_parcerias_required}}                         
+                           </section>
+                        </section>
+  
+                  <section class="col-md-6 mb-3">
+                          <label for="cv_estrutura_de_custos">  {{cv_estrutura_de_custos}} </label>
+                          <input type="text" name="pn_cv_estrutura_de_custos"  value="{{pn_cv_estrutura_de_custos}}" class="form-control" id="cv_estrutura_de_custos" placeholder=" {{cv_estrutura_de_custos}} "  required>
+                          <section class="invalid-feedback">                        
+                            {{cv_estrutura_de_custos_required}}                         
+                           </section>
                         </section>
 
 
-                        <input type="hidden" name="pn_id" value="{{pn_id}}">
-                        <input type="hidden" name="pn_grupo_id" value="{{pn_grupo_id}}">
+                <input type="hidden" name="pn_id" value="{{pn_id}}">
+                <input type="hidden" name="pn_grupo_id" value="{{pn_grupo_id}}">
 
 
-                      </section>
+              </section>
 
 
-                      <button class="btn btn-primary" type="submit">{{btn_editar_proposta}}</button>
-                    </form>
-                  </section>
-                </section>
-              </section>        
-            </section>
-
-
-
-
-            <h4 class ="text-dark" align="center">  {{plano_negocios_h4}} </h4>
-
-            <button  type="button" class="btn btn-info" data-toggle="modal" data-target=".info-lg">{{info}}</button>  
-            <a  href="/meusgrupos/grupousuarios/{{grupo_id}}" class="btn btn-primary" style="display: inline;" >{{btn_usuarios}}</a>  
-            <hr>
+              <button class="btn btn-primary" type="submit">{{btn_editar_proposta}}</button>
+            </form>
+          </section>
+        </section>
+      </section>        
+    </section>
 
 
 
-            <section class="card"> 
-              <section class="card-body">
+    <h4 class ="text-dark" align="center">  {{plano_text_h4}} </h4>
+    <h5 class ="text-dark" align="center">  {{plano_text_h5}} </h5>
 
-                <ul class="list-unstyled" class="mr-1">
-                  <li class="media my-4">
-
-                    <section class="media-body"> 
-
-
-                      {% if haplanoDeNegocios %}
+    <button  type="button" class="btn btn-info" data-toggle="modal" data-target=".info-lg">{{info}}</button>  
+    <a  href="/meusgrupos/grupousuarios/{{grupo_id}}" class="btn btn-primary" style="display: inline;" >{{btn_usuarios}}</a>  
+    <hr>
 
 
 
+    <section class="card"> 
+      <section class="card-body">
 
-{{compreensao_de_mercado}}:<br>
-R: {{pn_compreensao_de_mercado}}
-<br>
+        <ul class="list-unstyled" class="mr-1">
+          <li class="media my-4">
 
-{{acompanhamento}}:<br>
-R: {{pn_acompanhamento}}
-<br>
-
-{{estrategias}}:<br>
-R: {{pn_estrategias_de_venda}}
-<br>
-
-{{projecao_financeira}}:<br>
-R: {{pn_projecao_financeira}} 
-<br>
-
-{{captacao_fundos}}:<br>
-R: {{pn_captacao_fundos_investimento}}
-<br>
-
-{{publico_alvo}}:<br>
-R: {{pn_publico_alvo}}
-<br>
-                                           
+            <section class="media-body"> 
 
 
-
-                      <br>
-                      <section align="center" class="group-button">
-                       <button  type="button" class="btn btn-primary" data-toggle="modal" data-target=".editar-lg">{{editar_h5}}</button>                
-
-                     </section>
-                     {% else %}
-
-                     <section align="center" class="group-button">
-                       <button  type="button" class="btn btn-primary" data-toggle="modal" data-target=".proposta-lg">{{btn_criar_proposta}}</button>
-                     </section>
-                     {% endif %}
+              {% if haplanoDeNegocios %}
 
 
-                   </section>
-                 </li>
-               </ul>
+              <h5>  {{cv_proposta_valor}}</h5>
+              {{pn_cv_proposta_valor}}<hr>
+
+              <h5>  {{cv_segmentacao}}</h5>
+              {{pn_cv_segmentacao}}<hr>
+
+              <h5>  {{cv_canais}}</h5>
+              {{pn_cv_canais}}<hr>
+
+              <h5>  {{cv_relacionamento}}</h5>
+              {{pn_cv_relacionamento}}<hr>
+
+              <h5>  {{cv_receitas}}</h5>
+              {{pn_cv_receitas}}<hr>
+
+
+              <h5>    {{cv_recursos}}</h5>
+              {{pn_cv_recursos}}
+              <hr> 
+
+
+              <h5>    {{cv_atividades}}</h5>
+              {{pn_cv_atividades}}
+              <hr>
+
+
+              <h5>   {{cv_parcerias}}</h5>
+              {{pn_cv_parcerias}} <hr>
+
+
+
+              <h5>     {{cv_estrutura_de_custos}} </h5>
+              {{pn_cv_estrutura_de_custos}}<hr>
+
+
+
+
+
+
+
+
+              <br>
+              <section align="center" class="group-button">
+               <button  type="button" class="btn btn-primary" data-toggle="modal" data-target=".editar-lg">{{editar_h5}}</button>                
 
              </section>
+             {% else %}
+
+             <section align="center" class="group-button">
+               <button  type="button" class="btn btn-primary" data-toggle="modal" data-target=".proposta-lg">{{btn_criar_proposta}}</button>
+             </section>
+             {% endif %}
+
+
            </section>
-           <br>
-         </section>
-       </article>
+         </li>
+       </ul>
+
      </section>
-   </section> 
+   </section>
+   <br>
+  </section>
+  </article>
+  </section>
+  </section> 
 
- </section>
-</main>
+  </section>
+  </main>
 
-{{ include('layout/nav-dashboard-end.html') }}
-   {% if pais_id == 1 %}
-        {{ include('layout/footer-pt.html') }}
- {% else %}
+  {{ include('layout/nav-dashboard-end.html') }}
+  {% if pais_id == 1 %}
+  {{ include('layout/footer-pt.html') }}
+  {% else %}
   {{ include('layout/footer-en.html') }}
- {% endif %}
+  {% endif %}
 
-<script src="../../assets/vendor/chart.js/Chart.min.js"></script>
-<script src="../../assets/js/demo/chart-area-demo.js"></script>
-<script src="../../assets/js/demo/chart-pie-demo.js"></script>
-<script src="../../assets/vendor/jquery/jquery.min.js"></script>
-<script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="../../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
-<script src="../../assets/js/sb-admin-2.min.js"></script>
-</body>
-</html>
+  <script src="../../assets/vendor/jquery/jquery.min.js"></script>
+  <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../../assets/js/sb-admin-2.min.js"></script>
+  </body>
+  </html>
