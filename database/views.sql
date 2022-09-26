@@ -18,6 +18,14 @@ left join grupo_admin ga on ga.adm_sub_user_id =u.us_id;
 
 
 
+SELECT * from  plano_de_negocios_grupo WHERE pn_grupo_id = :pn_grupo_id
+SELECT * from  plano_de_negocios_grupo WHERE pn_grupo_id = :pn_grupo_id
+
+
+
+drop view planoDeNegociosGrupo;
+CREATE VIew planoDeNegociosGrupo AS SELECT * FROM plano_de_negocios pn inner join grupo g on pn.pn_grupo_id = g.gr_id
+
 drop view dadosGrupo;
 CREATE VIew dadosGrupo as SELECT * from categoria_grupo cg inner join grupo g on cg.cg_id = g.grcat_id inner join grupo_admin ga on ga.adm_grupo_id = g.gr_id;
 

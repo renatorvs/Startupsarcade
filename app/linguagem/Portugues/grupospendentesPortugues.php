@@ -11,6 +11,6 @@ class grupospendentesPortugues extends Portugues {
 	public $h5_n_pendencia = "não  há pedidos pendentes";
 	public $btn_cancelar_pedido = "cancelar pedido";
 	public $membros = "membros";
-	public $btn_grupo = "grupo informações";
+	public $btn_grupo = "plano de negocios";
 
 }

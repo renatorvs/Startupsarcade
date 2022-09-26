@@ -4,7 +4,7 @@ namespace app\linguagem\portugues;
 
 class meugrupoinformacoesportugues extends Portugues {
 
-	public $title = "starstup e-learning | modelo de negocio informacoes";
+	public $title = "starstup e-learning | Planos de negocio";
 	public $description = "";
 	public $plano_text_resp = "Um plano de negócios é um documento que descreve por escrito os objetivos de um negócio e quais etapas devem ser tomadas para atingir esses objetivos";
 	public $compreensao_de_mercado_text = "Proporciona uma visão clara e objetiva da empresa e do setor, identifica forças, oportunidades, fraquezas e ameaças para o empreendimento.​";
@@ -32,9 +32,9 @@ class meugrupoinformacoesportugues extends Portugues {
 	// public $captacao_fundos = "captação de fundos de investimento";
 	// public $publico_alvo = "publico alvo";
 	public $plano_text_h4 = "Planos de negocios";
-	public $plano_text_h5 = "Model canvas. para orientações click em 'INFO' ";
+	public $plano_text_h5 = "Model canvas para orientações click em 'INFO' ";
 	public $plano_text_h4_info = "Modelo de negocio baseado em Canvas";
-	public $plano_text_h6_info = "O Business Model Canvas, mais conhecido como Canvas, é uma ferramenta de planejamento estratégico, que permite desenvolver e esboçar modelos de negócio novos ou existentes, abaixo tem um exemplo das perguntas a serem feitas para o seu canvas";
+	public $plano_text_h6_info = "O Business Model Canvas, mais conhecido como Canvas, é uma ferramenta de planejamento estratégico, que permite desenvolver e esboçar modelos de negócio novos ou existentes.";
 
 	public $cv_proposta_valor_text = "O que sua empresa vai oferecer para o mercado que realmente terá valor para os clientes ?";
 	public $cv_segmentacao_text = "Quais segmentos de clientes serão foco da sua empresa ?";
@@ -61,7 +61,7 @@ class meugrupoinformacoesportugues extends Portugues {
 	public $cv_parcerias_required = "Por favor, informe o(a) Parcerias:";
 	public $cv_estrutura_de_custos_required = "Por favor, informe o(a) Estrutura de custos:";
 
-	public $cv_proposta_valor = "Proposta valor:";
+	public $cv_proposta_valor = "Proposta de valor:";
 	public $cv_segmentacao = "Segmentção de clientes (publico alvo):";
 	public $cv_canais = "Canais de venda/divulgação (comunicacao):";
 	public $cv_relacionamento = "Relacionamentos:";

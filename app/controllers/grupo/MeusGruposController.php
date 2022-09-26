@@ -179,11 +179,10 @@ class MeusgruposController extends ContainerController {
 
 		$planoDeNegocios = PlanoDeNegocios::getPlanoDeNegocios($gr_id->parameter);
 		$haplanoDeNegocios = true;
-		//debug($planoDeNegocios);
+		//debug($dadosgrupo);
 
 		$lin = Linguagem::getMeuGrupoInformacoes();
 
-		//	debug($lin);
 		if ($planoDeNegocios[0] == null) {
 			$haplanoDeNegocios = false;
 		}

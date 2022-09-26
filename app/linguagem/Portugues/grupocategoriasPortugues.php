@@ -8,7 +8,7 @@ class grupocategoriasPortugues extends Portugues {
 	public $keywords = "";
 	public $author = "";
 	public $title = "starstup´s arcade | categorias ";
-	public $explore_h4 = "Explore grupos de starstup";
+	public $titulo_h5 = "Procure uma area de atuação para criar ou participar de um modelo de negocio";
 	public $grupos = "grupos";
-	public $btn_a_ver_grupo = "ver grupo";
+	public $btn_a_ver_grupo = "ver grupos";
 }
