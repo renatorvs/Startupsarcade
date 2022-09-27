@@ -24,13 +24,13 @@ class indexportugues extends Portugues {
 	public $notificaçoes = "Notificações";
 	public $active = "Tudo";
 	public $perfil = "Perfil";
-	public $header_h1 = "Publique e compartilhe ideias de um negócio";
+	public $header_h1 = "Publique e compartilhe ideias do seu plano de negócio";
 	public $header_h2 = "Tudo começa com uma ideia";
 	public $header_button = "Inscreva-se";
 	public $main_about_h3 = "Aprenda mais sobre nós";
 	public $main_about_P =
-		'Uma startup em fase inicial que nasceu com um propósito bem claro, fazer as pessoas acreditarem em seu potencial de empreender e assim explorar as ideias que acreditam  para inciar um negocio, mas tudo começa com uma ideia.
-		 	Nossa proposta é ajudar as pessoas a expor sua melhores ideias de negocio, nos auxiliamos a criar seu plano de negocio, modelagem baseada em canva e seu MPV(minimo produto viavel) e achar um socio criando um grupo apartir da sua idea. Procurar um artigo em nossa startup academy que o ajude  em sua jornada de empreendedor. Nossos metodos são baseado em Silicon Valley metodo de compartilhar ideias, assim criando conexões para sua ideia de negocio com pessoas  referencia na area em que se atua em seu fututo negocio.
+		'Uma startup em fase inicial que nasceu com um propósito bem claro, fazer as pessoas acreditarem no seu potencial de empreender e assim explorar as ideias que acreditam para iniciar um negócio, mas tudo começa com uma ideia.
+		 	A nossa proposta é ajudar as pessoas a expor as suas melhores ideias de negócio, auxiliamos a criar o seu plano de negócio, modelagem baseada em canva e o seu MPV(mínimo produto viável) e achar um sócio e assim  criando um grupo a partir da sua ideia. Procurar um artigo na nossa startup e-lerning que o ajude  na sua jornada de empreendedor. Os nossos métodos são baseados em Silicon Valley método de compartilhar ideias, assim criando conexões para a sua ideia de negócio.
 	';
 
 	public $main_features_1_h4 = "Artigo por área de negocio";
