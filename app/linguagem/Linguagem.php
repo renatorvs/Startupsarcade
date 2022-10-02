@@ -93,19 +93,19 @@ class Linguagem {
 		return new $class();
 	}
 
-	public static function getacademy() {
+	public static function getLearning() {
 		$idioma = Linguagem::getIdiomaSession();
-		$class = "app\linguagem\\" . $idioma . "\academy" . $idioma;
+		$class = "app\linguagem\\" . $idioma . "\learning" . $idioma;
 		return new $class();
 	}
-	public static function getacademycategoria() {
+	public static function getLearningcategoria() {
 		$idioma = Linguagem::getIdiomaSession();
-		$class = "app\linguagem\\" . $idioma . "\academycategoria" . $idioma;
+		$class = "app\linguagem\\" . $idioma . "\learningcategoria" . $idioma;
 		return new $class();
 	}
-	public static function getacademyartigo() {
+	public static function getLearningartigo() {
 		$idioma = Linguagem::getIdiomaSession();
-		$class = "app\linguagem\\" . $idioma . "\academyartigo" . $idioma;
+		$class = "app\linguagem\\" . $idioma . "\learningartigo" . $idioma;
 		return new $class();
 	}
 
@@ -176,18 +176,9 @@ class Linguagem {
 		return new $class();
 	}
 
-	public static function getLearningArtigo() {
-		$idioma = Linguagem::getIdiomaSession();
-		$class = "app\linguagem\\" . $idioma . "\learningartigo" . $idioma;
-		return new $class();
-	}
 
-	public static function getLearning() {
-		$idioma = Linguagem::getIdiomaSession();
-		$class = "app\linguagem\\" . $idioma . "\learning" . $idioma;
-		return new $class();
-	}
 
+	
 	public static function getMeuGrupoInformacoes() {
 		$idioma = Linguagem::getIdiomaSession();
 		$class = "app\linguagem\\" . $idioma . "\meugrupoinformacoes" . $idioma;

@@ -229,47 +229,46 @@ class Blog extends Post {
 
 	}
 
-	public static function getPostBlog($blogpais_id) {
+	public static function getPostBlog($post_paisid) {
 
 		$banco = new Banco();
-// blogpais_id =  post_paisid
 		return $banco->select("SELECT * FROM blog_post_categoria
-			WHERE  postdestaque_id  = 1  AND postcat_id != 5
-			AND blogpais_id = :blogpais_id GROUP BY post_id"
+			WHERE  postdestaque_id  = 1  AND postblogcat_id != 5
+			AND post_paisid = :post_paisid GROUP BY post_id"
 			, array(
-				':blogpais_id' => $blogpais_id,
+				':post_paisid' => $post_paisid,
 			));
 
 	}
-	public static function getPostPublicidade($blogpais_id) {
+	public static function getPostPublicidade($post_paisid) {
 
 		$banco = new Banco();
-// blogpais_id =  post_paisid
+// post_paisid =  post_paisid
 		return $banco->select("SELECT * FROM blog_post_categoria
 			WHERE  postdestaque_id  != 3  AND postcat_id != 5
-			and blogpais_id = :blogpais_id"
+			and post_paisid = :post_paisid"
 			, array(
-				':blogpais_id' => $blogpais_id,
+				':post_paisid' => $post_paisid,
 			));
 
 	}
 
-	public static function getPostBlogTermoBr($blogpais_id) {
+	public static function getPostBlogTermoBr($post_paisid) {
 
 		$banco = new Banco();
-// blogpais_id =  post_paisid
+// post_paisid =  post_paisid
 		return $banco->select("SELECT * FROM blog_post_categoria
 			WHERE  postdestaque_id  = 3  AND postcat_id = 5
-			AND blogpais_id = 1 ");
+			AND post_paisid = 1 ");
 
 	}
 	public static function getPostBlogTermoUsa() {
 
 		$banco = new Banco();
-// blogpais_id =  post_paisid
+// post_paisid =  post_paisid
 		return $banco->select("SELECT * FROM blog_post_categoria
 			WHERE  postdestaque_id  = 3  AND postcat_id = 10
-			AND blogpais_id = 2 ");
+			AND post_paisid = 2 ");
 
 	}
 
@@ -277,7 +276,7 @@ class Blog extends Post {
 
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM blog_destaque", array(
+		return $banco->select("SELECT * FROM post_destaque", array(
 			':post_paisid' => $post_paisid,
 		));
 	}
@@ -299,7 +298,7 @@ class Blog extends Post {
 
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM blog_post_categoria  WHERE postdestaque_id = 2  and post_paisid = :post_paisid ORDER by blog_id DESC LIMIT 1  ", array(
+		return $banco->select("SELECT * FROM blog_post_categoria  WHERE postdestaque_id = 2  and post_paisid = :post_paisid ORDER by post_id DESC LIMIT 3  ", array(
 			':post_paisid' => $post_paisid,
 		));
 
@@ -310,7 +309,7 @@ class Blog extends Post {
 
 		$banco = new Banco();
 
-		return $banco->select(" SELECT * FROM blog_post_categoria  WHERE postdestaque_id = 2 and post_paisid = :post_paisid  ORDER by blog_id DESC  ", array(
+		return $banco->select(" SELECT * FROM blog_post_categoria  WHERE postdestaque_id = 2 and post_paisid = :post_paisid  ORDER by post_id DESC  ", array(
 
 			':post_paisid' => $post_paisid,
 		));
