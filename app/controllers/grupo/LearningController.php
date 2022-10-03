@@ -11,12 +11,12 @@ class learningController extends ContainerController {
 
 	public function create() {
 
-		$getcategoria = Postblog_categoria::getpostblogCategoria_nome(Session::get('PAIS_ID'));
-
+		$getcategoria = Postblog_categoria::getpostblogCategoria(Session::get('PAIS_ID'));
 		$postBlog = Blog::getPostBlog(Session::get('PAIS_ID'));
-		$postBlogDestaque = Blog::getPostBlogDestaque(Session::get('PAIS_ID'));
+		$postBlogDestaqueL = Blog::getPostBlogDestaqueLimit(Session::get('PAIS_ID'));
+		$postBlogDestaqueAll = Blog::getPostBlogDestaqueAll(Session::get('PAIS_ID'));
 
-		//debug($postBlogDestaque);
+	//	debug($getcategoria);
 		if (Session::get('USUARIO_ID') OR Session::get('ADMIN_SESSION')) {
 			if (Session::get('ADMIN_SESSION')) {
 				$admin_session = true;
@@ -34,7 +34,8 @@ class learningController extends ContainerController {
 				'candidato_session' => $candidato_session,
 				'getblogcategorias' => $getcategoria,
 				'postBlog' => $postBlog,
-				'postBlogDestaque' => $postBlogDestaque,
+				'postBlogDestaque' => $postBlogDestaqueL,
+				'postBlogDestaqueAll' => $postBlogDestaqueAll,
 				'pais_id' => Session::get("PAIS_ID"),
 				'admin_id' => Session::get("ADMIN_SESSION"),
 				'NotsGrupo' => getNotificantionGrupo(Session::get('USUARIO_ID')),
@@ -110,14 +111,14 @@ class learningController extends ContainerController {
 		$blogcat_id = $request->parameter;
 
 		$blogCategoria = Blog::getPostBlogCategoria($blogcat_id, Session::get('PAIS_ID'));
-		$blogCategoria_nome = Blogcategoria::getblogCategoria_nome($blogcat_id);
+		$blogCategoria_nome = Postblog_categoria::getpostblogCategoria_nome($blogcat_id);
+		
 
 		if (!$blogCategoria) {
 			$blogCategoria = FALSE;
 
 		}
 
-		$getcategoria = Blogcategoria::getblogCategoria(Session::get('PAIS_ID'));
 		//debug($getcategoria);
 		if (Session::get('USUARIO_ID') OR Session::get('ADMIN_SESSION')) {
 			if (Session::get('ADMIN_SESSION')) {

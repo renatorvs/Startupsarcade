@@ -281,24 +281,33 @@ class Blog extends Post {
 		));
 	}
 
-	public static function getPostBlogCategoria($postcat_id, $post_paisid) {
+	public static function getPostBlogCategoria($postblogcat_id, $postblogpais_id) {
 
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM blog_post_categoria   WHERE postcat_id = :postcat_id
-			and post_paisid = :post_paisid  ", array(
-			':postcat_id' => $postcat_id,
-			':post_paisid' => $post_paisid,
+		return $banco->select("SELECT * FROM postblog_categoria   WHERE postblogpais_id = :postblogcat_id
+			and postblogpais_id = :postblogpais_id  ", array(
+			':postblogcat_id' => $postblogcat_id,
+			':postblogpais_id' => $postblogpais_id,
 		));
 
 	}
 
 	// exibe Para a pagina de artigos atras apneas um post destaque
-	public static function getPostBlogDestaque($post_paisid) {
+	public static function getPostBlogDestaqueLimit($post_paisid) {
 
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM blog_post_categoria  WHERE postdestaque_id = 2  and post_paisid = :post_paisid ORDER by post_id DESC LIMIT 3  ", array(
+		return $banco->select("SELECT * FROM blog_post_categoria  WHERE postdestaque_id = 2  and post_paisid = :post_paisid ORDER by post_id DESC LIMIT 1  ", array(
+			':post_paisid' => $post_paisid,
+		));
+
+	}
+	public static function getPostBlogDestaqueAll($post_paisid) {
+
+		$banco = new Banco();
+
+		return $banco->select("SELECT * FROM blog_post_categoria  WHERE postdestaque_id = 2  and post_paisid = :post_paisid ORDER by post_id DESC  ", array(
 			':post_paisid' => $post_paisid,
 		));
 
