@@ -62,9 +62,9 @@ class learningController extends ContainerController {
 			}
 
 			$lin = Linguagem::getLearningartigo();
-			//debug($blogLoad_id);
+			//debug($lin);
 			$this->view([
-				'title' => $getPost[0]['post_titulo'],
+				'title' => $getPost[0]['post_titulo'] . $lin->title,
 				'html_lang' => $lin->html_lang,
 				'meta_charset' => $lin->meta_charset,
 				'description' => $lin->description,

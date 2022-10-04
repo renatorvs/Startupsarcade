@@ -4,7 +4,7 @@ namespace app\linguagem\portugues;
 
  class errorportugues extends Portugues{
 
-public $title = "starstup´s arcade | error ";
+  public $title = "Error  | startup  e-learning";
 
   public $error_h1_ops = "Oops!";
   public $error_h2_404 = " 404 Não encontrado!";

@@ -4,7 +4,7 @@ namespace app\linguagem\portugues;
 
 class chatgrupoportugues extends Portugues{
 
-  public $title = "startup´s arcade | chat grupo ";
+  public $title = "Chat | startup  e-learning";
   public $description = "";
   public $keywords = "";
   public $p_strong = "Você"

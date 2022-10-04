@@ -4,7 +4,7 @@ namespace app\linguagem\portugues;
 
 class statisticsportugues extends Portugues {
 
-	public $title = "starstup´s arcade | dashboard";
+  public $title = " Dashboard | startup e-learning ";
 	public $description = "";
 	public $h1_empreendedores = "Empreendedores Brasileiros";
 	public $p_perfil = "perfis e percepções";

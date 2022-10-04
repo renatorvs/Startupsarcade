@@ -3,7 +3,7 @@
 namespace app\linguagem\portugues;
 
 class blogartigoexteriorportugues extends Portugues {
-	public $title = "starstup´s arcade | artigo";
+	public $title = " | startup  e-learning";
 	public $description = "";
 	public $keywords = "";
 	public $author = "";

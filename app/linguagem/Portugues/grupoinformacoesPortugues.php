@@ -14,7 +14,7 @@ class grupoinformacoesportugues extends Portugues {
 	// 'pn_cv_parcerias' => $planoDeNegocios[0]['pn_cv_parcerias'],
 	// 'pn_cv_estrutura_de_custos' => $planoDeNegocios[0]['pn_cv_estrutura_de_custos'],
 
-	public $title = "starstup e-learning | plano de negocios";
+	public $title = "Plano de negocios | startup e-learning";
 	public $description = "";
 	public $acompanhamento_text = "Documento centrando todas as estratégias e estudos realizados, facilitando o acompanhamento e direcionamento da empresa";
 	public $estrategias_text = "Defini as melhoes estratégias de comunicação com o público alvo, identifica possíveis direções que a empresa deve seguir.​";

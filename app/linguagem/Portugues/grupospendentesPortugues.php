@@ -6,7 +6,7 @@ class grupospendentesPortugues extends Portugues {
 	public $description = "";
 	public $keywords = "";
 	public $author = "";
-	public $title = "starstup´s arcade |  pedidos pendentes";
+	public $title = "Pedidos pendentes | startup e-learning";
 	public $h5_pendencia = "Seus pedidos pendentes";
 	public $h5_n_pendencia = "não  há pedidos pendentes";
 	public $btn_cancelar_pedido = "cancelar pedido";

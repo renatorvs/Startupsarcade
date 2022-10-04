@@ -3,7 +3,7 @@ namespace app\linguagem\portugues;
 
 class duvidasportugues extends Portugues {
 
-	public $title = "startup´s arcade | duvidas ";
+  public $title = "Duvidas | startup  e-learning";
 	public $description = "";
 	public $keywords = "";
 	public $author = "";

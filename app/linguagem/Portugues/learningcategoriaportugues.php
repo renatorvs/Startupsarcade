@@ -5,7 +5,7 @@ namespace app\linguagem\portugues;
 class learningcategoriaportugues extends Portugues {
 
 	public $html_lang = "pt-br";
-	public $title = "starstup´s arcade | post´s categoria";
+	public $title = " | startup  e-learning";
 	public $meta_charset = "UTF-8";
 	public $description = "";
 	public $keywords = "";

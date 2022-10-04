@@ -4,7 +4,7 @@ namespace app\linguagem\portugues;
 
 class blogexteriorportugues extends Portugues {
 
-	public $title = "startup´s arcade | blog ";
+	public $title = "Blog | startup  e-learning";
 	public $description = "";
 	public $keywords = "";
 	public $author = "";

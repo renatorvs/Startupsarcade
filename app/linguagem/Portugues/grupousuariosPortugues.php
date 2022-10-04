@@ -6,7 +6,7 @@ class grupousuariosPortugues extends Portugues {
 	public $description = "";
 	public $keywords = "";
 	public $author = "";
-	public $title = "starstup´s arcade | grupo usuarios";
+	public $title = " Grupo usuarios | startup e-learning";
 	public $meus_grupos = "Meus grupos";
 	public $btn_admin = "admin area";
 	public $cod_grupo = "cod grupo";

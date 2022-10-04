@@ -7,7 +7,7 @@ class gruposconvitesPortugues extends Portugues {
 	public $description = "";
 	public $keywords = "";
 	public $author = "";
-	public $title = "starstup´s arcade | grupo convites";
+	public $title = "Grupo convites | startup e-learning";
 	public $convite_convites_h4 = "convites para entrar em seus grupos";
 	public $convite_grupo_h4 = "grupo";
 	public $convite_categoria_h5 = "categoria";

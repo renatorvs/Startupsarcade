@@ -7,7 +7,7 @@ class perfilportugues extends Portugues {
 	public $description = "";
 	public $keywords = "";
 	public $author = "";
-	public $title = "startup´s  arcade | perfil";
+	public $title = "Meu perfil | startup e-learning ";
 	public $login_tipo_user = "Tipo Usuario";
 	public $login_a_cadastra_se = "cadastra - se";
 	public $login_nome_usuario = "Nome e sobrenome";

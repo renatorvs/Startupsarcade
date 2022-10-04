@@ -3,7 +3,7 @@
 namespace app\linguagem\portugues;
 
 class meusgruposportugues extends Portugues {
-	public $title = "starstup´s arcade | meus grupos ";
+	public $title = "Meus grupos | startup e-learning ";
 	public $description = "";
 	public $keywords = "";
 	public $author = "";
@@ -25,7 +25,7 @@ class meusgruposportugues extends Portugues {
 	public $grupo_model_deseja_excluir = "Tem certeza que deseja excluir/sair";
 	public $grupo_privado = "Grupo Privado";
 	public $grupo_membros = "Membros";
-	public $grupo_info = "Grupo informaçoes";
+	public $grupo_info = "Planos de negocios";
 	public $btn_grupo_visitar = "visitar";
 	public $btn_grupo_editar = "editar";
 	public $btn_grupo_excluir_sair = "sair/excluir";

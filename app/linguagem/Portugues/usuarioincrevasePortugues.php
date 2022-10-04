@@ -6,7 +6,7 @@ class usuarioincrevaseportugues extends Portugues {
 	public $description = "";
 	public $keywords = "";
 	public $author = "";
-	public $title = "starstup e-learning | increva-se";
+	public $title = " Increva-se | startup e-learning ";
 	public $navmenu_1 = "Sobre";
 	public $navmenu_2 = "Blog";
 	public $navmenu_3 = "Increva-se";

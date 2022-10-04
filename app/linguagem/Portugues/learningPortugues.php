@@ -4,7 +4,7 @@ namespace app\linguagem\portugues;
 
 class learningportugues extends Portugues {
 
-	public $title = "startup  e-learning  | learning  ";
+	public $title = "Learning  | startup  e-learning   ";
 	public $html_lang = "pt-br";
 	public $meta_charset = "UTF-8";
 	public $description = "";

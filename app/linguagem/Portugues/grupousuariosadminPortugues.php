@@ -6,7 +6,7 @@ class grupousuariosadminportugues extends Portugues {
 	public $description = "";
 	public $keywords = "";
 	public $author = "";
-	public $title = "starstup´s arcade | grupo usuarios admin";
+	public $title = "Grupo usuarios admin| startup e-learning";
 	public $cod_grupo = "cod grupo";
 	public $h1_titulo = "administradores";
 	public $strong_danger = "Esse usuario esta bloqueado.";

@@ -4,7 +4,7 @@ namespace app\linguagem\portugues;
 
 class learningportugues extends Portugues {
 
-	public $title = "startup´s arcade | learning  ";
+	public $title = "Learning  | startup  e-learning   ";
 	public $description = "";
 	public $keywords = "";
 	public $author = "";

@@ -4,7 +4,7 @@ namespace app\linguagem\portugues;
 
 class meugrupoinformacoesportugues extends Portugues {
 
-	public $title = "starstup e-learning | Planos de negocio";
+	public $title = " Planos de negocio | startup e-learning ";
 	public $description = "";
 	public $plano_text_resp = "Um plano de negócios é um documento que descreve por escrito os objetivos de um negócio e quais etapas devem ser tomadas para atingir esses objetivos";
 	public $compreensao_de_mercado_text = "Proporciona uma visão clara e objetiva da empresa e do setor, identifica forças, oportunidades, fraquezas e ameaças para o empreendimento.​";
@@ -16,7 +16,7 @@ class meugrupoinformacoesportugues extends Portugues {
 	public $proposta_para_grupo = "Proposta para grupo";
 	public $categoria = "Categoria";
 	public $editar_h5 = "Edição";
-	public $plano_negocios_h4 = " Plano de negocios ";
+	public $plano_negocios_h4 = "Plano de negocios";
 	public $btn_usuarios = "usuarios";
 	public $info = "info";
 	// public $compreensao_de_mercado_required = "Por favor, informe o(a)  Compreensão de mercado";
