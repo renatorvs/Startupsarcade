@@ -2,7 +2,7 @@
 
 namespace app\linguagem\portugues;
 
-class academyartigoportugues extends Portugues {
+class learningartigoportugues extends Portugues {
 	public $html_lang = "pt-br";
 	public $title = "starstup e-learning | artigo";
 	public $meta_charset = "UTF-8";

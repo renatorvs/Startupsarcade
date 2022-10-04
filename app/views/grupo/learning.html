@@ -46,7 +46,7 @@
       <section class="nav-scroller py-1 mb-2">
         <nav class="nav d-flex justify-content-between">  
          {% for blogcategoria in  getblogcategorias %}           
-         <a class="p-2 text-muted" href="/learning/learningcategoria/{{blogcategoria.postblogcat_id}}"> {{blogcategoria.postblogtcat_nome|e}}</a>
+         <a class="p-2 text-muted" href="/learning/learningcategoria/{{blogcategoria.postblogcat_id}}"> {{blogcategoria.postblogcat_nome|e}}</a>
 
    <!-- [postblogcat_id] => 2
             [postblogtcat_nome] => Administração
@@ -92,6 +92,7 @@
             <section class="card flex-md-row mb-4 box-shadow h-md-250">
             
               <section class="card-body d-flex flex-column align-items-start">
+                <strong class="d-inline-block mb-2 text-danger">{{post.postblogcat_nome}}</strong>
                          <img src="../../../assets/img/{{post.post_img}}" class="card-img-top" alt="{{postBlogDestaques.post_img_alt}}">
 <hr>
                 {% if admin_session  %}
@@ -99,7 +100,6 @@
                 {% endif %} 
              
 
-                <strong class="d-inline-block mb-2 text-dark">{{post.postblogcat_nome}}</strong>
 
                 <h3 class="mb-0">
                   {{post.post_titulo}}

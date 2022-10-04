@@ -285,8 +285,7 @@ class Blog extends Post {
 
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM postblog_categoria   WHERE postblogpais_id = :postblogcat_id
-			and postblogpais_id = :postblogpais_id  ", array(
+		return $banco->select("SELECT * FROM blog_post_categoria   WHERE postblogcat_id = :postblogcat_id and postblogpais_id = :postblogpais_id  ", array(
 			':postblogcat_id' => $postblogcat_id,
 			':postblogpais_id' => $postblogpais_id,
 		));
@@ -343,8 +342,8 @@ class Blog extends Post {
 
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM blog_post_categoria  WHERE blogpost_id = :blogpost_id ", array(
-			':blogpost_id' => $post_id,
+		return $banco->select("SELECT * FROM blog_post_categoria  WHERE post_id = :post_id ", array(
+			':post_id' => $post_id,
 
 		));
 
@@ -364,14 +363,14 @@ class Blog extends Post {
 
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM blog_destaque");
+		return $banco->select("SELECT * FROM post_destaque");
 
 	}
 	public static function getPostByid($post_id) {
 
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM blog_categoria_post  WHERE post_id = :post_id ", array(
+		return $banco->select("SELECT * FROM blog_post_categoria  WHERE post_id = :post_id ", array(
 			':post_id' => $post_id,
 
 		));

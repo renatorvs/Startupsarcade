@@ -42,7 +42,7 @@ DROP VIEW propostagrupo;
 CREATE VIEW propostagrupo AS select * from categoria_grupo cg inner join grupo g on cg.cg_id = g.grcat_id left join plano_de_negocios pn on g.gr_id = pn.pn_grupo_id;
 
 DROP VIEW blog_categoria_post; 
-CREATE VIEW blog_categoria_post AS SELECT * FROM blog_categoria bc inner join post p on bc.blogcat_id = p.postcat_id;
+CREATE VIEW blog_categoria_post AS SELECT * FROM post_categoria pc inner join post p on pc.postcat_id = p.postcat_id;
 
 DROP VIEW blog_post_categoria; 
 CREATE VIEW blog_post_categoria AS SELECT* FROM blog b inner join post p on b.blogpost_id = p.post_id INNER JOIN postblog_categoria cat on p.postcat_id = cat.postblogcat_id INNER JOIN post_destaque pd on postdestaque_id = pd.postdest_id

@@ -42,12 +42,14 @@ class Postblog_categoria {
 		));
 	}
 
-	public function adicionapostBlogCategoria() {
+
+	public static function getpostblogCategoria_All($postcat_id) {
 
 		$banco = new Banco();
 
-		$result = $banco->select("INSERT INTO  postblog_categoria (postblogcat_nome ) VALUES (:postblogcat_nome)", array(
-			":postblogcat_nome" => $this->getPostblogcat_nome(),
+		return $banco->select("SELECT * FROM post WHERE postcat_id = :postcat_id ", array(
+			":postcat_id" => $postcat_id,
+
 		));
 
 	}

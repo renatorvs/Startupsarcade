@@ -117,7 +117,7 @@ class StartupelearningController extends ContainerController {
 
 		}
 
-		$getcategoria = Blogcategoria::getblogCategoria(Session::get('PAIS_ID'));
+		$getcategoria = Postblog_categoria::getpostblogCategoria(Session::get('PAIS_ID'));
 		//debug($getcategoria);
 		if (Session::get('USUARIO_ID') OR Session::get('ADMIN_SESSION')) {
 			if (Session::get('ADMIN_SESSION')) {

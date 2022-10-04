@@ -47,7 +47,7 @@
     {% endif %}
 
 
-   [post_id] => 1
+  <!--  [post_id] => 1
             [post_titulo] =>  Google Ads 
             [post_subtitulo] => Internet para leigos | Ferramenta Google Ads
             [post_description] => #Antes de falarmos de Google ads vale resaltar a diferença entre o Google AdSense e o Google Ads, A comparação entre os produtos de anunciantes e os de editores.##   #Google AdSense## É para editores. Se você possui ou gerencia sites, blogs ou fóruns e quer gerar receita com eles, o programa Google AdSense pode ser a opção certa.Os anúncios são exibidos na sua propriedade digital, e você pode gerar receita com base no número de pessoas que visualizam ou interagem com esses anúncios. Outras plataformas para editores incluem o Google Ad Manager e a AdMob. Saiba mais em Comparação entre o Ad Manager, o Google AdSense e a AdMob.  #Google Ads## É destinado a anunciantes. Se você quer anunciar produtos ou serviços em sites ou apps, com o objetivo de expandir seus negócios ou vendas, o Google Ads é a escolha ideal. Seus anúncios são exibidos nos resultados da pesquisa do Google e na nossa rede de sites de editores. Saiba mais sobre o Google Ads e comece a anunciar acessando www.ads.google.com.
@@ -57,16 +57,16 @@
             [tipo_post_id] => 1
             [userpost_id] => 1
             [post_paisid] => 1
-
+ -->
 
     
     <section  class="container">
-      <a href="/academystartup/create"class="btn btn-primary btn-sm">{{btn_voltar}}</a>
+      <a href="/learning/create"class="btn btn-primary btn-sm">{{btn_voltar}}</a>
       <br><br>
       <section class="row">
         <article class="col-md-8 blog-main">
           <h3   class="pb-3 mb-4 font-italic border-bottom">
-           {{blog_categoria}}: {{blogcat_nome}}
+           {{blog_categoria}}: {{postblogcat_nome}}
          </h3>
          <section class="modal fade editpost-{{post_id}}-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
           <section class="modal-dialog modal-lg">
@@ -296,7 +296,6 @@
       <button  type="button" class="btn btn-primary" data-toggle="modal" data-target=".editpost-{{post_id}}-lg"> edit post </button>             
 
       {% endif %} 
-<hr>
       <h2 class="blog-post-title">{{theArtigo.post_titulo}}</h2>
       <h3>{{theArtigo.post_subtitulo}}</h3>
       <p class="blog-post-meta">Data post: {{theArtigo.blog_date}} </p>

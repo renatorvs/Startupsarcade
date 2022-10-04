@@ -16,7 +16,7 @@ class learningController extends ContainerController {
 		$postBlogDestaqueL = Blog::getPostBlogDestaqueLimit(Session::get('PAIS_ID'));
 		$postBlogDestaqueAll = Blog::getPostBlogDestaqueAll(Session::get('PAIS_ID'));
 
-	//	debug($getcategoria);
+		//debug($getcategoria);
 		if (Session::get('USUARIO_ID') OR Session::get('ADMIN_SESSION')) {
 			if (Session::get('ADMIN_SESSION')) {
 				$admin_session = true;
@@ -31,7 +31,6 @@ class learningController extends ContainerController {
 				'continue_lendo' => $lin->continue_lendo,
 				'usuario_id' => Session::get('USUARIO_ID'),
 				'admin_session' => $admin_session,
-				'candidato_session' => $candidato_session,
 				'getblogcategorias' => $getcategoria,
 				'postBlog' => $postBlog,
 				'postBlogDestaque' => $postBlogDestaqueL,
@@ -51,12 +50,11 @@ class learningController extends ContainerController {
 
 		$getPost = Blog::getPostByid($post_id);
 		$getPostAndArtigos = Blog::getBlogLoad_id($post_id);
-		//debug($getPost);
+		$blogCategoria_nome = Postblog_categoria::getpostblogCategoria_nome($post_id);
 
-		$getcategoria = Blogcategoria::getblogCategoria(Session::get('PAIS_ID'));
-		$getPostDestaqueAll = Blog::getBlogDestaqueAll();
+		$getcategoria = Postblog_categoria::getpostblogCategoria(Session::get('PAIS_ID'));
 
-		//debug($getPost);
+	//	debug($getPost);
 		//blogcat_id
 		if (Session::get('USUARIO_ID') OR Session::get('ADMIN_SESSION')) {
 			if (Session::get('ADMIN_SESSION')) {
@@ -92,7 +90,7 @@ class learningController extends ContainerController {
 				'postdestaque_id' => $getPost[0]['postdestaque_id'],
 				'userpost_id' => $getPost[0]['userpost_id'],
 				'getPostAndArtigos' => $getPostAndArtigos,
-				'blogcat_nome' => $getPost[0]['blogcat_nome'],
+				'postblogcat_nome' => $getPost[0]['postblogcat_nome'],
 
 				'candidato_session' => $candidato_session,
 				'pais_id' => Session::get("PAIS_ID"),
@@ -109,17 +107,16 @@ class learningController extends ContainerController {
 	public function learningcategoria($request) {
 
 		$blogcat_id = $request->parameter;
-
-		$blogCategoria = Blog::getPostBlogCategoria($blogcat_id, Session::get('PAIS_ID'));
 		$blogCategoria_nome = Postblog_categoria::getpostblogCategoria_nome($blogcat_id);
+		$getcategoriasAll = Postblog_categoria::getpostblogCategoria(Session::get('PAIS_ID'));
+
+				//	$postBlog = Blog::getPostBlog(Session::get('PAIS_ID'));
+					$postBlog = Blog::getPostBlogCategoria($blogcat_id, Session::get('PAIS_ID'));
+
 		
 
-		if (!$blogCategoria) {
-			$blogCategoria = FALSE;
+		//debug($postBlog);
 
-		}
-
-		//debug($getcategoria);
 		if (Session::get('USUARIO_ID') OR Session::get('ADMIN_SESSION')) {
 			if (Session::get('ADMIN_SESSION')) {
 				$admin_session = true;
@@ -146,15 +143,12 @@ class learningController extends ContainerController {
 				'btn_artigo' => $lin->btn_artigo,
 				'btn_a_ir_blog' => $lin->btn_a_ir_blog,
 				'categoria_artigo' => $lin->categoria_artigo,
+				'getblogcategorias' => $getcategoriasAll,
+				'postBlog' => $postBlog,
 				'nao_ha_artigo' => $lin->nao_ha_artigo,
 				'continue_lendo' => $lin->continue_lendo,
-				'categoria_nome' => $blogCategoria_nome[0]['blogcat_nome'],
-				'haBlogCategoria' => $blogCategoria,
-				'admin_session' => $admin_session,
-				'empresa_session' => $empresa_session,
-				'candidato_session' => $candidato_session,
-				'blogCategoria' => $blogCategoria,
-				'getcategorias' => $getcategoriAll,
+				'categoria_nome' => $blogCategoria_nome[0]['postblogcat_nome'],
+				'hablog' => $hablog,
 				'pais_id' => Session::get("PAIS_ID"),
 				'NotsGrupo' => getNotificantionGrupo(Session::get('USUARIO_ID')),
 				'NotsMessagem' => getNotificantionMessagem(Session::get('USUARIO_ID')),
