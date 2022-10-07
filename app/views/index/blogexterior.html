@@ -57,16 +57,23 @@
 
 <hr>
  <br> <br> <br>
-      <section class="nav-scroller py-1 mb-2">
+        <section class="nav-scroller py-1 mb-2">
         <nav class="nav d-flex justify-content-between">  
          {% for blogcategoria in  getblogcategorias %}           
          <a class="p-2 text-muted" href="/learning/learningcategoria/{{blogcategoria.postblogcat_id}}"> {{blogcategoria.postblogcat_nome|e}}</a>
 
+   <!-- [postblogcat_id] => 2
+            [postblogtcat_nome] => Administração
+            [postblogpais_id] => 1
+            ) -->
             {% endfor %}
           </nav>
 
           <hr>
-          
+          {% if admin_session  %}
+          <a href="/adminpostblog/create" class="btn btn-outline-secondary"> Adicionar novo artigo ao blog </a>
+
+          {% endif %}
         </section>
 
         <div class="card">
@@ -76,7 +83,7 @@
           <div class="card-body">
             <h5 class="card-title">{{postBlogDestaques.post_titulo}}</h5>
             <p class="card-text">{{postBlogDestaques.post_subtitulo}}</p>
-            <a href="#" class="btn btn-outline-secondary btn-sm"> {{continue_lendo}}</a> 
+            <a href="/blog/show/{{postBlogDestaques.post_id}}" class="btn btn-outline-secondary btn-sm"> {{continue_lendo}}</a> 
     
 
           </div>
@@ -113,7 +120,7 @@
                 <p class="card-text mb-auto"> <strong>{{post.post_subtitulo}}.</strong></p> <hr>
                 <p>{{post.post_description}} <br></p>
 
-                <a href="/learning/show/{{post.blogpost_id}} " class="btn btn-outline-secondary btn-sm">{{continue_lendo}}</a>
+                <a href="/blog/show/{{post.blogpost_id}} " class="btn btn-outline-secondary btn-sm">{{continue_lendo}}</a>
 
 
 

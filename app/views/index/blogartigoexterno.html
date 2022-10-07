@@ -6,10 +6,14 @@
   <meta name="keywords" content="{{keywords}}">
   <meta name="author" content="{{author}}">
 
-  <title>{{title}}</title>
     <link rel="icon" type="image/x-icon" href="../../../assets/Logotipo/faviconstartuparcade.svg" />
 
+  <title>{{title}}</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <link href="../../assets/index/img/apple-touch-icon.png" rel="apple-touch-icon">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link href="../../../assets/index/css/style.css" rel="stylesheet">
+
   <link href="../../assets/index/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="../../assets/index/vendor/icofont/icofont.min.css" rel="stylesheet">
   <link href="../../assets/index/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
@@ -17,7 +21,6 @@
   <link href="../../assets/index/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="../../assets/index/vendor/aos/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="../../assets/css/layout/footer.css">
-  <link href="../../../assets/index/css/style.css" rel="stylesheet">
 </head>
 <body>
 
@@ -58,59 +61,105 @@
     </section>
 
 
-    <section class="container">
-      <section class="nav-scroller py-1 mr-2">
-        <nav class="nav d-flex justify-content-between">  
-         {% for blogcategoria in  getcategoria %}           
-         <a class="p-2 text-muted" href="/blog/blogcategoria/{{blogcategoria.blogcat_id}}"> {{blogcategoria.blogcat_nome|e}}</a>
+    <section  class="container">
+      <a href="/"class="btn btn-primary btn-sm">{{btn_voltar}}</a>
+      <br><br>
+      <section class="row">
+        <article class="col-md-8 blog-main">
+          <h3   class="pb-3 mb-4 font-italic border-bottom">
+           {{blog_categoria}}: {{postblogcat_nome}}
+         </h3>
+        
 
-         {% endfor %}
-       </nav>
-       <hr>
-       {% if admin_session  %}
-       <a href="/adminpostblog/create" class="btn btn-outline-secondary"> Adicionar novo artigo ao blog </a>
+   
+         {% for theArtigo in  getPostAndArtigos %}           
 
-       {% endif %}
-     </section>
      
-     <a href="/blog/create"class="btn btn-primary btn-sm">{{btn_voltar}}</a>
-     <br><br>
-     <section class="row">
-      <article class="col-md-8 blog-main">
-        <h3   class="pb-3 mb-4 font-italic border-bottom">
-         {{blog_categoria}}: {{blogcat_nome}}
-         
 
-       </h3>
-       <section class="blog-post">
-        <h2 class="blog-post-title">{{blog_artigo}}: {{post_titulo}}</h2>
-        <h3>{{post_subtitulo}}</h3>
-        <p class="blog-post-meta">Data post: {{blog_date}} </p>
-        <hr>
-            <p>{{post_description}} <br></p>
-            <p>{{blog_text}} <br></p>
-      </section>
+
+    <section class="blog-post">
+
+
+      {% if admin_session %}
+      <button  type="button" class="btn btn-primary" data-toggle="modal" data-target=".editpost-{{post_id}}-lg"> edit post </button>             
+
+      {% endif %} 
+      <h2 class="blog-post-title">{{theArtigo.post_titulo}}</h2>
+      <h3>{{theArtigo.post_subtitulo}}</h3>
+      <p class="blog-post-meta">Data post: {{theArtigo.blog_date}} </p>
+      <hr>
+      <p>{{theArtigo.post_description}} </p>
       <figure>
-
-        <img src="../../public/assets/user_images/{{blog_img}}">
+        <img src="../../assets/img/{{theArtigo.post_img}}" alt="{{theArtigo.post_img_alt}}" width="" height="400">
       </figure>
 
-      <br> <hr>
- <strong>{{conteudo_completo}}</strong> <a href="">{{conteudo_completo_link}}</a>
 
-    </article> 
-  </section>
-</section>
+
+
+  {% if admin_session %}
+  <hr>
+
+        <button  type="button" class="btn btn-primary" data-toggle="modal" data-target=".addblog-lg"> add blog </button>             
+
+  {% endif %} 
+
+
+
+
+      <hr>  
+      <h2> {{theArtigo.blog_subtitulo}}   </h2>
+      <p class="blog-post-meta">Data post: {{theArtigo.blog_date}} </p>
+    </section>
+
+
+    {% if theArtigo.blog_img != null %}
+
+    <figure>
+      <img src="../../assets/user_images/{{theArtigo.blog_img}}" alt="{{theArtigo.blog_img_alt}}" width="" height="400">
+
+    </figure>
+    {% endif %}
+
+    {% if theArtigo.blog_video_src != null %}
+
+    <iframe width="420" height="315"
+    src="{{theArtigo.blog_video_src}}">
+  </iframe>
+  {% endif %}
+
+
+<br>
+  {% if theArtigo.blog_autor != null %}
+  Autor: {{theArtigo.blog_autor}} <br>
+
+  {% endif %}
+
+  {% if theArtigo.blog_autor != null %}
+  Font: {{theArtigo.blog_fonte}}  <br>
+  {% endif %}
+
+  {% if admin_session %}
+
+  <button  type="button" class="btn btn-primary" data-toggle="modal" data-target=".editblog-{{theArtigo.blog_id}}-lg">  edit blog </button>             
+
+  {% endif %} 
+
+
+  {% endfor %}
+<hr>
+</article> 
 </section>
 
+
+
+</section>
 </main>
-
-
+{{ include('layout/nav-dashboard-end.html') }}
 
 {% if pais_id == 1 %}
-{{ include('layout/footer-pt-index.html') }}
+{{ include('layout/footer-pt.html') }}
 {% else %}
-{{ include('layout/footer-en-index.html') }}
+{{ include('layout/footer-en.html') }}
 {% endif %}
 
 <script src="../../assets/vendor/chart.js/Chart.min.js"></script>
@@ -122,6 +171,4 @@
 <script src="../../assets/js/sb-admin-2.min.js"></script>
 
 </body>
-
 </html>
-

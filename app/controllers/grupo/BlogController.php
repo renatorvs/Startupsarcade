@@ -50,17 +50,18 @@ class BlogController extends ContainerController {
 
 	public function show($request) {
 
-		$post_id = $request->parameter;
-
-		$blogLoad_id = Blog::getBlogLoad_id($post_id);
-		///debug($blogLoad_id);
-		$getcategoria = Postblog_categoria::getpostblogCategoria(Session::get('PAIS_ID'));
 
 		$lin = Linguagem::getartigoexterior();
+//mudar para while e colocar mais um button pra adiconar maism texto e imagens no artigo
+		$post_id = $request->parameter;
 
+		$getPost = Blog::getPostByid($post_id);
+		$getPostAndArtigos = Blog::getBlogLoad_id($post_id);
+		$blogCategoria_nome = Postblog_categoria::getpostblogCategoria_nome($post_id);
+
+		$getcategoria = Postblog_categoria::getpostblogCategoria(Session::get('PAIS_ID'));
 		$this->view([
 
-			'title' => " Article: " . $blogLoad_id[0]['post_titulo'],
 			'navmenu_1' => $lin->navmenu_1,
 			'navmenu_2' => $lin->navmenu_2,
 			'navmenu_3' => $lin->navmenu_3,
@@ -75,21 +76,43 @@ class BlogController extends ContainerController {
 			'author' => $lin->author,
 			'btn_voltar' => $lin->btn_voltar,
 			'blog_categoria' => $lin->blog_categoria,
-			'blog_artigo' => $lin->blog_artigo,
-			'blog_Data_post' => $lin->blog_Data_post,
-			'admin_session' => $admin_session,
-			'empresa_session' => $empresa_session,
-			'candidato_session' => $candidato_session,
-			'post_id' => $blogLoad_id[0]['post_id'],
-			'blogcat_nome' => $blogLoad_id[0]['blogcat_nome'],
-			'post_titulo' => $blogLoad_id[0]['post_titulo'],
-			'post_subtitulo' => $blogLoad_id[0]['post_subtitulo'],
-			'blog_text' => $blogLoad_id[0]['blog_text'],
-			'blog_date' => $blogLoad_id[0]['blog_date'],
-			'blog_img' => $blogLoad_id[0]['blog_img'],
-			'pais_id' => Session::get("PAIS_ID"),
 
-			'getcategoria' => $getcategoria,
+				'title' => $getPost[0]['post_titulo'] . $lin->title,
+				'html_lang' => $lin->html_lang,
+				'meta_charset' => $lin->meta_charset,
+				'description' => $lin->description,
+				'keywords' => $lin->keywords,
+				'author' => $lin->author,
+				'btn_voltar' => $lin->btn_voltar,
+				'admin_id' => Session::get("ADMIN_SESSION"),
+				'getcategorias' => $getcategoria,
+				'getPostDestaqueAll' => $getPostDestaqueAll,
+				'blog_categoria' => $lin->blog_categoria,
+				'blog_artigo' => $lin->blog_artigo,
+				'blog_Data_post' => $lin->blog_Data_post,
+				'admin_session' => $admin_session,
+				'post_id' => $getPost[0]['post_id'],
+				'post_titulo' => $getPost[0]['post_titulo'],
+				'post_subtitulo' => $getPost[0]['post_subtitulo'],
+				'post_description' => $getPost[0]['post_description'],
+				'post_img' => $getPost[0]['post_img'],
+				'post_img_old' => $getPost[0]['post_img'],
+				'post_img_alt' => $getPost[0]['post_img_alt'],
+				'postcat_id' => $getPost[0]['postcat_id'],
+				'tipo_post_id' => $getPost[0]['tipo_post_id'],
+				'postdestaque_id' => $getPost[0]['postdestaque_id'],
+				'userpost_id' => $getPost[0]['userpost_id'],
+				'getPostAndArtigos' => $getPostAndArtigos,
+				'postblogcat_nome' => $getPost[0]['postblogcat_nome'],
+
+				'candidato_session' => $candidato_session,
+				'pais_id' => Session::get("PAIS_ID"),
+				'NotsGrupo' => getNotificantionGrupo(Session::get('USUARIO_ID')),
+				'NotsMessagem' => getNotificantionMessagem(Session::get('USUARIO_ID')),
+				'getblogcategorias' => $getcategoria,
+
+
+		
 
 		], 'index.blogartigoexterno');
 	}
