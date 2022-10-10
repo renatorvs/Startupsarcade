@@ -6,6 +6,7 @@ use app\linguagem\Linguagem;
 use app\models\admin\Blog;
 use app\models\admin\Postblog_categoria;
 use app\session\Session;
+use app\classes\Uri;
 
 class learningController extends ContainerController {
 
@@ -13,8 +14,11 @@ class learningController extends ContainerController {
 
 		$getcategoria = Postblog_categoria::getpostblogCategoria(Session::get('PAIS_ID'));
 		$postBlog = Blog::getPostBlog(Session::get('PAIS_ID'));
-		$postBlogDestaqueL = Blog::getPostBlogDestaqueLimit(Session::get('PAIS_ID'));
-		$postBlogDestaqueAll = Blog::getPostBlogDestaqueAll(Session::get('PAIS_ID'));
+		$postBlogDestaque = Blog::getPostBlogDestaqueLimit(Session::get('PAIS_ID'));
+
+
+	$postBlogDestaqueUrl = Uri::encodeUrlFactorylink($postBlogDestaque, "post");
+		$postBlogUrl = Uri::encodeUrlFactorylink($postBlog, "post");
 
 		//debug($getcategoria);
 		if (Session::get('USUARIO_ID') OR Session::get('ADMIN_SESSION')) {
@@ -32,9 +36,8 @@ class learningController extends ContainerController {
 				'usuario_id' => Session::get('USUARIO_ID'),
 				'admin_session' => $admin_session,
 				'getblogcategorias' => $getcategoria,
-				'postBlog' => $postBlog,
-				'postBlogDestaque' => $postBlogDestaqueL,
-				'postBlogDestaqueAll' => $postBlogDestaqueAll,
+				'postBlog' => $postBlogUrl,
+				'postBlogDestaque' => $postBlogDestaqueUrl,
 				'pais_id' => Session::get("PAIS_ID"),
 				'admin_id' => Session::get("ADMIN_SESSION"),
 				'NotsGrupo' => getNotificantionGrupo(Session::get('USUARIO_ID')),
@@ -48,9 +51,11 @@ class learningController extends ContainerController {
 //mudar para while e colocar mais um button pra adiconar maism texto e imagens no artigo
 		$post_id = $request->parameter;
 
-		$getPost = Blog::getPostByid($post_id);
-		$getPostAndArtigos = Blog::getBlogLoad_id($post_id);
-		$blogCategoria_nome = Postblog_categoria::getpostblogCategoria_nome($post_id);
+	$decodepostUri = Uri::decodeUrlFactorylink($post_id, "post");
+
+		$getPost = Blog::getPostByid($decodepostUri);
+		$getPostAndArtigos = Blog::getBlogLoad_id($decodepostUri);
+		$blogCategoria_nome = Postblog_categoria::getpostblogCategoria_nome($decodepostUri);
 
 		$getcategoria = Postblog_categoria::getpostblogCategoria(Session::get('PAIS_ID'));
 

@@ -70,21 +70,17 @@
           </nav>
 
           <hr>
-          {% if admin_session  %}
-          <a href="/adminpostblog/create" class="btn btn-outline-secondary"> Adicionar novo artigo ao blog </a>
-
-          {% endif %}
+       
         </section>
 
         <div class="card">
 
-        {% for postBlogDestaques in  postBlogDestaque %}  
+        {% for postBlogDestaques in  postBlogDestaqueUrl %}  
           <img src="../../../assets/img/{{postBlogDestaques.post_img}}" class="card-img-top" alt="{{postBlogDestaques.post_img_alt}}">
           <div class="card-body">
             <h5 class="card-title">{{postBlogDestaques.post_titulo}}</h5>
             <p class="card-text">{{postBlogDestaques.post_subtitulo}}</p>
-            <a href="/blog/show/{{postBlogDestaques.post_id}}" class="btn btn-outline-secondary btn-sm"> {{continue_lendo}}</a> 
-    
+            <a href="/blog/show/{{postBlogDestaques.post_url}}" class="btn btn-outline-secondary btn-sm"> {{continue_lendo}}</a> 
 
           </div>
         {% endfor %}
@@ -120,16 +116,12 @@
                 <p class="card-text mb-auto"> <strong>{{post.post_subtitulo}}.</strong></p> <hr>
                 <p>{{post.post_description}} <br></p>
 
-                <a href="/blog/show/{{post.blogpost_id}} " class="btn btn-outline-secondary btn-sm">{{continue_lendo}}</a>
+                <a href="/blog/show/{{post.post_url}}" class="btn btn-outline-secondary btn-sm">{{continue_lendo}}</a>
 
 
 
 
-                {% if admin_session  %}
-                <section class="card-body">
-                 <a href="/adminpostblog/destroy/{{post.blogpost_id}}" class="btn btn-danger btn-sm"> {{btn_excluir}} </a>
-               </section>
-               {% endif %}
+
              </section>
 
            </section>

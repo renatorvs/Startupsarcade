@@ -71,7 +71,7 @@
           <div class="card-body">
             <h5 class="card-title">{{postBlogDestaques.post_titulo}}</h5>
             <p class="card-text">{{postBlogDestaques.post_subtitulo}}</p>
-            <a href="#" class="btn btn-outline-secondary btn-sm"> {{continue_lendo}}</a> 
+            <a href="/learning/show/{{postBlogDestaques.post_url}} " class="btn btn-outline-secondary btn-sm"> {{continue_lendo}}</a> 
     
 
           </div>
@@ -108,14 +108,14 @@
                 <p class="card-text mb-auto"> <strong>{{post.post_subtitulo}}.</strong></p> <hr>
                 <p>{{post.post_description}} <br></p>
 
-                <a href="/learning/show/{{post.blogpost_id}} " class="btn btn-outline-secondary btn-sm">{{continue_lendo}}</a>
+                <a href="/learning/show/{{post.post_url}} " class="btn btn-outline-secondary btn-sm">{{continue_lendo}}</a>
 
 
 
 
                 {% if admin_session  %}
                 <section class="card-body">
-                 <a href="/adminpostblog/destroy/{{post.blogpost_id}}" class="btn btn-danger btn-sm"> {{btn_excluir}} </a>
+                 <a href="/adminpostblog/destroy/{{post.post_url}}" class="btn btn-danger btn-sm"> {{btn_excluir}} </a>
                </section>
                {% endif %}
              </section>

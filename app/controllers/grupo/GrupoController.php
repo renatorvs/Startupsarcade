@@ -18,6 +18,7 @@ class GrupoController extends ContainerController {
 		} else {
 			redirecionar("/");
 		}
+		$decodegrid =  Uri::decodeUrlFactorylink($gr_id->parameter);
 
 		$categoriaGrupoLoad = Grupo::CategoriaGrupoLoad($gr_id->parameter);
 		$chatGrupoMensagem = Mensagem::chatGrupoMensagem($gr_id->parameter);

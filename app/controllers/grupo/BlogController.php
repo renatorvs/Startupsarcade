@@ -6,16 +6,23 @@ use app\linguagem\Linguagem;
 use app\models\admin\Blog;
 use app\models\admin\Postblog_categoria;
 use app\session\Session;
+use app\classes\Uri;
+
 
 class BlogController extends ContainerController {
 	public function create() {
 
 		$getcategoria = Postblog_categoria::getpostblogCategoria(Session::get('PAIS_ID'));
 		$postBlog = Blog::getPostBlog(Session::get('PAIS_ID'));
-		$postBlogDestaqueL = Blog::getPostBlogDestaqueLimit(Session::get('PAIS_ID'));
-		$postBlogDestaqueAll = Blog::getPostBlogDestaqueAll(Session::get('PAIS_ID'));
+		$postBlogDestaque = Blog::getPostBlogDestaqueLimit(Session::get('PAIS_ID'));
 		$lin = Linguagem::getLearning();
 		$lin = Linguagem::getblogexterior();
+
+		$postBlogDestaqueUrl = Uri::encodeUrlFactorylink($postBlogDestaque);
+		$postBlogUrl = Uri::encodeUrlFactorylink($postBlog, "post");
+
+
+
 
 		$this->view([
 			'title' => $lin->title,
@@ -39,9 +46,8 @@ class BlogController extends ContainerController {
 			'getblogcategorias' => $getcategoria,
 			'continue_lendo' => $lin->continue_lendo,
 			'usuario_id' => Session::get('USUARIO_ID'),
-			'postBlog' => $postBlog,
-			'postBlogDestaque' => $postBlogDestaqueL,
-			'postBlogDestaqueAll' => $postBlogDestaqueAll,
+			'postBlog' => $postBlogUrl,
+			'postBlogDestaqueUrl' => $postBlogDestaqueUrl,
 			'pais_id' => Session::get("PAIS_ID"),
 			'admin_id' => Session::get("ADMIN_SESSION"),
 
@@ -50,16 +56,21 @@ class BlogController extends ContainerController {
 
 	public function show($request) {
 
+		$encodepost_id = $request->parameter;
+		$decodepost_id = Uri::decodeUrlFactorylink($encodepost_id);
+
+
 
 		$lin = Linguagem::getartigoexterior();
 //mudar para while e colocar mais um button pra adiconar maism texto e imagens no artigo
-		$post_id = $request->parameter;
 
-		$getPost = Blog::getPostByid($post_id);
-		$getPostAndArtigos = Blog::getBlogLoad_id($post_id);
-		$blogCategoria_nome = Postblog_categoria::getpostblogCategoria_nome($post_id);
+		$getPost = Blog::getPostByid($decodepost_id);
+		$getPostAndArtigos = Blog::getBlogLoad_id($decodepost_id);
+		$blogCategoria_nome = Postblog_categoria::getpostblogCategoria_nome($decodepost_id);
 
 		$getcategoria = Postblog_categoria::getpostblogCategoria(Session::get('PAIS_ID'));
+		
+
 		$this->view([
 
 			'navmenu_1' => $lin->navmenu_1,
@@ -77,42 +88,42 @@ class BlogController extends ContainerController {
 			'btn_voltar' => $lin->btn_voltar,
 			'blog_categoria' => $lin->blog_categoria,
 
-				'title' => $getPost[0]['post_titulo'] . $lin->title,
-				'html_lang' => $lin->html_lang,
-				'meta_charset' => $lin->meta_charset,
-				'description' => $lin->description,
-				'keywords' => $lin->keywords,
-				'author' => $lin->author,
-				'btn_voltar' => $lin->btn_voltar,
-				'admin_id' => Session::get("ADMIN_SESSION"),
-				'getcategorias' => $getcategoria,
-				'getPostDestaqueAll' => $getPostDestaqueAll,
-				'blog_categoria' => $lin->blog_categoria,
-				'blog_artigo' => $lin->blog_artigo,
-				'blog_Data_post' => $lin->blog_Data_post,
-				'admin_session' => $admin_session,
-				'post_id' => $getPost[0]['post_id'],
-				'post_titulo' => $getPost[0]['post_titulo'],
-				'post_subtitulo' => $getPost[0]['post_subtitulo'],
-				'post_description' => $getPost[0]['post_description'],
-				'post_img' => $getPost[0]['post_img'],
-				'post_img_old' => $getPost[0]['post_img'],
-				'post_img_alt' => $getPost[0]['post_img_alt'],
-				'postcat_id' => $getPost[0]['postcat_id'],
-				'tipo_post_id' => $getPost[0]['tipo_post_id'],
-				'postdestaque_id' => $getPost[0]['postdestaque_id'],
-				'userpost_id' => $getPost[0]['userpost_id'],
-				'getPostAndArtigos' => $getPostAndArtigos,
-				'postblogcat_nome' => $getPost[0]['postblogcat_nome'],
+			'title' => $getPost[0]['post_titulo'] . $lin->title,
+			'html_lang' => $lin->html_lang,
+			'meta_charset' => $lin->meta_charset,
+			'description' => $lin->description,
+			'keywords' => $lin->keywords,
+			'author' => $lin->author,
+			'btn_voltar' => $lin->btn_voltar,
+			'admin_id' => Session::get("ADMIN_SESSION"),
+			'getcategorias' => $getcategoria,
+			'getPostDestaqueAll' => $getPostDestaqueAll,
+			'blog_categoria' => $lin->blog_categoria,
+			'blog_artigo' => $lin->blog_artigo,
+			'blog_Data_post' => $lin->blog_Data_post,
+			'admin_session' => $admin_session,
+			'post_id' => $getPost[0]['post_id'],
+			'post_titulo' => $getPost[0]['post_titulo'],
+			'post_subtitulo' => $getPost[0]['post_subtitulo'],
+			'post_description' => $getPost[0]['post_description'],
+			'post_img' => $getPost[0]['post_img'],
+			'post_img_old' => $getPost[0]['post_img'],
+			'post_img_alt' => $getPost[0]['post_img_alt'],
+			'postcat_id' => $getPost[0]['postcat_id'],
+			'tipo_post_id' => $getPost[0]['tipo_post_id'],
+			'postdestaque_id' => $getPost[0]['postdestaque_id'],
+			'userpost_id' => $getPost[0]['userpost_id'],
+			'getPostAndArtigos' => $getPostAndArtigos,
+			'postblogcat_nome' => $getPost[0]['postblogcat_nome'],
 
-				'candidato_session' => $candidato_session,
-				'pais_id' => Session::get("PAIS_ID"),
-				'NotsGrupo' => getNotificantionGrupo(Session::get('USUARIO_ID')),
-				'NotsMessagem' => getNotificantionMessagem(Session::get('USUARIO_ID')),
-				'getblogcategorias' => $getcategoria,
+			'candidato_session' => $candidato_session,
+			'pais_id' => Session::get("PAIS_ID"),
+			'NotsGrupo' => getNotificantionGrupo(Session::get('USUARIO_ID')),
+			'NotsMessagem' => getNotificantionMessagem(Session::get('USUARIO_ID')),
+			'getblogcategorias' => $getcategoria,
 
 
-		
+
 
 		], 'index.blogartigoexterno');
 	}

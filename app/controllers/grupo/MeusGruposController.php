@@ -11,6 +11,7 @@ use app\models\grupo\Usuario;
 use app\session\Session;
 use app\validate\Imagem;
 use app\validate\Validate;
+use app\classes\Uri;
 
 class MeusgruposController extends ContainerController {
 	public function grupos() {
@@ -24,6 +25,9 @@ class MeusgruposController extends ContainerController {
 
 		$grupoAll = CategoriaGrupo::CategoriaGrupoAll(Session::get('PAIS_ID'));
 		$meusGrupos = Grupo::meusGrupos(Session::get('USUARIO_ID'));
+			$meusGruposUrl = Uri::encodeUrlFactorylink($meusGrupos, "grupo");
+
+
 		$this->view([
 			'admin_id' => Session::get("ADMIN_SESSION"),
 			'title' => $lin->title,
@@ -53,7 +57,7 @@ class MeusgruposController extends ContainerController {
 			'btn_grupo_sair' => $lin->btn_grupo_sair,
 			'btn_salvar' => $lin->btn_salvar,
 			'btn_grupo_criar' => $lin->btn_grupo_criar,
-			'meusGrupos' => $meusGrupos,
+			'meusGrupos' => $meusGruposUrl,
 			'listEstados' => Estado::listEstados(),
 			'grupoAll' => $grupoAll,
 			'usuario_id' => Session::get('USUARIO_ID'),
@@ -115,7 +119,7 @@ class MeusgruposController extends ContainerController {
 
 	}
 
-	public function grupoDelete($gr_id) {
+	public function grupodelete($gr_id) {
 		if (Session::get('USUARIO_ID')) {
 			Session::get('US_FOTO');
 			Session::get('US_NOME');
@@ -124,9 +128,10 @@ class MeusgruposController extends ContainerController {
 		}
 
 		$grupo = new Grupo();
+		$decodegrid =  Uri::decodeUrlFactorylink($gr_id->parameter);
 
-		Grupo::grupoDelete($gr_id->parameter);
-		Grupo::grupoUsuarioDelete($gr_id->parameter);
+		Grupo::grupoDelete($decodegrid);
+		Grupo::grupoUsuarioDelete($decodegrid);
 
 		redirecionar('\meusGrupos\grupos');
 
@@ -141,7 +146,8 @@ class MeusgruposController extends ContainerController {
 
 		$grupo = new Grupo();
 
-		Grupo::grupoUsuarioSair($gr_id->parameter, Session::get('USUARIO_ID'));
+		$decodegrid =  Uri::decodeUrlFactorylink($gr_id->parameter);
+		Grupo::grupoUsuarioSair($decodegrid, Session::get('USUARIO_ID'));
 
 		redirecionar('\meusgrupos\grupos');
 
@@ -277,9 +283,10 @@ class MeusgruposController extends ContainerController {
 		}
 
 		$lin = Linguagem::getgrupousuarios();
+		$decodegrid =  Uri::decodeUrlFactorylink($gr_id->parameter);
 
-		$dadosgrupo = Usuario::getUsuariosgrupos($gr_id->parameter);
-		$gruponome = Usuario::getUsuariosgrupo($gr_id->parameter);
+		$dadosgrupo = Usuario::getUsuariosgrupos($decodegrid);
+		$gruponome = Usuario::getUsuariosgrupo($decodegrid);
 		$hadadosgrupo = true;
 		if ($dadosgrupo[0] == null) {
 			$hadadosgrupo = false;
@@ -323,7 +330,9 @@ class MeusgruposController extends ContainerController {
 		}
 		$lin = Linguagem::getgrupousuariosadmin();
 
-		$getAdmingrupos = Usuario::getAdmingrupos($gr_id->parameter, Session::get('USUARIO_ID'));
+		$decodegrid =  Uri::decodeUrlFactorylink($gr_id->parameter);
+
+		$getAdmingrupos = Usuario::getAdmingrupos($decodegrid, Session::get('USUARIO_ID'));
 
 		if ($getAdmingrupos[0] == null) {
 			flash(['naoadmin' => "Você não é administrador desse grupo"]);
@@ -331,8 +340,8 @@ class MeusgruposController extends ContainerController {
 
 		}
 
-		$dadosgrupo = Usuario::getUsuariosgrupos($gr_id->parameter);
-		$gruponome = Usuario::getUsuariosgrupo($gr_id->parameter);
+		$dadosgrupo = Usuario::getUsuariosgrupos($decodegrid);
+		$gruponome = Usuario::getUsuariosgrupo($decodegrid);
 		$hadadosgrupo = true;
 		if ($dadosgrupo[0] == null) {
 			$hadadosgrupo = false;

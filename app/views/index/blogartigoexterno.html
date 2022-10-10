@@ -80,10 +80,7 @@
     <section class="blog-post">
 
 
-      {% if admin_session %}
-      <button  type="button" class="btn btn-primary" data-toggle="modal" data-target=".editpost-{{post_id}}-lg"> edit post </button>             
 
-      {% endif %} 
       <h2 class="blog-post-title">{{theArtigo.post_titulo}}</h2>
       <h3>{{theArtigo.post_subtitulo}}</h3>
       <p class="blog-post-meta">Data post: {{theArtigo.blog_date}} </p>
@@ -95,13 +92,6 @@
 
 
 
-
-  {% if admin_session %}
-  <hr>
-
-        <button  type="button" class="btn btn-primary" data-toggle="modal" data-target=".addblog-lg"> add blog </button>             
-
-  {% endif %} 
 
 
 

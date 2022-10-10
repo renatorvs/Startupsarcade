@@ -133,7 +133,7 @@
 
 							
 							<h4 class ="text-dark" align="center">  {{titulo_h4}}  </h4>
-							<h5 class ="text-dark" align="center">{{atencao_h5}} </h5>
+							<h6 class ="text-dark" align="center">{{atencao_h5}} </h6>
 							<button  type="button" class="btn btn-primary" data-toggle="modal" data-target=".criargrupo-{{meusGrupo.gr_id}}-lg">{{btn_grupo_criar}}</button>             
 							<hr>
 
@@ -251,10 +251,10 @@
 									</section>
 									<section class="modal-body">
 										{% if meusGrupo.adm_user_id == usuario_id or meusGrupo.adm_sub_user_id == usuario_id %}
-										<a  class="btn btn-primary btn-lg btn-block"  href="/MeusGrupos/grupoDelete/{{meusGrupo.gr_id}}">{{btn_grupo_excluir}}</a>
+										<a  class="btn btn-primary btn-lg btn-block"  href="/MeusGrupos/grupodelete/{{meusGrupo.gr_url}}">{{btn_grupo_excluir}}</a>
 										{% else %}
 
-										<a  class="btn btn-primary btn-lg btn-block"  href="/MeusGrupos/grupoDeleteUsuario/{{meusGrupo.gr_id}}">{{btn_grupo_sair}}</a>
+										<a  class="btn btn-primary btn-lg btn-block"  href="/MeusGrupos/grupodeleteUsuario/{{meusGrupo.gr_url}}">{{btn_grupo_sair}}</a>
 										{% endif %}
 
 									</section>
@@ -277,7 +277,7 @@
 											{{grupo_privado}} |
 											{% endif %}
 										 {{meusGrupo.gr_cidade}}, {{meusGrupo.gr_estado}}<br>
-											<a href="\meusgrupos\informacoes\{{meusGrupo.gr_id}}" class="text-primary">{{grupo_info}}</a>
+											<a href="\meusgrupos\informacoes\{{meusGrupo.gr_url}}" class="text-primary">{{grupo_info}}</a>
 										</a> 
 									</section>
 								</li>
@@ -288,7 +288,7 @@
 
 
 							<section align="center" class="group-button">
-								<button class="btn btn-success"><a class="text-white" href="\grupo\chat\{{meusGrupo.gr_id}}"  >{{btn_grupo_visitar}}</a> 
+								<button class="btn btn-success"><a class="text-white" href="\grupo\chat\{{meusGrupo.gr_url}}"  >{{btn_grupo_visitar}}</a> 
 									</button>
 								<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#model-excluir-{{meusGrupo.gr_id}}">
 									{{btn_grupo_excluir_sair}}

@@ -1,4 +1,4 @@
-Segue a ordem recomendada para preencher e pensar sobre os blocos:
+ m Segue a ordem recomendada para preencher e pensar sobre os blocos:
 
 Proposta do MVP – Qual é a proposta deste MVP?
 Personas segmentadas – Para quem é esse MVP? Podemos segmentar e testar este MVP em um grupo menor?
