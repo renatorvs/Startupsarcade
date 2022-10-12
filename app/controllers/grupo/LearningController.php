@@ -97,7 +97,6 @@ class learningController extends ContainerController {
 				'getPostAndArtigos' => $getPostAndArtigos,
 				'postblogcat_nome' => $getPost[0]['postblogcat_nome'],
 
-				'candidato_session' => $candidato_session,
 				'pais_id' => Session::get("PAIS_ID"),
 				'NotsGrupo' => getNotificantionGrupo(Session::get('USUARIO_ID')),
 				'NotsMessagem' => getNotificantionMessagem(Session::get('USUARIO_ID')),
