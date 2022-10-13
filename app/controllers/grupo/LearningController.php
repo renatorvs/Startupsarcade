@@ -54,7 +54,7 @@ class learningController extends ContainerController {
 	$decodepostUri = Uri::decodeUrlFactorylink($post_id, "post");
 
 		$getPost = Blog::getPostByid($decodepostUri);
-		$getPostAndArtigos = Blog::getBlogLoad_id($decodepostUri);
+		$getBlogsAll = Blog::getBlogLoadInterno($decodepostUri);
 		$blogCategoria_nome = Postblog_categoria::getpostblogCategoria_nome($decodepostUri);
 
 		$getcategoria = Postblog_categoria::getpostblogCategoria(Session::get('PAIS_ID'));
@@ -94,7 +94,7 @@ class learningController extends ContainerController {
 				'tipo_post_id' => $getPost[0]['tipo_post_id'],
 				'postdestaque_id' => $getPost[0]['postdestaque_id'],
 				'userpost_id' => $getPost[0]['userpost_id'],
-				'getPostAndArtigos' => $getPostAndArtigos,
+				'getPostAndArtigos' => $getBlogsAll,
 				'postblogcat_nome' => $getPost[0]['postblogcat_nome'],
 
 				'pais_id' => Session::get("PAIS_ID"),

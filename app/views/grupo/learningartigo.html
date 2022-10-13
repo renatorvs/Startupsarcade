@@ -41,7 +41,7 @@
     {{ include('layout/nav-dashboard-portugues.html') }}
     {% elseif  pais_id == 2 %}
     {{ include('layout/nav-dashboard-ingles.html') }}
-    {% else %}  
+    {% elseif  admin_session %}
     {{ include('layout/nav-dashboard-admin.html') }}
 
     {% endif %}
@@ -57,331 +57,315 @@
             [tipo_post_id] => 1
             [userpost_id] => 1
             [post_paisid] => 1
- -->
-
-    
-    <section  class="container">
-      <a href="/learning/create"class="btn btn-primary btn-sm">{{btn_voltar}}</a>
-      <br><br>
-      <section class="row">
-        <article class="col-md-8 blog-main">
-          <h3   class="pb-3 mb-4 font-italic border-bottom">
-           {{blog_categoria}}: {{postblogcat_nome}}
-         </h3>
-         <section class="modal fade editpost-{{post_id}}-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-          <section class="modal-dialog modal-lg">
-            <section class="modal-content">
-
-              <form action="/adminpostblog/editpoststore" enctype="multipart/form-data" method="POST" >
-<input type="hidden" name="post_id" value="{{post_id}}">
-<input type="hidden" name="post_img_old" value="{{post_img}}">
-                <section class="card  box-shadow h-md-300" >
-                  <section class="card-body align-items-start">
-                <h5> Edit post</h5>
-                   <section class="form-group">
-                    <label for="categoria">Categoria post</label>
-                    <select class="form-control" name="blogcat_id" id="categoria">
-                      {% for blogcategoria in getcategorias %}
-
-                      {% if blogcategoria.blogcat_id == postcat_id %}
-                 <option  value="{{ blogcategoria.blogcat_id}}">{{ blogcategoria.blogcat_nome|e }} (Selecionado)</option>
-
-                                         {% else %}
-                      <option  value="{{ blogcategoria.blogcat_id}}">{{ blogcategoria.blogcat_nome|e }}</option>
-                                         {% endif %}
-
-                  
-                      {% endfor %}
-
-                    </select>
-                  </section>
-
-                  <input type="hidden" name="blog_date">
-
-                  <label for="destaque">local do artigo :</label>
-                  <select class="form-control" name="postestaque_id" id="destaque">
-
-                                     {% for getdestaques in getPostDestaqueAll %}
-                    {% if getdestaques.blogdest_id == postdestaque_id %}
-                    <option  value="{{getdestaques.blogdest_id}}">{{getdestaques.blogdest_nome}} selecionado</option>
-
-                                         {% else %}
-                    <option  value="{{getdestaques.blogdest_id}}">{{getdestaques.blogdest_nome}}</option>
-                                         {% endif %}
-
-                   
-                    {% endfor %}
-
-                  </select>
-                  <section class="form-group">
-
-                    <label class="text-dark">Titulo artigo (post):</label>
+          -->
 
 
-                    <input class="form-control" type="text" name="post_titulo" value="{{post_titulo}}"> 
-                  </section>
-                  <section class="form-group">
+          <section  class="container">
+            <a href="/learning/create"class="btn btn-primary btn-sm">{{btn_voltar}}</a>
+            <br><br>
+            <section class="row">
+              <article class="col-md-8 blog-main">
+                <h3   class="pb-3 mb-4 font-italic border-bottom">
+                 {{blog_categoria}}: {{postblogcat_nome}}
+               </h3>
+               <section class="modal fade editpost-{{post_id}}-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <section class="modal-dialog modal-lg">
+                  <section class="modal-content">
 
-                    <label class="text-dark">Subtitulo artigo (post):</label>
+                    <form action="/adminpostblog/editpoststore" enctype="multipart/form-data" method="POST" >
+                      <input type="hidden" name="post_id" value="{{post_id}}">
+                      <input type="hidden" name="post_img_old" value="{{post_img}}">
+                      <section class="card  box-shadow h-md-300" >
+                        <section class="card-body align-items-start">
+                          <h5> Edit post</h5>
+                          <section class="form-group">
+                            <label for="categoria">Categoria post</label>
+                            <select class="form-control" name="blogcat_id" id="categoria">
+                              {% for blogcategoria in getcategorias %}
 
-                    <input class="form-control" type="text" name="post_subtitulo" value="{{post_subtitulo}}"> 
-                  </section> 
-                  <section class="form-group">
+                              {% if blogcategoria.blogcat_id == postcat_id %}
+                              <option  value="{{ blogcategoria.blogcat_id}}">{{ blogcategoria.blogcat_nome|e }} (Selecionado)</option>
 
-                    <label class="text-dark">Description (post):</label>
+                              {% else %}
+                              <option  value="{{ blogcategoria.blogcat_id}}">{{ blogcategoria.blogcat_nome|e }}</option>
+                              {% endif %}
 
-                    <input class="form-control" type="text" name="post_description" value="{{post_description}}"> 
-                  </section> 
-                  
 
-                  <section class="form-group">
-                    <label>Imagem para o artigo (post)</label>
-                    <input class="form-control" type="file" name="post_img" value="{{post_img_alt}}">
-                    <label>Descrição imagem para o artigo (post)</label>
-                    <input class="form-control" type="text" name="post_img_alt">
-                  </section> 
-                                  <button type="submit" class="btn btn-primary btn-sm"> edit post</button>
+                              {% endfor %}
+
+                            </select>
+                          </section>
+
+                          <input type="hidden" name="blog_date">
+
+                          <label for="destaque">local do artigo :</label>
+                          <select class="form-control" name="postestaque_id" id="destaque">
+
+                           {% for getdestaques in getPostDestaqueAll %}
+                           {% if getdestaques.blogdest_id == postdestaque_id %}
+                           <option  value="{{getdestaques.blogdest_id}}">{{getdestaques.blogdest_nome}} selecionado</option>
+
+                           {% else %}
+                           <option  value="{{getdestaques.blogdest_id}}">{{getdestaques.blogdest_nome}}</option>
+                           {% endif %}
+
+
+                           {% endfor %}
+
+                         </select>
+                         <section class="form-group">
+
+                          <label class="text-dark">Titulo artigo (post):</label>
+
+
+                          <input class="form-control" type="text" name="post_titulo" value="{{post_titulo}}"> 
+                        </section>
+                        <section class="form-group">
+
+                          <label class="text-dark">Subtitulo artigo (post):</label>
+
+                          <input class="form-control" type="text" name="post_subtitulo" value="{{post_subtitulo}}"> 
+                        </section> 
+                        <section class="form-group">
+
+                          <label class="text-dark">Description (post):</label>
+
+                          <input class="form-control" type="text" name="post_description" value="{{post_description}}"> 
+                        </section> 
+
+
+                        <section class="form-group">
+                          <label>Imagem para o artigo (post)</label>
+                          <input class="form-control" type="file" name="post_img" value="{{post_img_alt}}">
+                          <label>Descrição imagem para o artigo (post)</label>
+                          <input class="form-control" type="text" name="post_img_alt">
+                        </section> 
+                        <button type="submit" class="btn btn-primary btn-sm"> edit post</button>
+
+                      </section>
+
+                    </section>
+                  </form>
+
 
                 </section>
+              </section>
+            </section>
+
+            <section class="modal fade addblog-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+              <section class="modal-dialog modal-lg">
+                <section class="modal-content">
+                  <form action="/adminpostblog/addblogstore" enctype="multipart/form-data" method="POST" >
+                   <section class="card  box-shadow h-md-300" >
+                    <section class="card-body align-items-start">
+
+                      <h5> add Blog</h5>
+
+                      <section class="form-group">
+                        <label class="text-dark">Subtitulo artigo (blog):</label>
+                        <textarea class="form-control" type="text" name="blog_subtitulo"> 
+                        </textarea>
+                      </section>
+                      <section class="form-group">
+                        <label class="text-dark"> Texto para o artigo (blog):</label>
+                        <textarea class="form-control" type="text" name="blog_text"> 
+                        </textarea>
+                      </section>
+                      <section class="form-group">
+                        <label class="text-dark"> link para video artigo (blog):</label>
+                        <textarea class="form-control" type="text" name="blog_video_src"> 
+                        </textarea>
+                      </section>
+
+                      <section class="form-group">
+                        <label>Imagem para o artigo (blog)</label>
+                        <input class="form-control" type="file" name="blog_img">
+                        <label>Descrição imagem para o artigo (blog)</label>
+                        <input class="form-control" type="text" name="blog_img_alt">
+                      </section> 
+
+                      <section class="form-group">
+                        <label class="text-dark">Fontes:</label>
+                        <input class="form-control" type="text" name="blog_fonte"> 
+                      </section> 
+                      <section class="form-group">
+                        <label class="text-dark">Autor:</label>
+                        <input class="form-control" type="text" name="blog_autor"> 
+                      </section> 
+
+                      <section class="form-group">
+                        <label for="post_paisid">Artigo pais:</label>
+                        <select class="form-control" name="post_paisid" id="post_paisid">
+
+
+
+                          <option selected="" value="1">Português</option>
+                          <option  value="2">Ingles</option>
+                        </select>
+
+                        <br>  
+                      </section>
+                      <button type="submit" class="btn btn-primary btn-sm"> Adicionar artigo</button>
+
+                    </section>
+
+                  </section>
+                </form>
 
               </section>
-            </form>
+            </section>
+          </section>
+
+          {% for theArtigo in  getBlogsAll %}           
+
+          <section class="modal fade editblog-{{theArtigo.blog_id}}-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <section class="modal-dialog modal-lg">
+              <section class="modal-content">
+                <form action="/adminpostblog/editblogstore" enctype="multipart/form-data" method="POST" >
+                 <section class="card  box-shadow h-md-300" >
+                  <section class="card-body align-items-start">
+
+                    <h5>Edit Blog </h5>
+                    <hr>
+
+                    <section class="form-group">ddd
+                      <label class="text-dark">Subtitulo artigo (blog):</label>
+                      <textarea class="form-control" type="text" name="blog_subtitulo">
+                        {{theArtigo.blog_subtitulo}} 
+                      </textarea>
+                    </section>
+                    <section class="form-group">
+                      <label class="text-dark"> Texto para o artigo (blog):</label>
+                      <textarea class="form-control" type="text" name="blog_text"> {{theArtigo.blog_text}}
+                      </textarea>
+                    </section>
+                    <section class="form-group">
+                      <label class="text-dark"> link para video artigo (blog):</label>
+                      <textarea class="form-control" type="text" name="blog_video_src" > 
+                        {{theArtigo.blog_video_src}}
+
+                      </textarea>
+                    </section>
+
+                    <section class="form-group">
+                      <label>Imagem para o artigo (blog)</label>
+                      <input class="form-control" type="file" name="blog_img">
+                      <label>Descrição imagem para o artigo (blog)</label>
+                      <input class="form-control" type="text" name="blog_img_alt" 
+                      value="{{theArtigo.blog_img_alt}}" >
+                    </section> 
+
+                    <section class="form-group">
+                      <label class="text-dark">Fontes:</label>
+                      <input class="form-control" type="text" name="blog_fonte" value="{{theArtigo.blog_fonte}}"> 
+                    </section> 
+                    <section class="form-group">
+                      <label class="text-dark">Autor:</label>
+                      <input class="form-control" type="text" name="blog_autor" value="{{theArtigo.blog_autor}}"> 
+                    </section> 
+
+                    <section class="form-group">
+                      <label for="post_paisid">Artigo pais:</label>
+                      <select class="form-control" name="post_paisid" id="post_paisid">
 
 
+
+                        <option selected="" value="1">Português</option>
+                        <option  value="2">Ingles</option>
+                      </select>
+
+                      <br>  
+                    </section>
+                    <button type="submit" class="btn btn-primary btn-sm"> salvar artigo</button>
+
+                  </section>
+
+                </section>
+              </form>
+
+            </section>
           </section>
         </section>
-      </section>
-
-      <section class="modal fade addblog-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <section class="modal-dialog modal-lg">
-          <section class="modal-content">
-            <form action="/adminpostblog/addblogstore" enctype="multipart/form-data" method="POST" >
-             <section class="card  box-shadow h-md-300" >
-              <section class="card-body align-items-start">
-
-                <h5> add Blog</h5>
-
-                <section class="form-group">
-                  <label class="text-dark">Subtitulo artigo (blog):</label>
-                  <textarea class="form-control" type="text" name="blog_subtitulo"> 
-                  </textarea>
-                </section>
-                <section class="form-group">
-                  <label class="text-dark"> Texto para o artigo (blog):</label>
-                  <textarea class="form-control" type="text" name="blog_text"> 
-                  </textarea>
-                </section>
-                <section class="form-group">
-                  <label class="text-dark"> link para video artigo (blog):</label>
-                  <textarea class="form-control" type="text" name="blog_video_src"> 
-                  </textarea>
-                </section>
-
-                <section class="form-group">
-                  <label>Imagem para o artigo (blog)</label>
-                  <input class="form-control" type="file" name="blog_img">
-                  <label>Descrição imagem para o artigo (blog)</label>
-                  <input class="form-control" type="text" name="blog_img_alt">
-                </section> 
-
-                <section class="form-group">
-                  <label class="text-dark">Fontes:</label>
-                  <input class="form-control" type="text" name="blog_fonte"> 
-                </section> 
-                <section class="form-group">
-                  <label class="text-dark">Autor:</label>
-                  <input class="form-control" type="text" name="blog_autor"> 
-                </section> 
-
-                <section class="form-group">
-                  <label for="post_paisid">Artigo pais:</label>
-                  <select class="form-control" name="post_paisid" id="post_paisid">
-
-
-
-                    <option selected="" value="1">Português</option>
-                    <option  value="2">Ingles</option>
-                  </select>
-
-                  <br>  
-                </section>
-                <button type="submit" class="btn btn-primary btn-sm"> Adicionar artigo</button>
-
-              </section>
-
-            </section>
-          </form>
-
+        <section class="blog-post">
+          {% if admin_session %}
+          <button  type="button" class="btn btn-primary" data-toggle="modal" data-target=".editpost-{{post_id}}-lg"> edit post </button>             
+          {% endif %} 
+          <h2 class="blog-post-title">{{post_titulo}}</h2>
+          <h3>{{post_subtitulo}}</h3>
+          <p class="blog-post-meta">Data post: {{blog_date}} </p>
+          <hr>
+          <p>{{post_description}} </p>
+          <figure>
+            <img src="../../assets/user_images/{{post_img}}" alt="{{post_img_alt}}" width="" height="400">
+          </figure>
+          {% if admin_session %}
+          <hr>
+          <button  type="button" class="btn btn-primary" data-toggle="modal" data-target=".addblog-lg"> add blog </button>    
+          {% endif %} 
+          <hr>  
+          <h2> {{theArtigo.blog_subtitulo}}   </h2>
+          <p class="blog-post-meta">Data post: {{theArtigo.blog_date}} </p>
         </section>
-      </section>
-    </section>
-
-         {% for theArtigo in  getPostAndArtigos %}           
-
-      <section class="modal fade editblog-{{theArtigo.blog_id}}-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <section class="modal-dialog modal-lg">
-          <section class="modal-content">
-            <form action="/adminpostblog/editblogstore" enctype="multipart/form-data" method="POST" >
-             <section class="card  box-shadow h-md-300" >
-              <section class="card-body align-items-start">
-
-                <h5>Edit Blog </h5>
-                <hr>
- 
-                <section class="form-group">ddd
-                  <label class="text-dark">Subtitulo artigo (blog):</label>
-                  <textarea class="form-control" type="text" name="blog_subtitulo">
-                  {{theArtigo.blog_subtitulo}} 
-                  </textarea>
-                </section>
-                <section class="form-group">
-                  <label class="text-dark"> Texto para o artigo (blog):</label>
-                  <textarea class="form-control" type="text" name="blog_text"> {{theArtigo.blog_text}}
-                  </textarea>
-                </section>
-                <section class="form-group">
-                  <label class="text-dark"> link para video artigo (blog):</label>
-                  <textarea class="form-control" type="text" name="blog_video_src" > 
-                  {{theArtigo.blog_video_src}}
-
-                  </textarea>
-                </section>
-
-                <section class="form-group">
-                  <label>Imagem para o artigo (blog)</label>
-                  <input class="form-control" type="file" name="blog_img">
-                  <label>Descrição imagem para o artigo (blog)</label>
-                  <input class="form-control" type="text" name="blog_img_alt" 
-                  value="{{theArtigo.blog_img_alt}}" >
-                </section> 
-
-                <section class="form-group">
-                  <label class="text-dark">Fontes:</label>
-                  <input class="form-control" type="text" name="blog_fonte" value="{{theArtigo.blog_fonte}}"> 
-                </section> 
-                <section class="form-group">
-                  <label class="text-dark">Autor:</label>
-                  <input class="form-control" type="text" name="blog_autor" value="{{theArtigo.blog_autor}}"> 
-                </section> 
-
-                <section class="form-group">
-                  <label for="post_paisid">Artigo pais:</label>
-                  <select class="form-control" name="post_paisid" id="post_paisid">
 
 
+        {% if theArtigo.blog_img != null %}
 
-                    <option selected="" value="1">Português</option>
-                    <option  value="2">Ingles</option>
-                  </select>
+        <figure>
+          <img src="../../assets/user_images/{{theArtigo.blog_img}}" alt="{{theArtigo.blog_img_alt}}" width="" height="400">
 
-                  <br>  
-                </section>
-                <button type="submit" class="btn btn-primary btn-sm"> salvar artigo</button>
+        </figure>
+        {% endif %}
 
-              </section>
+        {% if theArtigo.blog_video_src != null %}
 
-            </section>
-          </form>
-
-        </section>
-      </section>
-    </section>
+        <iframe width="420" height="315"
+        src="{{theArtigo.blog_video_src}}">
+      </iframe>
+      {% endif %}
 
 
+      <br>
+      {% if theArtigo.blog_autor != null %}
+      Autor: {{theArtigo.blog_autor}} <br>
 
-    <section class="blog-post">
+      {% endif %}
 
+      {% if theArtigo.blog_autor != null %}
+      Font: {{theArtigo.blog_fonte}}  <br>
+      {% endif %}
 
       {% if admin_session %}
-      <button  type="button" class="btn btn-primary" data-toggle="modal" data-target=".editpost-{{post_id}}-lg"> edit post </button>             
+
+      <button  type="button" class="btn btn-primary" data-toggle="modal" data-target=".editblog-{{theArtigo.blog_id}}-lg">  edit blog </button>             
 
       {% endif %} 
-      <h2 class="blog-post-title">{{theArtigo.post_titulo}}</h2>
-      <h3>{{theArtigo.post_subtitulo}}</h3>
-      <p class="blog-post-meta">Data post: {{theArtigo.blog_date}} </p>
+
+
+      {% endfor %}
       <hr>
-      <p>{{theArtigo.post_description}} </p>
-      <figure>
-        <img src="../../assets/user_images/{{theArtigo.post_img}}" alt="{{theArtigo.post_img_alt}}" width="" height="400">
-      </figure>
-
-
-
-
-  {% if admin_session %}
-  <hr>
-
-        <button  type="button" class="btn btn-primary" data-toggle="modal" data-target=".addblog-lg"> add blog </button>             
-
-  {% endif %} 
-
-
-
-
-      <hr>  
-      <h2> {{theArtigo.blog_subtitulo}}   </h2>
-      <p class="blog-post-meta">Data post: {{theArtigo.blog_date}} </p>
-    </section>
-
-
-    {% if theArtigo.blog_img != null %}
-
-    <figure>
-      <img src="../../assets/user_images/{{theArtigo.blog_img}}" alt="{{theArtigo.blog_img_alt}}" width="" height="400">
-
-    </figure>
-    {% endif %}
-
-    {% if theArtigo.blog_video_src != null %}
-
-    <iframe width="420" height="315"
-    src="{{theArtigo.blog_video_src}}">
-  </iframe>
-  {% endif %}
-
-
-<br>
-  {% if theArtigo.blog_autor != null %}
-  Autor: {{theArtigo.blog_autor}} <br>
-
-  {% endif %}
-
-  {% if theArtigo.blog_autor != null %}
-  Font: {{theArtigo.blog_fonte}}  <br>
-  {% endif %}
-
-  {% if admin_session %}
-
-  <button  type="button" class="btn btn-primary" data-toggle="modal" data-target=".editblog-{{theArtigo.blog_id}}-lg">  edit blog </button>             
-
-  {% endif %} 
-
-
-  {% endfor %}
-<hr>
-</article> 
-</section>
-
-<h5>adsense_associate:</h5>
-{% for publicidade in getPublicidadeAll %}
-<section class="card"> 
-  <span class="text-dark mt-1" align="center">{{grupo_span}}</span> 
-  <hr>   
-  <section class="card-body" align="center">
-    <ul class="list-unstyled" class="mr-1">
-      <li class="media my-4">
-        <a href="{{publicidade.pu_link}}" target="_blank">
-          <img border="0" src="{{publicidade.pu_src}}" >{{publicidade.pu_produto}}  |<span class="text-success">{{publicidade.pu_preco}} |</span>
-          <strong>{{publicidade.pu_parcela}}</strong>
-        </a>
-
-      </li>
-    </ul>
-
-
+    </article> 
   </section>
-</section>
-{% endfor %}
+
+  <h5>adsense_associate:</h5>
+  {% for publicidade in getPublicidadeAll %}
+  <section class="card"> 
+    <span class="text-dark mt-1" align="center">{{grupo_span}}</span> 
+    <hr>   
+    <section class="card-body" align="center">
+      <ul class="list-unstyled" class="mr-1">
+        <li class="media my-4">
+          <a href="{{publicidade.pu_link}}" target="_blank">
+            <img border="0" src="{{publicidade.pu_src}}" >{{publicidade.pu_produto}}  |<span class="text-success">{{publicidade.pu_preco}} |</span>
+            <strong>{{publicidade.pu_parcela}}</strong>
+          </a>
+
+        </li>
+      </ul>
+
+
+    </section>
+  </section>
+  {% endfor %}
 
 </section>
 </main>

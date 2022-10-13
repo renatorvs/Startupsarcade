@@ -338,23 +338,21 @@ class Blog extends Post {
 
 	}
 
-	public static function getBlogLoad_id($post_id) {
+	public static function getBlogLoadInterno($blogpost_id) {
 
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM blog_post_categoria  WHERE post_id = :post_id ", array(
-			':post_id' => $post_id,
-
-		));
+		return $banco->select("SELECT * FROM blog  WHERE blogpost_id = :blogpost_id  ", array(
+			':blogpost_id' => $blogpost_id,
 
 	}
 
-	public static function getBlogByid($post_id) {
+	public static function getBlogLoadExterno($blogpost_id) {
 
 		$banco = new Banco();
 
-		return $banco->select("SELECT * FROM blog  WHERE blogpost_id = :blogpost_id ", array(
-			':blogpost_id' => $post_id,
+		return $banco->select("SELECT * FROM blog  WHERE blogpost_id = :blogpost_id  ORDER BY  blog_id LIMT 1 ASC ", array(
+			':blogpost_id' => $blogpost_id,
 
 		));
 
